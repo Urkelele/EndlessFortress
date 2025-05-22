@@ -10,13 +10,26 @@ public class ItemFunctionality : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        if(ItemScript.m_TypeItem == ItemBaseScript.ItemType.NONE)
+        {
+            Debug.Log("The item: " + ItemScript.name + " has no type");
+        }
+        if (ItemScript.m_QualityItem == ItemBaseScript.ItemQuality.NONE)
+        {
+            Debug.Log("The item: " + ItemScript.name + " has no quality");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E)) { transform.parent = ItemManager.transform; }
+        if(Input.GetKeyDown(KeyCode.E)) 
+        {
+            if (!ItemManager.GetComponent<InventoryManager>().InsertItemInParent(ItemScript.m_TypeItem, transform))
+            {
+                Debug.Log("The item: " + ItemScript.name + " has no type");
+            }
+        }
 
         if (Input.touchCount > 0)
         {
