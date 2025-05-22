@@ -31,9 +31,6 @@ public class PlayerCombatScript : MonoBehaviour
     {
         m_LightAttackCurrentCooldown -= Time.deltaTime;
         m_HeavyAttackCurrentCooldown -= Time.deltaTime;
-
-        Random.Range(0f, 1f);
-
     }
 
     public void GetHit(float dmg)

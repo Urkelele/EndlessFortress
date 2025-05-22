@@ -45,9 +45,8 @@ public class EnemyBaseScript : MonoBehaviour
             PerformAction();
         }
 
-    
         // If an enemy is the last object clicked that means that it also is the current target enemy
-        if(m_ClickDetection.m_IsLastObjectClicked)
+        if (m_ClickDetection.m_IsLastObjectClicked)
         {
             OnClick();
         }

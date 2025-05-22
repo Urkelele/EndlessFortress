@@ -19,6 +19,13 @@ public class CombatManager : MonoBehaviour
     [Header("REWARDS")]
     public int m_GoldBattleReward = 0;
     public float m_ItemDropChange = 0.25f;
+    public ItemBaseScript m_ItemReward = null;
+
+    [Header("DROP CHANCES")]
+    public float m_CommonDropChance = 0.5f;
+    public float m_RareDropChance = 0.3f;
+    public float m_EpicDropChance = 0.15f;
+    public float m_LegendaryDropChance = 0.05f;
 
     private void StartBattle()
     {
@@ -43,7 +50,29 @@ public class CombatManager : MonoBehaviour
     {
         m_InventoryManager.m_Gold += m_GoldBattleReward;
 
+        float itemSpawnroll = Random.value;
 
+        if(itemSpawnroll < m_ItemDropChange)
+        {
+            float qualityRoll = Random.value;
+
+            if (qualityRoll < m_CommonDropChance)
+            {
+                m_ItemReward = ItemDatabaseManager.Instance.GetRandomItemOfQuality(ItemBaseScript.ItemQuality.COMMON);
+            }
+            else if (qualityRoll < m_RareDropChance)
+            {
+                m_ItemReward = ItemDatabaseManager.Instance.GetRandomItemOfQuality(ItemBaseScript.ItemQuality.RARE);
+            }
+            else if (qualityRoll < m_EpicDropChance)
+            {
+                m_ItemReward = ItemDatabaseManager.Instance.GetRandomItemOfQuality(ItemBaseScript.ItemQuality.EPIC);
+            }
+            else if (qualityRoll < m_LegendaryDropChance)
+            {
+                m_ItemReward = ItemDatabaseManager.Instance.GetRandomItemOfQuality(ItemBaseScript.ItemQuality.LEGENDARY);
+            }
+        }
     }
 
     private void EndBattle()
