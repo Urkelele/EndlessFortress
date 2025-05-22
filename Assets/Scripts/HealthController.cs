@@ -2,12 +2,24 @@ using UnityEngine;
 
 public class HealthController : MonoBehaviour
 {
-    public float m_MaxHealthPoints;
-    public float m_HealthPoints;
+    [Header("LIFE PARAMS")]
+    public float m_MaxHealthPoints = 0.0f;
+    public float m_HealthPoints = 0.0f;
+
+    [Header("DAMAGE PARAMS")]
+    //Ranges from [0,1], is multiplied to incoming in order to mitigate part of it
+    public float m_DamageReduction = 1.0f;
+
+    [Header("CONTROL")]
     public bool m_IsDead;
 
     [Header("Audio")]
     public AudioClip m_DamageSound;
+
+    private void Start()
+    {
+        m_HealthPoints = m_MaxHealthPoints;
+    }
 
     private void Update()
     {
@@ -26,7 +38,8 @@ public class HealthController : MonoBehaviour
     {
         if (!m_IsDead)
         {
-            m_HealthPoints -= damageDealt;
+            // Subtract life taking into account damage reduction
+            m_HealthPoints -= damageDealt * m_DamageReduction;
             if (m_DamageSound != null)
             {
                 // AÑADIR SOUND EFFECT MANAGER
