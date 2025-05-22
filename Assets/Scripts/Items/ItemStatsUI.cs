@@ -38,5 +38,5 @@ public class ItemStatsUI : MonoBehaviour
     public void Hide()
     {
         m_Panel.SetActive(false);
-    }
+    }    
 }
