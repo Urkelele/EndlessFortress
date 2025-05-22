@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SummonMeteorFunctionality : ItemFunctionality
+public class SummonMeteorFunctionality : BaseActiveScript
 {
     CombatManager m_CombatManager;
 
