@@ -9,6 +9,7 @@ public class CombatManager : MonoBehaviour
     private PlayerCombatScript m_PlayerCombatScript;
     [SerializeField] private List<EnemyBaseScript> m_CombatEnemies;
     private InventoryManager m_InventoryManager;
+    public EnemyBaseScript m_CurrentEnemyTarget;
     
     [Header("POSITIONS")]
     public Transform m_CharacterPosition;

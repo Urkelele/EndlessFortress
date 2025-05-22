@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 public class ItemDatabaseManager : MonoBehaviour
 {
-    public static ItemDatabaseManager Instance { get; private set; }
+    public static ItemDatabaseManager Instance;
 
-    public List<ItemBaseScript> m_AllItems { get; private set; } = new List<ItemBaseScript>();
+    public List<ItemBaseScript> m_AllItems = new List<ItemBaseScript>();
 
     private void Awake()
     {

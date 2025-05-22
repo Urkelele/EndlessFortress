@@ -4,6 +4,7 @@ public class PlayerCombatScript : MonoBehaviour
 {
     public EnemyBaseScript m_TargetEnemy = null;
     public HealthController m_PlayerHealthController = null;
+    private CombatManager m_CombatManager = null;
     [SerializeField] AbilityManager m_AbilityManager = null;
     [SerializeField] InventoryManager m_Inventory = null;
 
@@ -50,7 +51,7 @@ public class PlayerCombatScript : MonoBehaviour
         {
             //Reset timer
             m_LightAttackCurrentCooldown = m_LightAttackTotalCooldown;
-            m_TargetEnemy.m_HealthController.ReceiveDamage(m_LightAttackDamage);
+            m_CombatManager.m_CurrentEnemyTarget.m_HealthController.ReceiveDamage(m_LightAttackDamage);
         }
         //Attack Animation
     }
@@ -61,7 +62,7 @@ public class PlayerCombatScript : MonoBehaviour
         {
             //Reset timer
             m_HeavyAttackCurrentCooldown = m_HeavyAttackTotalCooldown;
-            m_TargetEnemy.m_HealthController.ReceiveDamage(m_HeavyAttackDamage);
+            m_CombatManager.m_CurrentEnemyTarget.m_HealthController.ReceiveDamage(m_HeavyAttackDamage);
         }
         //Attack Animation
     }
