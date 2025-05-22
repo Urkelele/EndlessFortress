@@ -14,12 +14,12 @@ public class InventoryManager : MonoBehaviour
 
     public GameObject m_PassiveItemsFolder;
 
-    public ItemFunctionality m_CurrentActiveItem;
-    public ItemFunctionality m_CurrentLightWeapon;
-    public ItemFunctionality m_CurrentHeavyWeapon;
+    public ItemBaseScript m_CurrentActiveItem;
+    public ItemBaseScript m_CurrentLightWeapon;
+    public ItemBaseScript m_CurrentHeavyWeapon;
 
 
-    public List<ItemFunctionality> m_PassiveItemsList = new List<ItemFunctionality>();
+    public List<ItemBaseScript> m_PassiveItemsList = new List<ItemBaseScript>();
 
     private void Update()
     {
@@ -32,7 +32,7 @@ public class InventoryManager : MonoBehaviour
     public void UpdateItems()
     {
         ExtraAttributesTo_0();
-        m_PassiveItemsList = m_PassiveItemsFolder.GetComponentsInChildren<ItemFunctionality>().ToList();
+        //m_PassiveItemsList = m_PassiveItemsFolder.GetComponentsInChildren<ItemBaseScript>().ToList();
         float[] currentUpdates;
         for (int i = 0; i < m_PassiveItemsList.Count; i++)
         {
@@ -61,15 +61,15 @@ public class InventoryManager : MonoBehaviour
                 break;
 
             case ItemBaseScript.ItemType.ACTIVE:
-                m_CurrentActiveItem = itemObject.GetComponent<ItemFunctionality>();
+                m_CurrentActiveItem = itemObject.GetComponent<ItemBaseScript>();
                 itemObject.parent = transform;
                 break;
             case ItemBaseScript.ItemType.LIGHT_WEAPON:
-                m_CurrentLightWeapon = itemObject.GetComponent<ItemFunctionality>();
+                m_CurrentLightWeapon = itemObject.GetComponent<ItemBaseScript>();
                 itemObject.parent = transform;
                 break;
             case ItemBaseScript.ItemType.HEAVY_WEAPON:
-                m_CurrentHeavyWeapon = itemObject.GetComponent<ItemFunctionality>();
+                m_CurrentHeavyWeapon = itemObject.GetComponent<ItemBaseScript>();
                 itemObject.parent = transform;
                 break;
         }
