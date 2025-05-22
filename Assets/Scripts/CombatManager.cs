@@ -18,6 +18,7 @@ public class CombatManager : MonoBehaviour
 
     [Header("REWARDS")]
     public int m_GoldBattleReward = 0;
+    public float m_ItemDropChange = 0.25f;
 
     private void StartBattle()
     {
@@ -41,6 +42,8 @@ public class CombatManager : MonoBehaviour
     private void GiveRewards()
     {
         m_InventoryManager.m_Gold += m_GoldBattleReward;
+
+
     }
 
     private void EndBattle()

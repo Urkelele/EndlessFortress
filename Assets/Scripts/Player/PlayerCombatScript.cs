@@ -17,13 +17,13 @@ public class PlayerCombatScript : MonoBehaviour
     [SerializeField] private float m_HeavyAttackCurrentCooldown = 0;
     private void OnEnable()
     {
-        m_LightAttackDamage = m_Inventory.m_CurrentLightWeapon.ItemScript.m_WeaponDamage;
-        m_LightAttackTotalCooldown = m_Inventory.m_CurrentLightWeapon.ItemScript.m_AttackCooldown;
-        m_LightAttackCurrentCooldown = m_LightAttackTotalCooldown;
+        //m_LightAttackDamage = m_Inventory.m_CurrentLightWeapon.ItemScript.m_WeaponDamage;
+        //m_LightAttackTotalCooldown = m_Inventory.m_CurrentLightWeapon.ItemScript.m_AttackCooldown;
+        //m_LightAttackCurrentCooldown = m_LightAttackTotalCooldown;
 
-        m_HeavyAttackDamage = m_Inventory.m_CurrentHeavyWeapon.ItemScript.m_WeaponDamage;
-        m_HeavyAttackTotalCooldown = m_Inventory.m_CurrentHeavyWeapon.ItemScript.m_AttackCooldown;
-        m_HeavyAttackCurrentCooldown = m_HeavyAttackTotalCooldown;
+        //m_HeavyAttackDamage = m_Inventory.m_CurrentHeavyWeapon.ItemScript.m_WeaponDamage;
+        //m_HeavyAttackTotalCooldown = m_Inventory.m_CurrentHeavyWeapon.ItemScript.m_AttackCooldown;
+        //m_HeavyAttackCurrentCooldown = m_HeavyAttackTotalCooldown;
     }
 
     // Update is called once per frame
@@ -31,6 +31,9 @@ public class PlayerCombatScript : MonoBehaviour
     {
         m_LightAttackCurrentCooldown -= Time.deltaTime;
         m_HeavyAttackCurrentCooldown -= Time.deltaTime;
+
+        Random.Range(0f, 1f);
+
     }
 
     public void GetHit(float dmg)
