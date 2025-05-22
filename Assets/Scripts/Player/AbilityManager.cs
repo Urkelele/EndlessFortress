@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class AbilityManager : MonoBehaviour
 {
-    public enum Abilitie { None = -1, Shield = 0 };
-    float m_AbilityCooldown = 10f;
-    Abilitie m_ChosenAbility = 0;
+    public enum Ability { None = -1, Shield = 0 };
+    [SerializeField] float m_AbilityCooldown = 10f;
+    [SerializeField] Ability m_ChosenAbility = 0;
+    [SerializeField] HealthController m_PlayerHealthController = null;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,7 +17,8 @@ public class AbilityManager : MonoBehaviour
     {
         switch (m_ChosenAbility)
         {
-            case Abilitie.Shield:
+            case Ability.Shield:
+
                 break;
 
             default:

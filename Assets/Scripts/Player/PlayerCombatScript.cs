@@ -2,10 +2,19 @@ using UnityEngine;
 
 public class PlayerCombatScript : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] EnemyBaseScript TargetEnemy = null;
+
+    [SerializeField] float LightAttackDamage = 0;
+    [SerializeField] float LightAttackCooldown = 0;
+    [SerializeField] float LightAttackCurrentCooldown = 0;
+
+    [SerializeField] float HeavyAttackDamage = 0;
+    [SerializeField] float HeavyAttackCooldown = 0;
+    [SerializeField] float HeavyAttackCurrentCooldown = 0;
+    private void OnEnable()
     {
-        
+        //Call ItemManagers Get LightAttack
+        //Call ItemManagers Get HeavyAttack
     }
 
     // Update is called once per frame
@@ -28,20 +37,17 @@ public class PlayerCombatScript : MonoBehaviour
 
     public void LightAttack()
     {
-        //Call ItemManagers function for LightAttack
         //Attack Animation
     }
 
     public void HeavyAttack()
     {
-        //Call ItemManagers function for HeavyAttack
         //Attack Animation
-
     }
 
     public void UseActiveItem()
     {
-        //Call ItemManagers function for ActiveManager
+        //Call ItemManagers.ActiveItem.Action()
         //Attack Animation
 
     }
