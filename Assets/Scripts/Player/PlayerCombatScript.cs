@@ -15,7 +15,8 @@ public class PlayerCombatScript : MonoBehaviour
     [SerializeField] float m_HeavyAttackCurrentCooldown = 0;
     private void OnEnable()
     {
-        //m_LightAttackDamage = InventoryManager.
+        m_LightAttackDamage = m_Inventory.m_CurrentLightWeapon.ItemScript.m_WeaponDamage;
+        m_
         m_LightAttackCurrentCooldown = m_LightAttackTotalCooldown;
         m_HeavyAttackCurrentCooldown = m_HeavyAttackTotalCooldown;
         //Call ItemManagers Get LightAttack
