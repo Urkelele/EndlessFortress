@@ -55,6 +55,11 @@ public class EnemyBaseScript : MonoBehaviour
             m_Outline.enabled = false;
             m_IsCurrentTarget = false;
         }
+
+        if(m_HealthController.m_IsDead)
+        {
+            OnDeath();
+        }
     }
 
     public virtual void PerformAction()
@@ -76,6 +81,8 @@ public class EnemyBaseScript : MonoBehaviour
 
         //Add the enemy's gold reward to the total pool of gold that will be given to the player when the battle finishes
         m_CombatManager.m_GoldBattleReward += m_GoldReward;
+
+        //DEATH ANIMATION
     }
 
 }
