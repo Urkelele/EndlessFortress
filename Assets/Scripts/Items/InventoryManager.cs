@@ -10,9 +10,11 @@ public class InventoryManager : MonoBehaviour
     public float m_TotalAttackSpeedMultiplier;
     public float m_TotalDamageReductionMultiplier;
 
+    public int m_Gold;
+
     public GameObject m_PassiveItemsFolder;
 
-    public ItemFunctionality m_CurrentAcitveItem;
+    public ItemFunctionality m_CurrentActiveItem;
     public ItemFunctionality m_CurrentLightWeapon;
     public ItemFunctionality m_CurrentHeavyWeapon;
 
@@ -59,7 +61,7 @@ public class InventoryManager : MonoBehaviour
                 break;
 
             case ItemBaseScript.ItemType.ACTIVE:
-                m_CurrentAcitveItem = itemObject.GetComponent<ItemFunctionality>();
+                m_CurrentActiveItem = itemObject.GetComponent<ItemFunctionality>();
                 itemObject.parent = transform;
                 break;
             case ItemBaseScript.ItemType.LIGHT_WEAPON:

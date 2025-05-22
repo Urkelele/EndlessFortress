@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-[CreateAssetMenu(menuName ="Items/NewItem")]
+[CreateAssetMenu(menuName ="Resources/Items/NewItem")]
 public class ItemBaseScript : ScriptableObject
 {
     [Header("All Items Stats")]
