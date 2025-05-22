@@ -12,9 +12,9 @@ public class InventoryManager : MonoBehaviour
 
     public GameObject m_PassiveItemsFolder;
 
-    public GameObject m_CurrentAcitveItem;
-    public GameObject m_CurrentLightWeapon;
-    public GameObject m_CurrentHeavyWeapon;
+    public ItemFunctionality m_CurrentAcitveItem;
+    public ItemFunctionality m_CurrentLightWeapon;
+    public ItemFunctionality m_CurrentHeavyWeapon;
 
 
     public List<ItemFunctionality> m_PassiveItemsList = new List<ItemFunctionality>();
@@ -59,15 +59,15 @@ public class InventoryManager : MonoBehaviour
                 break;
 
             case ItemBaseScript.ItemType.ACTIVE:
-                m_CurrentAcitveItem = itemObject.gameObject;
+                m_CurrentAcitveItem = itemObject.GetComponent<ItemFunctionality>();
                 itemObject.parent = transform;
                 break;
             case ItemBaseScript.ItemType.LIGHT_WEAPON:
-                m_CurrentLightWeapon = itemObject.gameObject;
+                m_CurrentLightWeapon = itemObject.GetComponent<ItemFunctionality>();
                 itemObject.parent = transform;
                 break;
             case ItemBaseScript.ItemType.HEAVY_WEAPON:
-                m_CurrentHeavyWeapon = itemObject.gameObject;
+                m_CurrentHeavyWeapon = itemObject.GetComponent<ItemFunctionality>();
                 itemObject.parent = transform;
                 break;
         }
