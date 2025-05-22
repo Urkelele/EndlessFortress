@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class PlayerCombatScript : MonoBehaviour
 {
-    [SerializeField] EnemyBaseScript TargetEnemy = null;
+    [SerializeField] EnemyBaseScript m_TargetEnemy = null;
 
-    [SerializeField] float LightAttackDamage = 0;
-    [SerializeField] float LightAttackCooldown = 0;
-    [SerializeField] float LightAttackCurrentCooldown = 0;
+    [SerializeField] float m_LightAttackDamage = 0;
+    [SerializeField] float m_LightAttackTotalCooldown = 0;
+    [SerializeField] float m_LightAttackCurrentCooldown = 0;
 
-    [SerializeField] float HeavyAttackDamage = 0;
-    [SerializeField] float HeavyAttackCooldown = 0;
-    [SerializeField] float HeavyAttackCurrentCooldown = 0;
+    [SerializeField] float m_HeavyAttackDamage = 0;
+    [SerializeField] float m_HeavyAttackTotalCooldown = 0;
+    [SerializeField] float m_HeavyAttackCurrentCooldown = 0;
     private void OnEnable()
     {
         //Call ItemManagers Get LightAttack
