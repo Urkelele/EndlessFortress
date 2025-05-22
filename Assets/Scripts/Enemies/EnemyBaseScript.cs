@@ -22,6 +22,8 @@ public class EnemyBaseScript : MonoBehaviour
 
     private void Update()
     {
+        m_TimeUntilNextAction -= Time.deltaTime;
+
         if (m_TimeUntilNextAction < 0.0f)
         {
             //Reset timer
