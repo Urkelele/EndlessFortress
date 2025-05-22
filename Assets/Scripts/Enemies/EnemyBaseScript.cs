@@ -25,7 +25,6 @@ public class EnemyBaseScript : MonoBehaviour
         //Get references
         m_HealthController = GetComponent<HealthController>();
         m_Collider = GetComponent<Collider>();
-        m_Animator = GetComponent<Animator>();
         m_ClickDetection = GetComponent<ClickDetection>();
         m_Animator = GetComponent<Animator>();
         m_Outline = GetComponent<Outline>();
