@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EntwinedAttackFunctionality : ItemFunctionality
+public class EntwinedAttackFunctionality : BaseActiveScript
 {
     CombatManager m_CombatManager;
     InventoryManager m_InventoryManager;
