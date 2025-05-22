@@ -68,4 +68,10 @@ public class ItemFunctionality : MonoBehaviour
     {
         return ItemScript.GetExtraAttributes();
     }
+
+    public virtual bool UseActive()
+    {
+        if(ItemScript.m_TypeItem != ItemBaseScript.ItemType.ACTIVE) return false;
+        return true;
+    }
 }
