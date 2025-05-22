@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 
 [CreateAssetMenu(menuName ="Items/NewItem")]
@@ -10,7 +11,9 @@ public class ItemBaseScript : ScriptableObject
     public float m_DamageReductionMultiplier;
     public int m_Price;
     public string m_Description;
-    public enum m_Quality { NONE, COMMON, RARE, EPIC, LEGENDARY};
+    public Sprite m_SpriteItem;
+    public enum m_Quality { NONE, COMMON, RARE, EPIC, LEGENDARY}
+    public enum m_TypeItem { PASSIVE, ACTIVE, LIGHT_WEAPON, HEAVY_WEAPON}
 
     public float[] GetExtraAttributes()
     {
