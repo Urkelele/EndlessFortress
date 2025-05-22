@@ -13,6 +13,7 @@ public class EnemyBaseScript : MonoBehaviour
     private Outline m_Outline = null;
     private CombatManager m_CombatManager = null;
     public bool m_IsCurrentTarget = false;
+    public bool m_IsBoss = false;
 
     [Header("COOLDOWNS")]
     [SerializeField] private float m_TotalActionCooldown = 0.0f;

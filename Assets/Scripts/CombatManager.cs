@@ -7,7 +7,7 @@ public class CombatManager : MonoBehaviour
 {
     [Header("CLASSES")]
     private PlayerCombatScript m_PlayerCombatScript;
-    [SerializeField] private List<EnemyBaseScript> m_CombatEnemies;
+    public List<EnemyBaseScript> m_CombatEnemies;
     private InventoryManager m_InventoryManager;
     public EnemyBaseScript m_CurrentEnemyTarget;
     
