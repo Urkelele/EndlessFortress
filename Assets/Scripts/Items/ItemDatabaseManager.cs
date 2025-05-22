@@ -15,7 +15,6 @@ public class ItemDatabaseManager : MonoBehaviour
 
     private void Awake()
     {
-        // Singleton simple
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
