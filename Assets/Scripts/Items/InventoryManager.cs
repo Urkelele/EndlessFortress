@@ -10,6 +10,8 @@ public class InventoryManager : MonoBehaviour
     public float m_TotalAttackSpeedMultiplier;
     public float m_TotalDamageReductionMultiplier;
 
+    public int m_Gold;
+
     public GameObject m_PassiveItemsFolder;
 
     public ItemFunctionality m_CurrentAcitveItem;

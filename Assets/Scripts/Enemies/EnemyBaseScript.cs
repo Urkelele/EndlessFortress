@@ -9,8 +9,9 @@ public class EnemyBaseScript : MonoBehaviour
     private PlayerCombatScript m_PlayerCombatScript = null;
     public Collider m_Collider = null;
     private Animator m_Animator = null;
-    private ClickDetection m_ClickDetection = null;
+    public ClickDetection m_ClickDetection = null;
     private Outline m_Outline = null;
+    private CombatManager m_CombatManager = null;
 
     [Header("COOLDOWNS")]
     [SerializeField] private float m_TotalActionCooldown = 0.0f;
@@ -57,7 +58,7 @@ public class EnemyBaseScript : MonoBehaviour
 
     public virtual void PerformAction()
     {
-       
+        
     }
 
     private void OnClick()
@@ -70,6 +71,9 @@ public class EnemyBaseScript : MonoBehaviour
     public virtual void OnDeath()
     {
         PlayerStats.instance.m_EnemiesSlain += 1;
+
+        //Add the enemy's gold reward to the total pool of gold that will be given to the player when the battle finishes
+        m_CombatManager.m_GoldBattleReward += m_GoldReward;
     }
 
 }

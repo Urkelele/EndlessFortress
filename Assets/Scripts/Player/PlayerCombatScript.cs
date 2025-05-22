@@ -5,7 +5,6 @@ public class PlayerCombatScript : MonoBehaviour
     public EnemyBaseScript m_TargetEnemy = null;
     public HealthController m_PlayerHealthController = null;
     [SerializeField] InventoryManager m_Inventory = null;
-    [SerializeField] EnemyBaseScript m_TargetEnemy = null;
 
     [SerializeField] private float m_LightAttackDamage = 0;
     [SerializeField] private float m_LightAttackTotalCooldown = 0;
@@ -17,7 +16,6 @@ public class PlayerCombatScript : MonoBehaviour
     private void OnEnable()
     {
         m_LightAttackDamage = m_Inventory.m_CurrentLightWeapon.ItemScript.m_WeaponDamage;
-        m_
         m_LightAttackCurrentCooldown = m_LightAttackTotalCooldown;
         m_HeavyAttackCurrentCooldown = m_HeavyAttackTotalCooldown;
         //Call ItemManagers Get LightAttack
