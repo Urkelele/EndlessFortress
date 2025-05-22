@@ -27,6 +27,5 @@ public class PlayerStats : MonoBehaviour
         {
             instance = this;
         }
-
     }
 }
