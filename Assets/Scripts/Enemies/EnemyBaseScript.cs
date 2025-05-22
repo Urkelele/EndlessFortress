@@ -12,6 +12,7 @@ public class EnemyBaseScript : MonoBehaviour
     public ClickDetection m_ClickDetection = null;
     private Outline m_Outline = null;
     private CombatManager m_CombatManager = null;
+    public bool m_IsCurrentTarget = false;
 
     [Header("COOLDOWNS")]
     [SerializeField] private float m_TotalActionCooldown = 0.0f;
@@ -53,6 +54,7 @@ public class EnemyBaseScript : MonoBehaviour
         else
         {
             m_Outline.enabled = false;
+            m_IsCurrentTarget = false;
         }
     }
 
@@ -66,6 +68,7 @@ public class EnemyBaseScript : MonoBehaviour
         // When enemy is clicked they are targeted by the player, m_TargetEnemy is type EnemyBaseScript
         m_PlayerCombatScript.m_TargetEnemy = this;
         m_Outline.enabled = true;
+        m_IsCurrentTarget = true;
     }
 
     public virtual void OnDeath()
