@@ -2,18 +2,18 @@ using UnityEngine;
 
 public class PlayerCombatScript : MonoBehaviour
 {
+    public EnemyBaseScript m_TargetEnemy = null;
     public HealthController m_PlayerHealthController = null;
     [SerializeField] AbilityManager m_AbilityManager = null;
     [SerializeField] InventoryManager m_Inventory = null;
-    [SerializeField] EnemyBaseScript m_TargetEnemy = null;
 
-    [SerializeField] float m_LightAttackDamage = 0;
-    [SerializeField] float m_LightAttackTotalCooldown = 0;
-    [SerializeField] float m_LightAttackCurrentCooldown = 0;
+    [SerializeField] private float m_LightAttackDamage = 0;
+    [SerializeField] private float m_LightAttackTotalCooldown = 0;
+    [SerializeField] private float m_LightAttackCurrentCooldown = 0;
 
-    [SerializeField] float m_HeavyAttackDamage = 0;
-    [SerializeField] float m_HeavyAttackTotalCooldown = 0;
-    [SerializeField] float m_HeavyAttackCurrentCooldown = 0;
+    [SerializeField] private float m_HeavyAttackDamage = 0;
+    [SerializeField] private float m_HeavyAttackTotalCooldown = 0;
+    [SerializeField] private float m_HeavyAttackCurrentCooldown = 0;
     private void OnEnable()
     {
         m_LightAttackDamage = m_Inventory.m_CurrentLightWeapon.ItemScript.m_WeaponDamage;
