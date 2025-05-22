@@ -16,6 +16,8 @@ public class EnemyBaseScript : MonoBehaviour
     [SerializeField] private float m_TotalActionCooldown = 0.0f;
     [SerializeField] public float m_CurrentActionCooldown = 0.0f;
     
+    [SerializeField] int m_GoldReward = 0;
+
     private void Start()
     {
         //Get references
@@ -63,6 +65,11 @@ public class EnemyBaseScript : MonoBehaviour
         // When enemy is clicked they are targeted by the player, m_TargetEnemy is type EnemyBaseScript
         m_PlayerCombatScript.m_TargetEnemy = this;
         m_Outline.enabled = true;
+    }
+
+    public virtual void OnDeath()
+    {
+        PlayerStats.instance.m_EnemiesSlain += 1;
     }
 
 }
