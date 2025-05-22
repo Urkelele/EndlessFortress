@@ -34,12 +34,12 @@ public class HealthController : MonoBehaviour
     }
 
 
-    public void DealDamage(float damageDealt)
+    public virtual void ReceiveDamage(float damageReceived)
     {
         if (!m_IsDead)
         {
             // Subtract life taking into account damage reduction
-            m_HealthPoints -= damageDealt * m_DamageReduction;
+            m_HealthPoints -= damageReceived * m_DamageReduction;
             if (m_DamageSound != null)
             {
                 // AÑADIR SOUND EFFECT MANAGER
@@ -48,7 +48,7 @@ public class HealthController : MonoBehaviour
         }
     }
 
-    public void HealDamage(float healing)
+    public virtual void HealDamage(float healing)
     {
         if (m_HealthPoints < m_MaxHealthPoints)
         {
