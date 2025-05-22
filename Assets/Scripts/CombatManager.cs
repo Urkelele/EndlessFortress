@@ -18,11 +18,10 @@ public class CombatManager : MonoBehaviour
     [Header("POSITIONS")]
     public Transform m_PlayerPosition;
     [SerializeField] private Transform[] m_EnemyPositions = new Transform[3];
-    [SerializeField] private List<GameObject> m_EnemyPool;
 
     [Header("REWARDS")]
     public int m_GoldBattleReward = 0;
-    public float m_ItemDropChange = 0.25f;
+    public float m_ItemDropChance = 0.25f;
     public ItemBaseScript m_ItemReward = null;
 
     [Header("DROP CHANCES")]
@@ -43,7 +42,11 @@ public class CombatManager : MonoBehaviour
         LoadCompsPrefabs(m_EnemyCompsList, m_EnemyCompsFolderPath);
         LoadCompsPrefabs(m_BossCompsList, m_BossCompsFolderPath);
     }
-
+    private void Start()
+    {
+        m_PlayerCombatScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCombatScript>();
+        StartBattle();
+    }
 
     /// <summary>
     /// Loads all gameobjects from a certain Resource/ path, deactivates them and puts them on a list
@@ -67,7 +70,7 @@ public class CombatManager : MonoBehaviour
     {
         MovePlayer();
         SpawnEnemies();
-        GetDefaultTargetEnemy();
+        //GetDefaultTargetEnemy();
     }
 
     private void MovePlayer()
@@ -81,6 +84,7 @@ public class CombatManager : MonoBehaviour
     private void SpawnEnemies()
     {
         m_CurrentComp = Instantiate(GetRandomComp());
+        m_CurrentComp.SetActive(true);
 
         for (int i = 0; i < m_CurrentComp.transform.childCount; i++)
         {
@@ -94,7 +98,7 @@ public class CombatManager : MonoBehaviour
     /// <returns></returns>
     private GameObject GetRandomComp()
     {
-        if(PlayerStats.instance.m_RoomsCleared % m_NumOfRoomsBetweenBoss == 0)
+        if(PlayerStats.instance.m_RoomsCleared % m_NumOfRoomsBetweenBoss == 0 && PlayerStats.instance.m_RoomsCleared != 0)
         {
             return m_EnemyCompsList[Random.Range(0, m_BossCompsList.Count)];
         }
@@ -119,7 +123,7 @@ public class CombatManager : MonoBehaviour
 
         float itemSpawnroll = Random.value;
 
-        if(itemSpawnroll < m_ItemDropChange)
+        if(itemSpawnroll < m_ItemDropChance)
         {
             float qualityRoll = Random.value;
 
