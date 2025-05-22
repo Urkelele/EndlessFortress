@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Sword
   m_EditorClassIdentifier: 
   m_ItemName: Sword
-  m_ExtraLife: 0
+  m_ExtraHealth: 0
   m_AttackSpeedMultiplier: 0.1
-  m_DamageReductionMultiplier: 0
+  m_DamageReductionMultiplier: 0.1
   m_Price: 100
+  m_Description: 

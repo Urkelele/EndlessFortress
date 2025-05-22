@@ -10,6 +10,8 @@ public class InventoryManager : MonoBehaviour
     public float m_TotalAttackSpeedMultiplier;
     public float m_TotalDamageReductionMultiplier;
 
+
+
     public List<ItemFunctionality> m_ItemsList = new List<ItemFunctionality>();
 
     private void Update()
