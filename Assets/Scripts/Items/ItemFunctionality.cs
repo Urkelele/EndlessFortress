@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ItemFunctionality : MonoBehaviour
 {
-    [SerializeField] ItemBaseScript ItemScript;
+    [SerializeField] public ItemBaseScript ItemScript;
     public GameObject ItemManager;
 
     public bool m_ActivatedShownObject;
