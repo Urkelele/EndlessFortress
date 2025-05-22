@@ -4,6 +4,7 @@ public class PlayerCombatScript : MonoBehaviour
 {
     public EnemyBaseScript m_TargetEnemy = null;
     public HealthController m_PlayerHealthController = null;
+    [SerializeField] AbilityManager m_AbilityManager = null;
     [SerializeField] InventoryManager m_Inventory = null;
 
     [SerializeField] private float m_LightAttackDamage = 0;
@@ -16,16 +17,19 @@ public class PlayerCombatScript : MonoBehaviour
     private void OnEnable()
     {
         m_LightAttackDamage = m_Inventory.m_CurrentLightWeapon.ItemScript.m_WeaponDamage;
+        m_LightAttackTotalCooldown = m_Inventory.m_CurrentLightWeapon.ItemScript.m_AttackCooldown;
         m_LightAttackCurrentCooldown = m_LightAttackTotalCooldown;
+
+        m_HeavyAttackDamage = m_Inventory.m_CurrentHeavyWeapon.ItemScript.m_WeaponDamage;
+        m_HeavyAttackTotalCooldown = m_Inventory.m_CurrentHeavyWeapon.ItemScript.m_AttackCooldown;
         m_HeavyAttackCurrentCooldown = m_HeavyAttackTotalCooldown;
-        //Call ItemManagers Get LightAttack
-        //Call ItemManagers Get HeavyAttack
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        m_LightAttackCurrentCooldown -= Time.deltaTime;
+        m_HeavyAttackCurrentCooldown -= Time.deltaTime;
     }
 
     public void GetHit(float dmg)
@@ -36,7 +40,7 @@ public class PlayerCombatScript : MonoBehaviour
 
     public void UseAbility()
     {
-        //AbiltyManager function for using the ability
+        m_AbilityManager.UseAbility();
         //Abilitys visula effect
     }
 
