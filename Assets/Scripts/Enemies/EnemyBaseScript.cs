@@ -11,6 +11,8 @@ public class EnemyBaseScript : MonoBehaviour
     public float m_CurrentActionCooldown = 0.0f;
     public bool m_IsTargeted = false;
 
+    [SerializeField] int m_GoldReward = 0;
+
     private void Start()
     {
         m_HealthController = GetComponent<HealthController>();
@@ -44,5 +46,9 @@ public class EnemyBaseScript : MonoBehaviour
 
     }
 
+    public virtual void OnDeath()
+    {
+        PlayerStats.instance.m_EnemiesSlain += 1;
+    }
 
 }
