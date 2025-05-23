@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerCombatScript : MonoBehaviour
 {
-    public EnemyBaseScript m_TargetEnemy = null;
+    [SerializeField] public EnemyBaseScript m_TargetEnemy = null;
     public HealthController m_PlayerHealthController = null;
     private CombatManager m_CombatManager = null;
     [SerializeField] AbilityManager m_AbilityManager = null;
@@ -17,7 +17,7 @@ public class PlayerCombatScript : MonoBehaviour
     [SerializeField] private float m_HeavyAttackTotalCooldown = 0;
     [SerializeField] private float m_HeavyAttackCurrentCooldown = 0;
 
-    private void Start()
+    private void Awake()
     {
         m_PlayerHealthController = GetComponent<HealthController>();
         m_CombatManager = FindAnyObjectByType<CombatManager>();
@@ -27,7 +27,6 @@ public class PlayerCombatScript : MonoBehaviour
     private void OnEnable()
     {
         //When the script is enabled (the battle starts) update the values from the weapons of the inventory to use in the fight
-        Debug.Log(m_Inventory.m_CurrentLightWeapon.m_WeaponDamage);
         m_LightAttackDamage = m_Inventory.m_CurrentLightWeapon.m_WeaponDamage;
         m_LightAttackTotalCooldown = m_Inventory.m_CurrentLightWeapon.m_AttackCooldown;
         m_LightAttackCurrentCooldown = m_LightAttackTotalCooldown;
@@ -43,6 +42,9 @@ public class PlayerCombatScript : MonoBehaviour
         m_LightAttackCurrentCooldown -= Time.deltaTime;
         m_HeavyAttackCurrentCooldown -= Time.deltaTime;
 
+        //DEBUG
+        LightAttack();
+        HeavyAttack();
     }
 
     public void GetHit(float dmg)
@@ -59,11 +61,11 @@ public class PlayerCombatScript : MonoBehaviour
 
     public void LightAttack()
     {
-        if (m_LightAttackCurrentCooldown < 0.0f)
+        if (m_LightAttackCurrentCooldown < 0.0f && m_TargetEnemy != null)
         {
             //Reset timer
             m_LightAttackCurrentCooldown = m_LightAttackTotalCooldown;
-            m_CombatManager.m_CurrentEnemyTarget.m_HealthController.ReceiveDamage(m_LightAttackDamage);
+            m_TargetEnemy.m_HealthController.ReceiveDamage(m_LightAttackDamage);
         }
         //Attack Animation
     }
@@ -74,7 +76,7 @@ public class PlayerCombatScript : MonoBehaviour
         {
             //Reset timer
             m_HeavyAttackCurrentCooldown = m_HeavyAttackTotalCooldown;
-            m_CombatManager.m_CurrentEnemyTarget.m_HealthController.ReceiveDamage(m_HeavyAttackDamage);
+            m_TargetEnemy.m_HealthController.ReceiveDamage(m_HeavyAttackDamage);
         }
         //Attack Animation
     }

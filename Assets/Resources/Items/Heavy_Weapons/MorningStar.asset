@@ -10,20 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d40425ea1d6e70d48b4381f9417ad286, type: 3}
-  m_Name: Strenghthen
+  m_Name: MorningStar
   m_EditorClassIdentifier: 
-  m_ItemName: Strenghthen
+  m_ItemName: Morning Star
   m_ExtraHealth: 0
   m_AttackSpeedMultiplier: 0
   m_DamageReductionMultiplier: 0
   m_AbilitySpeedMultiplier: 0
-  m_AttackDamageMultiplier: 1.1
-  m_GoldRewardMultiplier: 1
-  m_LifeSteal: 0
   m_Price: 0
-  m_Description: Attack Damage +10%
-  m_SpriteItem: {fileID: 21300000, guid: e5f76519aad57234fa8404cbcac9aaf2, type: 3}
-  m_QualityItem: 0
-  m_TypeItem: 0
-  m_WeaponDamage: 0
-  m_AttackCooldown: 0
+  m_Description: 
+  m_SpriteItem: {fileID: 21300000, guid: 12a83b51be218554193ccb0ddb0bfd16, type: 3}
+  m_QualityItem: 1
+  m_TypeItem: 3
+  m_WeaponDamage: 35
+  m_AttackCooldown: 4
