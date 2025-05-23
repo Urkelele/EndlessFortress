@@ -20,6 +20,8 @@ public class PlayerCombatScript : MonoBehaviour
     
     private void OnEnable()
     {
+        m_PlayerHealthController = GetComponent<HealthController>();
+        m_CombatManager = FindAnyObjectByType<CombatManager>();
         //m_LightAttackDamage = m_Inventory.m_CurrentLightWeapon.ItemScript.m_WeaponDamage;
         //m_LightAttackTotalCooldown = m_Inventory.m_CurrentLightWeapon.ItemScript.m_AttackCooldown;
         //m_LightAttackCurrentCooldown = m_LightAttackTotalCooldown;
@@ -27,6 +29,9 @@ public class PlayerCombatScript : MonoBehaviour
         //m_HeavyAttackDamage = m_Inventory.m_CurrentHeavyWeapon.ItemScript.m_WeaponDamage;
         //m_HeavyAttackTotalCooldown = m_Inventory.m_CurrentHeavyWeapon.ItemScript.m_AttackCooldown;
         //m_HeavyAttackCurrentCooldown = m_HeavyAttackTotalCooldown;
+
+        //Call ItemManagers Get LightAttack
+        //Call ItemManagers Get HeavyAttack
     }
 
     // Update is called once per frame
@@ -34,9 +39,6 @@ public class PlayerCombatScript : MonoBehaviour
     {
         m_LightAttackCurrentCooldown -= Time.deltaTime;
         m_HeavyAttackCurrentCooldown -= Time.deltaTime;
-
-        Random.Range(0f, 1f);
-
     }
 
     public void GetHit(float dmg)
