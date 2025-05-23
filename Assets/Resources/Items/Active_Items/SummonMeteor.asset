@@ -16,6 +16,7 @@ MonoBehaviour:
   m_ExtraHealth: 0
   m_AttackSpeedMultiplier: 0
   m_DamageReductionMultiplier: 0
+  m_AbilitySpeedMultiplier: 0
   m_Price: 0
   m_Description: 'Deal 40% max HP damage to all regular enemies and 20% to the Boss.
     Cooldown: 45s'
@@ -23,4 +24,4 @@ MonoBehaviour:
   m_QualityItem: 3
   m_TypeItem: 1
   m_WeaponDamage: 0
-  m_AttackCooldown: 0
+  m_AttackCooldown: 45

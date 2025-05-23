@@ -16,10 +16,11 @@ MonoBehaviour:
   m_ExtraHealth: 0
   m_AttackSpeedMultiplier: 0
   m_DamageReductionMultiplier: 0
+  m_AbilitySpeedMultiplier: 0
   m_Price: 0
   m_Description: 'Deal the Light Weapon Damage 5 times. Cooldown: 15s'
   m_SpriteItem: {fileID: 21300000, guid: f00f5379c5905fa43ba7d62d3f9b2cc9, type: 3}
   m_QualityItem: 1
   m_TypeItem: 1
   m_WeaponDamage: 0
-  m_AttackCooldown: 0
+  m_AttackCooldown: 15

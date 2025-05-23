@@ -16,10 +16,11 @@ MonoBehaviour:
   m_ExtraHealth: 0
   m_AttackSpeedMultiplier: 0
   m_DamageReductionMultiplier: 0
+  m_AbilitySpeedMultiplier: 0
   m_Price: 0
   m_Description: 'Light Weapon + Heavy Weapon. Cooldown: 10s'
   m_SpriteItem: {fileID: 21300000, guid: a6c91a2de6095264893e44fb53e43f2b, type: 3}
   m_QualityItem: 0
   m_TypeItem: 1
   m_WeaponDamage: 0
-  m_AttackCooldown: 0
+  m_AttackCooldown: 10
