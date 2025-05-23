@@ -1965,6 +1965,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4524380348334466}
   - component: {fileID: 95682664710827838}
+  - component: {fileID: 435623667104266094}
+  - component: {fileID: -7650877348720430780}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2026,6 +2028,45 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &435623667104266094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428387009061096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e87a5098b30cbb64385fca482a3f9371, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TargetEnemy: {fileID: 0}
+  m_PlayerHealthController: {fileID: 0}
+  m_AbilityManager: {fileID: 0}
+  m_Inventory: {fileID: 0}
+  m_LightAttackDamage: 0
+  m_LightAttackTotalCooldown: 0
+  m_LightAttackCurrentCooldown: 0
+  m_HeavyAttackDamage: 0
+  m_HeavyAttackTotalCooldown: 0
+  m_HeavyAttackCurrentCooldown: 0
+--- !u!114 &-7650877348720430780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428387009061096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a76ee6e18a3ceb459ee39b9a256518c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MaxHealthPoints: 0
+  m_HealthPoints: 0
+  m_DamageReduction: 1
+  m_IsDead: 0
+  m_GettingDamagedSound: {fileID: 0}
 --- !u!1 &1431232119466428
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,8 +12,6 @@ public class InventoryManager : MonoBehaviour
 
     public int m_Gold;
 
-    public GameObject m_PassiveItemsFolder;
-
     public ItemBaseScript m_CurrentActiveItem;
     public ItemBaseScript m_CurrentLightWeapon;
     public ItemBaseScript m_CurrentHeavyWeapon;
@@ -23,23 +21,26 @@ public class InventoryManager : MonoBehaviour
 
     private void Update()
     {
+        //DEBUG
         if(Input.GetKeyDown(KeyCode.Space))
         {
             UpdateItems();
         }
     }
 
+    /// <summary>
+    /// Go through all passive items and addup their stats. Items buffs of Health gets added and multiplier multiplied 
+    /// </summary>
     public void UpdateItems()
     {
         ExtraAttributesTo_0();
-        //m_PassiveItemsList = m_PassiveItemsFolder.GetComponentsInChildren<ItemBaseScript>().ToList();
         float[] currentUpdates;
         for (int i = 0; i < m_PassiveItemsList.Count; i++)
         {
             currentUpdates = m_PassiveItemsList[i].GetExtraAttributes();
             m_TotalExtraHealth += currentUpdates[0];
-            m_TotalAttackSpeedMultiplier += currentUpdates[1];
-            m_TotalDamageReductionMultiplier += currentUpdates[2];
+            m_TotalAttackSpeedMultiplier *= currentUpdates[1];
+            m_TotalDamageReductionMultiplier *= currentUpdates[2];
         }
     }
     public void ExtraAttributesTo_0()
@@ -47,32 +48,5 @@ public class InventoryManager : MonoBehaviour
         m_TotalExtraHealth = 0;
         m_TotalAttackSpeedMultiplier = 0;
         m_TotalDamageReductionMultiplier = 0;
-    }
-
-    public bool InsertItemInParent(ItemBaseScript.ItemType itemType, Transform itemObject)
-    {
-        switch (itemType)
-        {
-            case ItemBaseScript.ItemType.NONE:
-                return false;
-
-            case ItemBaseScript.ItemType.PASSIVE:
-                itemObject.parent = m_PassiveItemsFolder.transform;
-                break;
-
-            case ItemBaseScript.ItemType.ACTIVE:
-                m_CurrentActiveItem = itemObject.GetComponent<ItemBaseScript>();
-                itemObject.parent = transform;
-                break;
-            case ItemBaseScript.ItemType.LIGHT_WEAPON:
-                m_CurrentLightWeapon = itemObject.GetComponent<ItemBaseScript>();
-                itemObject.parent = transform;
-                break;
-            case ItemBaseScript.ItemType.HEAVY_WEAPON:
-                m_CurrentHeavyWeapon = itemObject.GetComponent<ItemBaseScript>();
-                itemObject.parent = transform;
-                break;
-        }
-        return true;
     }
 }

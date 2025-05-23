@@ -70,7 +70,7 @@ public class CombatManager : MonoBehaviour
     {
         MovePlayer();
         SpawnEnemies();
-        //GetDefaultTargetEnemy();
+        GetDefaultTargetEnemy();
     }
 
     private void MovePlayer()
@@ -90,6 +90,7 @@ public class CombatManager : MonoBehaviour
         {
             m_CurrentComp.transform.GetChild(i).transform.position = m_EnemyPositions[i].position;
             m_CurrentComp.transform.GetChild(i).transform.rotation = m_EnemyPositions[i].rotation;
+            m_CombatEnemies.Add(m_CurrentComp.transform.GetChild(i).GetComponent<EnemyBaseScript>());
         }
     }
 
