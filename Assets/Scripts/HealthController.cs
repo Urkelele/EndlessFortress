@@ -14,7 +14,7 @@ public class HealthController : MonoBehaviour
     public bool m_IsDead;
 
     [Header("Audio")]
-    public AudioClip m_DamageSound;
+    public AudioClip m_GettingDamagedSound;
 
     private void Start()
     {
@@ -40,7 +40,7 @@ public class HealthController : MonoBehaviour
         {
             // Subtract life taking into account damage reduction
             m_HealthPoints -= damageReceived * m_DamageReduction;
-            if (m_DamageSound != null)
+            if (m_GettingDamagedSound != null)
             {
                 // AÑADIR SOUND EFFECT MANAGER
                 //SoundEffectsManager.instance.PlaySoundFXClip(m_DamageSound, transform, 0.8f);
