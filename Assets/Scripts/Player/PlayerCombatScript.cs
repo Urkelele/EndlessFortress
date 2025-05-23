@@ -7,8 +7,7 @@ public class PlayerCombatScript : MonoBehaviour
     private CombatManager m_CombatManager = null;
     [SerializeField] AbilityManager m_AbilityManager = null;
     [SerializeField] InventoryManager m_Inventory = null;
-    [Header("Player Management Variables")]
-    [SerializeField] private float m_ReceivedDamageReductor = 1;
+    
     [Header("Light Attack Variables")]
     [SerializeField] private float m_LightAttackDamage = 0;
     [SerializeField] private float m_LightAttackTotalCooldown = 0;
@@ -17,11 +16,15 @@ public class PlayerCombatScript : MonoBehaviour
     [SerializeField] private float m_HeavyAttackDamage = 0;
     [SerializeField] private float m_HeavyAttackTotalCooldown = 0;
     [SerializeField] private float m_HeavyAttackCurrentCooldown = 0;
-    
-    private void OnEnable()
+
+    private void Start()
     {
         m_PlayerHealthController = GetComponent<HealthController>();
         m_CombatManager = FindAnyObjectByType<CombatManager>();
+    }
+    private void OnEnable()
+    {
+        
         //m_LightAttackDamage = m_Inventory.m_CurrentLightWeapon.ItemScript.m_WeaponDamage;
         //m_LightAttackTotalCooldown = m_Inventory.m_CurrentLightWeapon.ItemScript.m_AttackCooldown;
         //m_LightAttackCurrentCooldown = m_LightAttackTotalCooldown;
@@ -29,9 +32,6 @@ public class PlayerCombatScript : MonoBehaviour
         //m_HeavyAttackDamage = m_Inventory.m_CurrentHeavyWeapon.ItemScript.m_WeaponDamage;
         //m_HeavyAttackTotalCooldown = m_Inventory.m_CurrentHeavyWeapon.ItemScript.m_AttackCooldown;
         //m_HeavyAttackCurrentCooldown = m_HeavyAttackTotalCooldown;
-
-        //Call ItemManagers Get LightAttack
-        //Call ItemManagers Get HeavyAttack
     }
 
     // Update is called once per frame
@@ -39,11 +39,12 @@ public class PlayerCombatScript : MonoBehaviour
     {
         m_LightAttackCurrentCooldown -= Time.deltaTime;
         m_HeavyAttackCurrentCooldown -= Time.deltaTime;
+
     }
 
     public void GetHit(float dmg)
     {
-        m_PlayerHealthController.ReceiveDamage(dmg*m_ReceivedDamageReductor);
+        m_PlayerHealthController.ReceiveDamage(dmg);
         //Receive Damage Animation
     }
 
