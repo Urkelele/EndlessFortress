@@ -21,17 +21,20 @@ public class PlayerCombatScript : MonoBehaviour
     {
         m_PlayerHealthController = GetComponent<HealthController>();
         m_CombatManager = FindAnyObjectByType<CombatManager>();
+        m_Inventory = FindAnyObjectByType<InventoryManager>();
+        m_AbilityManager = FindAnyObjectByType<AbilityManager>();
     }
     private void OnEnable()
     {
-        
-        //m_LightAttackDamage = m_Inventory.m_CurrentLightWeapon.ItemScript.m_WeaponDamage;
-        //m_LightAttackTotalCooldown = m_Inventory.m_CurrentLightWeapon.ItemScript.m_AttackCooldown;
-        //m_LightAttackCurrentCooldown = m_LightAttackTotalCooldown;
+        //When the script is enabled (the battle starts) update the values from the weapons of the inventory to use in the fight
+        Debug.Log(m_Inventory.m_CurrentLightWeapon.m_WeaponDamage);
+        m_LightAttackDamage = m_Inventory.m_CurrentLightWeapon.m_WeaponDamage;
+        m_LightAttackTotalCooldown = m_Inventory.m_CurrentLightWeapon.m_AttackCooldown;
+        m_LightAttackCurrentCooldown = m_LightAttackTotalCooldown;
 
-        //m_HeavyAttackDamage = m_Inventory.m_CurrentHeavyWeapon.ItemScript.m_WeaponDamage;
-        //m_HeavyAttackTotalCooldown = m_Inventory.m_CurrentHeavyWeapon.ItemScript.m_AttackCooldown;
-        //m_HeavyAttackCurrentCooldown = m_HeavyAttackTotalCooldown;
+        m_HeavyAttackDamage = m_Inventory.m_CurrentHeavyWeapon.m_WeaponDamage;
+        m_HeavyAttackTotalCooldown = m_Inventory.m_CurrentHeavyWeapon.m_AttackCooldown;
+        m_HeavyAttackCurrentCooldown = m_HeavyAttackTotalCooldown;
     }
 
     // Update is called once per frame
