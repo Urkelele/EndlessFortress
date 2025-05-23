@@ -89,6 +89,7 @@ public class EnemyBaseScript : MonoBehaviour
         //Add the enemy's gold reward to the total pool of gold that will be given to the player when the battle finishes
         m_CombatManager.m_GoldBattleReward += m_GoldReward;
 
+        //Tell the inventory that an enemy died so that it can call triggeredItems
         m_InventoryManager.EnableItemTrigger(TriggerType.ENEMY_DEATH);
 
         //Dead enemies out of the combat list
