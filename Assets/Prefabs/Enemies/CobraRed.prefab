@@ -2224,7 +2224,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4947517389755182}
   - component: {fileID: 95839995928583530}
-  - component: {fileID: -8984444676051836106}
+  - component: {fileID: -8935605620806159134}
   - component: {fileID: -8603209085926115068}
   - component: {fileID: 1023364339920948652}
   - component: {fileID: 8462727599871574756}
@@ -2305,7 +2305,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-8984444676051836106
+--- !u!114 &-8935605620806159134
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2314,7 +2314,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1953480910023114}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2bedf74a4bbad64dbfa01d53befb8c6, type: 3}
+  m_Script: {fileID: 11500000, guid: ece83672ea6bb5746a5986922c941669, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_HealthController: {fileID: 0}
@@ -2322,9 +2322,10 @@ MonoBehaviour:
   m_ClickDetection: {fileID: 0}
   m_IsCurrentTarget: 0
   m_IsBoss: 0
-  m_TotalActionCooldown: 5
+  m_TotalActionCooldown: 2
   m_CurrentActionCooldown: 0
-  m_GoldReward: 10
+  m_GoldReward: 15
+  m_AttackDamage: 0.5
 --- !u!114 &-8603209085926115068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2337,7 +2338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd732fb88bed495418a24e0b058627f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MaxHealthPoints: 100
+  m_MaxHealthPoints: 40
   m_HealthPoints: 0
   m_DamageReduction: 1
   m_IsDead: 0
