@@ -37,8 +37,20 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private string m_BossCompsFolderPath = "Prefabs/BossComps_Prefabs";
     private GameObject m_CurrentComp = null;
 
+    public CombatManager instance;
+
     private void Awake()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        else
+        {
+            instance = this;
+        }
+
         m_InventoryManager = FindAnyObjectByType<InventoryManager>();
         m_PlayerCombatScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCombatScript>();
         LoadCompsPrefabs(m_EnemyCompsList, m_EnemyCompsFolderPath);

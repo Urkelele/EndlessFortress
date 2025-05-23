@@ -25,6 +25,20 @@ public class InventoryManager : MonoBehaviour
 
     public List<ItemBaseScript> m_PassiveItemsList = new List<ItemBaseScript>();
 
+    public InventoryManager instance;
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        else
+        {
+            instance = this;
+        }
+    }
+
     private void Update()
     {
         //DEBUG
