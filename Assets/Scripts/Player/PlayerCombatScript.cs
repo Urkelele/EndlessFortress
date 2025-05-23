@@ -4,9 +4,6 @@ public class PlayerCombatScript : MonoBehaviour
 {
     [SerializeField] public EnemyBaseScript m_TargetEnemy = null;
     public HealthController m_PlayerHealthController = null;
-    private CombatManager m_CombatManager = null;
-    [SerializeField] AbilityManager m_AbilityManager = null;
-    [SerializeField] InventoryManager m_Inventory = null;
     
     [Header("Light Attack Variables")]
     [SerializeField] private float m_LightAttackDamage = 0;
@@ -20,19 +17,16 @@ public class PlayerCombatScript : MonoBehaviour
     private void Awake()
     {
         m_PlayerHealthController = GetComponent<HealthController>();
-        m_CombatManager = FindAnyObjectByType<CombatManager>();
-        m_Inventory = FindAnyObjectByType<InventoryManager>();
-        m_AbilityManager = FindAnyObjectByType<AbilityManager>();
     }
     private void OnEnable()
     {
         //When the script is enabled (the battle starts) update the values from the weapons of the inventory to use in the fight
-        m_LightAttackDamage = m_Inventory.m_CurrentLightWeapon.m_WeaponDamage;
-        m_LightAttackTotalCooldown = m_Inventory.m_CurrentLightWeapon.m_AttackCooldown;
+        m_LightAttackDamage = InventoryManager.instance.m_CurrentLightWeapon.m_WeaponDamage;
+        m_LightAttackTotalCooldown = InventoryManager.instance.m_CurrentLightWeapon.m_AttackCooldown;
         m_LightAttackCurrentCooldown = m_LightAttackTotalCooldown;
 
-        m_HeavyAttackDamage = m_Inventory.m_CurrentHeavyWeapon.m_WeaponDamage;
-        m_HeavyAttackTotalCooldown = m_Inventory.m_CurrentHeavyWeapon.m_AttackCooldown;
+        m_HeavyAttackDamage = InventoryManager.instance.m_CurrentHeavyWeapon.m_WeaponDamage;
+        m_HeavyAttackTotalCooldown = InventoryManager.instance.m_CurrentHeavyWeapon.m_AttackCooldown;
         m_HeavyAttackCurrentCooldown = m_HeavyAttackTotalCooldown;
     }
 
@@ -55,7 +49,7 @@ public class PlayerCombatScript : MonoBehaviour
 
     public void UseAbility()
     {
-        m_AbilityManager.UseAbility();
+        AbilityManager.instance.UseAbility();
         //Abilitys visula effect
     }
 

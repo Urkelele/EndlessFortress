@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    public static InventoryManager instance;
+    
     public float m_TotalExtraHealth = 0;
     public float m_TotalAttackSpeedMultiplier = 1;
     public float m_TotalDamageReductionMultiplier = 1;
@@ -25,7 +27,6 @@ public class InventoryManager : MonoBehaviour
 
     public List<ItemBaseScript> m_PassiveItemsList = new List<ItemBaseScript>();
 
-    public InventoryManager instance;
     private void Awake()
     {
         if (instance != null && instance != this)

@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class AbilityManager : MonoBehaviour
 {
+    public static AbilityManager instance;
+
     public enum Ability { None = -1, IronWill = 0 };
     [SerializeField] float m_AbilityTotalCooldown = 10f;
     private float m_AbilityCurrentCooldown = 0f;
@@ -12,7 +14,19 @@ public class AbilityManager : MonoBehaviour
     [SerializeField] private float m_IronWillDamageReduction = 0.25f;
     [SerializeField] private float m_IronWillDurationSeconds = 5f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        else
+        {
+            instance = this;
+        }
+    }
+
     void Start()
     {
         m_AbilityCurrentCooldown = m_AbilityTotalCooldown;
