@@ -28,7 +28,7 @@ public class TreantScript : EnemyBaseScript
 
     private void GetLowestHealthEnemy()
     {
-        foreach (EnemyBaseScript enemy in m_CombatManager.m_CombatEnemies)
+        foreach (EnemyBaseScript enemy in CombatManager.instance.m_CombatEnemies)
         {
             if (m_LowestHealthEnemy == null && !enemy.GetComponent<TreantScript>())
             {
