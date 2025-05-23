@@ -1,15 +1,13 @@
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Resources/Items/Active_Items/EntwinedAttack")]
 public class EntwinedAttackFunctionality : BaseActiveScript
 {
-    public override bool UseActive()
+    public override void UseActive()
     {
-        // Check if the item is an active item using the base function
-        if (!base.UseActive()) return false;
-
-        FindAnyObjectByType<PlayerCombatScript>().DealDamageToTargetEnemy(InventoryManager.instance.m_CurrentLightWeapon.m_WeaponDamage + 
-                                                                           InventoryManager.instance.m_CurrentHeavyWeapon.m_WeaponDamage);
-
-        return true;
+        base.UseActive();
+        //Both weapons deal damage equal to their attack to an enemy
+        FindAnyObjectByType<PlayerCombatScript>().DealDamageToTargetEnemy(InventoryManager.instance.m_CurrentLightWeapon.m_ItemDamage + 
+                                                                           InventoryManager.instance.m_CurrentHeavyWeapon.m_ItemDamage);
     }
 }

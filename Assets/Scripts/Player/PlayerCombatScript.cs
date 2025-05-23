@@ -21,12 +21,12 @@ public class PlayerCombatScript : MonoBehaviour
     private void OnEnable()
     {
         //When the script is enabled (the battle starts) update the values from the weapons of the inventory to use in the fight
-        m_LightAttackDamage = InventoryManager.instance.m_CurrentLightWeapon.m_WeaponDamage;
-        m_LightAttackTotalCooldown = InventoryManager.instance.m_CurrentLightWeapon.m_AttackCooldown;
+        m_LightAttackDamage = InventoryManager.instance.m_CurrentLightWeapon.m_ItemDamage;
+        m_LightAttackTotalCooldown = InventoryManager.instance.m_CurrentLightWeapon.m_ItemCooldown;
         m_LightAttackCurrentCooldown = m_LightAttackTotalCooldown;
 
-        m_HeavyAttackDamage = InventoryManager.instance.m_CurrentHeavyWeapon.m_WeaponDamage;
-        m_HeavyAttackTotalCooldown = InventoryManager.instance.m_CurrentHeavyWeapon.m_AttackCooldown;
+        m_HeavyAttackDamage = InventoryManager.instance.m_CurrentHeavyWeapon.m_ItemDamage;
+        m_HeavyAttackTotalCooldown = InventoryManager.instance.m_CurrentHeavyWeapon.m_ItemCooldown;
         m_HeavyAttackCurrentCooldown = m_HeavyAttackTotalCooldown;
     }
 
