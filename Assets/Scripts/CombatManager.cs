@@ -31,9 +31,9 @@ public class CombatManager : MonoBehaviour
     public float m_LegendaryDropChance = 0.05f;
 
     [Header("ENEMY ROOM PREFABS")]
-    private List<GameObject> m_EnemyCompsList = new List<GameObject>();
+    [SerializeField] private List<GameObject> m_EnemyCompsList = new List<GameObject>();
     [SerializeField] private string m_EnemyCompsFolderPath = "Prefabs/EnemyComps_Prefabs";
-    private List<GameObject> m_BossCompsList = new List<GameObject>();
+    [SerializeField] private List<GameObject> m_BossCompsList = new List<GameObject>();
     [SerializeField] private string m_BossCompsFolderPath = "Prefabs/BossComps_Prefabs";
     private GameObject m_CurrentComp = null;
 
@@ -98,13 +98,15 @@ public class CombatManager : MonoBehaviour
     /// <returns></returns>
     private GameObject GetRandomComp()
     {
-        if(PlayerStats.instance.m_RoomsCleared % m_NumOfRoomsBetweenBoss == 0 && PlayerStats.instance.m_RoomsCleared != 0)
+        if((PlayerStats.instance.m_RoomsCleared % m_NumOfRoomsBetweenBoss) == 0 && PlayerStats.instance.m_RoomsCleared != 0)
         {
-            return m_EnemyCompsList[Random.Range(0, m_BossCompsList.Count)];
+            int randIndex = Random.Range(0, m_BossCompsList.Count);
+            return m_BossCompsList[randIndex];
         }
         else
         {
-            return m_EnemyCompsList[Random.Range(0, m_EnemyCompsList.Count)];
+            int randIndex = Random.Range(0, m_EnemyCompsList.Count);
+            return m_EnemyCompsList[randIndex];
         }
     }
 
