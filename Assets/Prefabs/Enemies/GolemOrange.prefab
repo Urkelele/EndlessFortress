@@ -651,7 +651,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd732fb88bed495418a24e0b058627f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MaxHealthPoints: 100
+  m_MaxHealthPoints: 200
   m_HealthPoints: 0
   m_DamageReduction: 1
   m_IsDead: 0
@@ -725,10 +725,10 @@ MonoBehaviour:
   m_ClickDetection: {fileID: 0}
   m_IsCurrentTarget: 0
   m_IsBoss: 0
-  m_TotalActionCooldown: 0
+  m_TotalActionCooldown: 5
   m_CurrentActionCooldown: 0
-  m_GoldReward: 0
-  m_AttackDamage: 5
+  m_GoldReward: 30
+  m_AttackDamage: 2.5
 --- !u!1 &1207075530182550
 GameObject:
   m_ObjectHideFlags: 0

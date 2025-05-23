@@ -2052,11 +2052,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4073533975715770}
   - component: {fileID: 95440231406420244}
-  - component: {fileID: 4735012219573486045}
   - component: {fileID: -3099481510230307860}
   - component: {fileID: -4391979274924529066}
   - component: {fileID: -8254667023610854253}
   - component: {fileID: 6402008564078061896}
+  - component: {fileID: 8893718661792876305}
   m_Layer: 0
   m_Name: SpiderRed
   m_TagString: Untagged
@@ -2119,26 +2119,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4735012219573486045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1925083171025624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2bedf74a4bbad64dbfa01d53befb8c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HealthController: {fileID: 0}
-  m_Collider: {fileID: 0}
-  m_ClickDetection: {fileID: 0}
-  m_IsCurrentTarget: 0
-  m_IsBoss: 0
-  m_TotalActionCooldown: 5
-  m_CurrentActionCooldown: 0
-  m_GoldReward: 10
 --- !u!114 &-3099481510230307860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2151,7 +2131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd732fb88bed495418a24e0b058627f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MaxHealthPoints: 100
+  m_MaxHealthPoints: 90
   m_HealthPoints: 0
   m_DamageReduction: 1
   m_IsDead: 0
@@ -2208,6 +2188,27 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &8893718661792876305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1925083171025624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af03e7f50318fdb458a3ff95679a1274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HealthController: {fileID: 0}
+  m_Collider: {fileID: 0}
+  m_ClickDetection: {fileID: 0}
+  m_IsCurrentTarget: 0
+  m_IsBoss: 0
+  m_TotalActionCooldown: 3
+  m_CurrentActionCooldown: 0
+  m_GoldReward: 10
+  m_AttackDamage: 1.5
 --- !u!1 &1940805748760188
 GameObject:
   m_ObjectHideFlags: 0
