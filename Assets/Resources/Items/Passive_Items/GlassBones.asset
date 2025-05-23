@@ -9,22 +9,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d40425ea1d6e70d48b4381f9417ad286, type: 3}
-  m_Name: Dexterity
+  m_Script: {fileID: 11500000, guid: b4512f297ff71934b84a35ed8642d5ee, type: 3}
+  m_Name: GlassBones
   m_EditorClassIdentifier: 
-  m_ItemName: Dexterity
+  m_ItemName: Glass Bones
   m_ExtraHealth: 0
-  m_AttackSpeedMultiplier: 1.1
+  m_AttackSpeedMultiplier: 1
   m_DamageReductionMultiplier: 1
   m_AbilitySpeedMultiplier: 1
   m_AttackDamageMultiplier: 1
   m_GoldRewardMultiplier: 1
   m_LifeSteal: 0
   m_Price: 0
-  m_Description: Attack Cooldown -10%
-  m_SpriteItem: {fileID: 21300000, guid: 523d97174cf090a4a8cd8a765195eacb, type: 3}
-  m_QualityItem: 0
+  m_Description: Regular enemies start with -10% HP
+  m_SpriteItem: {fileID: 21300000, guid: 6e78417bf9f420541ba01cc1c62579eb, type: 3}
+  m_QualityItem: 1
   m_TypeItem: 0
   m_Unlocked: 1
   m_WeaponDamage: 0
   m_AttackCooldown: 0
+  TriggerType: 2
+  m_EnemyHealthReduction: 0.9

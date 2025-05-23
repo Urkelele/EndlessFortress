@@ -28,7 +28,7 @@ public class TreantScript : EnemyBaseScript
 
     private void GetLowestHealthEnemy()
     {
-        foreach (EnemyBaseScript enemy in m_CombatManager.m_CombatEnemies)
+        foreach (EnemyBaseScript enemy in CombatManager.instance.m_CombatEnemies)
         {
             if (m_LowestHealthEnemy == null && !enemy.GetComponent<TreantScript>())
             {
@@ -36,7 +36,7 @@ public class TreantScript : EnemyBaseScript
             }
             else
             {
-                if (m_LowestHealthEnemy.m_HealthController.m_HealthPoints > enemy.m_HealthController.m_HealthPoints)
+                if (m_LowestHealthEnemy.m_HealthController.m_CurrentHealthPoints > enemy.m_HealthController.m_CurrentHealthPoints)
                 {
                     m_LowestHealthEnemy = enemy;
                 }

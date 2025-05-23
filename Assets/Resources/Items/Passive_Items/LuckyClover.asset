@@ -22,9 +22,10 @@ MonoBehaviour:
   m_LifeSteal: 0
   m_Price: 0
   m_Description: Next time you die, you will be revived with 50% HP
-  m_SpriteItem: {fileID: 0}
-  m_QualityItem: -1
-  m_TypeItem: -1
+  m_SpriteItem: {fileID: 21300000, guid: a17271880c41c7340ad627a2f2d80361, type: 3}
+  m_QualityItem: 3
+  m_TypeItem: 0
+  m_Unlocked: 1
   m_WeaponDamage: 0
   m_AttackCooldown: 0
   TriggerType: 1

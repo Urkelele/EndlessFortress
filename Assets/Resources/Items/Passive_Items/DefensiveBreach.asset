@@ -9,21 +9,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d40425ea1d6e70d48b4381f9417ad286, type: 3}
-  m_Name: FocusedDefense
+  m_Script: {fileID: 11500000, guid: 591e9a5da5e65b746af10d11ab38a0a9, type: 3}
+  m_Name: DefensiveBreach
   m_EditorClassIdentifier: 
-  m_ItemName: FocusedDefense
+  m_ItemName: Defensive Breach
   m_ExtraHealth: 0
-  m_AttackSpeedMultiplier: 0
-  m_DamageReductionMultiplier: 0
-  m_AbilitySpeedMultiplier: 0
-  m_AttackDamageMultiplier: 0
+  m_AttackSpeedMultiplier: 1
+  m_DamageReductionMultiplier: 1
+  m_AbilitySpeedMultiplier: 1
+  m_AttackDamageMultiplier: 1
   m_GoldRewardMultiplier: 1
   m_LifeSteal: 0
   m_Price: 0
-  m_Description: The enemy you attack deals -10% damage to you
+  m_Description: Enemies receive +10% damage
   m_SpriteItem: {fileID: 21300000, guid: 059252e404bbea0448abca9a757e493d, type: 3}
   m_QualityItem: 0
   m_TypeItem: 0
+  m_Unlocked: 1
   m_WeaponDamage: 0
   m_AttackCooldown: 0
+  TriggerType: 2
+  m_MultiplyIncomingDamageBy: 1.1

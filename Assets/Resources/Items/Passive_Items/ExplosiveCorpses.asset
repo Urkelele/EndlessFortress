@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e82b5592d8b45cb499d424f6f427756d, type: 3}
   m_Name: ExplosiveCorpses
   m_EditorClassIdentifier: 
-  m_ItemName: 
+  m_ItemName: Explosive Corpses
   m_ExtraHealth: 0
   m_AttackSpeedMultiplier: 1
   m_DamageReductionMultiplier: 1
@@ -21,11 +21,12 @@ MonoBehaviour:
   m_GoldRewardMultiplier: 1
   m_LifeSteal: 0
   m_Price: 0
-  m_Description: 
-  m_SpriteItem: {fileID: 0}
-  m_QualityItem: -1
-  m_TypeItem: -1
+  m_Description: Killing an enemy deals 20% of its life to all other enemies
+  m_SpriteItem: {fileID: 21300000, guid: 1b398fcb35198f04e9a0ae4a95e91649, type: 3}
+  m_QualityItem: 2
+  m_TypeItem: 0
+  m_Unlocked: 1
   m_WeaponDamage: 0
   m_AttackCooldown: 0
-  TriggerType: -1
+  TriggerType: 0
   m_MaxHPpercentageDamage: 0.2
