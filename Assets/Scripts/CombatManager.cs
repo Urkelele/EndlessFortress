@@ -116,7 +116,7 @@ public class CombatManager : MonoBehaviour
     {
         //Get random enemy, make it the target and make it so it "was clicked last" to mantain the outline around it
         //TODO: might give problems since the actual last object that was clicked does not turn off
-        int randEnemyPos = Random.Range(0, m_EnemyPositions.Length);
+        int randEnemyPos = Random.Range(0, m_CombatEnemies.Count);
         m_PlayerCombatScript.m_TargetEnemy = m_CombatEnemies[randEnemyPos];
         m_CombatEnemies[randEnemyPos].m_ClickDetection.m_IsLastObjectClicked = true;
     }

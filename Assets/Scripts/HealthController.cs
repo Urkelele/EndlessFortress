@@ -16,12 +16,12 @@ public class HealthController : MonoBehaviour
     [Header("Audio")]
     public AudioClip m_GettingDamagedSound;
 
-    private void Start()
+    protected virtual void Start()
     {
         m_HealthPoints = m_MaxHealthPoints;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (m_HealthPoints <= 0)
         {
