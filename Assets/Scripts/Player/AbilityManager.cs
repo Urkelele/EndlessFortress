@@ -34,6 +34,12 @@ public class AbilityManager : MonoBehaviour
     private void Update()
     {
         m_AbilityCurrentCooldown -=Time.deltaTime;
+
+        //DEBUG
+        if(Input.GetKeyDown(KeyCode.S))
+        {
+            UseAbility();
+        }
     }
     public void UseAbility()
     {
@@ -57,7 +63,7 @@ public class AbilityManager : MonoBehaviour
 
     private void IronWillCancelation()
     {
-        m_PlayerHealthController.m_IncomingDamageMultiplier = m_PlayerHealthController.m_IncomingDamageMultiplier / m_IronWillDamageReduction;
+        m_PlayerHealthController.m_IncomingDamageMultiplier /= m_IronWillDamageReduction;
     }
 
 }
