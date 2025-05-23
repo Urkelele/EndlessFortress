@@ -1047,10 +1047,9 @@ MonoBehaviour:
   m_TotalAttackSpeedMultiplier: 0
   m_TotalDamageReductionMultiplier: 0
   m_Gold: 0
-  m_PassiveItemsFolder: {fileID: 0}
-  m_CurrentActiveItem: {fileID: 0}
-  m_CurrentLightWeapon: {fileID: 0}
-  m_CurrentHeavyWeapon: {fileID: 0}
+  m_CurrentActiveItem: {fileID: 11400000, guid: 80f47a4321e9d6d4ebb81d2b2474aa6d, type: 2}
+  m_CurrentLightWeapon: {fileID: 11400000, guid: 16195e885b05f8f4ba6bbb0df0019d58, type: 2}
+  m_CurrentHeavyWeapon: {fileID: 11400000, guid: 96a358cd04091b84aa58b924b1ae8ec7, type: 2}
   m_PassiveItemsList: []
 --- !u!4 &1676088290
 Transform:
@@ -1309,7 +1308,6 @@ SceneRoots:
   - {fileID: 4649832530274722264}
   - {fileID: 636465300}
   - {fileID: 1262554004}
-  - {fileID: 1676088290}
   - {fileID: 268005417}
   - {fileID: 665771601}
   - {fileID: 362665806}
@@ -1317,3 +1315,4 @@ SceneRoots:
   - {fileID: 72713546}
   - {fileID: 1908568658}
   - {fileID: 814978436}
+  - {fileID: 1676088290}

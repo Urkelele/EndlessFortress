@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d40425ea1d6e70d48b4381f9417ad286, type: 3}
-  m_Name: Light
+  m_Name: EmeraldDagger
   m_EditorClassIdentifier: 
-  m_ItemName: Light
+  m_ItemName: Emerald Dagger
   m_ExtraHealth: 0
-  m_AttackSpeedMultiplier: 0.1
-  m_DamageReductionMultiplier: 0.1
-  m_Price: 100
-  m_Description: daaaa
-  m_SpriteItem: {fileID: 21300000, guid: 82b057b2b8c63d84d86d9c20f8d70ed4, type: 3}
-  m_QualityItem: 0
+  m_AttackSpeedMultiplier: 0
+  m_DamageReductionMultiplier: 0
+  m_Price: 0
+  m_Description: 0
+  m_SpriteItem: {fileID: 21300000, guid: 33cc296fc591e88478b8e28bfc4e320c, type: 3}
+  m_QualityItem: 3
   m_TypeItem: 2
-  m_WeaponDamage: 2
-  m_AttackCooldown: 1
+  m_WeaponDamage: 5
+  m_AttackCooldown: 0.3

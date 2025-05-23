@@ -39,12 +39,13 @@ public class CombatManager : MonoBehaviour
 
     private void Awake()
     {
+        m_InventoryManager = FindAnyObjectByType<InventoryManager>();
+        m_PlayerCombatScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCombatScript>();
         LoadCompsPrefabs(m_EnemyCompsList, m_EnemyCompsFolderPath);
         LoadCompsPrefabs(m_BossCompsList, m_BossCompsFolderPath);
     }
     private void Start()
     {
-        m_PlayerCombatScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCombatScript>();
         StartBattle();
     }
 
