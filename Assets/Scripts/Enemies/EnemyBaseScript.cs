@@ -6,26 +6,25 @@ public class EnemyBaseScript : MonoBehaviour
     [Header("BASE ENEMY CLASSES")]
     //Scripts
     public HealthController m_HealthController = null;
-    private PlayerCombatScript m_PlayerCombatScript = null;
+    protected PlayerCombatScript m_PlayerCombatScript = null;
     public Collider m_Collider = null;
     private Animator m_Animator = null;
     public ClickDetection m_ClickDetection = null;
     private Outline m_Outline = null;
-    private CombatManager m_CombatManager = null;
     private InventoryManager m_InventoryManager = null;
+    protected CombatManager m_CombatManager = null;
     public bool m_IsCurrentTarget = false;
     public bool m_IsBoss = false;
 
-    [Header("COOLDOWNS")]
-    [SerializeField] private float m_TotalActionCooldown = 0.0f;
+    [Header("Enemy Stats")]
+    [SerializeField] protected float m_TotalActionCooldown = 0.0f;
     [SerializeField] public float m_CurrentActionCooldown = 0.0f;
     
-    [SerializeField] int m_GoldReward = 0;
+    [SerializeField] protected int m_GoldReward = 0;
 
     //Control vars
     private bool m_OnDeathTriggered = false; //Control bool so that the OnDeath method is only called once
-
-    private void Start()
+    protected virtual void Start()
     {
         //Get references
         m_HealthController = GetComponent<HealthController>();
@@ -40,7 +39,7 @@ public class EnemyBaseScript : MonoBehaviour
         m_CurrentActionCooldown = m_TotalActionCooldown;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         m_CurrentActionCooldown -= Time.deltaTime;
 
@@ -70,8 +69,7 @@ public class EnemyBaseScript : MonoBehaviour
 
     public virtual void PerformAction()
     {
-        //DEBUG PARA PROBAR COMBATE
-        m_PlayerCombatScript.GetHit(5);
+
     }
 
     private void OnClick()
@@ -91,9 +89,10 @@ public class EnemyBaseScript : MonoBehaviour
         //Add the enemy's gold reward to the total pool of gold that will be given to the player when the battle finishes
         m_CombatManager.m_GoldBattleReward += m_GoldReward;
 
-        Debug.LogWarning("ENEMY DIED");
         m_InventoryManager.EnableItemTrigger(TriggerType.ENEMY_DEATH);
 
+        //Dead enemies out of the combat list
+        m_CombatManager.m_CombatEnemies.Remove(this);
         //DEATH ANIMATION
     }
 
