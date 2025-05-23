@@ -652,7 +652,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MaxHealthPoints: 100
   m_HealthPoints: 0
-  m_DamageReduction: 1
+  m_IncomingDamageMultiplier: 1
   m_IsDead: 0
   m_GettingDamagedSound: {fileID: 0}
 --- !u!1 &665771600
@@ -1027,11 +1027,16 @@ MonoBehaviour:
   m_TotalAttackSpeedMultiplier: 1
   m_TotalDamageReductionMultiplier: 1
   m_TotalAbilitySpeedMultiplier: 1
+  m_TotalAttackDamageMultiplier: 1
+  m_TotalGoldRewardMultipler: 1
+  m_TotalLifeSteal: 0
+  m_Trigger: -1
   m_Gold: 0
   m_CurrentActiveItem: {fileID: 11400000, guid: 80f47a4321e9d6d4ebb81d2b2474aa6d, type: 2}
   m_CurrentLightWeapon: {fileID: 11400000, guid: 8e2851fd4bddf154e88d3765cf745c4c, type: 2}
   m_CurrentHeavyWeapon: {fileID: 11400000, guid: 1d69a4d5de8a8844eabee1a18253ea92, type: 2}
-  m_PassiveItemsList: []
+  m_PassiveItemsList:
+  - {fileID: 11400000, guid: 2432c72378b77fc40a771fdafc53587c, type: 2}
 --- !u!4 &1676088290
 Transform:
   m_ObjectHideFlags: 0

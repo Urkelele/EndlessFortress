@@ -83,6 +83,8 @@ public class InventoryManager : MonoBehaviour
             m_TotalGoldRewardMultipler *= currentUpdates[5];
             m_TotalLifeSteal += currentUpdates[6];
         }
+
+        
     }
     public void ResetExtraAttributes()
     {

@@ -30,7 +30,7 @@ public class AbilityManager : MonoBehaviour
             {
                 case Ability.IronWill:
 
-                    m_PlayerHealthController.m_DamageReduction *= m_IronWillDamageReduction;
+                    m_PlayerHealthController.m_IncomingDamageMultiplier *= m_IronWillDamageReduction;
                     Invoke("IronWillCancelation", m_IronWillDurationSeconds);
                     break;
 
@@ -42,7 +42,7 @@ public class AbilityManager : MonoBehaviour
 
     private void IronWillCancelation()
     {
-        m_PlayerHealthController.m_DamageReduction = m_PlayerHealthController.m_DamageReduction / m_IronWillDamageReduction;
+        m_PlayerHealthController.m_IncomingDamageMultiplier = m_PlayerHealthController.m_IncomingDamageMultiplier / m_IronWillDamageReduction;
     }
 
 }

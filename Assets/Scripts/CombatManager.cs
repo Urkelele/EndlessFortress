@@ -46,7 +46,7 @@ public class CombatManager : MonoBehaviour
     }
     private void Start()
     {
-        StartBattle();
+        StartCombat();
     }
 
     /// <summary>
@@ -67,8 +67,9 @@ public class CombatManager : MonoBehaviour
         Debug.Log($"Loaded {list.Count} prefabs into the queue.");
     }
 
-    private void StartBattle()
+    private void StartCombat()
     {
+        m_InventoryManager.EnableItemTrigger(TriggerType.COMBAT_START);
         MovePlayer();
         SpawnEnemies();
         GetDefaultTargetEnemy();

@@ -15,4 +15,5 @@ public enum TriggerType
     NONE = -1,
     ENEMY_DEATH,
     PLAYER_DEATH,
+    COMBAT_START
 }

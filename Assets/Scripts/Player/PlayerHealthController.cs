@@ -4,7 +4,7 @@ public class PlayerHealthController : HealthController
 {
     public override void ReceiveDamage(float damageReceived)
     {
-        base.ReceiveDamage(damageReceived * m_DamageReduction);
+        base.ReceiveDamage(damageReceived * m_IncomingDamageMultiplier);
         PlayerStats.instance.m_CurrentHealthPoints = m_HealthPoints;
     }
     public override void HealDamage(float healing)

@@ -14,6 +14,7 @@ public class ItemBaseScript : ScriptableObject
     public float m_AttackDamageMultiplier = 1;
     public float m_GoldRewardMultiplier = 1;
     public float m_LifeSteal = 0; // Starts at 0, is multiplied by the amount of damage you do, you heal that ammount
+
     public int m_Price;
     public string m_Description;
     public Sprite m_SpriteItem;

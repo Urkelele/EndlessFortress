@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ItemName: Extra Health
   m_ExtraHealth: 20
-  m_AttackSpeedMultiplier: 0
-  m_DamageReductionMultiplier: 0
-  m_AbilitySpeedMultiplier: 0
-  m_AttackDamageMultiplier: 0
+  m_AttackSpeedMultiplier: 1
+  m_DamageReductionMultiplier: 1
+  m_AbilitySpeedMultiplier: 1
+  m_AttackDamageMultiplier: 1
   m_GoldRewardMultiplier: 1
   m_LifeSteal: 0
   m_Price: 0
@@ -25,5 +25,6 @@ MonoBehaviour:
   m_SpriteItem: {fileID: 21300000, guid: 419fe53fc64ae6442ab165b201bdead9, type: 3}
   m_QualityItem: 0
   m_TypeItem: 0
+  m_Unlocked: 1
   m_WeaponDamage: 0
   m_AttackCooldown: 0
