@@ -141,7 +141,8 @@ PlayerSettings:
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
   bundleVersion: 0.1.0
-  preloadedAssets: []
+  preloadedAssets:
+  - {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -915,11 +916,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: c32a7699-55b2-47a7-8daa-8bd36a712189
+  cloudProjectId: 7b54a727-dc0d-40e0-96ff-a4c0cc719de6
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: EndlessFortress 2025-05-15_16-17-56
-  organizationId: urkoaguillo
+  projectName: EndlessFortress
+  organizationId: azazel2048
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
