@@ -2,35 +2,64 @@ using UnityEngine;
 
 public class AbilityManager : MonoBehaviour
 {
-    public enum Ability { None = -1, IronWill = 0 };
+    public static AbilityManager instance;
+
+    public enum Ability 
+    { 
+        None = -1, 
+        IronWill = 0 
+    };
+    
     [SerializeField] float m_AbilityTotalCooldown = 10f;
     private float m_AbilityCurrentCooldown = 0f;
     [SerializeField] Ability m_ChosenAbility = 0;
     [SerializeField] HealthController m_PlayerHealthController = null;
 
-    [Header("Shiel Params")]
+    [Header("Shield Params")]
     [SerializeField] private float m_IronWillDamageReduction = 0.25f;
     [SerializeField] private float m_IronWillDurationSeconds = 5f;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        else
+        {
+            instance = this;
+        }
+    }
+
     void Start()
     {
-        m_AbilityCurrentCooldown = m_AbilityTotalCooldown;
+        m_AbilityCurrentCooldown = (m_AbilityTotalCooldown / InventoryManager.instance.m_TotalAbilityCooldownReduction);
     }
     private void Update()
     {
-        m_AbilityCurrentCooldown -=Time.deltaTime;
+        if(m_AbilityCurrentCooldown < 0.0f)
+        {
+            m_AbilityCurrentCooldown -=Time.deltaTime;
+        }
+
+        //DEBUG
+        if(Input.GetKeyDown(KeyCode.S))
+        {
+            UseAbility();
+        }
     }
     public void UseAbility()
     {
         if(m_AbilityCurrentCooldown < 0f)
         {
-            m_AbilityCurrentCooldown = m_AbilityTotalCooldown;
+            //Take into account ability cooldown reduction
+            m_AbilityCurrentCooldown = (m_AbilityTotalCooldown / InventoryManager.instance.m_TotalAbilityCooldownReduction);
             switch (m_ChosenAbility)
             {
                 case Ability.IronWill:
-
-                    m_PlayerHealthController.m_DamageReduction *= m_IronWillDamageReduction;
+                    Debug.LogWarning("ironwill activated");
+                    m_PlayerHealthController.m_IncomingDamageMultiplier *= m_IronWillDamageReduction;
                     Invoke("IronWillCancelation", m_IronWillDurationSeconds);
                     break;
 
@@ -42,7 +71,7 @@ public class AbilityManager : MonoBehaviour
 
     private void IronWillCancelation()
     {
-        m_PlayerHealthController.m_DamageReduction = m_PlayerHealthController.m_DamageReduction / m_IronWillDamageReduction;
+        m_PlayerHealthController.m_IncomingDamageMultiplier /= m_IronWillDamageReduction;
     }
 
 }

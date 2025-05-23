@@ -3,12 +3,8 @@ using UnityEngine;
 
 public class UnstopableStrikeFunctionality : BaseActiveScript
 {
-    CombatManager m_CombatManager;
+    public float m_DamageMultiplier = 5;
 
-    public void Start()
-    {
-        m_CombatManager = FindAnyObjectByType<CombatManager>();
-    }
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.X)) { UseActive(); }
@@ -17,7 +13,9 @@ public class UnstopableStrikeFunctionality : BaseActiveScript
     {
         // Check if the item is an active item using the base function
         if (!base.UseActive()) return false;
-        m_CombatManager.m_CurrentEnemyTarget.GetComponent<HealthController>().ReceiveDamage(10);
+        
+        FindAnyObjectByType<PlayerCombatScript>().DealDamageToTargetEnemy(PlayerStats.instance.m_RoomsCleared * m_DamageMultiplier);
+        
         return true;
     }
 }
