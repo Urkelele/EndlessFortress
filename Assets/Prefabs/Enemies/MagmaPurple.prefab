@@ -5380,11 +5380,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4607372634602612}
   - component: {fileID: 95177354056237040}
-  - component: {fileID: 2138625130156257824}
   - component: {fileID: -3366138240814678083}
   - component: {fileID: -7149139210559338508}
   - component: {fileID: 6367967707040592939}
   - component: {fileID: 187050382814568212}
+  - component: {fileID: 495329058463360469}
   m_Layer: 0
   m_Name: MagmaPurple
   m_TagString: Untagged
@@ -5436,26 +5436,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2138625130156257824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1688375886243296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2bedf74a4bbad64dbfa01d53befb8c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HealthController: {fileID: 0}
-  m_Collider: {fileID: 0}
-  m_ClickDetection: {fileID: 0}
-  m_IsCurrentTarget: 0
-  m_IsBoss: 0
-  m_TotalActionCooldown: 5
-  m_CurrentActionCooldown: 0
-  m_GoldReward: 10
 --- !u!114 &-3366138240814678083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5468,7 +5448,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd732fb88bed495418a24e0b058627f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MaxHealthPoints: 100
+  m_MaxHealthPoints: 120
   m_HealthPoints: 0
   m_DamageReduction: 1
   m_IsDead: 0
@@ -5525,6 +5505,26 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &495329058463360469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688375886243296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2bedf74a4bbad64dbfa01d53befb8c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HealthController: {fileID: 0}
+  m_Collider: {fileID: 0}
+  m_ClickDetection: {fileID: 0}
+  m_IsCurrentTarget: 0
+  m_IsBoss: 0
+  m_TotalActionCooldown: 5
+  m_CurrentActionCooldown: 0
+  m_GoldReward: 10
 --- !u!1 &1740326016018262
 GameObject:
   m_ObjectHideFlags: 0
