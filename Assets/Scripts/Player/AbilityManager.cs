@@ -4,13 +4,18 @@ public class AbilityManager : MonoBehaviour
 {
     public static AbilityManager instance;
 
-    public enum Ability { None = -1, IronWill = 0 };
+    public enum Ability 
+    { 
+        None = -1, 
+        IronWill = 0 
+    };
+    
     [SerializeField] float m_AbilityTotalCooldown = 10f;
     private float m_AbilityCurrentCooldown = 0f;
     [SerializeField] Ability m_ChosenAbility = 0;
     [SerializeField] HealthController m_PlayerHealthController = null;
 
-    [Header("Shiel Params")]
+    [Header("Shield Params")]
     [SerializeField] private float m_IronWillDamageReduction = 0.25f;
     [SerializeField] private float m_IronWillDurationSeconds = 5f;
 
@@ -33,7 +38,10 @@ public class AbilityManager : MonoBehaviour
     }
     private void Update()
     {
-        m_AbilityCurrentCooldown -=Time.deltaTime;
+        if(m_AbilityCurrentCooldown < 0.0f)
+        {
+            m_AbilityCurrentCooldown -=Time.deltaTime;
+        }
 
         //DEBUG
         if(Input.GetKeyDown(KeyCode.S))
@@ -50,7 +58,7 @@ public class AbilityManager : MonoBehaviour
             switch (m_ChosenAbility)
             {
                 case Ability.IronWill:
-
+                    Debug.LogWarning("ironwill activated");
                     m_PlayerHealthController.m_IncomingDamageMultiplier *= m_IronWillDamageReduction;
                     Invoke("IronWillCancelation", m_IronWillDurationSeconds);
                     break;

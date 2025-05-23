@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d40425ea1d6e70d48b4381f9417ad286, type: 3}
-  m_Name: ExtraHealth
+  m_Name: LostHeart
   m_EditorClassIdentifier: 
-  m_ItemName: Extra Health
+  m_ItemName: Lost Heart
   m_ExtraHealth: 20
   m_AttackSpeedMultiplier: 1
-  m_DamageReductionMultiplier: 1
-  m_AbilitySpeedMultiplier: 1
+  m_DamageDivider: 1
+  m_AbilityCooldownReduction: 1
   m_AttackDamageMultiplier: 1
   m_GoldRewardMultiplier: 1
   m_LifeSteal: 0
