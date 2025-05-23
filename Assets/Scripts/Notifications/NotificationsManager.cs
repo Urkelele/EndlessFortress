@@ -6,6 +6,7 @@ using static UnityEngine.Rendering.DebugUI.Table;
 
 public class NotificationsManager : MonoBehaviour
 {
+    
     private DateTime now = DateTime.Now;
     //private DateTime fireTime = new DateTime(now.Year, now.Month, now.Day, 10, 30, 0);
 
@@ -37,6 +38,8 @@ public class NotificationsManager : MonoBehaviour
             //We call the notification function for the daily
             DailyReminder();
         }
+
+        CheckDayPassed();
 
         //CreateSimpleNotification("30s notif", "The good", 30);
         //CreateSimpleNotification("2m notif", "The bad", 120);
@@ -72,6 +75,56 @@ public class NotificationsManager : MonoBehaviour
         notification.LargeIcon = "largeBonfire";
 
         AndroidNotificationCenter.SendNotification(notification, "default_channel");
+    }
+
+    public void RememberDate()
+    {
+        PlayerPrefs.SetString("LastSpinDate", DateTime.UtcNow.ToString());
+    }
+
+    public void CheckDayPassed()
+    {
+        string lastSpinString = PlayerPrefs.GetString("LastSpinDate", "");
+        if (!string.IsNullOrEmpty(lastSpinString))
+        {
+            DateTime lastSpin = DateTime.Parse(lastSpinString);
+            TimeSpan timePassed = DateTime.UtcNow - lastSpin;
+
+            if (timePassed.TotalHours >= 24)
+            {
+                // Ruleta disponible
+            }
+            else
+            {
+                // Tiempo restante
+                TimeSpan timeRemaining = TimeSpan.FromHours(24) - timePassed;
+                ScheduleNotification((float)timeRemaining.TotalSeconds);
+            }
+        }
+    }
+
+    void CreateNotificationChannel()
+    {
+        var channel = new AndroidNotificationChannel()
+        {
+            Id = "daily_spin_channel",
+            Name = "Daily Spin Notifications",
+            Importance = Importance.Default,
+            Description = "Notifies when daily spin is available",
+        };
+        AndroidNotificationCenter.RegisterNotificationChannel(channel);
+    }
+
+    void ScheduleNotification(float seconds)
+    {
+        CreateNotificationChannel(); // asegúrate de crearla antes
+        //creo que hay que asignar IDs, para que si se abre el juego muchas veces, no se manden muchas notificaciones
+        var notification = new AndroidNotification();
+        notification.Title = "¡La ruleta diaria está lista!";
+        notification.Text = "Vuelve y gira para ganar tu recompensa.";
+        notification.FireTime = DateTime.Now.AddSeconds(seconds);
+
+        AndroidNotificationCenter.SendNotification(notification, "daily_spin_channel");
     }
 
 
