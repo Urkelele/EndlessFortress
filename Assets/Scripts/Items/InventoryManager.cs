@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,16 +7,21 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    public float m_TotalExtraHealth;
-    public float m_TotalAttackSpeedMultiplier;
-    public float m_TotalDamageReductionMultiplier;
+    public float m_TotalExtraHealth = 0;
+    public float m_TotalAttackSpeedMultiplier = 1;
+    public float m_TotalDamageReductionMultiplier = 1;
+    public float m_TotalAbilitySpeedMultiplier = 1;
+    public float m_TotalAttackDamageMultiplier = 1;
+    public float m_TotalGoldRewardMultipler = 1;
+    public float m_TotalLifeSteal = 0;
+
+    [SerializeField] private TriggerType m_Trigger = TriggerType.NONE;
 
     public int m_Gold;
 
     public ItemBaseScript m_CurrentActiveItem;
     public ItemBaseScript m_CurrentLightWeapon;
     public ItemBaseScript m_CurrentHeavyWeapon;
-
 
     public List<ItemBaseScript> m_PassiveItemsList = new List<ItemBaseScript>();
 
@@ -26,6 +32,37 @@ public class InventoryManager : MonoBehaviour
         {
             UpdateItems();
         }
+
+        CheckTriggers();
+    }
+
+    /// <summary>
+    /// Makes all items of the same trigger type activate
+    /// </summary>
+    /// <param name="triggerType"></param>
+    public void EnableItemTrigger(TriggerType triggerType)
+    {
+        m_Trigger = triggerType;
+    }
+
+    private void CheckTriggers()
+    {
+        //Only check for triggers when they happen
+        if (m_Trigger == TriggerType.NONE) return;
+
+        Debug.LogWarning("TRIGGER:" +  m_Trigger);
+
+        //Search through all items of the player and 
+        foreach (ItemBaseScript item in m_PassiveItemsList)
+        {
+            if (item is TriggeredItemsScript triggeredItem && triggeredItem.TriggerType == m_Trigger)
+            {
+                Debug.Log("activated:" +  triggeredItem.name);
+                triggeredItem.OnTriggerActivated();
+            }
+        }
+
+        m_Trigger = TriggerType.NONE;
     }
 
     /// <summary>
@@ -33,7 +70,7 @@ public class InventoryManager : MonoBehaviour
     /// </summary>
     public void UpdateItems()
     {
-        ExtraAttributesTo_0();
+        ResetExtraAttributes();
         float[] currentUpdates;
         for (int i = 0; i < m_PassiveItemsList.Count; i++)
         {
@@ -41,12 +78,20 @@ public class InventoryManager : MonoBehaviour
             m_TotalExtraHealth += currentUpdates[0];
             m_TotalAttackSpeedMultiplier *= currentUpdates[1];
             m_TotalDamageReductionMultiplier *= currentUpdates[2];
+            m_TotalAbilitySpeedMultiplier *= currentUpdates[3];
+            m_TotalAttackDamageMultiplier *= currentUpdates[4];
+            m_TotalGoldRewardMultipler *= currentUpdates[5];
+            m_TotalLifeSteal += currentUpdates[6];
         }
     }
-    public void ExtraAttributesTo_0()
+    public void ResetExtraAttributes()
     {
         m_TotalExtraHealth = 0;
-        m_TotalAttackSpeedMultiplier = 0;
-        m_TotalDamageReductionMultiplier = 0;
+        m_TotalAttackSpeedMultiplier = 1;
+        m_TotalDamageReductionMultiplier = 1;
+        m_TotalAbilitySpeedMultiplier = 1;
+        m_TotalAttackDamageMultiplier = 1;
+        m_TotalGoldRewardMultipler = 1;
+        m_TotalLifeSteal = 0;
     }
 }

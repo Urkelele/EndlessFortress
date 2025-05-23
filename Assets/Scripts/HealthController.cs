@@ -11,17 +11,17 @@ public class HealthController : MonoBehaviour
     public float m_DamageReduction = 1.0f;
 
     [Header("CONTROL")]
-    public bool m_IsDead;
+    public bool m_IsDead = false;
 
     [Header("Audio")]
     public AudioClip m_GettingDamagedSound;
 
-    private void Start()
+    protected virtual void Awake()
     {
-        m_HealthPoints = m_MaxHealthPoints;
+        m_HealthPoints = m_MaxHealthPoints;   
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (m_HealthPoints <= 0)
         {
