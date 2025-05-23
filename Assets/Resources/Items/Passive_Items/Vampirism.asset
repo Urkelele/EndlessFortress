@@ -16,10 +16,14 @@ MonoBehaviour:
   m_ExtraHealth: 0
   m_AttackSpeedMultiplier: 0
   m_DamageReductionMultiplier: 0
+  m_AbilitySpeedMultiplier: 0
+  m_AttackDamageMultiplier: 0
+  m_GoldRewardMultiplier: 1
+  m_LifeSteal: 0.05
   m_Price: 0
-  m_Description: 
+  m_Description: Heal 5% of damage you do
   m_SpriteItem: {fileID: 21300000, guid: df8c4f1ba553f604985387dd16e24a79, type: 3}
-  m_QualityItem: 0
+  m_QualityItem: 1
   m_TypeItem: 0
   m_WeaponDamage: 0
   m_AttackCooldown: 0

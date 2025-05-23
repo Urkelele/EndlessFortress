@@ -12,12 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d40425ea1d6e70d48b4381f9417ad286, type: 3}
   m_Name: Freezing
   m_EditorClassIdentifier: 
-  m_ItemName: KillTheRich
+  m_ItemName: Freezing
   m_ExtraHealth: 0
   m_AttackSpeedMultiplier: 0
   m_DamageReductionMultiplier: 0
+  m_AbilitySpeedMultiplier: 0
+  m_AttackDamageMultiplier: 0
+  m_GoldRewardMultiplier: 1
+  m_LifeSteal: 0
   m_Price: 0
-  m_Description: 
+  m_Description: When you attack a enemy, their attack speed gets + 15%
   m_SpriteItem: {fileID: 21300000, guid: a0ddf81d6b79f0d48b3d2f3056712638, type: 3}
   m_QualityItem: 0
   m_TypeItem: 0
