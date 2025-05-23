@@ -17,7 +17,6 @@ public class PlayerCombatScript : MonoBehaviour
     [SerializeField] private float m_HeavyAttackCurrentCooldown = 0;
     private void OnEnable()
     {
-<<<<<<< Updated upstream
         //m_LightAttackDamage = m_Inventory.m_CurrentLightWeapon.ItemScript.m_WeaponDamage;
         //m_LightAttackTotalCooldown = m_Inventory.m_CurrentLightWeapon.ItemScript.m_AttackCooldown;
         //m_LightAttackCurrentCooldown = m_LightAttackTotalCooldown;
@@ -25,14 +24,9 @@ public class PlayerCombatScript : MonoBehaviour
         //m_HeavyAttackDamage = m_Inventory.m_CurrentHeavyWeapon.ItemScript.m_WeaponDamage;
         //m_HeavyAttackTotalCooldown = m_Inventory.m_CurrentHeavyWeapon.ItemScript.m_AttackCooldown;
         //m_HeavyAttackCurrentCooldown = m_HeavyAttackTotalCooldown;
-=======
-        m_LightAttackDamage = m_Inventory.m_CurrentLightWeapon.ItemScript.m_WeaponDamage;
-        //m_
-        m_LightAttackCurrentCooldown = m_LightAttackTotalCooldown;
-        m_HeavyAttackCurrentCooldown = m_HeavyAttackTotalCooldown;
+
         //Call ItemManagers Get LightAttack
         //Call ItemManagers Get HeavyAttack
->>>>>>> Stashed changes
     }
 
     // Update is called once per frame
