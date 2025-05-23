@@ -5528,11 +5528,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4427419308633302}
   - component: {fileID: 95804624251788386}
-  - component: {fileID: 7845794995786264984}
   - component: {fileID: 2915676299530795053}
   - component: {fileID: 5414567988000251131}
   - component: {fileID: 3320135209698097235}
   - component: {fileID: 5853873856145746450}
+  - component: {fileID: 1031913705476543684}
   m_Layer: 0
   m_Name: MagmaOrange
   m_TagString: Untagged
@@ -5584,26 +5584,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7845794995786264984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1777853578748228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2bedf74a4bbad64dbfa01d53befb8c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HealthController: {fileID: 0}
-  m_Collider: {fileID: 0}
-  m_ClickDetection: {fileID: 0}
-  m_IsCurrentTarget: 0
-  m_IsBoss: 0
-  m_TotalActionCooldown: 5
-  m_CurrentActionCooldown: 0
-  m_GoldReward: 10
 --- !u!114 &2915676299530795053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5616,7 +5596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd732fb88bed495418a24e0b058627f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MaxHealthPoints: 100
+  m_MaxHealthPoints: 120
   m_HealthPoints: 0
   m_DamageReduction: 1
   m_IsDead: 0
@@ -5673,6 +5653,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.7336607, y: 1.2246519, z: 1}
   m_Center: {x: -0.022652775, y: 0.6383895, z: 0}
+--- !u!114 &1031913705476543684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1777853578748228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af03e7f50318fdb458a3ff95679a1274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HealthController: {fileID: 0}
+  m_Collider: {fileID: 0}
+  m_ClickDetection: {fileID: 0}
+  m_IsCurrentTarget: 0
+  m_IsBoss: 0
+  m_TotalActionCooldown: 10
+  m_CurrentActionCooldown: 0
+  m_GoldReward: 10
+  m_AttackDamage: 3
 --- !u!1 &1812846230441316
 GameObject:
   m_ObjectHideFlags: 0
