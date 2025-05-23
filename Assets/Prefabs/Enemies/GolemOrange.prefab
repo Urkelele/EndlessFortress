@@ -563,11 +563,11 @@ GameObject:
   - component: {fileID: 4951597635638186}
   - component: {fileID: 95422485485453198}
   - component: {fileID: 3369024580061637766}
-  - component: {fileID: 1857187602596597903}
   - component: {fileID: 1247064967731062705}
   - component: {fileID: 5980003533761628849}
   - component: {fileID: 1605555367193701448}
   - component: {fileID: -5190957011549464846}
+  - component: {fileID: 984928362437064961}
   m_Layer: 0
   m_Name: GolemOrange
   m_TagString: Untagged
@@ -639,26 +639,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IsLastObjectClicked: 0
---- !u!114 &1857187602596597903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1204140190044184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2bedf74a4bbad64dbfa01d53befb8c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HealthController: {fileID: 0}
-  m_Collider: {fileID: 0}
-  m_ClickDetection: {fileID: 0}
-  m_IsCurrentTarget: 0
-  m_IsBoss: 0
-  m_TotalActionCooldown: 5
-  m_CurrentActionCooldown: 0
-  m_GoldReward: 10
 --- !u!114 &1247064967731062705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -728,6 +708,27 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &984928362437064961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1204140190044184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af03e7f50318fdb458a3ff95679a1274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HealthController: {fileID: 0}
+  m_Collider: {fileID: 0}
+  m_ClickDetection: {fileID: 0}
+  m_IsCurrentTarget: 0
+  m_IsBoss: 0
+  m_TotalActionCooldown: 0
+  m_CurrentActionCooldown: 0
+  m_GoldReward: 0
+  m_AttackDamage: 5
 --- !u!1 &1207075530182550
 GameObject:
   m_ObjectHideFlags: 0
