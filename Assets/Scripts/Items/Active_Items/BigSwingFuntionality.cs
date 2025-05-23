@@ -1,20 +1,14 @@
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Resources/Items/Active_Items/BigSwing")]
 public class BigSwingFunctionality: BaseActiveScript
 {
     public float m_DamageMultiplier = 2;
 
-    public void Update()
+    public override void UseActive()
     {
-        if (Input.GetKeyDown(KeyCode.X)) { UseActive(); }
-    }
-    public override bool UseActive()
-    {
-        // Check if the item is an active item using the base function
-        if (!base.UseActive()) return false;
-
-        FindAnyObjectByType<PlayerCombatScript>().DealDamageToAllEnemies(InventoryManager.instance.m_CurrentHeavyWeapon.m_WeaponDamage * m_DamageMultiplier);
-
-        return true;
+        base.UseActive();
+        //All enemies receive damage = to 2x heavyweapons damage
+        FindAnyObjectByType<PlayerCombatScript>().DealDamageToAllEnemies(InventoryManager.instance.m_CurrentHeavyWeapon.m_ItemDamage * m_DamageMultiplier);
     }
 }

@@ -26,9 +26,9 @@ public class ItemBaseScript : ScriptableObject
     public enum ItemType { NONE = -1, PASSIVE, ACTIVE, LIGHT_WEAPON, HEAVY_WEAPON }
     
     // Maybe change in the future
-    [Header("Weapons Stats")]
-    public float m_WeaponDamage;
-    public float m_AttackCooldown;
+    [Header("Combat Stats")]
+    public float m_ItemDamage;
+    public float m_ItemCooldown;
 
     public float[] GetExtraAttributes()
     {
