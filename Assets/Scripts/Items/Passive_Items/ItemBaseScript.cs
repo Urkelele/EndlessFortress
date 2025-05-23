@@ -9,8 +9,8 @@ public class ItemBaseScript : ScriptableObject
     public string m_ItemName;
     public float m_ExtraHealth = 0;
     public float m_AttackSpeedMultiplier = 1;
-    public float m_DamageReductionMultiplier = 1;
-    public float m_AbilitySpeedMultiplier = 1;  
+    public float m_DamageDivider = 1;
+    public float m_AbilityCooldownReduction = 1;  
     public float m_AttackDamageMultiplier = 1;
     public float m_GoldRewardMultiplier = 1;
     public float m_LifeSteal = 0; // Starts at 0, is multiplied by the amount of damage you do, you heal that ammount
@@ -32,7 +32,7 @@ public class ItemBaseScript : ScriptableObject
 
     public float[] GetExtraAttributes()
     {
-        float[] array = { m_ExtraHealth, m_AttackSpeedMultiplier, m_DamageReductionMultiplier, m_AbilitySpeedMultiplier, 
+        float[] array = { m_ExtraHealth, m_AttackSpeedMultiplier, m_DamageDivider, m_AbilityCooldownReduction, 
             m_AttackDamageMultiplier, m_GoldRewardMultiplier, m_LifeSteal, (int)m_TypeItem};
         return array;
     }

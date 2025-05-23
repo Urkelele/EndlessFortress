@@ -16,9 +16,9 @@ public class GlassBonesScript : TriggeredItemsScript
         //-10% to all non boss enemies
         foreach (EnemyBaseScript enemy in m_CombatManager.m_CombatEnemies)
         {
-            if (!enemy.gameObject.CompareTag("Boss"))
+            if (!enemy.m_IsBoss)
             {
-                enemy.m_HealthController.m_HealthPoints *= m_EnemyHealthReduction;
+                enemy.m_HealthController.m_CurrentHealthPoints *= m_EnemyHealthReduction;
             }
         }
     }

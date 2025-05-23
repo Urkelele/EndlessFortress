@@ -29,7 +29,7 @@ public class AbilityManager : MonoBehaviour
 
     void Start()
     {
-        m_AbilityCurrentCooldown = m_AbilityTotalCooldown;
+        m_AbilityCurrentCooldown = (m_AbilityTotalCooldown / InventoryManager.instance.m_TotalAbilityCooldownReduction);
     }
     private void Update()
     {
@@ -39,7 +39,8 @@ public class AbilityManager : MonoBehaviour
     {
         if(m_AbilityCurrentCooldown < 0f)
         {
-            m_AbilityCurrentCooldown = m_AbilityTotalCooldown;
+            //Take into account ability cooldown reduction
+            m_AbilityCurrentCooldown = (m_AbilityTotalCooldown / InventoryManager.instance.m_TotalAbilityCooldownReduction);
             switch (m_ChosenAbility)
             {
                 case Ability.IronWill:

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4512f297ff71934b84a35ed8642d5ee, type: 3}
   m_Name: GlassBones
   m_EditorClassIdentifier: 
-  m_ItemName: 
+  m_ItemName: Glass Bones
   m_ExtraHealth: 0
   m_AttackSpeedMultiplier: 1
   m_DamageReductionMultiplier: 1
@@ -21,12 +21,12 @@ MonoBehaviour:
   m_GoldRewardMultiplier: 1
   m_LifeSteal: 0
   m_Price: 0
-  m_Description: 
-  m_SpriteItem: {fileID: 0}
-  m_QualityItem: -1
-  m_TypeItem: -1
+  m_Description: Regular enemies start with -10% HP
+  m_SpriteItem: {fileID: 21300000, guid: 6e78417bf9f420541ba01cc1c62579eb, type: 3}
+  m_QualityItem: 1
+  m_TypeItem: 0
   m_Unlocked: 1
   m_WeaponDamage: 0
   m_AttackCooldown: 0
-  TriggerType: -1
+  TriggerType: 2
   m_EnemyHealthReduction: 0.9

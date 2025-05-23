@@ -541,8 +541,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TargetEnemy: {fileID: 0}
   m_PlayerHealthController: {fileID: 0}
-  m_AbilityManager: {fileID: 0}
-  m_Inventory: {fileID: 0}
   m_LightAttackDamage: 0
   m_LightAttackTotalCooldown: 0
   m_LightAttackCurrentCooldown: 0
@@ -1036,7 +1034,7 @@ MonoBehaviour:
   m_CurrentLightWeapon: {fileID: 11400000, guid: 8e2851fd4bddf154e88d3765cf745c4c, type: 2}
   m_CurrentHeavyWeapon: {fileID: 11400000, guid: 1d69a4d5de8a8844eabee1a18253ea92, type: 2}
   m_PassiveItemsList:
-  - {fileID: 11400000, guid: 2432c72378b77fc40a771fdafc53587c, type: 2}
+  - {fileID: 11400000, guid: 92a645a655f5e82488694d62297bec00, type: 2}
 --- !u!4 &1676088290
 Transform:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class BigSwingFunctionality: BaseActiveScript
 {
-    public float m_DamageMultiplyier = 2;
+    public float m_DamageMultiplier = 2;
 
     public void Update()
     {
@@ -12,11 +12,9 @@ public class BigSwingFunctionality: BaseActiveScript
     {
         // Check if the item is an active item using the base function
         if (!base.UseActive()) return false;
-        
-        foreach (EnemyBaseScript enemyScript in CombatManager.instance.m_CombatEnemies)
-        {
-            enemyScript.gameObject.GetComponent<HealthController>().ReceiveDamage(InventoryManager.instance.m_CurrentHeavyWeapon.m_WeaponDamage * m_DamageMultiplyier);
-        }
+
+        FindAnyObjectByType<PlayerCombatScript>().DealDamageToAllEnemies(InventoryManager.instance.m_CurrentHeavyWeapon.m_WeaponDamage * m_DamageMultiplier);
+
         return true;
     }
 }

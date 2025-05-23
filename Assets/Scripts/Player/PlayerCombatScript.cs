@@ -57,9 +57,9 @@ public class PlayerCombatScript : MonoBehaviour
     {
         if (m_LightAttackCurrentCooldown < 0.0f && m_TargetEnemy != null)
         {
-            //Reset timer
-            m_LightAttackCurrentCooldown = m_LightAttackTotalCooldown;
-            m_TargetEnemy.m_HealthController.ReceiveDamage(m_LightAttackDamage);
+            //Reset timer, take into account attack speed reduction
+            m_LightAttackCurrentCooldown = m_LightAttackTotalCooldown * (1/InventoryManager.instance.m_TotalAttackSpeedMultiplier);
+            DealDamageToTargetEnemy(m_LightAttackDamage);
         }
         //Attack Animation
     }
@@ -68,13 +68,39 @@ public class PlayerCombatScript : MonoBehaviour
     {
         if (m_HeavyAttackCurrentCooldown < 0.0f)
         {
-            //Reset timer
-            m_HeavyAttackCurrentCooldown = m_HeavyAttackTotalCooldown;
-            m_TargetEnemy.m_HealthController.ReceiveDamage(m_HeavyAttackDamage);
+            //Reset timer, take into account attack speed reduction
+            m_HeavyAttackCurrentCooldown = m_HeavyAttackTotalCooldown * (1/InventoryManager.instance.m_TotalAttackSpeedMultiplier);
+            DealDamageToTargetEnemy(m_HeavyAttackDamage);
         }
         //Attack Animation
     }
 
+    /// <summary>
+    /// Deals damage to current target enemy, takes into account lifesteal and attack mult
+    /// </summary>
+    /// <param name="damage"></param>
+    public void DealDamageToTargetEnemy(float damage)
+    {
+        float totalDamage = damage * InventoryManager.instance.m_TotalAttackDamageMultiplier;
+        m_TargetEnemy.m_HealthController.ReceiveDamage(totalDamage);
+        m_PlayerHealthController.HealDamage(totalDamage * InventoryManager.instance.m_TotalLifeSteal);
+    }
+
+    /// <summary>
+    /// Deals damage to all enemies, takes into account lifesteal and attack mult
+    /// </summary>
+    /// <param name="damage"></param>
+    public void DealDamageToAllEnemies(float damage)
+    {
+        float totalDamage = damage * InventoryManager.instance.m_TotalAttackDamageMultiplier;
+     
+        foreach (EnemyBaseScript enemy in CombatManager.instance.m_CombatEnemies)
+        {
+            enemy.m_HealthController.ReceiveDamage(totalDamage);
+            m_PlayerHealthController.HealDamage(totalDamage * InventoryManager.instance.m_TotalLifeSteal);
+        }
+
+    }
     public void UseActiveItem()
     {
         //Call ItemManagers.ActiveItem.Action()

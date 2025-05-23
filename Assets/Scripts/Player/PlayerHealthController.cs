@@ -2,14 +2,11 @@ using UnityEngine;
 
 public class PlayerHealthController : HealthController
 {
-    public override void ReceiveDamage(float damageReceived)
+    public float m_BaseHp = 100f;
+
+    protected override void Awake()
     {
-        base.ReceiveDamage(damageReceived * m_IncomingDamageMultiplier);
-        PlayerStats.instance.m_CurrentHealthPoints = m_HealthPoints;
-    }
-    public override void HealDamage(float healing)
-    {
-        base.HealDamage(healing);
-        PlayerStats.instance.m_CurrentHealthPoints = m_HealthPoints;
+        m_MaxHealthPoints = m_BaseHp;
+        m_CurrentHealthPoints = m_MaxHealthPoints;
     }
 }
