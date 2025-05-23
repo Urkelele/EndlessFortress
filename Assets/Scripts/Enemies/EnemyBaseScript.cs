@@ -64,7 +64,8 @@ public class EnemyBaseScript : MonoBehaviour
 
     public virtual void PerformAction()
     {
-        
+        //DEBUG PARA PROBAR COMBATE
+        m_PlayerCombatScript.GetHit(5);
     }
 
     private void OnClick()

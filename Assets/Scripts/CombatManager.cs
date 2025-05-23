@@ -21,10 +21,10 @@ public class CombatManager : MonoBehaviour
 
     [Header("REWARDS")]
     public int m_GoldBattleReward = 0;
-    public float m_ItemDropChance = 0.25f;
     public ItemBaseScript m_ItemReward = null;
 
     [Header("DROP CHANCES")]
+    public float m_ItemDropChance = 0.25f;
     public float m_CommonDropChance = 0.5f;
     public float m_RareDropChance = 0.3f;
     public float m_EpicDropChance = 0.15f;
@@ -79,7 +79,7 @@ public class CombatManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Instantiate a random comp
+    /// Instantiate a random comp. Spawn the enemies in the position and rotation of the spawn transforms
     /// </summary>
     private void SpawnEnemies()
     {
@@ -89,6 +89,7 @@ public class CombatManager : MonoBehaviour
         for (int i = 0; i < m_CurrentComp.transform.childCount; i++)
         {
             m_CurrentComp.transform.GetChild(i).transform.position = m_EnemyPositions[i].position;
+            m_CurrentComp.transform.GetChild(i).transform.rotation = m_EnemyPositions[i].rotation;
         }
     }
 
