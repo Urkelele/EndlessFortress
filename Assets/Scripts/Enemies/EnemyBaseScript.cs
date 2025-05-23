@@ -11,6 +11,7 @@ public class EnemyBaseScript : MonoBehaviour
     private Animator m_Animator = null;
     public ClickDetection m_ClickDetection = null;
     private Outline m_Outline = null;
+    private InventoryManager m_InventoryManager = null;
     protected CombatManager m_CombatManager = null;
     public bool m_IsCurrentTarget = false;
     public bool m_IsBoss = false;
@@ -21,6 +22,8 @@ public class EnemyBaseScript : MonoBehaviour
     
     [SerializeField] protected int m_GoldReward = 0;
 
+    //Control vars
+    private bool m_OnDeathTriggered = false; //Control bool so that the OnDeath method is only called once
     protected virtual void Start()
     {
         //Get references
@@ -30,7 +33,9 @@ public class EnemyBaseScript : MonoBehaviour
         m_Animator = GetComponent<Animator>();
         m_Outline = GetComponent<Outline>();
         m_PlayerCombatScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCombatScript>();
-        m_CombatManager = GameObject.FindAnyObjectByType<CombatManager>();
+        m_InventoryManager = FindAnyObjectByType<InventoryManager>();
+        m_CombatManager = FindAnyObjectByType<CombatManager>();
+
         m_CurrentActionCooldown = m_TotalActionCooldown;
     }
 
@@ -56,7 +61,7 @@ public class EnemyBaseScript : MonoBehaviour
             m_IsCurrentTarget = false;
         }
 
-        if(m_HealthController.m_IsDead)
+        if(m_HealthController.m_IsDead && !m_OnDeathTriggered)
         {
             OnDeath();
         }
@@ -77,10 +82,15 @@ public class EnemyBaseScript : MonoBehaviour
 
     public virtual void OnDeath()
     {
+        m_OnDeathTriggered = true;
+
         PlayerStats.instance.m_EnemiesSlain += 1;
 
         //Add the enemy's gold reward to the total pool of gold that will be given to the player when the battle finishes
         m_CombatManager.m_GoldBattleReward += m_GoldReward;
+
+        //Tell the inventory that an enemy died so that it can call triggeredItems
+        m_InventoryManager.EnableItemTrigger(TriggerType.ENEMY_DEATH);
 
         //Dead enemies out of the combat list
         m_CombatManager.m_CombatEnemies.Remove(this);

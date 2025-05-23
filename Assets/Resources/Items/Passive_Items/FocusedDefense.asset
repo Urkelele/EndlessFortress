@@ -16,8 +16,12 @@ MonoBehaviour:
   m_ExtraHealth: 0
   m_AttackSpeedMultiplier: 0
   m_DamageReductionMultiplier: 0
+  m_AbilitySpeedMultiplier: 0
+  m_AttackDamageMultiplier: 0
+  m_GoldRewardMultiplier: 1
+  m_LifeSteal: 0
   m_Price: 0
-  m_Description: 
+  m_Description: The enemy you attack deals -10% damage to you
   m_SpriteItem: {fileID: 21300000, guid: 059252e404bbea0448abca9a757e493d, type: 3}
   m_QualityItem: 0
   m_TypeItem: 0
