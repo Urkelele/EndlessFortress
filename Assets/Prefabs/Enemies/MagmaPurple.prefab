@@ -5384,7 +5384,7 @@ GameObject:
   - component: {fileID: -7149139210559338508}
   - component: {fileID: 6367967707040592939}
   - component: {fileID: 187050382814568212}
-  - component: {fileID: 495329058463360469}
+  - component: {fileID: 6343705434034251124}
   m_Layer: 0
   m_Name: MagmaPurple
   m_TagString: Untagged
@@ -5449,7 +5449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MaxHealthPoints: 120
-  m_HealthPoints: 0
+  m_CurrentHealthPoints: 0
   m_IncomingDamageMultiplier: 1
   m_IsDead: 0
   m_GettingDamagedSound: {fileID: 0}
@@ -5505,7 +5505,7 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &495329058463360469
+--- !u!114 &6343705434034251124
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5514,7 +5514,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1688375886243296}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2bedf74a4bbad64dbfa01d53befb8c6, type: 3}
+  m_Script: {fileID: 11500000, guid: af03e7f50318fdb458a3ff95679a1274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_HealthController: {fileID: 0}
@@ -5522,9 +5522,10 @@ MonoBehaviour:
   m_ClickDetection: {fileID: 0}
   m_IsCurrentTarget: 0
   m_IsBoss: 0
-  m_TotalActionCooldown: 5
+  m_TotalActionCooldown: 10
   m_CurrentActionCooldown: 0
   m_GoldReward: 10
+  m_AttackDamage: 3
 --- !u!1 &1740326016018262
 GameObject:
   m_ObjectHideFlags: 0
