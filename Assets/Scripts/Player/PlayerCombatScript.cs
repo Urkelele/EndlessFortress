@@ -7,14 +7,17 @@ public class PlayerCombatScript : MonoBehaviour
     private CombatManager m_CombatManager = null;
     [SerializeField] AbilityManager m_AbilityManager = null;
     [SerializeField] InventoryManager m_Inventory = null;
-
+    [Header("Player Management Variables")]
+    [SerializeField] private float m_ReceivedDamageReductor = 1;
+    [Header("Light Attack Variables")]
     [SerializeField] private float m_LightAttackDamage = 0;
     [SerializeField] private float m_LightAttackTotalCooldown = 0;
     [SerializeField] private float m_LightAttackCurrentCooldown = 0;
-
+    [Header("Heavy Attack Variables")]
     [SerializeField] private float m_HeavyAttackDamage = 0;
     [SerializeField] private float m_HeavyAttackTotalCooldown = 0;
     [SerializeField] private float m_HeavyAttackCurrentCooldown = 0;
+    
     private void OnEnable()
     {
         //m_LightAttackDamage = m_Inventory.m_CurrentLightWeapon.ItemScript.m_WeaponDamage;
@@ -38,7 +41,7 @@ public class PlayerCombatScript : MonoBehaviour
 
     public void GetHit(float dmg)
     {
-        m_PlayerHealthController.ReceiveDamage(dmg);
+        m_PlayerHealthController.ReceiveDamage(dmg*m_ReceivedDamageReductor);
         //Receive Damage Animation
     }
 
