@@ -11,7 +11,7 @@ public class AbilityManager : MonoBehaviour
     };
     
     [SerializeField] float m_AbilityTotalCooldown = 10f;
-    private float m_AbilityCurrentCooldown = 0f;
+    [SerializeField] private float m_AbilityCurrentCooldown = 0f;
     [SerializeField] Ability m_ChosenAbility = 0;
     [SerializeField] HealthController m_PlayerHealthController = null;
 
@@ -30,6 +30,8 @@ public class AbilityManager : MonoBehaviour
         {
             instance = this;
         }
+
+        m_PlayerHealthController = FindAnyObjectByType<PlayerHealthController>();
     }
 
     void Start()
@@ -38,7 +40,7 @@ public class AbilityManager : MonoBehaviour
     }
     private void Update()
     {
-        if(m_AbilityCurrentCooldown < 0.0f)
+        if(m_AbilityCurrentCooldown > 0.0f)
         {
             m_AbilityCurrentCooldown -=Time.deltaTime;
         }
@@ -51,7 +53,7 @@ public class AbilityManager : MonoBehaviour
     }
     public void UseAbility()
     {
-        if(m_AbilityCurrentCooldown < 0f)
+        if (m_AbilityCurrentCooldown < 0f)
         {
             //Take into account ability cooldown reduction
             m_AbilityCurrentCooldown = (m_AbilityTotalCooldown / InventoryManager.instance.m_TotalAbilityCooldownReduction);
