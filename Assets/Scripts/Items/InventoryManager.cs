@@ -139,6 +139,25 @@ public class InventoryManager : MonoBehaviour
         UpdateItems();
     }
 
+    /// <summary>
+    /// Checks the list for items with the same name and removes the first one found and returns true, if no items where found returns false
+    /// </summary>
+    /// <param name="itemName"></param>
+    /// <returns></returns>
+    public bool RemovePassiveItem(string itemName)
+    {
+        foreach(ItemBaseScript item in m_PassiveItemsList)
+        {
+            if (item.m_ItemName == itemName)
+            {
+                m_PassiveItemsList.Remove(item);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public void AddNewLightWeapon(ItemBaseScript newLightWeapon)
     {
         m_CurrentLightWeapon = newLightWeapon;

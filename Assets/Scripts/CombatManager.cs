@@ -75,7 +75,7 @@ public class CombatManager : MonoBehaviour
             prefab.SetActive(false);
         }
 
-        Debug.Log($"Loaded {list.Count} prefabs into the queue.");
+        Debug.Log($"Loaded {list.Count} prefabs into the queue.");  
     }
 
     private void StartCombat()

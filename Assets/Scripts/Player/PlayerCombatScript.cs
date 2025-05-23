@@ -20,7 +20,6 @@ public class PlayerCombatScript : MonoBehaviour
     }
     private void OnEnable()
     {
-        Debug.Log(InventoryManager.instance == null);
         //When the script is enabled (the battle starts) update the values from the weapons of the inventory to use in the fight
         m_LightAttackDamage = InventoryManager.instance.m_CurrentLightWeapon.m_WeaponDamage;
         m_LightAttackTotalCooldown = InventoryManager.instance.m_CurrentLightWeapon.m_AttackCooldown;
@@ -36,7 +35,6 @@ public class PlayerCombatScript : MonoBehaviour
     {
         m_LightAttackCurrentCooldown -= Time.deltaTime;
         m_HeavyAttackCurrentCooldown -= Time.deltaTime;
-        Debug.Log(InventoryManager.instance == null);
 
         //DEBUG
         LightAttack();
