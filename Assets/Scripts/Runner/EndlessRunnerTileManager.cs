@@ -127,7 +127,6 @@ public class EndlessRunnerTileManager : MonoBehaviour
     private void RecoverSpeed()
     {
         m_CurrentSpeed = m_MaxSpeed;
-        Debug.Log("GOTTA GO FAST");
     }
 
     public void CalculateTilesUntilDoors()

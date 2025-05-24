@@ -43,7 +43,7 @@ public class EnemyBaseScript : MonoBehaviour
     {
         m_CurrentActionCooldown -= Time.deltaTime;
 
-        if (m_CurrentActionCooldown < 0.0f)
+        if (m_CurrentActionCooldown < 0.0f && !m_HealthController.m_IsDead)
         {
             //Reset timer
             m_CurrentActionCooldown = m_TotalActionCooldown;

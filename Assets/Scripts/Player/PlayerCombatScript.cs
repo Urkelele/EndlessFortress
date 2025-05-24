@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerCombatScript : MonoBehaviour
 {
     [SerializeField] public EnemyBaseScript m_TargetEnemy = null;
+
     public HealthController m_PlayerHealthController = null;
     public Animator m_Animator = null;
 
@@ -31,6 +32,12 @@ public class PlayerCombatScript : MonoBehaviour
         m_HeavyAttackDamage = InventoryManager.instance.m_CurrentHeavyWeapon.m_ItemDamage;
         m_HeavyAttackTotalCooldown = InventoryManager.instance.m_CurrentHeavyWeapon.m_ItemCooldown;
         m_HeavyAttackCurrentCooldown = m_HeavyAttackTotalCooldown;
+    }
+
+    private void Start()
+    {
+        //The player will first be running, so disable to combat script
+        GetComponent<PlayerCombatScript>().enabled = false;
     }
 
     // Update is called once per frame
