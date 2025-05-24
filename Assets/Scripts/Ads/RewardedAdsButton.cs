@@ -11,7 +11,8 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
     [SerializeField] string _iOSAdUnitId = "Rewarded_iOS";
     string _adUnitId = null; // This will remain null for unsupported platforms
 
-    public ShopRerollController _shopRerollController;
+    public ShopRerollController _shopRerollController = null;
+    public DeadMenuController _deadMenuController = null;
     void Awake()
     {
         // Get the Ad Unit ID for the current platform:
@@ -75,8 +76,20 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
             {
                 Debug.Log("Unity Ads Rewarded Ad Completed, give reward");
                 //ShopRerollController.Reroll
-                _shopRerollController.RerollActivated();
-                Debug.Log("Bro rerolled");
+                if (_shopRerollController != null) 
+                {
+                    _shopRerollController.RerollActivated();
+                    Debug.Log("Bro rerolled");
+                }
+                else
+                {
+                    _deadMenuController.RespawnWithVideo();
+                    Debug.Log("Bro respawned");
+                }
+
+                
+
+                
             }
             else
             {
