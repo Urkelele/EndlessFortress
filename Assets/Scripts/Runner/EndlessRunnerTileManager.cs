@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class EndlessRunnerTileManager : MonoBehaviour
 {
+    public PlayerHealthController m_PlayerHealthController = null;
+
     [Header("Tile Options")]
     public GameObject[] m_TilePrefabs;
     public float m_TileLength = 10f;
@@ -18,6 +20,10 @@ public class EndlessRunnerTileManager : MonoBehaviour
     public List<GameObject> m_ActiveTiles = new List<GameObject> ();
     public List<GameObject> m_TilePool = new List<GameObject> ();
 
+    private void Start()
+    {
+        m_PlayerHealthController = FindAnyObjectByType<PlayerHealthController> ();
+    }
     void Awake()
     {
         m_CurrentSpeed = m_MaxSpeed;
@@ -86,17 +92,9 @@ public class EndlessRunnerTileManager : MonoBehaviour
 
     public void ObstacleHit()
     {
-        if (m_CurrentSpeed == m_SlowSpeed)
-        {
-            m_CurrentSpeed = 0;
-            CancelInvoke("RecoverSpeed");
-            Debug.Log("You ded");
-        }
-        else
-        {
-            m_CurrentSpeed = m_SlowSpeed;
-            Invoke("RecoverSpeed", m_TimeToRecover);
-        }
+        m_CurrentSpeed = m_SlowSpeed;
+        m_PlayerHealthController.ReceiveDamage(m_PlayerHealthController.m_MaxHealthPoints / 4);
+        Invoke("RecoverSpeed", m_TimeToRecover);
     }
 
     private void RecoverSpeed()
