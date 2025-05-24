@@ -76,10 +76,10 @@ public class ShopItemController : MonoBehaviour
         switch(m_ItemBaseScript.m_TypeItem)
         {
             case ItemBaseScript.ItemType.PASSIVE:
-                m_InventoryManager.AddPassiveItem(m_ItemBaseScript);
+                m_InventoryManager.AddNewPassiveItem(m_ItemBaseScript);
                 break;
             case ItemBaseScript.ItemType.ACTIVE:
-                m_InventoryManager.AddNewActive(m_ItemBaseScript);
+                m_InventoryManager.AddNewActive((BaseActiveScript)m_ItemBaseScript);
                 break;
             case ItemBaseScript.ItemType.LIGHT_WEAPON:
                 m_InventoryManager.AddNewLightWeapon(m_ItemBaseScript);

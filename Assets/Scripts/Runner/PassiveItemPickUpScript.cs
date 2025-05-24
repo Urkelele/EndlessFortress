@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PasiveItemPickUpScript : MonoBehaviour
+public class PassiveItemPickUpScript : MonoBehaviour
 {
     private Sprite m_ItemSprite = null;
     private SpriteRenderer m_SpriteRenderer = null;
@@ -21,7 +21,7 @@ public class PasiveItemPickUpScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            InventoryManager.instance.AddPassiveItem(m_ItemPrefab);
+            InventoryManager.instance.AddNewPassiveItem(m_ItemPrefab);
         }
     }
 }
