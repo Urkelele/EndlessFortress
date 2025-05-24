@@ -94,19 +94,15 @@ public class PlayerMovement : MonoBehaviour
             if (currentTouch.phase == TouchPhase.Ended)
             {
                 Vector2 touchDirection = currentTouch.position - m_StartTouchPos;
-                Debug.Log("CURRENT TOUCH POS:" + currentTouch.position);
-                Debug.Log("RAW TOUCH POS:" + currentTouch.rawPosition);
 
                 //If they dont intend to Jump, we check wether they want to go left or right
                 if (touchDirection.x > 0 && m_CurrentLane != 2)
                 {
-                    Debug.Log("SWIPE RIGHT");
                     m_CurrentLane++;
                 }
 
                 if (touchDirection.x < 0 /*&& m_CurrentLane != 0*/)
                 {
-                    Debug.Log("SWIPE LEFT");
                     m_CurrentLane--;
                 }
 
