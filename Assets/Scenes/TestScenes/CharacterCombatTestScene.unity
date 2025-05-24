@@ -715,6 +715,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7650877348720430780, guid: d78c5bad035dcad4aa9bdde64716d08d, type: 3}
+      propertyPath: m_AudioSource
+      value: 
+      objectReference: {fileID: 2010129478}
+    - target: {fileID: -7650877348720430780, guid: d78c5bad035dcad4aa9bdde64716d08d, type: 3}
+      propertyPath: m_GettingDamaged
+      value: 
+      objectReference: {fileID: 8300000, guid: 514aeb77b484aa84ea2ca9f063b1be41, type: 3}
     - target: {fileID: -5811389242013882288, guid: d78c5bad035dcad4aa9bdde64716d08d, type: 3}
       propertyPath: m_AudioSource
       value: 
@@ -795,6 +803,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 579495690}
   m_SourcePrefab: {fileID: 100100000, guid: d78c5bad035dcad4aa9bdde64716d08d, type: 3}
+--- !u!82 &2010129478 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: -9182743944749911163, guid: d78c5bad035dcad4aa9bdde64716d08d, type: 3}
+  m_PrefabInstance: {fileID: 2010129477}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2084937503
 GameObject:
   m_ObjectHideFlags: 0

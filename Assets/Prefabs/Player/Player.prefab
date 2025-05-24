@@ -2054,7 +2054,7 @@ MonoBehaviour:
   m_HeavyAttackTotalCooldown: 0
   m_HeavyAttackCurrentCooldown: 0
   m_AudioSource: {fileID: -9182743944749911163}
-  m_AttackSound: {fileID: 0}
+  m_AttackSound: {fileID: 8300000, guid: 3f9c3f6fe1fb35449aee90a671d40488, type: 3}
 --- !u!114 &-7650877348720430780
 MonoBehaviour:
   m_ObjectHideFlags: 0
