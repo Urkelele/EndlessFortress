@@ -177,4 +177,9 @@ public class InventoryManager : MonoBehaviour
     {
         m_CurrentActiveItem = newActiveItem;
     }
+
+    public void AddGold (int goldAmount)
+    {
+        m_Gold +=(int)(goldAmount * m_TotalGoldRewardMultipler);
+    }
 }

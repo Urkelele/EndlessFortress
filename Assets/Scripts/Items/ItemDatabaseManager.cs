@@ -8,6 +8,7 @@ public class ItemDatabaseManager : MonoBehaviour
     public static ItemDatabaseManager Instance;
 
     public List<ItemBaseScript> m_AllItems = new List<ItemBaseScript>();
+    public List<ItemBaseScript> m_UnlockedItems = new List<ItemBaseScript>();
     public List<ItemBaseScript> m_CommonItems = new List<ItemBaseScript>();
     public List<ItemBaseScript> m_RareItems = new List<ItemBaseScript>();
     public List<ItemBaseScript> m_EpicItems = new List<ItemBaseScript>();

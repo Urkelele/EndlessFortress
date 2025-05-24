@@ -141,7 +141,7 @@ public class CombatManager : MonoBehaviour
     private void GiveRewards()
     {
         //Take into account gold reward multiplication, gold number gets rounded
-        InventoryManager.instance.m_Gold += (int)(m_GoldBattleReward * InventoryManager.instance.m_TotalGoldRewardMultipler);
+        InventoryManager.instance.AddGold(m_GoldBattleReward);
 
         float itemSpawnroll = Random.value;
 

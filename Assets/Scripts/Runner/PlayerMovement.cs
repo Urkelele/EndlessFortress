@@ -61,10 +61,11 @@ public class PlayerMovement : MonoBehaviour
             ObjectsPoolManager.m_Instance.ReturnCoin(other.gameObject);
             other.gameObject.SetActive(false);
         }
-        if (other.CompareTag("PremiumCoin"))
+        if (other.CompareTag("PremiumPickUp"))
         {
             // Premium Coin collected, return it to pool and optionally play effect
             ObjectsPoolManager.m_Instance.ReturnPremiumCoin(other.gameObject);
+            other.gameObject.SetActive(false);
         }
     }
 }
