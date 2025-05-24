@@ -120,4 +120,16 @@ public class GeneralCanvasManager : MonoBehaviour
         m_GoldResoruce.SetActive(true);
     }
 
+    
+    public void OpenChest()
+    {
+        m_MainMenu.SetActive(false);
+        m_MainGameUI.SetActive(true);
+        m_DeadMenu.SetActive(false);
+        m_CombatUI.SetActive(false);
+        m_ShopMenu.SetActive(false);
+        m_EndCombatMenu.SetActive(false);
+        m_TomesResource.SetActive(false);
+        m_GoldResoruce.SetActive(true);
+    }
 }
