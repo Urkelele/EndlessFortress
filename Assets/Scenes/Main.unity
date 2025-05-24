@@ -533,6 +533,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1428387009061096, guid: d78c5bad035dcad4aa9bdde64716d08d, type: 3}
   m_PrefabInstance: {fileID: 2044222750}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &934272990 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 95682664710827838, guid: d78c5bad035dcad4aa9bdde64716d08d, type: 3}
+  m_PrefabInstance: {fileID: 2044222750}
+  m_PrefabAsset: {fileID: 0}
 --- !u!82 &934272991
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1232,6 +1237,10 @@ PrefabInstance:
       propertyPath: m_PlayerRoomPos
       value: 
       objectReference: {fileID: 1701471741}
+    - target: {fileID: 7297540636192129326, guid: 4692fa9d6d3308c4d912d45f29e0a3fb, type: 3}
+      propertyPath: m_PlayerAnimator
+      value: 
+      objectReference: {fileID: 934272990}
     - target: {fileID: 7297540636192129326, guid: 4692fa9d6d3308c4d912d45f29e0a3fb, type: 3}
       propertyPath: m_PlayerMovement
       value: 
