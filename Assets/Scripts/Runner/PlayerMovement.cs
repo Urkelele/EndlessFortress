@@ -17,11 +17,17 @@ public class PlayerMovement : MonoBehaviour
     public float m_DistanceBetweenLanes = 2f;
 
     private EndlessRunnerTileManager m_RunnerTileManager;
+    private Animator m_Animator;
 
     public void Awake()
     {
         m_RunnerTileManager = FindFirstObjectByType<EndlessRunnerTileManager>();
-        
+        m_Animator = GetComponent<Animator>();
+    }
+
+    public void OnEnable()
+    {
+        m_Animator.SetBool("isFighting", false);
     }
 
     // Update is called once per frame
@@ -63,7 +69,9 @@ public class PlayerMovement : MonoBehaviour
         {
             other.enabled = false;
             m_RunnerTileManager.ObstacleHit();
-
+            // Hit Animation
+            m_Animator.SetTrigger("isHitted");
+            // Hit Audio
             PlayClip(m_ObstacleAudioclip);
         }
         if (other.CompareTag("Coin"))
