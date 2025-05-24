@@ -8,15 +8,14 @@ public class ItemDatabaseManager : MonoBehaviour
     public static ItemDatabaseManager Instance;
 
     public List<ItemBaseScript> m_AllItems = new List<ItemBaseScript>();
+    public List<ItemBaseScript> m_UnlockedItems = new List<ItemBaseScript>();
     public List<ItemBaseScript> m_CommonItems = new List<ItemBaseScript>();
     public List<ItemBaseScript> m_RareItems = new List<ItemBaseScript>();
     public List<ItemBaseScript> m_EpicItems = new List<ItemBaseScript>();
     public List<ItemBaseScript> m_LegendaryItems = new List<ItemBaseScript>();
 
-
     private void Awake()
     {
-        // Singleton simple
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -43,6 +42,7 @@ public class ItemDatabaseManager : MonoBehaviour
             Debug.Log($"[ItemDatabaseManager] Loaded {m_AllItems.Count} items.");
         }
     }
+
 
     private void CreateTierLists()
     {

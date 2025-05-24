@@ -2,31 +2,35 @@ using UnityEngine;
 
 public class PlayerCombatScript : MonoBehaviour
 {
-    public EnemyBaseScript m_TargetEnemy = null;
+    [SerializeField] public EnemyBaseScript m_TargetEnemy = null;
     public HealthController m_PlayerHealthController = null;
-    private CombatManager m_CombatManager = null;
-    [SerializeField] AbilityManager m_AbilityManager = null;
-    [SerializeField] InventoryManager m_Inventory = null;
+    public Animator m_Animator = null;
 
+    [Header("Light Attack Variables")]
     [SerializeField] private float m_LightAttackDamage = 0;
     [SerializeField] private float m_LightAttackTotalCooldown = 0;
     [SerializeField] private float m_LightAttackCurrentCooldown = 0;
-
+    [Header("Heavy Attack Variables")]
     [SerializeField] private float m_HeavyAttackDamage = 0;
     [SerializeField] private float m_HeavyAttackTotalCooldown = 0;
     [SerializeField] private float m_HeavyAttackCurrentCooldown = 0;
+    
+
+    private void Awake()
+    {
+        m_PlayerHealthController = GetComponent<HealthController>();
+        m_Animator = GetComponent<Animator>();
+    }
     private void OnEnable()
     {
-        //m_LightAttackDamage = m_Inventory.m_CurrentLightWeapon.ItemScript.m_WeaponDamage;
-        //m_LightAttackTotalCooldown = m_Inventory.m_CurrentLightWeapon.ItemScript.m_AttackCooldown;
-        //m_LightAttackCurrentCooldown = m_LightAttackTotalCooldown;
+        //When the script is enabled (the battle starts) update the values from the weapons of the inventory to use in the fight
+        m_LightAttackDamage = InventoryManager.instance.m_CurrentLightWeapon.m_ItemDamage;
+        m_LightAttackTotalCooldown = InventoryManager.instance.m_CurrentLightWeapon.m_ItemCooldown;
+        m_LightAttackCurrentCooldown = m_LightAttackTotalCooldown;
 
-        //m_HeavyAttackDamage = m_Inventory.m_CurrentHeavyWeapon.ItemScript.m_WeaponDamage;
-        //m_HeavyAttackTotalCooldown = m_Inventory.m_CurrentHeavyWeapon.ItemScript.m_AttackCooldown;
-        //m_HeavyAttackCurrentCooldown = m_HeavyAttackTotalCooldown;
-
-        //Call ItemManagers Get LightAttack
-        //Call ItemManagers Get HeavyAttack
+        m_HeavyAttackDamage = InventoryManager.instance.m_CurrentHeavyWeapon.m_ItemDamage;
+        m_HeavyAttackTotalCooldown = InventoryManager.instance.m_CurrentHeavyWeapon.m_ItemCooldown;
+        m_HeavyAttackCurrentCooldown = m_HeavyAttackTotalCooldown;
     }
 
     // Update is called once per frame
@@ -35,48 +39,84 @@ public class PlayerCombatScript : MonoBehaviour
         m_LightAttackCurrentCooldown -= Time.deltaTime;
         m_HeavyAttackCurrentCooldown -= Time.deltaTime;
 
-        Random.Range(0f, 1f);
-
+        //DEBUG
+        LightAttack();
+        HeavyAttack();
     }
 
     public void GetHit(float dmg)
     {
+        // Get Hit Animation
+        m_Animator.SetTrigger("isHitted");
+
         m_PlayerHealthController.ReceiveDamage(dmg);
-        //Receive Damage Animation
+        
     }
 
     public void UseAbility()
     {
-        m_AbilityManager.UseAbility();
+        AbilityManager.instance.UseAbility();
         //Abilitys visula effect
     }
 
     public void LightAttack()
     {
-        if (m_LightAttackCurrentCooldown < 0.0f)
+        if (m_LightAttackCurrentCooldown < 0.0f && m_TargetEnemy != null)
         {
-            //Reset timer
-            m_LightAttackCurrentCooldown = m_LightAttackTotalCooldown;
-            m_CombatManager.m_CurrentEnemyTarget.m_HealthController.ReceiveDamage(m_LightAttackDamage);
+            //Reset timer, take into account attack speed reduction
+            m_LightAttackCurrentCooldown = m_LightAttackTotalCooldown * (1/InventoryManager.instance.m_TotalAttackSpeedMultiplier);
+            DealDamageToTargetEnemy(m_LightAttackDamage);
+            
+            //Attack Animation
+            m_Animator.SetTrigger("isAttacking");
         }
-        //Attack Animation
     }
 
     public void HeavyAttack()
     {
         if (m_HeavyAttackCurrentCooldown < 0.0f)
         {
-            //Reset timer
-            m_HeavyAttackCurrentCooldown = m_HeavyAttackTotalCooldown;
-            m_CombatManager.m_CurrentEnemyTarget.m_HealthController.ReceiveDamage(m_HeavyAttackDamage);
+            //Reset timer, take into account attack speed reduction
+            m_HeavyAttackCurrentCooldown = m_HeavyAttackTotalCooldown * (1/InventoryManager.instance.m_TotalAttackSpeedMultiplier);
+            DealDamageToTargetEnemy(m_HeavyAttackDamage);
+
+            //Attack Animation
+            m_Animator.SetTrigger("isAttacking");
         }
-        //Attack Animation
     }
 
+    /// <summary>
+    /// Deals damage to current target enemy, takes into account lifesteal and attack mult
+    /// </summary>
+    /// <param name="damage"></param>
+    public void DealDamageToTargetEnemy(float damage)
+    {
+        float totalDamage = damage * InventoryManager.instance.m_TotalAttackDamageMultiplier;
+        m_TargetEnemy.m_HealthController.ReceiveDamage(totalDamage);
+        m_PlayerHealthController.HealDamage(totalDamage * InventoryManager.instance.m_TotalLifeSteal);
+    }
+
+    /// <summary>
+    /// Deals damage to all enemies, takes into account lifesteal and attack mult
+    /// </summary>
+    /// <param name="damage"></param>
+    public void DealDamageToAllEnemies(float damage)
+    {
+        float totalDamage = damage * InventoryManager.instance.m_TotalAttackDamageMultiplier;
+     
+        foreach (EnemyBaseScript enemy in CombatManager.instance.m_CombatEnemies)
+        {
+            enemy.m_HealthController.ReceiveDamage(totalDamage);
+            m_PlayerHealthController.HealDamage(totalDamage * InventoryManager.instance.m_TotalLifeSteal);
+        }
+
+    }
     public void UseActiveItem()
     {
         //Call ItemManagers.ActiveItem.Action()
+        
         //Attack Animation
+        m_Animator.SetTrigger("isAttacking");
 
     }
 }

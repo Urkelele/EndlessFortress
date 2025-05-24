@@ -2,26 +2,35 @@ using UnityEngine;
 
 public class PlayerHealthController : HealthController
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public float m_BaseHp = 100f;
+    public Animator m_Animator = null;
+
+
+    protected override void Awake()
     {
-        
+        m_Animator = GetComponent<Animator>();
+        m_MaxHealthPoints = m_BaseHp;
+        m_CurrentHealthPoints = m_MaxHealthPoints;
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        
+        base.Update();
+
+        if(m_IsDead)
+        {
+            // Dead Animation
+            m_Animator.SetTrigger("isDead");
+
+            InventoryManager.instance.EnableItemTrigger(TriggerType.PLAYER_DEATH);
+        }
     }
 
     public override void ReceiveDamage(float damageReceived)
     {
         base.ReceiveDamage(damageReceived);
-        PlayerStats.instance.m_CurrentHealthPoints = m_HealthPoints;
-    }
-    public override void HealDamage(float healing)
-    {
-        base.HealDamage(healing);
-        PlayerStats.instance.m_CurrentHealthPoints = m_HealthPoints;
+
+        //Receive Damage Animation
+        m_Animator.SetTrigger("isHitted");
     }
 }

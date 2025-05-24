@@ -6,36 +6,40 @@ public class EnemyBaseScript : MonoBehaviour
     [Header("BASE ENEMY CLASSES")]
     //Scripts
     public HealthController m_HealthController = null;
-    private PlayerCombatScript m_PlayerCombatScript = null;
+    protected PlayerCombatScript m_PlayerCombatScript = null;
     public Collider m_Collider = null;
-    private Animator m_Animator = null;
+    protected Animator m_Animator = null;
     public ClickDetection m_ClickDetection = null;
     private Outline m_Outline = null;
-    private CombatManager m_CombatManager = null;
     public bool m_IsCurrentTarget = false;
     public bool m_IsBoss = false;
 
-    [Header("COOLDOWNS")]
-    [SerializeField] private float m_TotalActionCooldown = 0.0f;
+    [Header("Enemy Stats")]
+    [SerializeField] protected float m_TotalActionCooldown = 0.0f;
     [SerializeField] public float m_CurrentActionCooldown = 0.0f;
     
-    [SerializeField] int m_GoldReward = 0;
+    [SerializeField] protected int m_GoldReward = 0;
 
-    private void Start()
-    {
+    //Control vars
+    private bool m_OnDeathTriggered = false; //Control bool so that the OnDeath method is only called once
+
+    private void Awake()
+    { 
         //Get references
         m_HealthController = GetComponent<HealthController>();
         m_Collider = GetComponent<Collider>();
-        m_Animator = GetComponent<Animator>();
         m_ClickDetection = GetComponent<ClickDetection>();
         m_Animator = GetComponent<Animator>();
         m_Outline = GetComponent<Outline>();
         m_PlayerCombatScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCombatScript>();
 
+    }
+    protected virtual void Start()
+    {
         m_CurrentActionCooldown = m_TotalActionCooldown;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         m_CurrentActionCooldown -= Time.deltaTime;
 
@@ -46,9 +50,8 @@ public class EnemyBaseScript : MonoBehaviour
             PerformAction();
         }
 
-    
         // If an enemy is the last object clicked that means that it also is the current target enemy
-        if(m_ClickDetection.m_IsLastObjectClicked)
+        if (m_ClickDetection.m_IsLastObjectClicked)
         {
             OnClick();
         }
@@ -57,11 +60,16 @@ public class EnemyBaseScript : MonoBehaviour
             m_Outline.enabled = false;
             m_IsCurrentTarget = false;
         }
+
+        if(m_HealthController.m_IsDead && !m_OnDeathTriggered)
+        {
+            OnDeath();
+        }
     }
 
     public virtual void PerformAction()
     {
-        
+
     }
 
     private void OnClick()
@@ -74,10 +82,27 @@ public class EnemyBaseScript : MonoBehaviour
 
     public virtual void OnDeath()
     {
+        m_OnDeathTriggered = true;
+
+        //Update playerstats
         PlayerStats.instance.m_EnemiesSlain += 1;
 
+        //If this was target enemy, unselect it and target another random enemy
+        CombatManager.instance.SelectRandomTargetEnemy();
+        m_ClickDetection.m_IsLastObjectClicked = false;
+        m_IsCurrentTarget = false;
+
         //Add the enemy's gold reward to the total pool of gold that will be given to the player when the battle finishes
-        m_CombatManager.m_GoldBattleReward += m_GoldReward;
+        CombatManager.instance.m_GoldBattleReward += m_GoldReward;
+
+        //Tell the inventory that an enemy died so that it can call triggeredItems
+        InventoryManager.instance.EnableItemTrigger(TriggerType.ENEMY_DEATH);
+
+        //Dead enemies out of the combat list
+        CombatManager.instance.m_CombatEnemies.Remove(this);
+
+        //Death Animation
+        m_Animator.SetTrigger("isDead");
     }
 
 }
