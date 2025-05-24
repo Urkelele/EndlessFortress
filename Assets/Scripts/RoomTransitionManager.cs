@@ -14,6 +14,8 @@ public class RoomTransitionManager : MonoBehaviour
     public Transform m_PlayerRunnerPos = null; 
     [SerializeField] private PlayerCombatScript m_PlayerCombatScript = null;
     [SerializeField] private PlayerMovement m_PlayerMovement = null;
+    [SerializeField] private Animator m_PlayerAnimator = null;
+
 
     [Header("ROOM GAMEOBJECTS")]
     public GameObject m_ShopRoom = null;
@@ -57,6 +59,7 @@ public class RoomTransitionManager : MonoBehaviour
         m_PlayerTransform = player.transform;
         m_PlayerCombatScript = player.GetComponent<PlayerCombatScript>();
         m_PlayerMovement = player.GetComponent<PlayerMovement>();
+        m_PlayerAnimator = player.GetComponent<Animator>();
     }
 
 
@@ -91,6 +94,9 @@ public class RoomTransitionManager : MonoBehaviour
             m_RunnerCamera.gameObject.SetActive(false);
             m_RoomCamera.gameObject.SetActive(true);
             m_CurrentActiveCamera = m_RoomCamera;
+
+            //Change animation
+            m_PlayerAnimator.SetBool("isFighting", true);
         }
         else
         {
