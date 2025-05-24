@@ -135,6 +135,7 @@ public class EndlessRunnerTileManager : MonoBehaviour
         m_CurrentTilesUntilDoors = m_IndexToSpawn;
     }
 
+
     public void DeactivateDoorsTile()
     {
         m_DoorsTile.SetActive(false);
