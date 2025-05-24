@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 2177418779022882723}
   - component: {fileID: 6716842487511593604}
   - component: {fileID: 1406217480638287845}
+  - component: {fileID: -8376389042787444233}
   m_Layer: 0
   m_Name: RandomDoor
   m_TagString: Untagged
@@ -196,3 +197,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.3236525, y: 2.455684, z: 0.28285897}
   m_Center: {x: -0.6255802, y: 1.227842, z: 0.000000059604645}
+--- !u!114 &-8376389042787444233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5944652107708151295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c69162f0559c04bae706599ba8a939, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_DoorType: 2

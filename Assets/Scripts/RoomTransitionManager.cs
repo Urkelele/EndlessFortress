@@ -23,23 +23,28 @@ public class RoomTransitionManager : MonoBehaviour
 
     public void TransitionToCombat()
     {
-        CombatManager.instance.StartCombat();
+        Debug.LogWarning("TRANSITIONING TO COMBAT");
+        //CombatManager.instance.StartCombat();
     }
     public void TransitionToShop()
     {
+        Debug.LogWarning("TRANSITIONING TO SHOP");
         //StartShop();
     }
     public void TransitionToBoss()
     {
-        CombatManager.instance.StartCombat();
+        Debug.LogWarning("TRANSITIONING TO BOSS");
+        //CombatManager.instance.StartCombat();
     }
     public void TransitionToHeal()
     {
+        Debug.LogWarning("TRANSITIONING TO HEAL");
         //StartHeal();
     }
 
     public void TransitionToRunner()
     {
+        Debug.LogWarning("TRANSITIONING TO RUNNER");
         CheckIfNextRoomsIsBoss();
         //StartRunner();
     }
