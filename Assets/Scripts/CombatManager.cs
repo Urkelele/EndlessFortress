@@ -9,16 +9,12 @@ public class CombatManager : MonoBehaviour
 {
     public static CombatManager instance;
     
-    [Header("CONTROL VARS")]
-    public int m_NumOfRoomsBetweenBoss = 10;
-
     [Header("CLASSES")]
     private PlayerCombatScript m_PlayerCombatScript;
     public List<EnemyBaseScript> m_CombatEnemies;
     public EnemyBaseScript m_CurrentEnemyTarget;
     
     [Header("POSITIONS")]
-    public Transform m_PlayerPosition;
     [SerializeField] private Transform[] m_EnemyPositions = new Transform[3];
 
     [Header("REWARDS")]
@@ -52,10 +48,11 @@ public class CombatManager : MonoBehaviour
             instance = this;
         }
 
-        m_PlayerCombatScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCombatScript>();
         LoadCompsPrefabs(m_EnemyCompsList, m_EnemyCompsFolderPath);
         LoadCompsPrefabs(m_BossCompsList, m_BossCompsFolderPath);
+        m_PlayerCombatScript = FindAnyObjectByType<PlayerCombatScript>();
     }
+
 
     /// <summary>
     /// Loads all gameobjects from a certain Resource/ path, deactivates them and puts them on a list
@@ -78,15 +75,8 @@ public class CombatManager : MonoBehaviour
     public void StartCombat()
     {
         InventoryManager.instance.EnableItemTrigger(TriggerType.COMBAT_START);
-        MovePlayer();
         SpawnEnemies();
         SelectRandomTargetEnemy();
-    }
-
-    private void MovePlayer()
-    {
-        m_PlayerCombatScript.transform.position = m_PlayerPosition.position;
-        m_PlayerCombatScript.transform.rotation = m_PlayerPosition.rotation;
     }
 
     /// <summary>
@@ -96,13 +86,18 @@ public class CombatManager : MonoBehaviour
     {
         m_CurrentComp = Instantiate(GetRandomComp());
         m_CurrentComp.SetActive(true);
-
         for (int i = 0; i < m_CurrentComp.transform.childCount; i++)
         {
             m_CurrentComp.transform.GetChild(i).transform.position = m_EnemyPositions[i].position;
             m_CurrentComp.transform.GetChild(i).transform.rotation = m_EnemyPositions[i].rotation;
             m_CombatEnemies.Add(m_CurrentComp.transform.GetChild(i).GetComponent<EnemyBaseScript>());
         }
+
+        //foreach(EnemyBaseScript enemy in m_CombatEnemies)
+        //{
+        //    enemy.GetComponent<Outline>().enabled = false;
+        //    enemy.enabled = true;
+        //}
     }
 
     /// <summary>
@@ -126,8 +121,7 @@ public class CombatManager : MonoBehaviour
     public void SelectRandomTargetEnemy()
     {
         //Get random enemy, make it the target and make it so it "was clicked last" to mantain the outline around it
-        //TODO: might give problems since the actual last object that was clicked does not turn off
-        int randEnemyPos = Random.Range(0, m_CombatEnemies.Count);
+        int randEnemyPos = Random.Range(0, m_CombatEnemies.Count - 1);
         Debug.LogWarning("Rand enemy pos:" + randEnemyPos);
         m_PlayerCombatScript.m_TargetEnemy = m_CombatEnemies[randEnemyPos];
         m_CombatEnemies[randEnemyPos].m_ClickDetection.m_IsLastObjectClicked = true;

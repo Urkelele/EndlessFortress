@@ -9,7 +9,8 @@ public class DoorScript : MonoBehaviour
         SHOP,
         RANDOM,
         HEAL,
-        BOSS
+        BOSS,
+        CHEST
     }
     private Collider m_DoorCollider = null;
     public DoorType m_DoorType = DoorType.NONE;
@@ -38,16 +39,19 @@ public class DoorScript : MonoBehaviour
                 Debug.LogError("DOOR WAS TYPE NONE");
                 break;
             case DoorType.COMBAT:
-                RoomTransitionManager.instance.TransitionToCombat();
+                RoomTransitionManager.instance.RoomTransition(TransitionType.COMBAT);
                 break;
             case DoorType.SHOP:
-                RoomTransitionManager.instance.TransitionToShop();
+                RoomTransitionManager.instance.RoomTransition(TransitionType.SHOP);
                 break;
             case DoorType.HEAL:
-                RoomTransitionManager.instance.TransitionToHeal();
+                RoomTransitionManager.instance.RoomTransition(TransitionType.HEAL);
                 break;
             case DoorType.BOSS:
-                RoomTransitionManager.instance.TransitionToCombat();
+                RoomTransitionManager.instance.RoomTransition(TransitionType.BOSS);
+                break;
+            case DoorType.CHEST:
+                RoomTransitionManager.instance.RoomTransition(TransitionType.CHEST);
                 break;
             default:
                 break;

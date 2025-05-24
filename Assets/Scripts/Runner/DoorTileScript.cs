@@ -36,7 +36,6 @@ public class DoorTileScript : MonoBehaviour
     /// <returns></returns>
     public GameObject PopRandomDoorFromList()
     {
-        Debug.Log(m_DoorList.Count);
         int randomIndex = Random.Range(0, m_DoorList.Count);
         GameObject randDoor = m_DoorList[randomIndex];
         m_DoorList.Remove(randDoor);

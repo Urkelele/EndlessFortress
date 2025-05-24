@@ -40,6 +40,15 @@ public class EndlessRunnerTileManager : MonoBehaviour
         PlaceInitialTiles();
     }
 
+    //Disable all active tiles
+    private void OnDisable()
+    {
+        foreach(GameObject activeTile in m_ActiveTiles)
+        {
+            activeTile.SetActive(false);
+        }
+    }
+
     private void InitializePool()
     {
         foreach (var tile in m_TilePrefabs)
@@ -127,7 +136,6 @@ public class EndlessRunnerTileManager : MonoBehaviour
     private void RecoverSpeed()
     {
         m_CurrentSpeed = m_MaxSpeed;
-        Debug.Log("GOTTA GO FAST");
     }
 
     public void CalculateTilesUntilDoors()

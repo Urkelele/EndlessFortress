@@ -38,16 +38,17 @@ public class TreantScript : EnemyBaseScript
     {
         foreach (EnemyBaseScript enemy in CombatManager.instance.m_CombatEnemies)
         {
-            if (m_LowestHealthEnemy == null && !enemy.GetComponent<TreantScript>())
+            if(!enemy.GetComponent<TreantScript>() && !enemy.GetComponent<EnemyHealthController>().m_IsDead)
             {
-                m_LowestHealthEnemy = enemy;
-            }
-            else
-            {
-                if ((m_LowestHealthEnemy.m_HealthController.m_CurrentHealthPoints / m_LowestHealthEnemy.m_HealthController.m_MaxHealthPoints) > 
-                    (enemy.m_HealthController.m_CurrentHealthPoints / enemy.m_HealthController.m_MaxHealthPoints))
+                if (m_LowestHealthEnemy == null)
                 {
                     m_LowestHealthEnemy = enemy;
+                }
+                else if((m_LowestHealthEnemy.m_HealthController.m_CurrentHealthPoints / m_LowestHealthEnemy.m_HealthController.m_MaxHealthPoints) >
+                        (enemy.m_HealthController.m_CurrentHealthPoints / enemy.m_HealthController.m_MaxHealthPoints))
+                {
+                        m_LowestHealthEnemy = enemy;
+                 
                 }
             }
 
