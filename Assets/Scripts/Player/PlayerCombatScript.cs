@@ -32,6 +32,8 @@ public class PlayerCombatScript : MonoBehaviour
         m_HeavyAttackDamage = InventoryManager.instance.m_CurrentHeavyWeapon.m_ItemDamage;
         m_HeavyAttackTotalCooldown = InventoryManager.instance.m_CurrentHeavyWeapon.m_ItemCooldown;
         m_HeavyAttackCurrentCooldown = m_HeavyAttackTotalCooldown;
+
+        m_Animator.SetBool("isFighting", true);
     }
 
     private void Start()
