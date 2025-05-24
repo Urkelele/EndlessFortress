@@ -12,10 +12,9 @@ GameObject:
   - component: {fileID: 4216694686474672664}
   - component: {fileID: 60203100169778225}
   - component: {fileID: 1175289737992955521}
-  - component: {fileID: -8083365424488921381}
   m_Layer: 0
   m_Name: SM_Env_Fence_Goblin_01
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,16 +109,3 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43265436977861164, guid: 22d08e8e9a8bd654aa160fc53956e34f, type: 2}
---- !u!114 &-8083365424488921381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3340512942073615967}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac41b8d37b8213e4bada8928d43e90da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PlayerHealthController: {fileID: 0}
