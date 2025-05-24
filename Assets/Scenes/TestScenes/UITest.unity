@@ -154,6 +154,11 @@ MonoBehaviour:
   m_RareItems: []
   m_EpicItems: []
   m_LegendaryItems: []
+  m_ActiveItems: []
+  m_PassiveItems: []
+  m_AllWeapons: []
+  m_LightWeapons: []
+  m_HeavyWeapons: []
 --- !u!4 &461239249
 Transform:
   m_ObjectHideFlags: 0
@@ -338,10 +343,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a82d785c983f714e9e9571b4c14a9eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_NumOfRoomsBetweenBoss: 10
   m_CombatEnemies: []
   m_CurrentEnemyTarget: {fileID: 0}
-  m_PlayerPosition: {fileID: 0}
   m_EnemyPositions:
   - {fileID: 0}
   - {fileID: 0}
@@ -1444,7 +1447,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &140580988195884389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24677,7 +24680,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &7672676687144226349
 MonoBehaviour:
   m_ObjectHideFlags: 0
