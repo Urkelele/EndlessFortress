@@ -13,5 +13,12 @@ public class EnemyHealthController : HealthController
     {
         base.Update();
     }
-    
+
+    public override void ReceiveDamage(float damageReceived)
+    {
+        base.ReceiveDamage(damageReceived);
+
+        //RECEIVE DAMAGE ANIMATION
+    }
+
 }
