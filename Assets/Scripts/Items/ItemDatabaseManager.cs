@@ -9,10 +9,19 @@ public class ItemDatabaseManager : MonoBehaviour
 
     public List<ItemBaseScript> m_AllItems = new List<ItemBaseScript>();
     public List<ItemBaseScript> m_UnlockedItems = new List<ItemBaseScript>();
+
+    [Header("QUALITY LISTS")]
     public List<ItemBaseScript> m_CommonItems = new List<ItemBaseScript>();
     public List<ItemBaseScript> m_RareItems = new List<ItemBaseScript>();
     public List<ItemBaseScript> m_EpicItems = new List<ItemBaseScript>();
     public List<ItemBaseScript> m_LegendaryItems = new List<ItemBaseScript>();
+
+    [Header("TYPE LISTS")]
+    public List<ItemBaseScript> m_ActiveItems = new List<ItemBaseScript>();
+    public List<ItemBaseScript> m_PassiveItems = new List<ItemBaseScript>();
+    public List<ItemBaseScript> m_AllWeapons = new List<ItemBaseScript>();
+    public List<ItemBaseScript> m_LightWeapons = new List<ItemBaseScript>();
+    public List<ItemBaseScript> m_HeavyWeapons = new List<ItemBaseScript>();
 
     private void Awake()
     {
@@ -26,7 +35,8 @@ public class ItemDatabaseManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         LoadAllItems();
-        CreateTierLists();
+
+        CreateAllLists();
     }
 
     private void LoadAllItems()
@@ -43,11 +53,18 @@ public class ItemDatabaseManager : MonoBehaviour
         }
     }
 
-
-    private void CreateTierLists()
+    private void CreateAllLists()
     {
-        //Sorts by quality into lists
         foreach (ItemBaseScript item in m_AllItems)
+        {
+            if(item.m_Unlocked)
+            {
+                m_UnlockedItems.Add(item);
+            }
+        }
+
+        //Sorts by quality into lists
+        foreach (ItemBaseScript item in m_UnlockedItems)
         {
             switch (item.m_QualityItem)
             {
@@ -64,7 +81,28 @@ public class ItemDatabaseManager : MonoBehaviour
                     m_LegendaryItems.Add(item);
                     break;
                 default:
-                    Debug.LogWarning(item.name + " was not assigned proporly into a tier list");
+                    Debug.LogWarning(item.name + " was not assigned proporly into a quality list");
+                    break;
+            }
+
+            switch (item.m_TypeItem)
+            {
+                case ItemBaseScript.ItemType.PASSIVE:
+                    m_PassiveItems.Add(item);
+                    break;
+                case ItemBaseScript.ItemType.ACTIVE:
+                    m_ActiveItems.Add(item);
+                    break;
+                case ItemBaseScript.ItemType.LIGHT_WEAPON:
+                    m_AllWeapons.Add(item);
+                    m_LightWeapons.Add(item);
+                    break;
+                case ItemBaseScript.ItemType.HEAVY_WEAPON:
+                    m_AllWeapons.Add(item);
+                    m_HeavyWeapons.Add(item);   
+                    break;
+                default:
+                    Debug.LogWarning(item.name + " was not assigned proporly into a type list");
                     break;
             }
         }
@@ -76,6 +114,13 @@ public class ItemDatabaseManager : MonoBehaviour
         
         int randomItemIndex = Random.Range(0, m_AllItems.Count);
         return m_AllItems[randomItemIndex];
+    }
+    public ItemBaseScript GetRandomPasiveItem()
+    {
+        if (m_PassiveItems.Count == 0) return null;
+
+        int randomItemIndex = Random.Range(0, m_PassiveItems.Count);
+        return m_PassiveItems[randomItemIndex];
     }
 
     public ItemBaseScript GetRandomItemOfQuality(ItemBaseScript.ItemQuality quality)

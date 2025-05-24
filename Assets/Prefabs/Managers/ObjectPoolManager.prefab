@@ -53,10 +53,10 @@ MonoBehaviour:
   m_CoinPrefab: {fileID: 184264, guid: cbaad69ca04d01940a8e7a7f54ce0b54, type: 3}
   m_PremiumPickUps:
   - {fileID: 4312854370414355051, guid: 4bb8f27bfd825d64885b78baf3de1728, type: 3}
-  - {fileID: 3043897217479470398, guid: 8c6da392b6f1aa04f996a72595a3635c, type: 3}
-  - {fileID: 3043897217479470398, guid: 8c6da392b6f1aa04f996a72595a3635c, type: 3}
-  - {fileID: 3043897217479470398, guid: 8c6da392b6f1aa04f996a72595a3635c, type: 3}
-  - {fileID: 3043897217479470398, guid: 8c6da392b6f1aa04f996a72595a3635c, type: 3}
+  - {fileID: 6624729624833119733, guid: 8c6da392b6f1aa04f996a72595a3635c, type: 3}
+  - {fileID: 6624729624833119733, guid: 8c6da392b6f1aa04f996a72595a3635c, type: 3}
+  - {fileID: 6624729624833119733, guid: 8c6da392b6f1aa04f996a72595a3635c, type: 3}
+  - {fileID: 6624729624833119733, guid: 8c6da392b6f1aa04f996a72595a3635c, type: 3}
   m_ObstaclePool: []
   m_PremiumPickUpPool: []
   m_ObstaclePoolSize: 5

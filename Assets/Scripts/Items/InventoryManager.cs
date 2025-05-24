@@ -138,7 +138,7 @@ public class InventoryManager : MonoBehaviour
     /// Adds new passive item to the list and updates the items
     /// </summary>
     /// <param name="newPassiveItem"></param>
-    public void AddPassiveItem(ItemBaseScript newPassiveItem)
+    public void AddNewPassiveItem(ItemBaseScript newPassiveItem)
     {
         m_PassiveItemsList.Add(newPassiveItem);
         UpdateItems();
