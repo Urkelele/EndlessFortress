@@ -5,6 +5,7 @@ public class RoomTransitionManager : MonoBehaviour
     public static RoomTransitionManager instance;
     public EndlessRunnerTileManager m_EndlessRunnerTilesManager;
     public bool m_NextRoomIsBoss = false;
+    public Transform m_PlayerRoomPositiom = null;
 
     public int m_NumOfRoomsBetweenBoss = 10;
 
