@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7325908102279570661
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1106022085044920983}
+  - component: {fileID: 5123839212030503959}
+  m_Layer: 0
+  m_Name: CombatManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1106022085044920983
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7325908102279570661}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.9263388, y: 3.1781678, z: 1.3182362}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5123839212030503959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7325908102279570661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a82d785c983f714e9e9571b4c14a9eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NumOfRoomsBetweenBoss: 10
+  m_CombatEnemies: []
+  m_CurrentEnemyTarget: {fileID: 0}
+  m_PlayerPosition: {fileID: 0}
+  m_EnemyPositions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_GoldBattleReward: 0
+  m_ItemReward: {fileID: 0}
+  m_ItemDropChance: 0.25
+  m_CommonDropChance: 0.5
+  m_RareDropChance: 0.3
+  m_EpicDropChance: 0.15
+  m_LegendaryDropChance: 0.05
+  m_EnemyCompsList: []
+  m_EnemyCompsFolderPath: Prefabs/EnemyComps_Prefabs
+  m_BossCompsList: []
+  m_BossCompsFolderPath: Prefabs/BossComps_Prefabs

@@ -33,6 +33,10 @@ public class EndlessRunnerTileManager : MonoBehaviour
     {
         m_CurrentSpeed = m_MaxSpeed;
         InitializePool();
+    }
+
+    private void OnEnable()
+    {
         PlaceInitialTiles();
     }
 
@@ -130,6 +134,7 @@ public class EndlessRunnerTileManager : MonoBehaviour
     {
         m_CurrentTilesUntilDoors = m_IndexToSpawn;
     }
+
 
     public void DeactivateDoorsTile()
     {
