@@ -5731,7 +5731,7 @@ Animator:
   m_GameObject: {fileID: 1780936617907984}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 014a29dcf32899248a35e1af0de48366, type: 3}
-  m_Controller: {fileID: 9100000, guid: 87ff9a4cd6979694d95ceed5f34b7346, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4dd8485e98fc9ef4296881b3d42245d0, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5756,8 +5756,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MaxHealthPoints: 60
-  m_HealthPoints: 0
-  m_DamageReduction: 1
+  m_CurrentHealthPoints: 0
+  m_IncomingDamageMultiplier: 1
   m_IsDead: 0
   m_GettingDamagedSound: {fileID: 0}
 --- !u!114 &3300662191008940756
