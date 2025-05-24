@@ -10,27 +10,28 @@ public class HealthBarUI : MonoBehaviour
 
     [SerializeField] private RectTransform m_HealthBar;
 
+    private PlayerHealthController m_PlayerHealthController;
+
     private void Start()
     {
         m_Width = GetComponent<RectTransform>().sizeDelta.x;
         m_Height = GetComponent<RectTransform>().sizeDelta.y;
+        m_PlayerHealthController = FindAnyObjectByType<PlayerHealthController>();
     }
 
-    public void SetMaxHealth(float maxHealth)
+    public void SetMaxHealth()
     {
-        m_MaxHealth = maxHealth;
+        m_MaxHealth = m_PlayerHealthController.m_MaxHealthPoints;
     }
-    public void SetHealth(float health)
+    public void SetHealth()
     {
-        m_CurrentHealth = health;
-        float newWidth = (health / m_MaxHealth) * m_Width;
+        m_CurrentHealth = m_PlayerHealthController.m_CurrentHealthPoints;
+        float newWidth = (m_PlayerHealthController.m_CurrentHealthPoints / m_MaxHealth) * m_Width;
         m_HealthBar.sizeDelta = new Vector2(newWidth, m_Height);
     }
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            SetHealth(m_CurrentHealth);
-        }
+        SetMaxHealth();
+        SetHealth();
     }
 }

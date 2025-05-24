@@ -25,7 +25,7 @@ MonoBehaviour:
   m_SpriteItem: {fileID: 21300000, guid: 014b08c2d3b24494fa59e7f327dae7fe, type: 3}
   m_QualityItem: 3
   m_TypeItem: 1
-  m_Unlocked: 1
+  m_Unlocked: 0
   m_ItemDamage: 0
   m_ItemCooldown: 45
   m_MaxHealthDamagePercentage: 0.4

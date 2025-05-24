@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerCombatScript : MonoBehaviour
 {
     [SerializeField] public EnemyBaseScript m_TargetEnemy = null;
+
     public HealthController m_PlayerHealthController = null;
     public Animator m_Animator = null;
 
@@ -37,15 +38,17 @@ public class PlayerCombatScript : MonoBehaviour
         m_HeavyAttackCurrentCooldown = m_HeavyAttackTotalCooldown;
     }
 
+    private void Start()
+    {
+        //The player will first be running, so disable to combat script
+        GetComponent<PlayerCombatScript>().enabled = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
         m_LightAttackCurrentCooldown -= Time.deltaTime;
         m_HeavyAttackCurrentCooldown -= Time.deltaTime;
-
-        //DEBUG
-        LightAttack();
-        HeavyAttack();
     }
 
     public void GetHit(float dmg)
@@ -60,7 +63,6 @@ public class PlayerCombatScript : MonoBehaviour
     public void UseAbility()
     {
         AbilityManager.instance.UseAbility();
-        //Abilitys visula effect
     }
 
     public void LightAttack()

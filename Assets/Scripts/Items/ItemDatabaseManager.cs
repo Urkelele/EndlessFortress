@@ -55,12 +55,10 @@ public class ItemDatabaseManager : MonoBehaviour
 
     private void CreateAllLists()
     {
-        foreach (ItemBaseScript item in m_AllItems)
+        foreach (ItemBaseScript item in ExternalDataManager.Instance.m_StoredData.unlockedScripts)
         {
-            if(item.m_Unlocked)
-            {
-                m_UnlockedItems.Add(item);
-            }
+            item.m_Unlocked = true;
+            m_UnlockedItems.Add(item);
         }
 
         //Sorts by quality into lists

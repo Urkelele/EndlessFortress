@@ -27,7 +27,7 @@ public class DeadMenuController : MonoBehaviour
         // Take the text and take only the numbers without the Pay: 
         string aux = m_TextAmountTomes.text.Substring(5);
         m_AmountOfTomes = int.Parse(aux);
-        if (m_ExternalDataManager.m_AmountTomes > m_AmountOfTomes)
+        if (m_ExternalDataManager.m_StoredData.m_AmountTomes > m_AmountOfTomes)
         {
             m_PayButtonWithTomes.interactable = true;
         }
@@ -48,7 +48,7 @@ public class DeadMenuController : MonoBehaviour
     }
     public void RespawnWithTomes()
     {
-        if(m_ExternalDataManager.m_AmountTomes > m_AmountOfTomes)
+        if(m_ExternalDataManager.m_StoredData.m_AmountTomes > m_AmountOfTomes)
         {
             m_ExternalDataManager.AddTomes(-m_AmountOfTomes);
             Debug.Log("Player respawned");
