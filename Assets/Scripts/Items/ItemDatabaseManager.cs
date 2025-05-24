@@ -115,6 +115,13 @@ public class ItemDatabaseManager : MonoBehaviour
         int randomItemIndex = Random.Range(0, m_AllItems.Count);
         return m_AllItems[randomItemIndex];
     }
+    public ItemBaseScript GetRandomPasiveItem()
+    {
+        if (m_PassiveItems.Count == 0) return null;
+
+        int randomItemIndex = Random.Range(0, m_PassiveItems.Count);
+        return m_PassiveItems[randomItemIndex];
+    }
 
     public ItemBaseScript GetRandomItemOfQuality(ItemBaseScript.ItemQuality quality)
     {

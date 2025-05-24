@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5557579063759564691}
   m_Layer: 0
   m_Name: PassiveItemPickUp
-  m_TagString: Untagged
+  m_TagString: PremiumPickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d46c23a92449b79469d4cc62415927ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Item: {fileID: 0}
 --- !u!136 &5557579063759564691
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -116,7 +117,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -134,7 +135,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7005278492723688516}
   m_Layer: 0
-  m_Name: PasiveItemPickUp
+  m_Name: PassiveItemPickUp
   m_TagString: PremiumPickUp
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
