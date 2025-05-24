@@ -58,6 +58,11 @@ public class PlayerCombatScript : MonoBehaviour
         
     }
 
+    public void UseAbility()
+    {
+        AbilityManager.instance.UseAbility();
+    }
+
     public void LightAttack()
     {
         if (m_LightAttackCurrentCooldown < 0.0f && m_TargetEnemy != null)
@@ -112,7 +117,7 @@ public class PlayerCombatScript : MonoBehaviour
     }
     public void UseActiveItem()
     {
-        InventoryManager.instance.m_CurrentActiveItem.UseActive();
+        //Call ItemManagers.ActiveItem.Action()
         
         //Attack Animation
         m_Animator.SetTrigger("isAttacking");
