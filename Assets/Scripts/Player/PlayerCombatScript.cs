@@ -45,10 +45,6 @@ public class PlayerCombatScript : MonoBehaviour
     {
         m_LightAttackCurrentCooldown -= Time.deltaTime;
         m_HeavyAttackCurrentCooldown -= Time.deltaTime;
-
-        //DEBUG
-        LightAttack();
-        HeavyAttack();
     }
 
     public void GetHit(float dmg)
@@ -63,7 +59,6 @@ public class PlayerCombatScript : MonoBehaviour
     public void UseAbility()
     {
         AbilityManager.instance.UseAbility();
-        //Abilitys visula effect
     }
 
     public void LightAttack()

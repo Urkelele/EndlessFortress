@@ -28,7 +28,7 @@ public class RoomTransitionManager : MonoBehaviour
     [Header("CONTROL PARAMS")]
     public int m_NumOfRoomsBetweenBoss = 10;
 
-    private GameObject m_CurrentRoom = null;
+    [SerializeField] private GameObject m_CurrentRoom = null;
 
 
     private void Awake()
@@ -78,6 +78,10 @@ public class RoomTransitionManager : MonoBehaviour
         {
             //Activate the runner manager
             m_EndlessRunnerTilesManager.enabled = true;
+
+            //Deactivate the room the player was in
+            m_CurrentRoom.SetActive(false);
+            m_CurrentRoom = null;
             
             //Tp the player runner
             m_PlayerTransform.position = m_PlayerRunnerPos.position;
@@ -110,7 +114,9 @@ public class RoomTransitionManager : MonoBehaviour
                 break;
             case TransitionType.RUNNER:
                 TransitionToRunner();
-
+                break;
+            case TransitionType.CHEST:
+                TransitionToChest();
                 break;
             default:
                 Debug.LogError("TRANSITION TYPE WAS NOT FOUND");
@@ -119,9 +125,9 @@ public class RoomTransitionManager : MonoBehaviour
 
     }
 
-    public void TransitionToCombat()
+    private void TransitionToCombat()
     {
-        if(m_CurrentRoom != null) m_CurrentRoom.SetActive(false);
+        Debug.LogWarning("TRANSITIONING TO COMBAT");
         m_CurrentRoom = m_CombatRoom;
         m_CurrentRoom.SetActive(true);
 
@@ -131,53 +137,37 @@ public class RoomTransitionManager : MonoBehaviour
 
         CombatManager.instance.StartCombat();
     }
-    public void TransitionToShop()
+    private void TransitionToShop()
     {
         Debug.LogWarning("TRANSITIONING TO SHOP");
-        m_CurrentRoom.SetActive(false);
         m_CurrentRoom = m_ShopRoom;
         m_CurrentRoom.SetActive(true);
-        //StartShop();
     }
 
-    public void TransitionToHeal()
+    private void TransitionToHeal()
     {
         Debug.LogWarning("TRANSITIONING TO HEAL");
-        m_CurrentRoom.SetActive(false);
         m_CurrentRoom = m_HealingRoom;
         m_CurrentRoom.SetActive(true);
-        //StartHeal();
-    }
-    public void TransitionToChest()
-    {
-        Debug.LogWarning("TRANSITIONING TO HEAL");
-        m_CurrentRoom.SetActive(false);
-        m_CurrentRoom = m_ChestRoom;
-        m_CurrentRoom.SetActive(true);
-        //StartHeal();
     }
 
-    public void TransitionToRunner()
+    void TransitionToChest()
     {
-        Debug.LogWarning("TRANSITIONING TO RUNNER");
-        m_CurrentRoom.SetActive(false);
+        Debug.LogWarning("TRANSITIONING TO CHEST");
         m_CurrentRoom = m_ChestRoom;
         m_CurrentRoom.SetActive(true);
+    }
+
+    private void TransitionToRunner()
+    {
+        Debug.LogWarning("TRANSITIONING TO RUNNER");
 
         m_EndlessRunnerTilesManager.CalculateTilesUntilDoors();
         CheckIfNextRoomsIsBoss();
 
-        //Set cameras
-        m_RoomCamera.gameObject.SetActive(false);
-        m_RunnerCamera.gameObject.SetActive(true);
-        m_CurrentActiveCamera = m_RunnerCamera;
-
         //enable movement and disable combat
         m_PlayerCombatScript.enabled = false;
         m_PlayerMovement.enabled = true;
-
-
-        //StartRunner();
     }
 
     public void CheckIfNextRoomsIsBoss()
@@ -195,5 +185,6 @@ public enum TransitionType
     SHOP,
     BOSS,
     HEAL,
-    RUNNER
+    RUNNER,
+    CHEST
 }

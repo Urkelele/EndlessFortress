@@ -14,6 +14,7 @@ public class AbilityManager : MonoBehaviour
     [SerializeField] private float m_AbilityCurrentCooldown = 0f;
     [SerializeField] Ability m_ChosenAbility = 0;
     [SerializeField] HealthController m_PlayerHealthController = null;
+    [SerializeField] Outline m_PlayerOutline = null;
 
     [Header("Shield Params")]
     [SerializeField] private float m_IronWillDamageReduction = 0.25f;
@@ -32,6 +33,7 @@ public class AbilityManager : MonoBehaviour
         }
 
         m_PlayerHealthController = FindAnyObjectByType<PlayerHealthController>();
+        m_PlayerOutline = GameObject.FindGameObjectWithTag("Player").GetComponent<Outline>();
     }
 
     void Start()
@@ -62,6 +64,7 @@ public class AbilityManager : MonoBehaviour
                 case Ability.IronWill:
                     Debug.LogWarning("ironwill activated");
                     m_PlayerHealthController.m_IncomingDamageMultiplier *= m_IronWillDamageReduction;
+                    m_PlayerOutline.enabled = true; //Enable the outline to give visual feedback
                     Invoke("IronWillCancelation", m_IronWillDurationSeconds);
                     break;
 
@@ -74,6 +77,7 @@ public class AbilityManager : MonoBehaviour
     private void IronWillCancelation()
     {
         m_PlayerHealthController.m_IncomingDamageMultiplier /= m_IronWillDamageReduction;
+        m_PlayerOutline.enabled = false;
     }
 
 }

@@ -22,7 +22,12 @@ public class RoomTransitionsInput_DEBUG : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.T))
         {
+            RoomTransitionManager.instance.m_NextRoomIsBoss = true;
             RoomTransitionManager.instance.RoomTransition(TransitionType.BOSS);
+        }
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            RoomTransitionManager.instance.RoomTransition(TransitionType.CHEST);
         }
     }
 }

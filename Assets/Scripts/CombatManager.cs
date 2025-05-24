@@ -86,7 +86,6 @@ public class CombatManager : MonoBehaviour
     {
         m_CurrentComp = Instantiate(GetRandomComp());
         m_CurrentComp.SetActive(true);
-        Debug.Log(m_CurrentComp.name);
         for (int i = 0; i < m_CurrentComp.transform.childCount; i++)
         {
             m_CurrentComp.transform.GetChild(i).transform.position = m_EnemyPositions[i].position;
