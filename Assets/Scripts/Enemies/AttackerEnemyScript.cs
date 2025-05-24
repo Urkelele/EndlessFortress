@@ -17,8 +17,8 @@ public class AttackerEnemyScript : EnemyBaseScript
 
     public override void PerformAction()
     {
+        base.PerformAction();
         m_PlayerCombatScript.m_PlayerHealthController.ReceiveDamage(m_AttackDamage);
-
         // Attack Animation
         base.m_Animator.SetTrigger("isAttacking");
     }

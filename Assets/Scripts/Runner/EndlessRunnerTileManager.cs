@@ -130,9 +130,10 @@ public class EndlessRunnerTileManager : MonoBehaviour
         Debug.Log("GOTTA GO FAST");
     }
 
-    public void RecoverTilesUntilDoors()
+    public void CalculateTilesUntilDoors()
     {
-        m_CurrentTilesUntilDoors = m_IndexToSpawn;
+
+        m_CurrentTilesUntilDoors = (m_IndexToSpawn) + PlayerStats.instance.m_RoomsCleared;
     }
 
 
