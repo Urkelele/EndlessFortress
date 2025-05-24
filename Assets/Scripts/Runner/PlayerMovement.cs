@@ -16,6 +16,12 @@ public class PlayerMovement : MonoBehaviour
     public float m_SidewaysSpeed = 0f;
     private Vector2 m_StartTouchPos = Vector2.zero;
 
+    public float m_JumpSpeed = 5f;
+    private bool m_IsJumping = false;
+    private int m_JumpDirection = 1;
+    private bool m_IsGoingUp = false;
+    public float m_JumpHeight = 2f;
+
     //[SerializeField] AudioClip m_EndlessRunnerMusic = null;
 
     public bool m_FakeHit;
@@ -94,35 +100,53 @@ public class PlayerMovement : MonoBehaviour
             if (currentTouch.phase == TouchPhase.Ended)
             {
                 Vector2 touchDirection = currentTouch.position - m_StartTouchPos;
-
-                //If they dont intend to Jump, we check wether they want to go left or right
-                if (touchDirection.x > 0 && m_CurrentLane != 2)
+                
+                //If the vertical distance traveled by the finger is enough, we assume they want to jump
+                if (touchDirection.y > 200 && !m_IsJumping)
                 {
-                    m_CurrentLane++;
+                    m_JumpDirection = 1;
+                    m_IsJumping = true;
+                    m_IsGoingUp = true;
+
+                    m_Animator.SetTrigger("isJumping");
                 }
-
-                if (touchDirection.x < 0 /*&& m_CurrentLane != 0*/)
+                else
                 {
-                    m_CurrentLane--;
+                    //If they dont intend to Jump, we check wether they want to go left or right
+                    if (touchDirection.x > 0 && m_CurrentLane != 2)
+                    {
+                        m_CurrentLane++;
+                    }
+
+                    if (touchDirection.x < 0 /*&& m_CurrentLane != 0*/)
+                    {
+                        m_CurrentLane--;
+                    }
+
                 }
 
             }
         }
     }
 
-    private void ChangeLane(int direction)
+    private void Jump(float dt)
     {
-        if(m_CurrentLane == direction)
+        //We constatly modify the value of the players position depending on their jumpDirection
+        transform.position += new Vector3(0, m_JumpSpeed * dt * m_JumpDirection, 0);
+
+        //When the player reaches the jumpPosition we change the direction of the jump
+        if (transform.position.y > m_JumpHeight && m_IsGoingUp)
         {
-            return;
+            m_JumpDirection = -1;
+            m_IsGoingUp = false;
         }
 
-        m_CurrentLane += direction;
-
-        transform.position = new Vector3(
-            m_CurrentLane * m_DistanceBetweenLanes, 
-            transform.position.y, 
-            transform.position.z);
+        //Once we are close enough to the ground we snap the player in place
+        if (transform.position.y < m_SnapTreshold && !m_IsGoingUp)
+        {
+            transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+            m_IsJumping = false;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
