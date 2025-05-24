@@ -3,7 +3,7 @@ using UnityEngine;
 public class RoomTransitionManager : MonoBehaviour
 {
     public static RoomTransitionManager instance;
-    
+    public EndlessRunnerTileManager m_EndlessRunnerTilesManager;
     public bool m_NextRoomIsBoss = false;
 
     public int m_NumOfRoomsBetweenBoss = 10;
@@ -23,21 +23,25 @@ public class RoomTransitionManager : MonoBehaviour
 
     public void TransitionToCombat()
     {
+        m_EndlessRunnerTilesManager.DeactivateDoorsTile();
         Debug.LogWarning("TRANSITIONING TO COMBAT");
         //CombatManager.instance.StartCombat();
     }
     public void TransitionToShop()
     {
+        m_EndlessRunnerTilesManager.DeactivateDoorsTile();
         Debug.LogWarning("TRANSITIONING TO SHOP");
         //StartShop();
     }
     public void TransitionToBoss()
     {
+        m_EndlessRunnerTilesManager.DeactivateDoorsTile();
         Debug.LogWarning("TRANSITIONING TO BOSS");
         //CombatManager.instance.StartCombat();
     }
     public void TransitionToHeal()
     {
+        m_EndlessRunnerTilesManager.DeactivateDoorsTile();
         Debug.LogWarning("TRANSITIONING TO HEAL");
         //StartHeal();
     }
@@ -45,6 +49,7 @@ public class RoomTransitionManager : MonoBehaviour
     public void TransitionToRunner()
     {
         Debug.LogWarning("TRANSITIONING TO RUNNER");
+        m_EndlessRunnerTilesManager.RecoverTilesUntilDoors();
         CheckIfNextRoomsIsBoss();
         //StartRunner();
     }

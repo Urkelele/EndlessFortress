@@ -915,11 +915,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 7b54a727-dc0d-40e0-96ff-a4c0cc719de6
+  cloudProjectId: c32a7699-55b2-47a7-8daa-8bd36a712189
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: EndlessFortress
-  organizationId: azazel2048
+  projectName: EndlessFortress 2025-05-15_16-17-56
+  organizationId: urkoaguillo
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
