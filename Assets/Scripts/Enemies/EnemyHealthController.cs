@@ -2,10 +2,13 @@ using UnityEngine;
 
 public class EnemyHealthController : HealthController
 {
+    private Animator m_Animator;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Awake()
     {
         base.Awake();
+        m_Animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -18,7 +21,8 @@ public class EnemyHealthController : HealthController
     {
         base.ReceiveDamage(damageReceived);
 
-        //RECEIVE DAMAGE ANIMATION
+        //Receive Damage Animation
+        m_Animator.SetTrigger("isHitted");
     }
 
 }

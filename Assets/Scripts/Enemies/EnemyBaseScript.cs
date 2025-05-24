@@ -8,7 +8,7 @@ public class EnemyBaseScript : MonoBehaviour
     public HealthController m_HealthController = null;
     protected PlayerCombatScript m_PlayerCombatScript = null;
     public Collider m_Collider = null;
-    private Animator m_Animator = null;
+    protected Animator m_Animator = null;
     public ClickDetection m_ClickDetection = null;
     private Outline m_Outline = null;
     public bool m_IsCurrentTarget = false;
