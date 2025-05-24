@@ -9,6 +9,7 @@ public class ItemDatabaseManager : MonoBehaviour
 
     public List<ItemBaseScript> m_AllItems = new List<ItemBaseScript>();
     public List<ItemBaseScript> m_UnlockedItems = new List<ItemBaseScript>();
+    public List<ItemBaseScript> m_LockedItems = new List<ItemBaseScript>();
 
     [Header("QUALITY LISTS")]
     public List<ItemBaseScript> m_CommonItems = new List<ItemBaseScript>();
@@ -55,6 +56,7 @@ public class ItemDatabaseManager : MonoBehaviour
 
     private void CreateAllLists()
     {
+        m_UnlockedItems.Clear();
         foreach (ItemBaseScript item in ExternalDataManager.Instance.m_StoredData.unlockedScripts)
         {
             item.m_Unlocked = true;
@@ -104,6 +106,28 @@ public class ItemDatabaseManager : MonoBehaviour
                     break;
             }
         }
+        m_LockedItems.Clear();
+        foreach(ItemBaseScript item in m_AllItems)
+        {
+            if(!item.m_Unlocked)
+            {
+                m_LockedItems.Add(item);
+            }
+        }
+    }
+
+    public void UnlockItem(ItemBaseScript item)
+    {
+        if(item.m_Unlocked == true)
+        {
+            Debug.Log("Tried to unlock a unlocked item");
+        }
+        item.m_Unlocked = true;
+        ExternalDataManager.Instance.m_StoredData.unlockedScripts.Add(item);
+#if UNITY_EDITOR
+        ExternalDataManager.Instance.SaveToJson();
+#endif
+        CreateAllLists();
     }
 
     public ItemBaseScript GetRandomItem()

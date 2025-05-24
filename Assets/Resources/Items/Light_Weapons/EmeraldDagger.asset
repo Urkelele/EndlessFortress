@@ -20,6 +20,7 @@ MonoBehaviour:
   m_AttackDamageMultiplier: 1
   m_GoldRewardMultiplier: 1
   m_LifeSteal: 0
+  m_UnlockPrice: 0
   m_Price: 0
   m_Description: 'AD: 5 / AC: 0,3,'
   m_SpriteItem: {fileID: 21300000, guid: 33cc296fc591e88478b8e28bfc4e320c, type: 3}

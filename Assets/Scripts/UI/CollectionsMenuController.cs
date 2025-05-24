@@ -20,12 +20,15 @@ public class CollectionsMenuController : MonoBehaviour
             m_IsInCollectionsMenu = true;
             m_CollectionsMenu.SetActive(true);
             m_MainMenu.SetActive(false);
+            GetComponent<UnlockableItemsController>().UpdateLockedItems();
         }
         else
         {
+            GetComponent<UnlockableItemsController>().RemoveItems();
             m_IsInCollectionsMenu = false;
             m_CollectionsMenu.SetActive(false);
             m_MainMenu.SetActive(true);
         }
     }
 }
+
