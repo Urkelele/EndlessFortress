@@ -19,6 +19,7 @@ public class RoomTransitionManager : MonoBehaviour
     public GameObject m_HealingRoom = null;
 
     [Header("CAMERAS")]
+    public Camera m_CurrentActiveCamera = null;
     public Camera m_RunnerCamera = null;
     public Camera m_RoomCamera = null;
 
@@ -83,6 +84,7 @@ public class RoomTransitionManager : MonoBehaviour
         m_PlayerTransform.position = m_PlayerRoomPos.position;
         m_RunnerCamera.gameObject.SetActive(false);
         m_RoomCamera.gameObject.SetActive(true);
+        m_CurrentActiveCamera = m_RoomCamera;
 
         switch (nextRoom)
         {
@@ -162,6 +164,7 @@ public class RoomTransitionManager : MonoBehaviour
         //Set cameras
         m_RoomCamera.gameObject.SetActive(false);
         m_RunnerCamera.gameObject.SetActive(true);
+        m_CurrentActiveCamera = m_RunnerCamera;
 
         //StartRunner();
     }

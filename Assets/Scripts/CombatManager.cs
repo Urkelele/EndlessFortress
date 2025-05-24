@@ -56,11 +56,6 @@ public class CombatManager : MonoBehaviour
         LoadCompsPrefabs(m_EnemyCompsList, m_EnemyCompsFolderPath);
         LoadCompsPrefabs(m_BossCompsList, m_BossCompsFolderPath);
     }
-    private void Start()
-    {
-        //DEBUG
-        StartCombat();
-    }
 
     /// <summary>
     /// Loads all gameobjects from a certain Resource/ path, deactivates them and puts them on a list
