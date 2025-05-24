@@ -472,14 +472,26 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1649155345}
-        m_TargetAssemblyTypeName: CombatResumeControllerUI, Assembly-CSharp
-        m_MethodName: CloseCombatResume
+      - m_Target: {fileID: 1626832438}
+        m_TargetAssemblyTypeName: GeneralCanvasManager, Assembly-CSharp
+        m_MethodName: StartRun
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2113056562}
+        m_TargetAssemblyTypeName: RoomTransitionManager, Assembly-CSharp
+        m_MethodName: bruh
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2320,6 +2332,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3053542768326656104, guid: 4725c720999edf148be22c30132dcf03, type: 3}
   m_PrefabInstance: {fileID: 1524037371}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1626832438 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3220543933913624011, guid: 4725c720999edf148be22c30132dcf03, type: 3}
+  m_PrefabInstance: {fileID: 1524037371}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dff75dcf2070e684ca02e3ed80fca778, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1645224366
 GameObject:
   m_ObjectHideFlags: 0
@@ -2635,7 +2658,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1976727735
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2833,6 +2856,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2079301226}
   m_CullTransparentMesh: 1
+--- !u!114 &2113056562 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7297540636192129326, guid: 4692fa9d6d3308c4d912d45f29e0a3fb, type: 3}
+  m_PrefabInstance: {fileID: 8649049810652858169}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b8e8093395f0754e97aa91a5d24545e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2131415777 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5349364744727879552, guid: 4692fa9d6d3308c4d912d45f29e0a3fb, type: 3}
@@ -2956,6 +2990,10 @@ PrefabInstance:
       propertyPath: m_CurrentActiveCamera
       value: 
       objectReference: {fileID: 117989340}
+    - target: {fileID: 8776256877713083442, guid: 4692fa9d6d3308c4d912d45f29e0a3fb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
