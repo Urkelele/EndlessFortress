@@ -225,6 +225,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8083654994470042307}
+  - component: {fileID: 6051404317178951211}
   m_Layer: 0
   m_Name: DoorsTile
   m_TagString: Untagged
@@ -249,6 +250,28 @@ Transform:
   - {fileID: 1972073154489678660}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6051404317178951211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652694667540898648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab57b3e693e9f0c43be6656fd736ed93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_NonBossDoorPrefabs:
+  - {fileID: 5944652107708151295, guid: 8adb655f3232f324cb5e9243715ba109, type: 3}
+  - {fileID: 5944652107708151295, guid: 1ed027238fd18494f9fa490324f2cc43, type: 3}
+  - {fileID: 5944652107708151295, guid: 3ff236730c16cfc4cae4a94ce6e2ec37, type: 3}
+  - {fileID: 5944652107708151295, guid: 7551a917c078979498f233a7798d683e, type: 3}
+  m_BossDoorPrefab: {fileID: 5944652107708151295, guid: f0023dfd358abc04f9c67e3815dabb6c, type: 3}
+  m_DoorPositions:
+  - {fileID: 4919341552600065870}
+  - {fileID: 1120940339098735005}
+  - {fileID: 7991392107713346612}
 --- !u!1 &1584437131904751531
 GameObject:
   m_ObjectHideFlags: 0
