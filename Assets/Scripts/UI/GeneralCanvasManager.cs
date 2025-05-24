@@ -120,5 +120,4 @@ public class GeneralCanvasManager : MonoBehaviour
         m_GoldResoruce.SetActive(true);
     }
 
-    pu
 }
