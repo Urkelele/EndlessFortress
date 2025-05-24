@@ -11,6 +11,10 @@ public class GeneralCanvasController : MonoBehaviour
     public GameObject m_TomesResource;
     public GameObject m_GoldResoruce;
 
+    [Header("AUDIO")]
+    [SerializeField] AudioSource m_AudioSource = null;
+    [SerializeField] AudioClip m_ClickSound = null;
+
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.D))
@@ -26,6 +30,8 @@ public class GeneralCanvasController : MonoBehaviour
         m_DeadMenu.SetActive(false);
         m_TomesResource.SetActive(true);
         m_GoldResoruce.SetActive(false);
+
+        m_AudioSource.clip = m_ClickSound;
     }
 
     public void StartGame()
@@ -52,5 +58,10 @@ public class GeneralCanvasController : MonoBehaviour
         m_DeadMenu.SetActive(true);
         m_TomesResource.SetActive(true);
         m_GoldResoruce.SetActive(false);
+    }
+
+    public void PlaySound()
+    {
+        m_AudioSource.Play();
     }
 }
