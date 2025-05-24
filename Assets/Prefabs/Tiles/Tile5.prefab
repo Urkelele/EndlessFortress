@@ -279,9 +279,9 @@ MonoBehaviour:
   m_ObstaclesRoot: {fileID: 0}
   m_CoinsRoot: {fileID: 0}
   m_Lanes:
-  - -2
-  - 0
-  - 2
+  - -4
+  - -2.5
+  - -1
 --- !u!1 &766341694466017067
 GameObject:
   m_ObjectHideFlags: 0
