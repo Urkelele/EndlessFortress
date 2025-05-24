@@ -22,8 +22,9 @@ public class EnemyBaseScript : MonoBehaviour
 
     //Control vars
     private bool m_OnDeathTriggered = false; //Control bool so that the OnDeath method is only called once
-    protected virtual void Start()
-    {
+
+    private void Awake()
+    { 
         //Get references
         m_HealthController = GetComponent<HealthController>();
         m_Collider = GetComponent<Collider>();
@@ -32,6 +33,9 @@ public class EnemyBaseScript : MonoBehaviour
         m_Outline = GetComponent<Outline>();
         m_PlayerCombatScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCombatScript>();
 
+    }
+    protected virtual void Start()
+    {
         m_CurrentActionCooldown = m_TotalActionCooldown;
     }
 
@@ -80,7 +84,13 @@ public class EnemyBaseScript : MonoBehaviour
     {
         m_OnDeathTriggered = true;
 
+        //Update playerstats
         PlayerStats.instance.m_EnemiesSlain += 1;
+
+        //If this was target enemy, unselect it and target another random enemy
+        CombatManager.instance.SelectRandomTargetEnemy();
+        m_ClickDetection.m_IsLastObjectClicked = false;
+        m_IsCurrentTarget = false;
 
         //Add the enemy's gold reward to the total pool of gold that will be given to the player when the battle finishes
         CombatManager.instance.m_GoldBattleReward += m_GoldReward;

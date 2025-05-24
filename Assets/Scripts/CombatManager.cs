@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.IO;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -83,7 +84,7 @@ public class CombatManager : MonoBehaviour
         InventoryManager.instance.EnableItemTrigger(TriggerType.COMBAT_START);
         MovePlayer();
         SpawnEnemies();
-        GetDefaultTargetEnemy();
+        SelectRandomTargetEnemy();
     }
 
     private void MovePlayer()
@@ -125,13 +126,15 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    private void GetDefaultTargetEnemy()
+    public void SelectRandomTargetEnemy()
     {
         //Get random enemy, make it the target and make it so it "was clicked last" to mantain the outline around it
         //TODO: might give problems since the actual last object that was clicked does not turn off
         int randEnemyPos = Random.Range(0, m_CombatEnemies.Count);
+        Debug.LogWarning("Rand enemy pos:" + randEnemyPos);
         m_PlayerCombatScript.m_TargetEnemy = m_CombatEnemies[randEnemyPos];
         m_CombatEnemies[randEnemyPos].m_ClickDetection.m_IsLastObjectClicked = true;
+        ClickManager.instance.m_LastObjectClicked = m_CombatEnemies[randEnemyPos].m_ClickDetection;
     }
 
     private void GiveRewards()
