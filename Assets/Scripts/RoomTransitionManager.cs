@@ -1,3 +1,4 @@
+using System;
 using System.Xml.Serialization;
 using UnityEngine;
 
@@ -142,6 +143,15 @@ public class RoomTransitionManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Use and int to cast into TransitionType
+    /// </summary>
+    /// <param name="transitionNum"></param>
+    public void RoomTransitionViaInt(int transitionNum)
+    {
+        RoomTransition((TransitionType)transitionNum);
+    }
+
     private void TransitionToCombat()
     {
         Debug.LogWarning("TRANSITIONING TO COMBAT");
@@ -211,6 +221,7 @@ public class RoomTransitionManager : MonoBehaviour
 
 }
 
+[Serializable]
 public enum TransitionType
 {
     NONE = -1,
