@@ -12,6 +12,12 @@ public class DeadMenuController : MonoBehaviour
     [SerializeField] private int m_AmountOfTomes;
     public bool m_HasSpawnedUsingVideo = false;
 
+    [Header("AUDIO")]
+    [SerializeField] AudioSource m_AudioSource = null;
+
+    [SerializeField] AudioClip m_Dying = null;
+    
+
     private void OnEnable()
     {
         if (m_ExternalDataManager == null) { m_ExternalDataManager = FindAnyObjectByType<ExternalDataManager>(); }
@@ -37,6 +43,8 @@ public class DeadMenuController : MonoBehaviour
         {
             m_SeeVideoButton.gameObject.SetActive(true);
         }
+
+        PlayClip(m_Dying);
     }
     public void RespawnWithTomes()
     {
@@ -58,5 +66,11 @@ public class DeadMenuController : MonoBehaviour
     public void DenyRespawn()
     {
         m_RespawPanel.SetActive(false);
+    }
+
+    private void PlayClip(AudioClip audioClip)
+    {
+        m_AudioSource.clip = audioClip;
+        m_AudioSource.Play();
     }
 }

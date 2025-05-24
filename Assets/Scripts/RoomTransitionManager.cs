@@ -29,6 +29,14 @@ public class RoomTransitionManager : MonoBehaviour
     private GameObject m_CurrentRoom = null;
 
 
+    [Header("AUDIO")]
+    [SerializeField] AudioSource m_AudioSource = null;
+
+    [SerializeField] AudioClip m_EndlessRunnerMusic = null;
+    [SerializeField] AudioClip m_CombatMusic = null;
+    [SerializeField] AudioClip m_OtherRoomMusic = null;
+
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -43,6 +51,12 @@ public class RoomTransitionManager : MonoBehaviour
 
         m_EndlessRunnerTilesManager = FindAnyObjectByType<EndlessRunnerTileManager>();
         m_PlayerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+    }
+
+    //solo para probar
+    private void Start()
+    {
+        PlayClip(m_EndlessRunnerMusic);
     }
 
     private void Update()
@@ -120,6 +134,9 @@ public class RoomTransitionManager : MonoBehaviour
         m_CurrentRoom.SetActive(false);
         m_CurrentRoom = m_CombatRoom;
         m_CurrentRoom.SetActive(true);
+
+        PlayClip(m_CombatMusic);
+
     }
     public void TransitionToShop()
     {
@@ -127,6 +144,8 @@ public class RoomTransitionManager : MonoBehaviour
         m_CurrentRoom = m_ShopRoom;
         m_CurrentRoom.SetActive(true);
         Debug.LogWarning("TRANSITIONING TO SHOP");
+
+        PlayClip(m_OtherRoomMusic);
         //StartShop();
     }
     public void TransitionToBoss()
@@ -135,6 +154,8 @@ public class RoomTransitionManager : MonoBehaviour
         m_CurrentRoom = m_CombatRoom;
         m_CurrentRoom.SetActive(true);
         Debug.LogWarning("TRANSITIONING TO BOSS");
+
+        PlayClip(m_CombatMusic);
         //CombatManager.instance.StartCombat();
     }
     public void TransitionToHeal()
@@ -143,6 +164,8 @@ public class RoomTransitionManager : MonoBehaviour
         m_CurrentRoom = m_HealingRoom;
         m_CurrentRoom.SetActive(true);
         Debug.LogWarning("TRANSITIONING TO HEAL");
+
+        PlayClip(m_OtherRoomMusic);
         //StartHeal();
     }
     public void TransitionToChest()
@@ -151,6 +174,8 @@ public class RoomTransitionManager : MonoBehaviour
         m_CurrentRoom = m_ChestRoom;
         m_CurrentRoom.SetActive(true);
         Debug.LogWarning("TRANSITIONING TO HEAL");
+
+        PlayClip(m_OtherRoomMusic);
         //StartHeal();
     }
 
@@ -166,6 +191,8 @@ public class RoomTransitionManager : MonoBehaviour
         m_RunnerCamera.gameObject.SetActive(true);
         m_CurrentActiveCamera = m_RunnerCamera;
 
+        PlayClip(m_EndlessRunnerMusic);
+
         //StartRunner();
     }
 
@@ -173,6 +200,12 @@ public class RoomTransitionManager : MonoBehaviour
     {
         if ((PlayerStats.instance.m_RoomsCleared % m_NumOfRoomsBetweenBoss) == 0) m_NextRoomIsBoss = true;
         else m_NextRoomIsBoss = false;
+    }
+
+    private void PlayClip(AudioClip audioClip)
+    {
+        m_AudioSource.clip = audioClip;
+        m_AudioSource.Play();
     }
 
 }
@@ -186,3 +219,5 @@ public enum TransitionType
     HEAL,
     RUNNER
 }
+
+
