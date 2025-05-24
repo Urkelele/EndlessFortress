@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4936540960800534017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5728072864936964788}
+  - component: {fileID: 6784544176426531160}
+  m_Layer: 0
+  m_Name: ObjectPoolManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5728072864936964788
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4936540960800534017}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.4405055, y: -2.0749693, z: 1.6560715}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6784544176426531160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4936540960800534017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7e48994e14d8ea488d678241f474e19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ObstaclePrefabs:
+  - {fileID: 3340512942073615967, guid: a48c8f3354e24a44497c33f641ecb876, type: 3}
+  - {fileID: 5400056147232963761, guid: 1ef3df3f0f3f3bb4890dfd7ae16c8432, type: 3}
+  - {fileID: 8675827834110237062, guid: 1a1abddc05d2834409a90ceea130effe, type: 3}
+  - {fileID: 3514117464891351036, guid: 9a0fb086f14598346a1daeda8ba11c74, type: 3}
+  - {fileID: 874078709896301471, guid: 836c19e4e11b6c849904194cd705e391, type: 3}
+  m_CoinPrefab: {fileID: 184264, guid: cbaad69ca04d01940a8e7a7f54ce0b54, type: 3}
+  m_PremiumPickUps:
+  - {fileID: 4312854370414355051, guid: 4bb8f27bfd825d64885b78baf3de1728, type: 3}
+  - {fileID: 3043897217479470398, guid: 8c6da392b6f1aa04f996a72595a3635c, type: 3}
+  - {fileID: 3043897217479470398, guid: 8c6da392b6f1aa04f996a72595a3635c, type: 3}
+  - {fileID: 3043897217479470398, guid: 8c6da392b6f1aa04f996a72595a3635c, type: 3}
+  - {fileID: 3043897217479470398, guid: 8c6da392b6f1aa04f996a72595a3635c, type: 3}
+  m_ObstaclePool: []
+  m_PremiumPickUpPool: []
+  m_ObstaclePoolSize: 5
+  m_CoinPoolSize: 30
+  m_PremiumPickUpPoolSize: 5
