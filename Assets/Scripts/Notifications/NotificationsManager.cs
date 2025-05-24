@@ -71,8 +71,8 @@ public class NotificationsManager : MonoBehaviour
         notification.FireTime = fireTime;
         notification.RepeatInterval = new System.TimeSpan(1, 0, 0, 0);
 
-        notification.SmallIcon = "smallBonfire";
-        notification.LargeIcon = "largeBonfire";
+        notification.SmallIcon = "smallbonfire";
+        notification.LargeIcon = "largebonfire";
 
         AndroidNotificationCenter.SendNotification(notification, "default_channel");
     }

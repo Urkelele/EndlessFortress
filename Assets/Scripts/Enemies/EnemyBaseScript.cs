@@ -19,13 +19,17 @@ public class EnemyBaseScript : MonoBehaviour
     [SerializeField] public float m_CurrentActionCooldown = 0.0f;
     
     [SerializeField] protected int m_GoldReward = 0;
-
+    [Header("Enemy Stats")]
+    [SerializeField] AudioSource m_AudioSource = null;
+    [SerializeField] AudioClip audioclip = null;
     //Control vars
     private bool m_OnDeathTriggered = false; //Control bool so that the OnDeath method is only called once
 
     private void Awake()
     { 
         //Get references
+        m_AudioSource = GetComponent<AudioSource>();
+        m_AudioSource.clip = audioclip;
         m_HealthController = GetComponent<HealthController>();
         m_Collider = GetComponent<Collider>();
         m_ClickDetection = GetComponent<ClickDetection>();
@@ -69,7 +73,7 @@ public class EnemyBaseScript : MonoBehaviour
 
     public virtual void PerformAction()
     {
-
+        m_AudioSource.Play();
     }
 
     private void OnClick()

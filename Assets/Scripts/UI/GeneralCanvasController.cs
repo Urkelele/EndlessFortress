@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GeneralCanvasManager : MonoBehaviour
+public class GeneralCanvasController : MonoBehaviour
 {
     [Header("Menus")]
     public GameObject m_MainMenu;
