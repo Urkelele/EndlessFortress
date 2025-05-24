@@ -19,11 +19,11 @@ public class InventoryManager : MonoBehaviour
     public float m_TotalGoldRewardMultipler = 1;
     public float m_TotalLifeSteal = 0;
 
-    [SerializeField] private TriggerType m_Trigger = TriggerType.NONE;
+    [SerializeField] private TriggerType m_ActiveTrigger = TriggerType.NONE;
 
     public int m_Gold;
 
-    public ItemBaseScript m_CurrentActiveItem;
+    public BaseActiveScript m_CurrentActiveItem;
     public ItemBaseScript m_CurrentLightWeapon;
     public ItemBaseScript m_CurrentHeavyWeapon;
 
@@ -51,6 +51,11 @@ public class InventoryManager : MonoBehaviour
         {
             UpdateItems();
         }
+        if(Input.GetKeyDown(KeyCode.A))
+        {
+            Debug.Log("INVENTORY ACTIVATED ACTIVE");
+            m_CurrentActiveItem.UseActive();
+        }
 
         CheckTriggers();
     }
@@ -61,27 +66,27 @@ public class InventoryManager : MonoBehaviour
     /// <param name="triggerType"></param>
     public void EnableItemTrigger(TriggerType triggerType)
     {
-        m_Trigger = triggerType;
+        m_ActiveTrigger = triggerType;
     }
 
     private void CheckTriggers()
     {
         //Only check for triggers when they happen
-        if (m_Trigger == TriggerType.NONE) return;
+        if (m_ActiveTrigger == TriggerType.NONE) return;
 
-        Debug.LogWarning("TRIGGER:" +  m_Trigger);
+        Debug.LogWarning("TRIGGER:" +  m_ActiveTrigger);
 
         //Search through all items of the player and 
         foreach (ItemBaseScript item in m_PassiveItemsList)
         {
-            if (item is TriggeredItemsScript triggeredItem && triggeredItem.TriggerType == m_Trigger)
+            if (item is TriggeredItemsScript triggeredItem && triggeredItem.TriggerType == m_ActiveTrigger)
             {
                 Debug.Log("activated:" +  triggeredItem.name);
                 triggeredItem.OnTriggerActivated();
             }
         }
 
-        m_Trigger = TriggerType.NONE;
+        m_ActiveTrigger = TriggerType.NONE;
     }
 
     /// <summary>
@@ -168,8 +173,13 @@ public class InventoryManager : MonoBehaviour
         m_CurrentHeavyWeapon = newHeavyWeapon;
     }
 
-    public void AddNewActive(ItemBaseScript newActiveItem)
+    public void AddNewActive(BaseActiveScript newActiveItem)
     {
         m_CurrentActiveItem = newActiveItem;
+    }
+
+    public void AddGold (int goldAmount)
+    {
+        m_Gold +=(int)(goldAmount * m_TotalGoldRewardMultipler);
     }
 }

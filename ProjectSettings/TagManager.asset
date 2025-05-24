@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Boss
+  - Obstacle
+  - Coin
+  - PremiumPickUp
   layers:
   - Default
   - TransparentFX

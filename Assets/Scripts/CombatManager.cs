@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.IO;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -57,6 +58,7 @@ public class CombatManager : MonoBehaviour
     }
     private void Start()
     {
+        //DEBUG
         StartCombat();
     }
 
@@ -78,17 +80,18 @@ public class CombatManager : MonoBehaviour
         Debug.Log($"Loaded {list.Count} prefabs into the queue.");  
     }
 
-    private void StartCombat()
+    public void StartCombat()
     {
         InventoryManager.instance.EnableItemTrigger(TriggerType.COMBAT_START);
         MovePlayer();
         SpawnEnemies();
-        GetDefaultTargetEnemy();
+        SelectRandomTargetEnemy();
     }
 
     private void MovePlayer()
     {
         m_PlayerCombatScript.transform.position = m_PlayerPosition.position;
+        m_PlayerCombatScript.transform.rotation = m_PlayerPosition.rotation;
     }
 
     /// <summary>
@@ -113,7 +116,7 @@ public class CombatManager : MonoBehaviour
     /// <returns></returns>
     private GameObject GetRandomComp()
     {
-        if((PlayerStats.instance.m_RoomsCleared % m_NumOfRoomsBetweenBoss) == 0 && PlayerStats.instance.m_RoomsCleared != 0)
+        if(RoomTransitionManager.instance.m_NextRoomIsBoss && PlayerStats.instance.m_RoomsCleared != 0)
         {
             int randIndex = Random.Range(0, m_BossCompsList.Count);
             return m_BossCompsList[randIndex];
@@ -125,19 +128,21 @@ public class CombatManager : MonoBehaviour
         }
     }
 
-    private void GetDefaultTargetEnemy()
+    public void SelectRandomTargetEnemy()
     {
         //Get random enemy, make it the target and make it so it "was clicked last" to mantain the outline around it
         //TODO: might give problems since the actual last object that was clicked does not turn off
         int randEnemyPos = Random.Range(0, m_CombatEnemies.Count);
+        Debug.LogWarning("Rand enemy pos:" + randEnemyPos);
         m_PlayerCombatScript.m_TargetEnemy = m_CombatEnemies[randEnemyPos];
         m_CombatEnemies[randEnemyPos].m_ClickDetection.m_IsLastObjectClicked = true;
+        ClickManager.instance.m_LastObjectClicked = m_CombatEnemies[randEnemyPos].m_ClickDetection;
     }
 
     private void GiveRewards()
     {
         //Take into account gold reward multiplication, gold number gets rounded
-        InventoryManager.instance.m_Gold += (int)(m_GoldBattleReward * InventoryManager.instance.m_TotalGoldRewardMultipler);
+        InventoryManager.instance.AddGold(m_GoldBattleReward);
 
         float itemSpawnroll = Random.value;
 
