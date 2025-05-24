@@ -20,6 +20,7 @@ public class TreantScript : EnemyBaseScript
 
     public override void PerformAction()
     {
+        base .PerformAction();
         GetLowestHealthEnemy();
         if(m_LowestHealthEnemy != null)
         {
