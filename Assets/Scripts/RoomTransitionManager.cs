@@ -1,3 +1,4 @@
+using System;
 using System.Xml.Serialization;
 using UnityEngine;
 
@@ -13,6 +14,8 @@ public class RoomTransitionManager : MonoBehaviour
     public Transform m_PlayerRunnerPos = null; 
     [SerializeField] private PlayerCombatScript m_PlayerCombatScript = null;
     [SerializeField] private PlayerMovement m_PlayerMovement = null;
+    [SerializeField] private Animator m_PlayerAnimator = null;
+
 
     [Header("ROOM GAMEOBJECTS")]
     public GameObject m_ShopRoom = null;
@@ -29,6 +32,14 @@ public class RoomTransitionManager : MonoBehaviour
     public int m_NumOfRoomsBetweenBoss = 10;
 
     [SerializeField] private GameObject m_CurrentRoom = null;
+
+
+    [Header("AUDIO")]
+    [SerializeField] AudioSource m_AudioSource = null;
+
+    [SerializeField] AudioClip m_EndlessRunnerMusic = null;
+    [SerializeField] AudioClip m_CombatMusic = null;
+    [SerializeField] AudioClip m_OtherRoomMusic = null;
 
 
     private void Awake()
@@ -48,8 +59,16 @@ public class RoomTransitionManager : MonoBehaviour
         m_PlayerTransform = player.transform;
         m_PlayerCombatScript = player.GetComponent<PlayerCombatScript>();
         m_PlayerMovement = player.GetComponent<PlayerMovement>();
+        m_PlayerAnimator = player.GetComponent<Animator>();
     }
 
+
+    private void Start()
+    {
+        PlayClip(m_EndlessRunnerMusic);
+    }
+
+  
 
     /// <summary>
     /// Changes the current room to another one specified by param. Deactivates the current room gameObject and activates the desired one.
@@ -75,6 +94,9 @@ public class RoomTransitionManager : MonoBehaviour
             m_RunnerCamera.gameObject.SetActive(false);
             m_RoomCamera.gameObject.SetActive(true);
             m_CurrentActiveCamera = m_RoomCamera;
+
+            //Change animation
+            m_PlayerAnimator.SetBool("isFighting", true);
         }
         else
         {
@@ -127,37 +149,54 @@ public class RoomTransitionManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Use and int to cast into TransitionType
+    /// </summary>
+    /// <param name="transitionNum"></param>
+    public void RoomTransitionViaInt(int transitionNum)
+    {
+        RoomTransition((TransitionType)transitionNum);
+    }
+
     private void TransitionToCombat()
     {
         Debug.LogWarning("TRANSITIONING TO COMBAT");
         m_CurrentRoom = m_CombatRoom;
         m_CurrentRoom.SetActive(true);
 
+
+        PlayClip(m_CombatMusic);
+
+
         //enable combat and disable movement
         m_PlayerCombatScript.enabled = true;
         m_PlayerMovement.enabled = false;
 
         CombatManager.instance.StartCombat();
+
     }
     private void TransitionToShop()
     {
         Debug.LogWarning("TRANSITIONING TO SHOP");
         m_CurrentRoom = m_ShopRoom;
         m_CurrentRoom.SetActive(true);
+        PlayClip(m_OtherRoomMusic);
     }
-
-    private void TransitionToHeal()
+    public void TransitionToHeal()
     {
         Debug.LogWarning("TRANSITIONING TO HEAL");
         m_CurrentRoom = m_HealingRoom;
         m_CurrentRoom.SetActive(true);
-    }
 
-    void TransitionToChest()
+        PlayClip(m_OtherRoomMusic);
+    }
+    public void TransitionToChest()
     {
-        Debug.LogWarning("TRANSITIONING TO CHEST");
+        Debug.LogWarning("TRANSITIONING TO HEAL");
         m_CurrentRoom = m_ChestRoom;
         m_CurrentRoom.SetActive(true);
+
+        PlayClip(m_OtherRoomMusic);
     }
 
     private void TransitionToRunner()
@@ -166,6 +205,8 @@ public class RoomTransitionManager : MonoBehaviour
 
         m_EndlessRunnerTilesManager.CalculateTilesUntilDoors();
         CheckIfNextRoomsIsBoss();
+
+        PlayClip(m_EndlessRunnerMusic);
 
         //enable movement and disable combat
         m_PlayerCombatScript.enabled = false;
@@ -178,8 +219,15 @@ public class RoomTransitionManager : MonoBehaviour
         else m_NextRoomIsBoss = false;
     }
 
+    private void PlayClip(AudioClip audioClip)
+    {
+        m_AudioSource.clip = audioClip;
+        m_AudioSource.Play();
+    }
+
 }
 
+[Serializable]
 public enum TransitionType
 {
     NONE = -1,
@@ -190,3 +238,5 @@ public enum TransitionType
     RUNNER,
     CHEST
 }
+
+

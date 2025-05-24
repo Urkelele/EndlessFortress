@@ -15,7 +15,11 @@ public class PlayerCombatScript : MonoBehaviour
     [SerializeField] private float m_HeavyAttackDamage = 0;
     [SerializeField] private float m_HeavyAttackTotalCooldown = 0;
     [SerializeField] private float m_HeavyAttackCurrentCooldown = 0;
-    
+
+    [Header("AUDIO")]
+    [SerializeField] AudioSource m_AudioSource = null;
+    [SerializeField] AudioClip m_AttackSound = null;
+
 
     private void Awake()
     {
@@ -32,6 +36,8 @@ public class PlayerCombatScript : MonoBehaviour
         m_HeavyAttackDamage = InventoryManager.instance.m_CurrentHeavyWeapon.m_ItemDamage;
         m_HeavyAttackTotalCooldown = InventoryManager.instance.m_CurrentHeavyWeapon.m_ItemCooldown;
         m_HeavyAttackCurrentCooldown = m_HeavyAttackTotalCooldown;
+
+        m_Animator.SetBool("isFighting", true);
     }
 
     private void Start()
@@ -56,6 +62,11 @@ public class PlayerCombatScript : MonoBehaviour
         
     }
 
+    public void UseAbility()
+    {
+        AbilityManager.instance.UseAbility();
+    }
+
     public void LightAttack()
     {
         if (m_LightAttackCurrentCooldown < 0.0f && m_TargetEnemy != null)
@@ -66,6 +77,9 @@ public class PlayerCombatScript : MonoBehaviour
             
             //Attack Animation
             m_Animator.SetTrigger("isAttacking");
+
+            m_AudioSource.clip = m_AttackSound;
+            m_AudioSource.Play();
         }
     }
 
@@ -79,6 +93,9 @@ public class PlayerCombatScript : MonoBehaviour
 
             //Attack Animation
             m_Animator.SetTrigger("isAttacking");
+
+            m_AudioSource.clip = m_AttackSound;
+            m_AudioSource.Play();
         }
     }
 
@@ -110,10 +127,13 @@ public class PlayerCombatScript : MonoBehaviour
     }
     public void UseActiveItem()
     {
-        InventoryManager.instance.m_CurrentActiveItem.UseActive();
+        //Call ItemManagers.ActiveItem.Action()
         
         //Attack Animation
         m_Animator.SetTrigger("isAttacking");
+
+        m_AudioSource.clip = m_AttackSound;
+        m_AudioSource.Play();
 
     }
 }

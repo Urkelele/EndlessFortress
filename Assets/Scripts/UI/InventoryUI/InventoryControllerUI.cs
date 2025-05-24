@@ -2,16 +2,11 @@ using UnityEngine;
 using static UnityEditor.Progress;
 
 public class InventoryControllerUI : MonoBehaviour
-{
+{   
     public GameObject m_ItemCellPrefab;
     public InventoryItemCellController[] m_InventorytemsCells;
     public Transform m_ParentInventoryCells;
     public int m_NumberCellsPerFile;
-
-    [Header("Showing item stats")]
-    public InventoryShowItemInfo m_InventoryShowItemInfo;
-    public GameObject m_SelectedItemImage;
-    private Transform m_PreviousItemSelected = null;
 
     [Header("Active / LightWeapon / HeavyWeapon Cells")]
     public InventoryItemCellController m_ActiveItemCell;
@@ -33,19 +28,17 @@ public class InventoryControllerUI : MonoBehaviour
 
     public virtual void UpdateItemsInInventory()
     {
-        m_SelectedItemImage.SetActive(false);
-        m_InventoryShowItemInfo.FinishedBackwardsAnimation();
         RemoveItems();
         
         m_InventorytemsCells = m_ParentInventoryCells.GetComponentsInChildren<InventoryItemCellController>();
         InventoryManager inventory = InventoryManager.instance;
 
-        m_LightWeaponCell.StoreItem(inventory.m_CurrentLightWeapon, this);
-        m_HeavyWeaponCell.StoreItem(inventory.m_CurrentHeavyWeapon, this);
+        m_LightWeaponCell.StoreItem(inventory.m_CurrentLightWeapon);
+        m_HeavyWeaponCell.StoreItem(inventory.m_CurrentHeavyWeapon);
 
         if(inventory.m_CurrentActiveItem != null)
         {
-            m_ActiveItemCell.StoreItem(inventory.m_CurrentActiveItem, this);
+            m_ActiveItemCell.StoreItem(inventory.m_CurrentActiveItem);
         }
 
         int numberFilledCells = 0;
@@ -61,7 +54,7 @@ public class InventoryControllerUI : MonoBehaviour
             }
             foreach (InventoryItemCellController itemCell in m_InventorytemsCells)
             {
-                if(itemCell.StoreItem(item, this))
+                if(itemCell.StoreItem(item))
                 {
                     numberFilledCells++;
                     break;

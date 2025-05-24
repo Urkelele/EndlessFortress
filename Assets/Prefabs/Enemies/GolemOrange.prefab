@@ -731,6 +731,7 @@ MonoBehaviour:
   m_GoldReward: 30
   m_AudioSource: {fileID: 0}
   audioclip: {fileID: 8300000, guid: 5a7876ccfaa57b64c9e1f1a43a2dd6be, type: 3}
+  deathSound: {fileID: 8300000, guid: 9dd37ff41729e8640986281eae9f8e9e, type: 3}
   m_AttackDamage: 2.5
 --- !u!82 &-4158248400908568226
 AudioSource:

@@ -1,2 +1,17 @@
 fileFormatVersion: 2
 guid: d2bedf74a4bbad64dbfa01d53befb8c6
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - m_HealthController: {instanceID: 0}
+  - m_Collider: {instanceID: 0}
+  - m_ClickDetection: {instanceID: 0}
+  - m_AudioSource: {instanceID: 0}
+  - audioclip: {instanceID: 0}
+  - deathSound: {fileID: 8300000, guid: 9dd37ff41729e8640986281eae9f8e9e, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
