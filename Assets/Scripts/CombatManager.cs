@@ -6,13 +6,14 @@ using UnityEngine.InputSystem;
 
 public class CombatManager : MonoBehaviour
 {
+    public static CombatManager instance;
+    
     [Header("CONTROL VARS")]
     public int m_NumOfRoomsBetweenBoss = 10;
 
     [Header("CLASSES")]
     private PlayerCombatScript m_PlayerCombatScript;
     public List<EnemyBaseScript> m_CombatEnemies;
-    private InventoryManager m_InventoryManager;
     public EnemyBaseScript m_CurrentEnemyTarget;
     
     [Header("POSITIONS")]
@@ -37,16 +38,26 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private string m_BossCompsFolderPath = "Prefabs/BossComps_Prefabs";
     private GameObject m_CurrentComp = null;
 
+
     private void Awake()
     {
-        m_InventoryManager = FindAnyObjectByType<InventoryManager>();
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        else
+        {
+            instance = this;
+        }
+
         m_PlayerCombatScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCombatScript>();
         LoadCompsPrefabs(m_EnemyCompsList, m_EnemyCompsFolderPath);
         LoadCompsPrefabs(m_BossCompsList, m_BossCompsFolderPath);
     }
     private void Start()
     {
-        StartBattle();
+        StartCombat();
     }
 
     /// <summary>
@@ -64,11 +75,12 @@ public class CombatManager : MonoBehaviour
             prefab.SetActive(false);
         }
 
-        Debug.Log($"Loaded {list.Count} prefabs into the queue.");
+        Debug.Log($"Loaded {list.Count} prefabs into the queue.");  
     }
 
-    private void StartBattle()
+    private void StartCombat()
     {
+        InventoryManager.instance.EnableItemTrigger(TriggerType.COMBAT_START);
         MovePlayer();
         SpawnEnemies();
         GetDefaultTargetEnemy();
@@ -124,7 +136,8 @@ public class CombatManager : MonoBehaviour
 
     private void GiveRewards()
     {
-        m_InventoryManager.m_Gold += m_GoldBattleReward;
+        //Take into account gold reward multiplication, gold number gets rounded
+        InventoryManager.instance.m_Gold += (int)(m_GoldBattleReward * InventoryManager.instance.m_TotalGoldRewardMultipler);
 
         float itemSpawnroll = Random.value;
 

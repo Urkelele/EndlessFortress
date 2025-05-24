@@ -9,7 +9,11 @@ public class LuckyCloverScript : TriggeredItemsScript
     public override void OnTriggerActivated()
     {
         base.OnTriggerActivated();
+        //Revive player
         m_PlayerHealthController = FindAnyObjectByType<PlayerHealthController>();
-        m_PlayerHealthController.m_HealthPoints = m_PlayerHealthController.m_MaxHealthPoints * m_PercentageOfHealthRevivedWith;
+        m_PlayerHealthController.m_CurrentHealthPoints = m_PlayerHealthController.m_MaxHealthPoints * m_PercentageOfHealthRevivedWith;
+
+        //Remove a clover from the passive item list in the inventory
+        InventoryManager.instance.RemovePassiveItem(m_ItemName);
     }
 }
