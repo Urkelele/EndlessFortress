@@ -58,6 +58,7 @@ public class CombatManager : MonoBehaviour
     }
     private void Start()
     {
+        //DEBUG
         StartCombat();
     }
 
@@ -79,7 +80,7 @@ public class CombatManager : MonoBehaviour
         Debug.Log($"Loaded {list.Count} prefabs into the queue.");  
     }
 
-    private void StartCombat()
+    public void StartCombat()
     {
         InventoryManager.instance.EnableItemTrigger(TriggerType.COMBAT_START);
         MovePlayer();
@@ -90,6 +91,7 @@ public class CombatManager : MonoBehaviour
     private void MovePlayer()
     {
         m_PlayerCombatScript.transform.position = m_PlayerPosition.position;
+        m_PlayerCombatScript.transform.rotation = m_PlayerPosition.rotation;
     }
 
     /// <summary>
@@ -114,7 +116,7 @@ public class CombatManager : MonoBehaviour
     /// <returns></returns>
     private GameObject GetRandomComp()
     {
-        if((PlayerStats.instance.m_RoomsCleared % m_NumOfRoomsBetweenBoss) == 0 && PlayerStats.instance.m_RoomsCleared != 0)
+        if(RoomTransitionManager.instance.m_NextRoomIsBoss && PlayerStats.instance.m_RoomsCleared != 0)
         {
             int randIndex = Random.Range(0, m_BossCompsList.Count);
             return m_BossCompsList[randIndex];
