@@ -7,6 +7,10 @@ public class PauseMenuManager : MonoBehaviour
     public GameObject m_PauseMenuPanel;
     public Scrollbar m_InventoryScrollBar;
 
+    private void OnEnable()
+    {
+        m_PauseMenuPanel.SetActive(false);
+    }
 
     void Start()
     {
