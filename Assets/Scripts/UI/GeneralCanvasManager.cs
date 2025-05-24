@@ -17,6 +17,10 @@ public class GeneralCanvasManager : MonoBehaviour
     public GameObject m_TomesResource;
     public GameObject m_GoldResoruce;
 
+    [Header("AUDIO")]
+    [SerializeField] AudioSource m_AudioSource = null;
+    [SerializeField] AudioClip m_ClickSound = null;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -131,4 +135,9 @@ public class GeneralCanvasManager : MonoBehaviour
         m_TomesResource.SetActive(false);
         m_GoldResoruce.SetActive(true);
     }
+    public void PlaySound()
+    {
+        m_AudioSource.Play();
+    }
+
 }
