@@ -1,26 +1,50 @@
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ShopController : MonoBehaviour
 {
+    [Header("[PassiveItems,ActiveItems,Weapons]")]
     public ShopItemController[] m_ShopItemController;
-    public int m_NumberPassiveItems = 4;
+    public ShopBuyPanelController m_ShopBuyPanelController;
+    public int m_NumberPassiveItems = 2;
     public int m_NumberActiveItems = 1;
     public int m_NumberWeapons = 1;
 
+    public GameObject m_ShopObject;
+    public ShopRerollController m_ShopRerollController;
+
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.S))
-        {
-            SpawnItemsInShop();
-        }
-
         if(Input.GetKeyDown(KeyCode.Z))
         {
-            ExitShop();
+            ClearShop();
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            SpawnShop();
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            RerollItemsInShop();
         }
     }
 
+    public void SpawnShop()
+    {
+        m_ShopObject.SetActive(true);
+        m_ShopBuyPanelController.CloseBuyPanel();
+        m_ShopRerollController.SpawnReroll(this, false);
+        ClearShop();
+        SpawnItemsInShop();
+    }
+    public void RerollItemsInShop()
+    {
+        m_ShopObject.SetActive(true);
+        m_ShopBuyPanelController.CloseBuyPanel();
+        ClearShop();
+        SpawnItemsInShop();
+    }
     public void SpawnItemsInShop()
     {
         ItemBaseScript auxItem;
@@ -36,6 +60,7 @@ public class ShopController : MonoBehaviour
                     {
                         shopItem.m_ItemBaseScript = auxItem;
                         shopItem.UpdateItemUI();
+                        break;
                     }
                 }
             }else { i--; }
@@ -51,6 +76,7 @@ public class ShopController : MonoBehaviour
                     {
                         shopItem.m_ItemBaseScript = auxItem;
                         shopItem.UpdateItemUI();
+                        break;
                     }
                 }
             }
@@ -67,6 +93,7 @@ public class ShopController : MonoBehaviour
                     {
                         shopItem.m_ItemBaseScript = auxItem;
                         shopItem.UpdateItemUI();
+                        break;
                     }
                 }
             }
@@ -75,11 +102,16 @@ public class ShopController : MonoBehaviour
 
     }
 
-    public void ExitShop()
+    public void ClearShop()
     {
         foreach(ShopItemController shopItem in m_ShopItemController)
         {
             shopItem.RemoveData();
         }
+    }
+
+    public void CloseShop()
+    {
+        m_ShopObject.SetActive(false);
     }
 }

@@ -7,6 +7,8 @@ public class ExternalDataManager : MonoBehaviour
 
     public TextMeshProUGUI m_TomesText;
 
+
+
     private void Start()
     {
         m_TomesText.text = m_AmountTomes.ToString();
