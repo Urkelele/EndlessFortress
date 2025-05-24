@@ -9,11 +9,15 @@ public class ShopMenuController : MonoBehaviour
 
     [SerializeField] private ExternalDataManager m_ExternalDataManager;
 
+    
+
     private void Start()
     {
         m_ShopMenu.SetActive(false);
         m_IsInShopMenu = false;
         m_ExternalDataManager = FindAnyObjectByType<ExternalDataManager>();
+
+        
     }
     public void ShopMenu()
     {
@@ -37,4 +41,6 @@ public class ShopMenuController : MonoBehaviour
         string aux = textMesh.text.Substring(1);
         m_ExternalDataManager.AddTomes(int.Parse(aux));
     }
+
+    
 }
