@@ -21,7 +21,7 @@ MonoBehaviour:
   m_GoldRewardMultiplier: 1
   m_LifeSteal: 0
   m_Price: 0
-  m_Description: 
+  m_Description: 'AD: 20  / AC: 4s'
   m_SpriteItem: {fileID: 21300000, guid: 0e59ffa0133e586498c97cdb117e5665, type: 3}
   m_QualityItem: 0
   m_TypeItem: 3
