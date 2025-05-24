@@ -1,0 +1,10 @@
+# ninja log v5
+28	917	7697956693936765	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	6c23bb034717823e
+16	945	7697956694206150	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	61aec96b5d7feb87
+8	951	7697956694241407	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	80ac381cae8b6193
+35	970	7697956694465333	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	f6cfe6104463c36e
+41	1034	7697956695095350	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	b2e778a05b50cbee
+0	1096	7697956695736703	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	73c6dfbe52f089f8
+21	1239	7697956697136455	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	9d6121e833645106
+12	1380	7697956698554407	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	743feeae051bc7fb
+1381	1510	7697956699897781	C:/Users/drago/OneDrive/Documentos/GitHub/EndlessFortress/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2s724842/obj/arm64-v8a/libgame.so	93eb88d9d03a6a78
