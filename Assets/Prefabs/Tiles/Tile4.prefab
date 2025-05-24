@@ -2103,11 +2103,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TileLength: 10
-  m_ObstacleCount: 3
+  m_ObstacleCount: 1
   m_CountCoins: 8
   m_ObstaclesRoot: {fileID: 0}
   m_CoinsRoot: {fileID: 0}
   m_Lanes:
-  - -4
-  - -2.5
-  - -1
+  - -1.5
+  - 0
+  - 1.5

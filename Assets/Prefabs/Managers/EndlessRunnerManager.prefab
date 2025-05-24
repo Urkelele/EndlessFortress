@@ -54,8 +54,10 @@ MonoBehaviour:
   m_TileLength: 10
   m_IndexToSpawn: 15
   m_MaxInstancesPerTilePrefab: 5
+  m_CurrentTilesUntilDoors: 15
   m_MaxSpeed: 5
   m_SlowSpeed: 2
   m_TimeToRecover: 5
   m_ActiveTiles: []
   m_TilePool: []
+  m_DoorsTilePrefab: {fileID: 652694667540898648, guid: 399c04eb3215423478029dce2848260d, type: 3}

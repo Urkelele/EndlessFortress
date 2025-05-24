@@ -21,14 +21,14 @@ public class SingleTileManager : MonoBehaviour
         {
             GameObject newRoot = new GameObject("ObstaclesRoot");
             newRoot.transform.parent = transform;
-            newRoot.transform.position = Vector3.zero;
+            newRoot.transform.localPosition = Vector3.zero;
             m_ObstaclesRoot = newRoot.transform;
         }
         if(m_CoinsRoot == null)
         {
             GameObject newRoot = new GameObject("CoinsRoot");
             newRoot.transform.parent = transform;
-            newRoot.transform.position = Vector3.zero;
+            newRoot.transform.localPosition = Vector3.zero;
             m_CoinsRoot = newRoot.transform;
         }
         if(m_ObstaclesRoot.childCount == 0)
