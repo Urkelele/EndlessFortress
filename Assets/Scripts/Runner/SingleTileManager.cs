@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SingleTileManager : MonoBehaviour
 {
-    public float m_TileLength = 18f;
+    public float m_TileLength = 10f;
 
     [Header("Obstacles and Coins")]
     public int m_ObstacleCount = 3;

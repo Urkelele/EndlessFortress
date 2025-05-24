@@ -54,6 +54,7 @@ public class ObjectsPoolManager : MonoBehaviour
         int index = Random.Range(0, m_ObstaclePool.Count);
         GameObject obstacle = m_ObstaclePool[index];
         m_ObstaclePool.RemoveAt(index);
+        obstacle.SetActive(true);
         return obstacle;
     }
     public GameObject GetPremiumCoin()
@@ -61,6 +62,7 @@ public class ObjectsPoolManager : MonoBehaviour
         int index = Random.Range(0, m_PremiumPickUpPool.Count);
         GameObject premiumPickUp = m_PremiumPickUpPool[index];
         m_PremiumPickUpPool.RemoveAt(index);
+        premiumPickUp.SetActive(true);
         return premiumPickUp;
     }
 
