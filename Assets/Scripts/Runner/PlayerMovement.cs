@@ -3,6 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] AudioSource m_AudioSource = null;
+
+    [SerializeField] AudioClip m_CoinAudioclip = null;
+    [SerializeField] AudioClip m_TomeAudioclip = null;
+    [SerializeField] AudioClip m_ObstacleAudioclip = null;
+    
+    //[SerializeField] AudioClip m_EndlessRunnerMusic = null;
+
     public bool m_FakeHit;
     private int m_CurrentLane = 0; // -1 = left, 0 = middle, 1 = right
 
@@ -13,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public void Awake()
     {
         m_RunnerTileManager = FindFirstObjectByType<EndlessRunnerTileManager>();
+        
     }
 
     // Update is called once per frame
@@ -54,18 +63,36 @@ public class PlayerMovement : MonoBehaviour
         {
             other.enabled = false;
             m_RunnerTileManager.ObstacleHit();
+
+            PlayClip(m_ObstacleAudioclip);
         }
         if (other.CompareTag("Coin"))
         {
             // Coin collected, return it to pool and optionally play effect
             ObjectsPoolManager.m_Instance.ReturnCoin(other.gameObject);
             other.gameObject.SetActive(false);
+
+            PlayClip(m_CoinAudioclip);
+            
+
         }
         if (other.CompareTag("PremiumPickUp"))
         {
             // Premium Coin collected, return it to pool and optionally play effect
             ObjectsPoolManager.m_Instance.ReturnPremiumCoin(other.gameObject);
             other.gameObject.SetActive(false);
+
+            PlayClip(m_TomeAudioclip);
         }
+        
     }
+    private void PlayClip(AudioClip audioClip)
+    {
+        m_AudioSource.clip = audioClip;
+        m_AudioSource.Play();
+    }
+
+    
 }
+
+

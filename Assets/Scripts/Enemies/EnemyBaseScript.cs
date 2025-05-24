@@ -22,8 +22,11 @@ public class EnemyBaseScript : MonoBehaviour
     [Header("Enemy Stats")]
     [SerializeField] AudioSource m_AudioSource = null;
     [SerializeField] AudioClip audioclip = null;
+    [SerializeField] AudioClip deathSound = null;
     //Control vars
     private bool m_OnDeathTriggered = false; //Control bool so that the OnDeath method is only called once
+
+
 
     private void Awake()
     { 
@@ -107,6 +110,9 @@ public class EnemyBaseScript : MonoBehaviour
 
         //Death Animation
         m_Animator.SetTrigger("isDead");
+
+        m_AudioSource.clip = deathSound;
+        m_AudioSource.Play();
     }
 
 }

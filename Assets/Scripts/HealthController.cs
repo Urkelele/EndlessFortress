@@ -13,7 +13,8 @@ public class HealthController : MonoBehaviour
     public bool m_IsDead = false;
 
     [Header("Audio")]
-    public AudioClip m_GettingDamagedSound;
+    [SerializeField] AudioSource m_AudioSource;
+    [SerializeField] AudioClip m_GettingDamaged = null;
 
     protected virtual void Awake()
     {
@@ -39,11 +40,9 @@ public class HealthController : MonoBehaviour
         {
             // Subtract life taking into account damage reduction
             m_CurrentHealthPoints -= damageReceived * m_IncomingDamageMultiplier;
-            if (m_GettingDamagedSound != null)
-            {
-                // AÑADIR SOUND EFFECT MANAGER
-                //SoundEffectsManager.instance.PlaySoundFXClip(m_DamageSound, transform, 0.8f);
-            }
+           
+            m_AudioSource.clip = m_GettingDamaged;
+            m_AudioSource.Play();
         }
     }
 

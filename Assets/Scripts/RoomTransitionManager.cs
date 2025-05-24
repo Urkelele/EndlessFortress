@@ -31,6 +31,14 @@ public class RoomTransitionManager : MonoBehaviour
     [SerializeField] private GameObject m_CurrentRoom = null;
 
 
+    [Header("AUDIO")]
+    [SerializeField] AudioSource m_AudioSource = null;
+
+    [SerializeField] AudioClip m_EndlessRunnerMusic = null;
+    [SerializeField] AudioClip m_CombatMusic = null;
+    [SerializeField] AudioClip m_OtherRoomMusic = null;
+
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -50,6 +58,13 @@ public class RoomTransitionManager : MonoBehaviour
         m_PlayerMovement = player.GetComponent<PlayerMovement>();
     }
 
+
+    private void Start()
+    {
+        PlayClip(m_EndlessRunnerMusic);
+    }
+
+  
 
     /// <summary>
     /// Changes the current room to another one specified by param. Deactivates the current room gameObject and activates the desired one.
@@ -133,31 +148,39 @@ public class RoomTransitionManager : MonoBehaviour
         m_CurrentRoom = m_CombatRoom;
         m_CurrentRoom.SetActive(true);
 
+
+        PlayClip(m_CombatMusic);
+
+
         //enable combat and disable movement
         m_PlayerCombatScript.enabled = true;
         m_PlayerMovement.enabled = false;
 
         CombatManager.instance.StartCombat();
+
     }
     private void TransitionToShop()
     {
         Debug.LogWarning("TRANSITIONING TO SHOP");
         m_CurrentRoom = m_ShopRoom;
         m_CurrentRoom.SetActive(true);
+        PlayClip(m_OtherRoomMusic);
     }
-
-    private void TransitionToHeal()
+    public void TransitionToHeal()
     {
         Debug.LogWarning("TRANSITIONING TO HEAL");
         m_CurrentRoom = m_HealingRoom;
         m_CurrentRoom.SetActive(true);
-    }
 
-    void TransitionToChest()
+        PlayClip(m_OtherRoomMusic);
+    }
+    public void TransitionToChest()
     {
-        Debug.LogWarning("TRANSITIONING TO CHEST");
+        Debug.LogWarning("TRANSITIONING TO HEAL");
         m_CurrentRoom = m_ChestRoom;
         m_CurrentRoom.SetActive(true);
+
+        PlayClip(m_OtherRoomMusic);
     }
 
     private void TransitionToRunner()
@@ -166,6 +189,8 @@ public class RoomTransitionManager : MonoBehaviour
 
         m_EndlessRunnerTilesManager.CalculateTilesUntilDoors();
         CheckIfNextRoomsIsBoss();
+
+        PlayClip(m_EndlessRunnerMusic);
 
         //enable movement and disable combat
         m_PlayerCombatScript.enabled = false;
@@ -176,6 +201,12 @@ public class RoomTransitionManager : MonoBehaviour
     {
         if ((PlayerStats.instance.m_RoomsCleared % m_NumOfRoomsBetweenBoss) == 0) m_NextRoomIsBoss = true;
         else m_NextRoomIsBoss = false;
+    }
+
+    private void PlayClip(AudioClip audioClip)
+    {
+        m_AudioSource.clip = audioClip;
+        m_AudioSource.Play();
     }
 
 }
@@ -190,3 +221,5 @@ public enum TransitionType
     RUNNER,
     CHEST
 }
+
+
