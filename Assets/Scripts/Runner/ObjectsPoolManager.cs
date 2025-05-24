@@ -7,11 +7,11 @@ public class ObjectsPoolManager : MonoBehaviour
 {
     public static ObjectsPoolManager m_Instance;
 
-    public GameObject m_ObstaclePrefab;
+    public GameObject[] m_ObstaclePrefabs;
     public GameObject m_CoinPrefab;
     public GameObject m_PremiumCoin;
 
-    public Queue<GameObject> m_ObstaclePool = new Queue<GameObject>();
+    public List<GameObject> m_ObstaclePool = new List<GameObject>();
     public Queue<GameObject> m_CoinPool = new Queue<GameObject>();
     public Queue<GameObject> m_PremiumCoinPool = new Queue<GameObject>();
 
@@ -23,11 +23,22 @@ public class ObjectsPoolManager : MonoBehaviour
     {
         // This is the instance of the class
         m_Instance = this;
-        PopulatePool(m_ObstaclePrefab, m_ObstaclePool, m_ObstaclePoolSize);
+        InitializeObstaclePool();
         PopulatePool(m_CoinPrefab, m_CoinPool, m_CoinPoolSize);
         PopulatePool(m_PremiumCoin, m_PremiumCoinPool, m_PremiumPoolSize);
     }
-
+    private void InitializeObstaclePool()
+    {
+        foreach (var obstacle in m_ObstaclePrefabs)
+        {
+            for (int i = 0; i < m_ObstaclePoolSize; i++)
+            {
+                GameObject newObstacle = GameObject.Instantiate(obstacle);
+                newObstacle.SetActive(false);
+                m_ObstaclePool.Add(newObstacle);
+            }
+        }
+    }
     public void PopulatePool(GameObject thisPrefab, Queue<GameObject> thisQueue, int thisAmount)
     {
         for (int i = 0; i < thisAmount; i++)
