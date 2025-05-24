@@ -3,6 +3,8 @@ using UnityEngine;
 public class PlayerHealthController : HealthController
 {
     public float m_BaseHp = 100f;
+    public Animator m_Animator = null;
+
 
     protected override void Awake()
     {
@@ -16,6 +18,9 @@ public class PlayerHealthController : HealthController
 
         if(m_IsDead)
         {
+            // Dead Animation
+            m_Animator.SetTrigger("isDead");
+
             InventoryManager.instance.EnableItemTrigger(TriggerType.PLAYER_DEATH);
         }
     }

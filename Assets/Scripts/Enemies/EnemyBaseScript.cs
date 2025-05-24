@@ -8,7 +8,7 @@ public class EnemyBaseScript : MonoBehaviour
     public HealthController m_HealthController = null;
     protected PlayerCombatScript m_PlayerCombatScript = null;
     public Collider m_Collider = null;
-    private Animator m_Animator = null;
+    protected Animator m_Animator = null;
     public ClickDetection m_ClickDetection = null;
     private Outline m_Outline = null;
     public bool m_IsCurrentTarget = false;
@@ -100,7 +100,9 @@ public class EnemyBaseScript : MonoBehaviour
 
         //Dead enemies out of the combat list
         CombatManager.instance.m_CombatEnemies.Remove(this);
-        //DEATH ANIMATION
+
+        //Death Animation
+        m_Animator.SetTrigger("isDead");
     }
 
 }

@@ -4,7 +4,8 @@ public class PlayerCombatScript : MonoBehaviour
 {
     [SerializeField] public EnemyBaseScript m_TargetEnemy = null;
     public HealthController m_PlayerHealthController = null;
-    
+    public Animator m_Animator = null;
+
     [Header("Light Attack Variables")]
     [SerializeField] private float m_LightAttackDamage = 0;
     [SerializeField] private float m_LightAttackTotalCooldown = 0;
@@ -13,10 +14,12 @@ public class PlayerCombatScript : MonoBehaviour
     [SerializeField] private float m_HeavyAttackDamage = 0;
     [SerializeField] private float m_HeavyAttackTotalCooldown = 0;
     [SerializeField] private float m_HeavyAttackCurrentCooldown = 0;
+    
 
     private void Awake()
     {
         m_PlayerHealthController = GetComponent<HealthController>();
+        m_Animator = GetComponent<Animator>();
     }
     private void OnEnable()
     {
@@ -43,8 +46,11 @@ public class PlayerCombatScript : MonoBehaviour
 
     public void GetHit(float dmg)
     {
+        // Get Hit Animation
+        m_Animator.SetTrigger("isHitted");
+
         m_PlayerHealthController.ReceiveDamage(dmg);
-        //Receive Damage Animation
+        
     }
 
     public void UseAbility()
@@ -60,8 +66,10 @@ public class PlayerCombatScript : MonoBehaviour
             //Reset timer, take into account attack speed reduction
             m_LightAttackCurrentCooldown = m_LightAttackTotalCooldown * (1/InventoryManager.instance.m_TotalAttackSpeedMultiplier);
             DealDamageToTargetEnemy(m_LightAttackDamage);
+            
+            //Attack Animation
+            m_Animator.SetTrigger("isAttacking");
         }
-        //Attack Animation
     }
 
     public void HeavyAttack()
@@ -71,8 +79,10 @@ public class PlayerCombatScript : MonoBehaviour
             //Reset timer, take into account attack speed reduction
             m_HeavyAttackCurrentCooldown = m_HeavyAttackTotalCooldown * (1/InventoryManager.instance.m_TotalAttackSpeedMultiplier);
             DealDamageToTargetEnemy(m_HeavyAttackDamage);
+
+            //Attack Animation
+            m_Animator.SetTrigger("isAttacking");
         }
-        //Attack Animation
     }
 
     /// <summary>
@@ -104,7 +114,9 @@ public class PlayerCombatScript : MonoBehaviour
     public void UseActiveItem()
     {
         //Call ItemManagers.ActiveItem.Action()
+        
         //Attack Animation
+        m_Animator.SetTrigger("isAttacking");
 
     }
 }
