@@ -388,6 +388,63 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1001 &1289395645
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1546758188866783558, guid: f6743e3ed3c0b3a4d94caaeb2366d743, type: 3}
+      propertyPath: m_Name
+      value: ExternalDataManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433405596513041360, guid: f6743e3ed3c0b3a4d94caaeb2366d743, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 188.1481
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433405596513041360, guid: f6743e3ed3c0b3a4d94caaeb2366d743, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 319.7062
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433405596513041360, guid: f6743e3ed3c0b3a4d94caaeb2366d743, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.889218
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433405596513041360, guid: f6743e3ed3c0b3a4d94caaeb2366d743, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433405596513041360, guid: f6743e3ed3c0b3a4d94caaeb2366d743, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433405596513041360, guid: f6743e3ed3c0b3a4d94caaeb2366d743, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433405596513041360, guid: f6743e3ed3c0b3a4d94caaeb2366d743, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433405596513041360, guid: f6743e3ed3c0b3a4d94caaeb2366d743, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433405596513041360, guid: f6743e3ed3c0b3a4d94caaeb2366d743, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2433405596513041360, guid: f6743e3ed3c0b3a4d94caaeb2366d743, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f6743e3ed3c0b3a4d94caaeb2366d743, type: 3}
 --- !u!1 &1592278508
 GameObject:
   m_ObjectHideFlags: 0
@@ -475,9 +532,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b8e8093395f0754e97aa91a5d24545e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_PlayerTransform: {fileID: 0}
   m_EndlessRunnerTilesManager: {fileID: 609488910}
   m_NextRoomIsBoss: 0
+  m_PlayerRoomPos: {fileID: 0}
+  m_PlayerRunnerPos: {fileID: 0}
+  m_PlayerCombatScript: {fileID: 0}
+  m_PlayerMovement: {fileID: 0}
+  m_ShopRoom: {fileID: 0}
+  m_CombatRoom: {fileID: 0}
+  m_ChestRoom: {fileID: 0}
+  m_HealingRoom: {fileID: 0}
+  m_CurrentActiveCamera: {fileID: 0}
+  m_RunnerCamera: {fileID: 0}
+  m_RoomCamera: {fileID: 0}
   m_NumOfRoomsBetweenBoss: 10
+  m_CurrentRoom: {fileID: 0}
 --- !u!4 &1802674827
 Transform:
   m_ObjectHideFlags: 0
@@ -593,6 +663,11 @@ MonoBehaviour:
   m_RareItems: []
   m_EpicItems: []
   m_LegendaryItems: []
+  m_ActiveItems: []
+  m_PassiveItems: []
+  m_AllWeapons: []
+  m_LightWeapons: []
+  m_HeavyWeapons: []
 --- !u!4 &2084937505
 Transform:
   m_ObjectHideFlags: 0
@@ -876,3 +951,4 @@ SceneRoots:
   - {fileID: 1592278510}
   - {fileID: 1802674827}
   - {fileID: 2084937505}
+  - {fileID: 1289395645}

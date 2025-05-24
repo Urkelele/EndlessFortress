@@ -31,6 +31,7 @@ public class ShopRerollController : MonoBehaviour
 
     public void FinishedBackwardsAnimation()
     {
+        Debug.Log("closed");
         m_RerollPanel.SetActive(false );
     }
 
