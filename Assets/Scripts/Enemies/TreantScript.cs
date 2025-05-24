@@ -5,10 +5,13 @@ public class TreantScript : EnemyBaseScript
 {
     [SerializeField] private float m_HealAmount = 10.0f;
     private EnemyBaseScript m_LowestHealthEnemy = null;
+    private Animator m_Animator;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         base.Start();
+        m_Animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -23,6 +26,9 @@ public class TreantScript : EnemyBaseScript
         if(m_LowestHealthEnemy != null)
         {
             m_LowestHealthEnemy.m_HealthController.HealDamage(m_HealAmount);
+
+            // Heal Animation
+            m_Animator.SetTrigger("isHealing");
         }
     }
 

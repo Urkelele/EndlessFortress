@@ -100,7 +100,9 @@ public class EnemyBaseScript : MonoBehaviour
 
         //Dead enemies out of the combat list
         CombatManager.instance.m_CombatEnemies.Remove(this);
-        //DEATH ANIMATION
+
+        //Death Animation
+        m_Animator.SetTrigger("isDead");
     }
 
 }
