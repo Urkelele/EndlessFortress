@@ -20,6 +20,7 @@ MonoBehaviour:
   m_AttackDamageMultiplier: 1
   m_GoldRewardMultiplier: 1
   m_LifeSteal: 0
+  m_UnlockPrice: 0
   m_Price: 0
   m_Description: Next time you die, you will be revived with 50% HP
   m_SpriteItem: {fileID: 21300000, guid: a17271880c41c7340ad627a2f2d80361, type: 3}

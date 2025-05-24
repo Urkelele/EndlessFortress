@@ -24,15 +24,7 @@ public class ExternalDataManager : MonoBehaviour
     {
         UpdateTomesText();
     }
-#if UNITY_EDITOR
 
-    private void Update()
-    {
-        SaveToJson();
-        UpdateTomesText();
-    }
-
-#endif
     private void UpdateTomesText()
     {
         m_TomesText.text = m_StoredData.m_AmountTomes.ToString();
@@ -60,11 +52,12 @@ public class ExternalDataManager : MonoBehaviour
 
         m_StoredData = JsonUtility.FromJson<StoredData>(storedData);
     }
-
+#if !UNITY_EDITOR
     private void OnApplicationQuit()
     {
         SaveToJson();
     }
+#endif
 }
 
 [System.Serializable]
