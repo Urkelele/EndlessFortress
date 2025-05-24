@@ -10,10 +10,11 @@ public class AbilityManager : MonoBehaviour
         IronWill = 0 
     };
     
-    [SerializeField] float m_AbilityTotalCooldown = 10f;
-    [SerializeField] private float m_AbilityCurrentCooldown = 0f;
+    public float m_AbilityTotalCooldown = 10f;
     [SerializeField] Ability m_ChosenAbility = 0;
     [SerializeField] HealthController m_PlayerHealthController = null;
+
+    public Sprite m_CurrentAbilitySprite;
 
     [Header("Shield Params")]
     [SerializeField] private float m_IronWillDamageReduction = 0.25f;
@@ -33,41 +34,18 @@ public class AbilityManager : MonoBehaviour
 
         m_PlayerHealthController = FindAnyObjectByType<PlayerHealthController>();
     }
-
-    void Start()
-    {
-        m_AbilityCurrentCooldown = (m_AbilityTotalCooldown / InventoryManager.instance.m_TotalAbilityCooldownReduction);
-    }
-    private void Update()
-    {
-        if(m_AbilityCurrentCooldown > 0.0f)
-        {
-            m_AbilityCurrentCooldown -=Time.deltaTime;
-        }
-
-        //DEBUG
-        if(Input.GetKeyDown(KeyCode.S))
-        {
-            UseAbility();
-        }
-    }
     public void UseAbility()
     {
-        if (m_AbilityCurrentCooldown < 0f)
+        switch (m_ChosenAbility)
         {
-            //Take into account ability cooldown reduction
-            m_AbilityCurrentCooldown = (m_AbilityTotalCooldown / InventoryManager.instance.m_TotalAbilityCooldownReduction);
-            switch (m_ChosenAbility)
-            {
-                case Ability.IronWill:
-                    Debug.LogWarning("ironwill activated");
-                    m_PlayerHealthController.m_IncomingDamageMultiplier *= m_IronWillDamageReduction;
-                    Invoke("IronWillCancelation", m_IronWillDurationSeconds);
-                    break;
+            case Ability.IronWill:
+                Debug.LogWarning("ironwill activated");
+                m_PlayerHealthController.m_IncomingDamageMultiplier *= m_IronWillDamageReduction;
+                Invoke("IronWillCancelation", m_IronWillDurationSeconds);
+                break;
 
-                default:
-                    break;
-            }
+            default:
+                break;
         }
     }
 
