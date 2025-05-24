@@ -4,7 +4,7 @@ using static UnityEditor.Progress;
 public class InventoryControllerUI : MonoBehaviour
 {
     public GameObject m_ItemCellPrefab;
-    [SerializeField] private InventoryItemCellController[] m_InventorytemsCells;
+    public InventoryItemCellController[] m_InventorytemsCells;
     public Transform m_ParentInventoryCells;
     public int m_NumberCellsPerFile;
 
@@ -31,7 +31,7 @@ public class InventoryControllerUI : MonoBehaviour
         }
     }
 
-    public void UpdateItemsInInventory()
+    public virtual void UpdateItemsInInventory()
     {
         m_SelectedItemImage.SetActive(false);
         m_InventoryShowItemInfo.FinishedBackwardsAnimation();
@@ -83,7 +83,7 @@ public class InventoryControllerUI : MonoBehaviour
 
     public void ItemClicked(ItemBaseScript item, Transform cellPosition)
     {
-        if(cellPosition != m_PreviousItemSelected)
+        if(cellPosition.position != m_PreviousItemSelected.position)
         {
             m_SelectedItemImage.SetActive(true);
             m_PreviousItemSelected = cellPosition;

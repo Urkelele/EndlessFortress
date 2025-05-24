@@ -15,16 +15,17 @@ MonoBehaviour:
   m_ItemName: Strenghthen
   m_ExtraHealth: 0
   m_AttackSpeedMultiplier: 1
-  m_DamageReductionMultiplier: 1
-  m_AbilitySpeedMultiplier: 1
+  m_DamageDivider: 1
+  m_AbilityCooldownReduction: 1
   m_AttackDamageMultiplier: 1.1
   m_GoldRewardMultiplier: 1
   m_LifeSteal: 0
+  m_UnlockPrice: 0
   m_Price: 0
   m_Description: Attack Damage +10%
   m_SpriteItem: {fileID: 21300000, guid: e5f76519aad57234fa8404cbcac9aaf2, type: 3}
   m_QualityItem: 0
   m_TypeItem: 0
   m_Unlocked: 1
-  m_WeaponDamage: 0
-  m_AttackCooldown: 0
+  m_ItemDamage: 0
+  m_ItemCooldown: 0
