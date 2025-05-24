@@ -38,8 +38,8 @@ public class EndlessRunnerTileManager : MonoBehaviour
             for (int i = 0; i < m_MaxInstancesPerTilePrefab; i++)
             {
                 GameObject newTile = GameObject.Instantiate(tile);
-                newTile.SetActive(false);
                 m_TilePool.Add(newTile);
+                newTile.SetActive(false);
             }
         }
     }
@@ -60,7 +60,7 @@ public class EndlessRunnerTileManager : MonoBehaviour
         m_TilePool.RemoveAt(index);
 
         float zpos = positionIndex * m_TileLength;
-        tile.transform.position = new Vector3 (0, 0, zpos);
+        tile.transform.position = new Vector3 (2.5f, 0, zpos);
 
         m_ActiveTiles.Add(tile);
         // TODO: if positionIndex == m_IndexToSpawn, spawn items
@@ -79,13 +79,13 @@ public class EndlessRunnerTileManager : MonoBehaviour
         {
             Transform thisTile = m_ActiveTiles[i].transform;
             thisTile.position += Vector3.back * m_CurrentSpeed * Time.deltaTime;
-            if(thisTile.position.z <= -m_TileLength)
+            if(thisTile.position.z <= -m_TileLength*2)
             {
                 thisTile.gameObject.SetActive(false);
                 m_ActiveTiles.RemoveAt(i);
                 i--;
                 m_TilePool.Add(thisTile.gameObject);
-                PlaceRandomTile(m_IndexToSpawn-1); // Spawn a new tile
+                PlaceRandomTile(m_IndexToSpawn-2); // Spawn a new tile
             }
         }
     }
