@@ -21,6 +21,9 @@ public class DoorScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //If not collided with player, ignore
+        if (!other.CompareTag("Player")) return;
+
         //If the door is random we pick a random door, we subtract one from the length since NONE doesnt count
         if(m_DoorType == DoorType.RANDOM)
         {

@@ -376,6 +376,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorsTile
       objectReference: {fileID: 0}
+    - target: {fileID: 652694667540898648, guid: 399c04eb3215423478029dce2848260d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8083654994470042307, guid: 399c04eb3215423478029dce2848260d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -18.36
