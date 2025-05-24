@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6695548589931429896}
   - component: {fileID: 1478722401148322052}
   m_Layer: 0
-  m_Name: PasiveItemPickUp
+  m_Name: PassiveItemPickUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
