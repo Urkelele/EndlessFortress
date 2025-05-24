@@ -52,6 +52,8 @@ public class DeadMenuController : MonoBehaviour
     {
         Debug.Log("Player Respawned Using Video");
         m_HasSpawnedUsingVideo = true;
+        gameObject.SetActive(true );
+       
     }
     public void DenyRespawn()
     {

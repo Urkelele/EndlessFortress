@@ -13,6 +13,7 @@ public class AbilityManager : MonoBehaviour
     public float m_AbilityTotalCooldown = 10f;
     [SerializeField] Ability m_ChosenAbility = 0;
     [SerializeField] HealthController m_PlayerHealthController = null;
+    [SerializeField] Outline m_PlayerOutline = null;
 
     public Sprite m_CurrentAbilitySprite;
 
@@ -33,6 +34,7 @@ public class AbilityManager : MonoBehaviour
         }
 
         m_PlayerHealthController = FindAnyObjectByType<PlayerHealthController>();
+        m_PlayerOutline = GameObject.FindGameObjectWithTag("Player").GetComponent<Outline>();
     }
     public void UseAbility()
     {
@@ -52,6 +54,7 @@ public class AbilityManager : MonoBehaviour
     private void IronWillCancelation()
     {
         m_PlayerHealthController.m_IncomingDamageMultiplier /= m_IronWillDamageReduction;
+        m_PlayerOutline.enabled = false;
     }
 
 }
