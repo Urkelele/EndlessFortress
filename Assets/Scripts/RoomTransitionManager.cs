@@ -59,6 +59,8 @@ public class RoomTransitionManager : MonoBehaviour
     {
         m_EndlessRunnerTilesManager.DeactivateDoorsTile();
 
+        Debug.LogError("[TRANSICION A: " +  nextRoom + "]");
+
         //If the player is in the runner (null) they will go a room and viceversa
         if(m_CurrentRoom == null)
         {

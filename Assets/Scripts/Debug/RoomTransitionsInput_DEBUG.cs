@@ -20,11 +20,11 @@ public class RoomTransitionsInput_DEBUG : MonoBehaviour
         {
             RoomTransitionManager.instance.RoomTransition(TransitionType.RUNNER);
         }
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            RoomTransitionManager.instance.m_NextRoomIsBoss = true;
-            RoomTransitionManager.instance.RoomTransition(TransitionType.BOSS);
-        }
+        //if (Input.GetKeyDown(KeyCode.T))
+        //{
+        //    RoomTransitionManager.instance.m_NextRoomIsBoss = true;
+        //    RoomTransitionManager.instance.RoomTransition(TransitionType.BOSS);
+        //}
         if (Input.GetKeyDown(KeyCode.Y))
         {
             RoomTransitionManager.instance.RoomTransition(TransitionType.CHEST);

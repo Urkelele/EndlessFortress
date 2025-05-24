@@ -1006,6 +1006,10 @@ PrefabInstance:
       propertyPath: 'm_ObstaclePrefabs.Array.data[3]'
       value: 
       objectReference: {fileID: 3683142259699509397, guid: 9a0fb086f14598346a1daeda8ba11c74, type: 3}
+    - target: {fileID: 5667347016320007367, guid: 4692fa9d6d3308c4d912d45f29e0a3fb, type: 3}
+      propertyPath: m_CurrentTilesUntilDoors
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5807910524731582650, guid: 4692fa9d6d3308c4d912d45f29e0a3fb, type: 3}
       propertyPath: m_PlayerPosition
       value: 
