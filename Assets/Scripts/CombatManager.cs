@@ -91,6 +91,7 @@ public class CombatManager : MonoBehaviour
     private void MovePlayer()
     {
         m_PlayerCombatScript.transform.position = m_PlayerPosition.position;
+        m_PlayerCombatScript.transform.rotation = m_PlayerPosition.rotation;
     }
 
     /// <summary>
