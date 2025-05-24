@@ -119,6 +119,7 @@ public class GeneralCanvasManager : MonoBehaviour
         m_TomesResource.SetActive(false);
         m_GoldResoruce.SetActive(true);
     }
+
     
     public void OpenChest()
     {
