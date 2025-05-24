@@ -2,7 +2,7 @@ using NUnit.Framework.Interfaces;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
+//using static UnityEditor.Progress;
 
 public class ItemStatsUI : MonoBehaviour
 {

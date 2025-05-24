@@ -43,7 +43,7 @@
         },
         "DrawableResources": [
             {
-                "Id": "smallBonfire",
+                "Id": "smallbonfire",
                 "Type": 0,
                 "Asset": {
                     "fileID": 2800000,
@@ -52,7 +52,7 @@
                 }
             },
             {
-                "Id": "largeBonfire",
+                "Id": "largebonfire",
                 "Type": 1,
                 "Asset": {
                     "fileID": 2800000,

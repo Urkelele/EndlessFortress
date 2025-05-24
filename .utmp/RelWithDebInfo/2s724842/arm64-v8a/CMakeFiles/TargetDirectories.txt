@@ -1,0 +1,5 @@
+C:/Users/drago/OneDrive/Documentos/GitHub/EndlessFortress/.utmp/RelWithDebInfo/2s724842/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/drago/OneDrive/Documentos/GitHub/EndlessFortress/.utmp/RelWithDebInfo/2s724842/arm64-v8a/CMakeFiles/rebuild_cache.dir
+C:/Users/drago/OneDrive/Documentos/GitHub/EndlessFortress/.utmp/RelWithDebInfo/2s724842/arm64-v8a/GameActivity/CMakeFiles/game.dir
+C:/Users/drago/OneDrive/Documentos/GitHub/EndlessFortress/.utmp/RelWithDebInfo/2s724842/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
+C:/Users/drago/OneDrive/Documentos/GitHub/EndlessFortress/.utmp/RelWithDebInfo/2s724842/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir
