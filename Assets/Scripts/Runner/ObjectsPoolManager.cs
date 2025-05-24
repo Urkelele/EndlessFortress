@@ -49,10 +49,12 @@ public class ObjectsPoolManager : MonoBehaviour
         }
     }
 
-    public GameObject GetObstacle()
-    {
-        return GetFromPool(m_ObstaclePrefab, m_ObstaclePool);
-    }
+    //public GameObject GetObstacle()
+    //{
+    //    int index = Random.Range(0, m_ObstaclePool.Count);
+    //    GameObject obstacle = m_ObstaclePool[index];
+    //    m_ObstaclePool.RemoveAt(index);
+    //}
 
     public GameObject GetCoin()
     {
@@ -86,7 +88,7 @@ public class ObjectsPoolManager : MonoBehaviour
     {
         thisObstacle.SetActive(false);
         thisObstacle.transform.parent = null;
-        m_ObstaclePool.Enqueue(thisObstacle);
+        //m_ObstaclePool.Enqueue(thisObstacle);
     }
     public void ReturnPremiumCoin(GameObject thisCoin)
     {

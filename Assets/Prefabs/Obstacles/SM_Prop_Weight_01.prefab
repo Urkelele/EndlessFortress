@@ -12,10 +12,9 @@ GameObject:
   - component: {fileID: 2212780555046091685}
   - component: {fileID: 3338745633253376852}
   - component: {fileID: 8968090359882802770}
-  - component: {fileID: -1417011462211536432}
   m_Layer: 0
   m_Name: SM_Prop_Weight_01
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,16 +109,3 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43336143801539824, guid: e2c67ca2c611b2c45acff7fc7c4c06ce, type: 2}
---- !u!114 &-1417011462211536432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3514117464891351036}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac41b8d37b8213e4bada8928d43e90da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PlayerHealthController: {fileID: 0}

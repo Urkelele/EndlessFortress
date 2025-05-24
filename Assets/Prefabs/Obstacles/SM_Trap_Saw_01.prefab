@@ -12,10 +12,9 @@ GameObject:
   - component: {fileID: 1088646970596245993}
   - component: {fileID: 4905710772823749355}
   - component: {fileID: 183469758339577844}
-  - component: {fileID: -8854911512728014467}
   m_Layer: 0
   m_Name: SM_Trap_Saw_01
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -110,16 +109,3 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43319037419224430, guid: 427b58b65a7d69c46ae68a80a0fca4b7, type: 2}
---- !u!114 &-8854911512728014467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 874078709896301471}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac41b8d37b8213e4bada8928d43e90da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PlayerHealthController: {fileID: 0}
