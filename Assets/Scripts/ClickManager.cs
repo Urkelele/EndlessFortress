@@ -36,7 +36,7 @@ public class ClickManager : MonoBehaviour
                 m_LastObjectClicked = null;
 
                 Debug.LogError("Screen was touched");
-                Ray ray = Camera.main.ScreenPointToRay(touch.position);
+                Ray ray = RoomTransitionManager.instance.m_CurrentActiveCamera.ScreenPointToRay(touch.position);
 
                 //2D collisions
                 RaycastHit2D hit2D = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
