@@ -86,11 +86,11 @@ public class SingleTileManager : MonoBehaviour
 
             for (int j = 0; j < obstaclesPerLine; j++)
             {
-                int laneIndex = lanesToUse[j];
-                float xPos = m_Lanes[laneIndex];
-                GameObject newObstacle = ObjectsPoolManager.m_Instance.GetObstacle();
-                newObstacle.transform.position = new Vector3(xPos, 0, zPos);
-                newObstacle.transform.parent = m_ObstaclesRoot;
+                //int laneIndex = lanesToUse[j];
+                //float xPos = m_Lanes[laneIndex];
+                //GameObject newObstacle = ObjectsPoolManager.m_Instance.GetObstacle();
+                //newObstacle.transform.position = new Vector3(xPos, 0, zPos);
+                //newObstacle.transform.parent = m_ObstaclesRoot;
             }            
         }
     }
