@@ -23,9 +23,14 @@ public class InventoryManager : MonoBehaviour
 
     public int m_Gold;
 
+    [Header("Current Items")]
     public BaseActiveScript m_CurrentActiveItem;
     public ItemBaseScript m_CurrentLightWeapon;
     public ItemBaseScript m_CurrentHeavyWeapon;
+
+    [Header("Starting Items")]
+    [SerializeField] private ItemBaseScript m_StartingLightWeapon;
+    [SerializeField] private ItemBaseScript m_StartingHeavyWeapon;
 
     public List<ItemBaseScript> m_PassiveItemsList = new List<ItemBaseScript>();
 
@@ -46,17 +51,6 @@ public class InventoryManager : MonoBehaviour
 
     private void Update()
     {
-        //DEBUG
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            UpdateItems();
-        }
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            Debug.Log("INVENTORY ACTIVATED ACTIVE");
-            m_CurrentActiveItem.UseActive();
-        }
-
         CheckTriggers();
     }
 
@@ -161,6 +155,16 @@ public class InventoryManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void RestartInverntory()
+    {
+        m_PassiveItemsList.Clear();
+        m_CurrentActiveItem = null;
+        m_CurrentLightWeapon = m_StartingLightWeapon;
+        m_CurrentHeavyWeapon = m_StartingHeavyWeapon;
+
+        ResetExtraAttributes();
     }
 
     public void AddNewLightWeapon(ItemBaseScript newLightWeapon)

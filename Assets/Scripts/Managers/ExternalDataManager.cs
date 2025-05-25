@@ -17,8 +17,9 @@ public class ExternalDataManager : MonoBehaviour
         }
 
         Instance = this;
-
+#if !UNITY_EDITOR
         LoadFromJson();
+#endif
     }
     private void Start()
     {

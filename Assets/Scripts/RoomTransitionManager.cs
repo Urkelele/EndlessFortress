@@ -65,6 +65,7 @@ public class RoomTransitionManager : MonoBehaviour
 
     private void Start()
     {
+        // Move
         PlayClip(m_EndlessRunnerMusic);
     }
 
@@ -86,6 +87,9 @@ public class RoomTransitionManager : MonoBehaviour
             //Deactivate the runner manager
             m_EndlessRunnerTilesManager.enabled = false;
 
+            //Disable movement
+            m_PlayerMovement.enabled = false;
+
             //Tp to room
             m_PlayerTransform.position = m_PlayerRoomPos.position;
             m_PlayerTransform.rotation = m_PlayerRoomPos.rotation;
@@ -100,8 +104,15 @@ public class RoomTransitionManager : MonoBehaviour
         }
         else
         {
+            //Deactivate animation
+            m_PlayerAnimator.SetBool("isFighting", false);
+
             //Activate the runner manager
             m_EndlessRunnerTilesManager.enabled = true;
+
+            //enable movement and disable combat
+            m_PlayerCombatScript.enabled = false;
+            m_PlayerMovement.enabled = true;
 
             //Deactivate the room the player was in
             m_CurrentRoom.SetActive(false);
@@ -164,16 +175,13 @@ public class RoomTransitionManager : MonoBehaviour
         m_CurrentRoom = m_CombatRoom;
         m_CurrentRoom.SetActive(true);
 
-
         PlayClip(m_CombatMusic);
 
-
-        //enable combat and disable movement
+        //enable combat
         m_PlayerCombatScript.enabled = true;
-        m_PlayerMovement.enabled = false;
+        Debug.LogError("ACTIVE?: " + m_PlayerCombatScript.isActiveAndEnabled);
 
         CombatManager.instance.StartCombat();
-
     }
     private void TransitionToShop()
     {
@@ -207,10 +215,6 @@ public class RoomTransitionManager : MonoBehaviour
         CheckIfNextRoomsIsBoss();
 
         PlayClip(m_EndlessRunnerMusic);
-
-        //enable movement and disable combat
-        m_PlayerCombatScript.enabled = false;
-        m_PlayerMovement.enabled = true;
     }
 
     public void CheckIfNextRoomsIsBoss()

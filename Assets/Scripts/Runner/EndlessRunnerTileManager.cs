@@ -5,6 +5,8 @@ public class EndlessRunnerTileManager : MonoBehaviour
 {
     public PlayerHealthController m_PlayerHealthController = null;
 
+    public static EndlessRunnerTileManager Instance;
+
     [Header("Tile Options")]
     public GameObject[] m_TilePrefabs;
     public float m_TileLength = 10f;
@@ -24,20 +26,53 @@ public class EndlessRunnerTileManager : MonoBehaviour
     public GameObject m_DoorsTilePrefab = null;
     private GameObject m_DoorsTile = null;
 
+    public bool m_IsInRunner = false;
+
     private void Start()
     {
-        m_PlayerHealthController = FindAnyObjectByType<PlayerHealthController> ();
+        m_CurrentSpeed = m_MaxSpeed;
         m_CurrentTilesUntilDoors = m_IndexToSpawn;
     }
     void Awake()
     {
-        m_CurrentSpeed = m_MaxSpeed;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        else
+        {
+            Instance = this;
+        }
         InitializePool();
     }
 
-    private void OnEnable()
+    public void ControlRunner(bool start)
     {
-        PlaceInitialTiles();
+        m_IsInRunner = start;
+        if (start)
+        {
+            for (int i = 0; i < m_ActiveTiles.Count; i++)
+            {
+                Transform thisTile = m_ActiveTiles[i].transform;
+                    thisTile.gameObject.SetActive(false);
+                    m_ActiveTiles.RemoveAt(i);
+                    i--;
+                    if (thisTile != m_DoorsTile)
+                    {
+                        m_TilePool.Add(thisTile.gameObject);
+                    }
+                
+            }
+            PlaceInitialTiles();
+        }
+    }
+    // From the main menu
+    public void StartRunner()
+    {
+        ControlRunner(true);
+        m_PlayerHealthController.RestartLife();
+
     }
 
     //Disable all active tiles
@@ -103,7 +138,13 @@ public class EndlessRunnerTileManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveActiveTiles();
+        // Stop the time if the TimeManager says so
+        if (TimeManager.instance.m_StopTime) { return; }
+
+        if (m_IsInRunner == true)
+        {
+            MoveActiveTiles();
+        }
     }
 
     void MoveActiveTiles()

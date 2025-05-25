@@ -8,9 +8,6 @@ public class ShopMenuController : MonoBehaviour
     public GameObject m_ShopMenu;
 
     [SerializeField] private ExternalDataManager m_ExternalDataManager;
-
-    
-
     private void Start()
     {
         m_ShopMenu.SetActive(false);

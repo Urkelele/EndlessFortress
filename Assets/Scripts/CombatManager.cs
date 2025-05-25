@@ -35,7 +35,6 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private string m_BossCompsFolderPath = "Prefabs/BossComps_Prefabs";
     private GameObject m_CurrentComp = null;
 
-
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -74,9 +73,12 @@ public class CombatManager : MonoBehaviour
 
     public void StartCombat()
     {
+        GeneralCanvasManager.instance.StartCombat();
+        m_PlayerCombatScript.enabled = true;
         InventoryManager.instance.EnableItemTrigger(TriggerType.COMBAT_START);
         SpawnEnemies();
         SelectRandomTargetEnemy();
+        Debug.Log("IS ENABLED SECOND?: " + m_PlayerCombatScript.isActiveAndEnabled);
     }
 
     /// <summary>
