@@ -131,12 +131,23 @@ public class CombatManager : MonoBehaviour
         ClickManager.instance.m_LastObjectClicked = m_CombatEnemies[randEnemyPos].m_ClickDetection;
     }
 
-    private void GiveRewards()
+    public void GiveRewards(bool giveAlwaysItem = false, bool isInChestRoom = false)
     {
-        //Take into account gold reward multiplication, gold number gets rounded
-        InventoryManager.instance.AddGold(m_GoldBattleReward);
-
-        float itemSpawnroll = Random.value;
+        if (!isInChestRoom)
+        {
+            //Take into account gold reward multiplication, gold number gets rounded
+            InventoryManager.instance.AddGold(m_GoldBattleReward);
+        }
+        float itemSpawnroll;
+        if (giveAlwaysItem)
+        {
+            itemSpawnroll = 0f;
+        }
+        else
+        {
+            itemSpawnroll = Random.value;
+        }
+        Debug.Log(itemSpawnroll);
 
         if(itemSpawnroll < m_ItemDropChance)
         {

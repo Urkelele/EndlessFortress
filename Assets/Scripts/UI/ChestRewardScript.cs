@@ -14,17 +14,21 @@ public class ChestRewardScript : MonoBehaviour
     public Image m_ItemIconBox;
     public Sprite[] m_ItemBoxSprites;
     public TextMeshProUGUI m_ItemTypeText;
+    [SerializeField] private ItemBaseScript m_ItemReward;
 
     public void SpawnChestReward()
     {
+        CombatManager.instance.GiveRewards(true, true);
+        ActivateItemReward(CombatManager.instance.m_ItemReward);
         m_ChestRewardPanel.SetActive(true);
         m_ItemRewardPanel.SetActive(false);
-        ActivateItemReward(ItemDatabaseManager.Instance.GetRandomItem());
     }
 
     public void ActivateItemReward(ItemBaseScript itemBaseScript)
     {
+        m_ItemReward = itemBaseScript;
         m_ItemRewardPanel.SetActive(true);
+        if(itemBaseScript == null) { return; }
         m_ItemIconBox.sprite = m_ItemBoxSprites[(int)itemBaseScript.m_QualityItem];
         m_ItemIcon.sprite = itemBaseScript.m_SpriteItem;
         m_ItemNameText.text = itemBaseScript.m_ItemName;
