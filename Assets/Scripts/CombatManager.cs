@@ -194,7 +194,6 @@ public class CombatManager : MonoBehaviour
     private void EndBattle()
     {
         GiveRewards();
-        FindAnyObjectByType<CombatResumeControllerUI>().SpawnCombatResume();
 
         //Change score stats
         PlayerStats.instance.m_GoldTotal += m_GoldBattleReward;
@@ -202,11 +201,9 @@ public class CombatManager : MonoBehaviour
         GeneralCanvasManager.instance.Endcombat();
     }
 
-    public void DestroyEnemiesAndResetParams()
+    public void DestroyEnemies()
     {
         Destroy(m_CurrentComp);
-        m_ItemReward = null;
-        m_GoldBattleReward = 0;
     }
 
 }
