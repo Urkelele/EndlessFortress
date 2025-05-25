@@ -73,14 +73,6 @@ public class EndlessRunnerTileManager : MonoBehaviour
         }
     }
 
-    //Disable all active tiles
-    private void OnDisable()
-    {
-        foreach(GameObject activeTile in m_ActiveTiles)
-        {
-            activeTile.SetActive(false);
-        }
-    }
 
     private void InitializePool()
     {
