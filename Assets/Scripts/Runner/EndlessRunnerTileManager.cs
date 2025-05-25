@@ -32,7 +32,6 @@ public class EndlessRunnerTileManager : MonoBehaviour
     {
         InitializePool();
         m_CurrentSpeed = m_MaxSpeed;
-        CalculateTilesUntilDoors();
     }
 
     void Awake()
@@ -48,6 +47,8 @@ public class EndlessRunnerTileManager : MonoBehaviour
         }
     }
 
+    //BEFORE
+
     public void ControlRunner(bool start)
     {
         m_IsInRunner = start;
@@ -61,13 +62,18 @@ public class EndlessRunnerTileManager : MonoBehaviour
                 m_ActiveTiles.RemoveAt(i);
                 i--;
 
-                if (thisTile != m_DoorsTile)
+                if (thisTile != m_DoorsTile.transform)
                 {
                     m_TilePool.Add(thisTile.gameObject);
                 }
-                
+                else
+                {
+                    thisTile.gameObject.SetActive(false);
+                }
+
             }
 
+            CalculateTilesUntilDoors();
             PlaceInitialTiles();
         }
     }
@@ -88,21 +94,24 @@ public class EndlessRunnerTileManager : MonoBehaviour
         m_DoorsTile.SetActive(false );
     }
 
+
     private void PlaceInitialTiles()
     {
         Debug.LogError("---------[PLACING INITIAL TILES]-------");
-        CalculateTilesUntilDoors();
         for (int i = 0; i < m_IndexToSpawn; i++)
         {
             PlaceRandomTile(i);
         }
+
+
         Debug.LogError("---------[FINISHED PLACING INITIAL TILES]-------");
 
     }
 
+    //BACKUP
     private void PlaceRandomTile(int positionIndex = 0)
     {
-        if(m_CurrentTilesUntilDoors > 0)
+        if (m_CurrentTilesUntilDoors > 0)
         {
             if (m_TilePool.Count == 0) return;
             int index = Random.Range(0, m_TilePool.Count);
@@ -113,20 +122,19 @@ public class EndlessRunnerTileManager : MonoBehaviour
             tile.transform.position = new Vector3(2.5f, 0, zpos);
 
             m_ActiveTiles.Add(tile);
-            // TODO: if positionIndex == m_IndexToSpawn, spawn items
             tile.SetActive(true);
             m_CurrentTilesUntilDoors--;
 
             Debug.LogWarning("ACTIVATED TILE");
         }
-        else if(!m_ActiveTiles.Contains(m_DoorsTile)) //Not activate a new door if a doorTile is already active
+        else
         {
             float zpos = positionIndex * m_TileLength;
             m_DoorsTile.transform.position = new Vector3(2.5f, 0, zpos);
             m_ActiveTiles.Add(m_DoorsTile);
             m_DoorsTile.SetActive(true);
             CalculateTilesUntilDoors();
-         
+
             Debug.LogWarning("ACTIVATED DOOR");
         }
 
@@ -142,6 +150,13 @@ public class EndlessRunnerTileManager : MonoBehaviour
         {
             MoveActiveTiles();
         }
+
+        if (Input.GetKeyDown(KeyCode.Keypad8))
+        {
+            m_MaxSpeed = 10;
+            m_SlowSpeed = 10;
+            FindAnyObjectByType<PlayerHealthController>().m_CurrentHealthPoints = 1000000000;
+        }
     }
 
     void MoveActiveTiles()
@@ -155,11 +170,11 @@ public class EndlessRunnerTileManager : MonoBehaviour
                 thisTile.gameObject.SetActive(false);
                 m_ActiveTiles.RemoveAt(i);
                 i--;
-                if(thisTile != m_DoorsTile)
+                if(thisTile != m_DoorsTile.transform)
                 {
                     m_TilePool.Add(thisTile.gameObject);
                 }
-                PlaceRandomTile(m_IndexToSpawn-2); // Spawn a new tile
+                PlaceRandomTile(m_IndexToSpawn - 2); // Spawn a new tile
             }
         }
     }
@@ -178,12 +193,8 @@ public class EndlessRunnerTileManager : MonoBehaviour
 
     public void CalculateTilesUntilDoors()
     {
-        m_CurrentTilesUntilDoors = (m_IndexToSpawn) - 2;
+        //m_CurrentTilesUntilDoors = (m_IndexToSpawn) - 2;
+        m_CurrentTilesUntilDoors = (m_IndexToSpawn);
     }
 
-
-    //public void DeactivateDoorsTile()
-    //{
-    //    m_DoorsTile.SetActive(false);
-    //}
 }

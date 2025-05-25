@@ -225,7 +225,6 @@ public class RoomTransitionManager : MonoBehaviour
 
         PlayerStats.instance.m_RoomsCleared++;
 
-        m_EndlessRunnerTilesManager.CalculateTilesUntilDoors();
         CheckIfNextRoomsIsBoss();
 
         PlayClip(m_EndlessRunnerMusic, m_RunnerCameraAudioSource);
