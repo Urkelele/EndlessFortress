@@ -1,0 +1,38 @@
+using UnityEngine;
+using static AbilityManager;
+
+public class ActivateGameObjectOnClick : ClickableObject
+{
+    public enum RoomType
+    {
+        None = -1,
+        Shop = 0,
+        Chest = 1
+    };
+
+    [SerializeField] RoomType m_ChosenRoom = 0;
+
+    protected override void Update()
+    {
+        base.Update();
+    }
+
+    protected override void OnClick()
+    {
+        switch (m_ChosenRoom)
+        {
+            case RoomType.Shop:
+                Debug.LogWarning("Shop Entered");
+                GeneralCanvasManager.instance.OpenShop();
+                break;
+            case RoomType.Chest:
+                Debug.LogWarning("Chest Opened");
+                GeneralCanvasManager.instance.OpenChest();
+                break;
+
+            default:
+                Debug.LogWarning("Room type not chosen");
+                break;
+        }
+    }
+}
