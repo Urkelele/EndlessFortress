@@ -138,7 +138,7 @@ public class CombatManager : MonoBehaviour
 
         float itemSpawnroll = Random.value;
 
-        if(itemSpawnroll < m_ItemDropChance)
+        if (itemSpawnroll < m_ItemDropChance)
         {
             float qualityRoll = Random.value;
 
@@ -172,6 +172,7 @@ public class CombatManager : MonoBehaviour
     private void EndBattle()
     {
         GiveRewards();
+        FindAnyObjectByType<CombatResumeControllerUI>().SpawnCombatResume();
 
         //Change score stats
         PlayerStats.instance.m_GoldTotal += m_GoldBattleReward;
