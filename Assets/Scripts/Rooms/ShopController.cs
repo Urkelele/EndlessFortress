@@ -14,14 +14,6 @@ public class ShopController : MonoBehaviour
     public GameObject m_ShopObject;
     public ShopRerollController m_ShopRerollController;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            RerollItemsInShop();
-        }
-    }
-
     public void SpawnShop()
     {
         m_ShopObject.SetActive(true);
