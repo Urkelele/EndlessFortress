@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public float m_SidewaysSpeed = 0f;
     private Vector2 m_StartTouchPos = Vector2.zero;
 
+    [Header("JUMP PARAMS")]
     public float m_JumpSpeed = 5f;
     private bool m_IsJumping = false;
     private int m_JumpDirection = 1;
@@ -60,6 +61,11 @@ public class PlayerMovement : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.A))
         {
             m_CurrentLane--;
+        }
+
+        if(m_IsJumping)
+        {
+            Jump(Time.deltaTime);
         }
 
         MoveSideways(m_LaneTransforms[m_CurrentLane].position.x, Time.deltaTime);
