@@ -23,7 +23,7 @@ public class AttackButtonsController : MonoBehaviour
 
     private void Start()
     {
-        UpdateItem();
+        //UpdateItem();
     }
 
     public void UpdateItem()
