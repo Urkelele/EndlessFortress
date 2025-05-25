@@ -51,13 +51,18 @@ public class PlayerHealthController : HealthController
         Debug.LogError("IS DEAD?: " + m_IsDead);
         Debug.LogWarning("[REVIVE]");
 
-        GeneralCanvasManager.instance.ReturnToRun();
+        GeneralCanvasManager.instance.Revive();
 
-        //If the player revives in the runner (player movement is active) make the tiles move again
-        if (GetComponent<PlayerMovement>())
-        {
-            EndlessRunnerTileManager.Instance.m_IsInRunner = true;
-        }
+        //if (this.gameObject.GetComponent<PlayerCombatScript>() != null && PlayerStats.instance.m_GoldTotal != 0)
+        //{
+        //    GeneralCanvasManager.instance.StartCombat();
+        //}
+        //else
+        //{
+        //    GeneralCanvasManager.instance.ReturnToRun();
+        //}
+
+
     }
 
     public void Revive(float revivedHealth)

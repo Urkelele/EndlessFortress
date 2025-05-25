@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -62,6 +63,19 @@ public class GeneralCanvasManager : MonoBehaviour
         Invoke("ReturnToRun",delaySeconds);
     }
 
+    public void Revive()
+    {
+        if (m_Player.GetComponent<PlayerCombatScript>().isActiveAndEnabled && PlayerStats.instance.m_GoldTotal !=0)
+        {
+            StartCombat();
+        }
+        else
+        {
+            EndlessRunnerTileManager.Instance.m_IsInRunner = true;
+            ReturnToRun();
+        }
+    }
+
     public void ReturnToRun()
     {
         TimeManager.instance.m_StopTime = false;
@@ -75,6 +89,8 @@ public class GeneralCanvasManager : MonoBehaviour
         m_TomesResource.SetActive(false);
         m_GoldResoruce.SetActive(true);
     }
+
+
     public void GoToMainMenu()
     {
         TimeManager.instance.m_StopTime = true;
