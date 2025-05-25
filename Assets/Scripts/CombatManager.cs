@@ -133,6 +133,7 @@ public class CombatManager : MonoBehaviour
 
     public void GiveRewards(bool giveAlwaysItem = false, bool isInChestRoom = false, bool onlyUnlockedItems = true)
     {
+        m_ItemReward = null;
         if (!isInChestRoom)
         {
             //Take into account gold reward multiplication, gold number gets rounded
@@ -147,26 +148,37 @@ public class CombatManager : MonoBehaviour
         {
             itemSpawnroll = Random.value;
         }
-
+        ItemBaseScript.ItemQuality quality = ItemBaseScript.ItemQuality.NONE;
         if (itemSpawnroll < m_ItemDropChance)
         {
-            float qualityRoll = Random.value;
+            while (m_ItemReward == null)
+            {
+                float qualityRoll = Random.value;
+                Debug.Log(qualityRoll);
 
-            if (qualityRoll < m_CommonDropChance)
-            {
-                m_ItemReward = ItemDatabaseManager.Instance.GetRandomItemOfQuality(ItemBaseScript.ItemQuality.COMMON, onlyUnlockedItems);
-            }
-            else if (qualityRoll < m_RareDropChance + m_CommonDropChance)
-            {
-                m_ItemReward = ItemDatabaseManager.Instance.GetRandomItemOfQuality(ItemBaseScript.ItemQuality.RARE, onlyUnlockedItems);
-            }
-            else if (qualityRoll < m_EpicDropChance + m_RareDropChance + m_CommonDropChance)
-            {
-                m_ItemReward = ItemDatabaseManager.Instance.GetRandomItemOfQuality(ItemBaseScript.ItemQuality.EPIC, onlyUnlockedItems);
-            }
-            else if (qualityRoll < m_LegendaryDropChance + m_EpicDropChance + m_RareDropChance + m_CommonDropChance)
-            {
-                m_ItemReward = ItemDatabaseManager.Instance.GetRandomItemOfQuality(ItemBaseScript.ItemQuality.LEGENDARY, onlyUnlockedItems);
+                if (qualityRoll < m_CommonDropChance)
+                {
+                    quality = ItemBaseScript.ItemQuality.COMMON;
+                    m_ItemReward = ItemDatabaseManager.Instance.GetRandomItemOfQuality(quality, onlyUnlockedItems);
+                }
+                else if (qualityRoll < m_RareDropChance + m_CommonDropChance)
+                {
+                    quality = ItemBaseScript.ItemQuality.RARE;
+                    m_ItemReward = ItemDatabaseManager.Instance.GetRandomItemOfQuality(quality, onlyUnlockedItems);
+                }
+                else if (qualityRoll < m_EpicDropChance + m_RareDropChance + m_CommonDropChance)
+                {
+                    quality = ItemBaseScript.ItemQuality.EPIC;
+                    m_ItemReward = ItemDatabaseManager.Instance.GetRandomItemOfQuality(quality, onlyUnlockedItems);
+                }
+                else if (qualityRoll < m_LegendaryDropChance + m_EpicDropChance + m_RareDropChance + m_CommonDropChance)
+                {
+                    quality = ItemBaseScript.ItemQuality.LEGENDARY;
+                    m_ItemReward = ItemDatabaseManager.Instance.GetRandomItemOfQuality(quality, onlyUnlockedItems);
+                }
+                if(m_ItemReward == null ) { quality--; }
+                Debug.Log(quality);
+
             }
         }
     }

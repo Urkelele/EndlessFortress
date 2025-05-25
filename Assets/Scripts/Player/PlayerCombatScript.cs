@@ -141,7 +141,9 @@ public class PlayerCombatScript : MonoBehaviour
     public void UseActiveItem()
     {
         //Call ItemManagers.ActiveItem.Action()
-        
+
+        InventoryManager.instance.m_CurrentActiveItem.UseActive();
+
         //Attack Animation
         m_Animator.SetTrigger("isAttacking");
 
