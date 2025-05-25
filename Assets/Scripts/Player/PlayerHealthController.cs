@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerHealthController : HealthController
@@ -17,16 +18,10 @@ public class PlayerHealthController : HealthController
     {
         base.Update();
 
-        if(m_IsDead)
+        if(m_IsDead && TimeManager.instance.m_StopTime == false)
         {
-            // Dead Animation
-            m_Animator.SetTrigger("isDead");
-
             InventoryManager.instance.EnableItemTrigger(TriggerType.PLAYER_DEATH);
-            if(m_IsDead )
-            {
-                GeneralCanvasManager.instance.RunFinished();
-            }
+            GeneralCanvasManager.instance.RunFinished();
         }
 
         //DEBUG
@@ -35,6 +30,8 @@ public class PlayerHealthController : HealthController
             Revive(m_MaxHealthPoints);
         }
         
+        m_Animator.SetBool("isDead", m_IsDead);
+
     }
 
     public override void ReceiveDamage(float damageReceived)
@@ -49,6 +46,16 @@ public class PlayerHealthController : HealthController
     {
         m_CurrentHealthPoints = m_MaxHealthPoints;
         m_IsDead = false;
+
+        Debug.LogError("IS TIME STOPPED?: " + TimeManager.instance.m_StopTime);
+        Debug.LogError("IS DEAD?: " + m_IsDead);
+        Debug.LogWarning("[REVIVE]");
+
+        ////If the player revives in the runner (player movement is active) make the tiles move again
+        if (GetComponent<PlayerMovement>())
+        {
+            EndlessRunnerTileManager.Instance.m_IsInRunner = true;
+        }
     }
 
     public void Revive(float revivedHealth)

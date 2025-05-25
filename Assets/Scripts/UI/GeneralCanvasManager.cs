@@ -42,7 +42,7 @@ public class GeneralCanvasManager : MonoBehaviour
         GoToMainMenu();
     }
 
-    public void StartRun()
+    public void RestartRun()
     {
         TimeManager.instance.m_StopTime = false;
         m_Player.SetActive(true);
@@ -55,6 +55,25 @@ public class GeneralCanvasManager : MonoBehaviour
         m_TomesResource.SetActive(false);
         m_GoldResoruce.SetActive(true);
         RunnerManager.instance.RestartRun();
+    }
+
+    public void ReturnToRunWithDelaySeconds(int delaySeconds)
+    {
+        Invoke("ReturnToRun",delaySeconds);
+    }
+
+    public void ReturnToRun()
+    {
+        TimeManager.instance.m_StopTime = false;
+        m_Player.SetActive(true);
+        m_MainMenu.SetActive(false);
+        m_MainGameUI.SetActive(true);
+        m_DeadMenu.SetActive(false);
+        m_CombatUI.SetActive(false);
+        m_ShopMenu.SetActive(false);
+        m_EndCombatMenu.SetActive(false);
+        m_TomesResource.SetActive(false);
+        m_GoldResoruce.SetActive(true);
     }
     public void GoToMainMenu()
     {

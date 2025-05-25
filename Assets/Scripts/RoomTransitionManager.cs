@@ -1,6 +1,7 @@
 using System;
 using System.Xml.Serialization;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public class RoomTransitionManager : MonoBehaviour
 {
@@ -77,7 +78,7 @@ public class RoomTransitionManager : MonoBehaviour
     /// <param name="nextRoom"></param>
     public void RoomTransition(TransitionType nextRoom)
     {
-        m_EndlessRunnerTilesManager.DeactivateDoorsTile();
+        //m_EndlessRunnerTilesManager.DeactivateDoorsTile();
 
         Debug.LogError("[TRANSICION A: " +  nextRoom + "]");
 
@@ -85,7 +86,7 @@ public class RoomTransitionManager : MonoBehaviour
         if(m_CurrentRoom == null)
         {
             //Deactivate the runner manager
-            m_EndlessRunnerTilesManager.enabled = false;
+            //m_EndlessRunnerTilesManager.enabled = false;
 
             //Disable movement
             m_PlayerMovement.enabled = false;
@@ -108,7 +109,9 @@ public class RoomTransitionManager : MonoBehaviour
             m_PlayerAnimator.SetBool("isFighting", false);
 
             //Activate the runner manager
-            m_EndlessRunnerTilesManager.enabled = true;
+            //m_EndlessRunnerTilesManager.enabled = true;
+            m_EndlessRunnerTilesManager.ControlRunner(true);
+
 
             //enable movement and disable combat
             m_PlayerCombatScript.enabled = false;
@@ -174,7 +177,7 @@ public class RoomTransitionManager : MonoBehaviour
         Debug.LogWarning("TRANSITIONING TO COMBAT");
         m_CurrentRoom = m_CombatRoom;
         m_CurrentRoom.SetActive(true);
-
+        GeneralCanvasManager.instance.StartCombat();
         PlayClip(m_CombatMusic);
 
         //enable combat
@@ -211,6 +214,8 @@ public class RoomTransitionManager : MonoBehaviour
     {
         Debug.LogWarning("TRANSITIONING TO RUNNER");
 
+        PlayerStats.instance.m_RoomsCleared++;
+
         m_EndlessRunnerTilesManager.CalculateTilesUntilDoors();
         CheckIfNextRoomsIsBoss();
 
@@ -219,7 +224,10 @@ public class RoomTransitionManager : MonoBehaviour
 
     public void CheckIfNextRoomsIsBoss()
     {
-        if ((PlayerStats.instance.m_RoomsCleared % m_NumOfRoomsBetweenBoss) == 0) m_NextRoomIsBoss = true;
+        if ((PlayerStats.instance.m_RoomsCleared % m_NumOfRoomsBetweenBoss) == 0 && PlayerStats.instance.m_RoomsCleared != 0)
+        {
+            m_NextRoomIsBoss = true;
+        }
         else m_NextRoomIsBoss = false;
     }
 

@@ -10,6 +10,8 @@ public class HealPlayerOnClick : ClickableObject
     protected override void OnClick()
     {
         m_PlayerHealthController.m_CurrentHealthPoints = m_PlayerHealthController.m_MaxHealthPoints;
+        GeneralCanvasManager.instance.ReturnToRun();
+        RoomTransitionManager.instance.RoomTransition(TransitionType.RUNNER);
     }
 
 }
