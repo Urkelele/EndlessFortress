@@ -20,13 +20,13 @@ MonoBehaviour:
   m_AttackDamageMultiplier: 1
   m_GoldRewardMultiplier: 1
   m_LifeSteal: 0
-  m_UnlockPrice: 0
-  m_Price: 0
+  m_UnlockPrice: 100
+  m_Price: 1000
   m_Description: 'Deal 40% max HP damage to all regular enemies and 20% to the Boss. '
   m_SpriteItem: {fileID: 21300000, guid: 014b08c2d3b24494fa59e7f327dae7fe, type: 3}
   m_QualityItem: 3
   m_TypeItem: 1
-  m_Unlocked: 0
+  m_Unlocked: 1
   m_ItemDamage: 0
   m_ItemCooldown: 45
   m_MaxHealthDamagePercentage: 0.4

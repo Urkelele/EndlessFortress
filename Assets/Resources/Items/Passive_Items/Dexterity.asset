@@ -20,11 +20,12 @@ MonoBehaviour:
   m_AttackDamageMultiplier: 1
   m_GoldRewardMultiplier: 1
   m_LifeSteal: 0
-  m_Price: 0
+  m_UnlockPrice: 0
+  m_Price: 200
   m_Description: Attack Cooldown -10%
   m_SpriteItem: {fileID: 21300000, guid: 523d97174cf090a4a8cd8a765195eacb, type: 3}
   m_QualityItem: 0
   m_TypeItem: 0
-  m_Unlocked: 0
+  m_Unlocked: 1
   m_ItemDamage: 0
   m_ItemCooldown: 0

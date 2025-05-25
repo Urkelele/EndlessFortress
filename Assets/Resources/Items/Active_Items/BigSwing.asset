@@ -20,8 +20,8 @@ MonoBehaviour:
   m_AttackDamageMultiplier: 1
   m_GoldRewardMultiplier: 1
   m_LifeSteal: 0
-  m_UnlockPrice: 0
-  m_Price: 0
+  m_UnlockPrice: 50
+  m_Price: 700
   m_Description: Heavy Weapon Damage to all enemies x2.
   m_SpriteItem: {fileID: 21300000, guid: 633c04b0bdde55f4e8af1927e5089754, type: 3}
   m_QualityItem: 2
