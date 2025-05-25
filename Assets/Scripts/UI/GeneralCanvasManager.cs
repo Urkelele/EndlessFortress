@@ -160,6 +160,7 @@ public class GeneralCanvasManager : MonoBehaviour
         m_EndCombatMenu.SetActive(false);
         m_TomesResource.SetActive(false);
         m_GoldResoruce.SetActive(true);
+        FindAnyObjectByType<ChestRewardScript>().SpawnChestReward();
         m_ChestRewardMenu.SetActive(true);
     }
     public void PlaySound()

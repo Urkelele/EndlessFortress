@@ -131,7 +131,7 @@ public class CombatManager : MonoBehaviour
         ClickManager.instance.m_LastObjectClicked = m_CombatEnemies[randEnemyPos].m_ClickDetection;
     }
 
-    public void GiveRewards(bool giveAlwaysItem = false, bool isInChestRoom = false)
+    public void GiveRewards(bool giveAlwaysItem = false, bool isInChestRoom = false, bool onlyUnlockedItems = true)
     {
         if (!isInChestRoom)
         {
@@ -147,7 +147,6 @@ public class CombatManager : MonoBehaviour
         {
             itemSpawnroll = Random.value;
         }
-        Debug.Log(itemSpawnroll);
 
         if (itemSpawnroll < m_ItemDropChance)
         {
@@ -155,19 +154,19 @@ public class CombatManager : MonoBehaviour
 
             if (qualityRoll < m_CommonDropChance)
             {
-                m_ItemReward = ItemDatabaseManager.Instance.GetRandomItemOfQuality(ItemBaseScript.ItemQuality.COMMON);
+                m_ItemReward = ItemDatabaseManager.Instance.GetRandomItemOfQuality(ItemBaseScript.ItemQuality.COMMON, onlyUnlockedItems);
             }
-            else if (qualityRoll < m_RareDropChance)
+            else if (qualityRoll < m_RareDropChance + m_CommonDropChance)
             {
-                m_ItemReward = ItemDatabaseManager.Instance.GetRandomItemOfQuality(ItemBaseScript.ItemQuality.RARE);
+                m_ItemReward = ItemDatabaseManager.Instance.GetRandomItemOfQuality(ItemBaseScript.ItemQuality.RARE, onlyUnlockedItems);
             }
-            else if (qualityRoll < m_EpicDropChance)
+            else if (qualityRoll < m_EpicDropChance + m_RareDropChance + m_CommonDropChance)
             {
-                m_ItemReward = ItemDatabaseManager.Instance.GetRandomItemOfQuality(ItemBaseScript.ItemQuality.EPIC);
+                m_ItemReward = ItemDatabaseManager.Instance.GetRandomItemOfQuality(ItemBaseScript.ItemQuality.EPIC, onlyUnlockedItems);
             }
-            else if (qualityRoll < m_LegendaryDropChance)
+            else if (qualityRoll < m_LegendaryDropChance + m_EpicDropChance + m_RareDropChance + m_CommonDropChance)
             {
-                m_ItemReward = ItemDatabaseManager.Instance.GetRandomItemOfQuality(ItemBaseScript.ItemQuality.LEGENDARY);
+                m_ItemReward = ItemDatabaseManager.Instance.GetRandomItemOfQuality(ItemBaseScript.ItemQuality.LEGENDARY, onlyUnlockedItems);
             }
         }
     }

@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,10 +19,9 @@ public class ChestRewardScript : MonoBehaviour
 
     public void SpawnChestReward()
     {
-        CombatManager.instance.GiveRewards(true, true);
+        CombatManager.instance.GiveRewards(true, true, false);
         ActivateItemReward(CombatManager.instance.m_ItemReward);
         m_ChestRewardPanel.SetActive(true);
-        m_ItemRewardPanel.SetActive(false);
     }
 
     public void ActivateItemReward(ItemBaseScript itemBaseScript)
@@ -52,12 +52,9 @@ public class ChestRewardScript : MonoBehaviour
 
     public void CloseChestReward()
     {
-        m_ChestRewardPanel.SetActive(false);
-    }
-
-    public void CloseItemRewardBox()
-    {
         m_ItemRewardPanel.SetActive(false);
+        m_ChestRewardPanel.SetActive(false);
+        RoomTransitionManager.instance.RoomTransition(TransitionType.RUNNER);
     }
     public void TakeRewardedItem()
     {
@@ -77,6 +74,6 @@ public class ChestRewardScript : MonoBehaviour
                 InventoryManager.instance.AddNewHeavySword(itemReward);
                 break;
         }
-        m_ItemRewardPanel.SetActive(false);
+        CloseChestReward();
     }
 }
