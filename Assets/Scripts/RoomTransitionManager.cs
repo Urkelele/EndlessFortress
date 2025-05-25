@@ -105,6 +105,9 @@ public class RoomTransitionManager : MonoBehaviour
         }
         else
         {
+            //Change canvas to runner canvas
+            GeneralCanvasManager.instance.ReturnToRun();
+
             //Deactivate animation
             m_PlayerAnimator.SetBool("isFighting", false);
 
