@@ -17,13 +17,6 @@ public class CombatResumeControllerUI : MonoBehaviour
     public TextMeshProUGUI m_ItemTypeText;
 
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.G))
-        {
-            SpawnCombatResume();
-        }
-    }
     public void SpawnCombatResume()
     {
         m_CombatResumePanel.SetActive(true);
