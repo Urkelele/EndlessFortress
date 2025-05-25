@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ObjectsPoolManager : MonoBehaviour
@@ -23,6 +24,10 @@ public class ObjectsPoolManager : MonoBehaviour
     {
         // This is the instance of the class
         m_Instance = this;
+        
+    }
+    private void OnEnable()
+    {
         InitializePool(m_ObstaclePrefabs, m_ObstaclePool, m_ObstaclePoolSize);
         PopulatePool(m_CoinPrefab, m_CoinPool, m_CoinPoolSize);
         InitializePool(m_PremiumPickUps, m_PremiumPickUpPool, m_PremiumPickUpPoolSize);
