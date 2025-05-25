@@ -52,8 +52,6 @@ public class DeadMenuController : MonoBehaviour
         {
             m_ExternalDataManager.AddTomes(-m_AmountOfTomes);
             Debug.Log("Player respawned");
-            PlayerHealthController playerHealthController = FindAnyObjectByType<PlayerHealthController>();
-            playerHealthController.RestartLife();
             gameObject.SetActive(true);
         }
     }

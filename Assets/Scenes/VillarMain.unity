@@ -566,10 +566,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 2060239384273615038, guid: 4725c720999edf148be22c30132dcf03, type: 3}
-      propertyPath: m_MainMenu
-      value: 
-      objectReference: {fileID: 897645905}
     - target: {fileID: 2133397524504374896, guid: 4725c720999edf148be22c30132dcf03, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -877,7 +873,7 @@ PrefabInstance:
     - target: {fileID: 6357135424380550505, guid: 4725c720999edf148be22c30132dcf03, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1340891915}
+      objectReference: {fileID: 0}
     - target: {fileID: 6357135424380550505, guid: 4725c720999edf148be22c30132dcf03, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: RoomTransitionViaInt
@@ -1464,11 +1460,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1831586219762468990, guid: b271353ded60e6d4db8c907dab3b86c5, type: 3}
   m_PrefabInstance: {fileID: 1288584920}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &897645905 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7215472784718682232, guid: 4725c720999edf148be22c30132dcf03, type: 3}
-  m_PrefabInstance: {fileID: 184723197}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &901118260
 GameObject:
   m_ObjectHideFlags: 0
@@ -1812,17 +1803,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1641414022}
   m_SourcePrefab: {fileID: 100100000, guid: b271353ded60e6d4db8c907dab3b86c5, type: 3}
---- !u!114 &1340891915 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7297540636192129326, guid: 4692fa9d6d3308c4d912d45f29e0a3fb, type: 3}
-  m_PrefabInstance: {fileID: 8649049810652858169}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b8e8093395f0754e97aa91a5d24545e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1410819461 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 759838839087071513, guid: 4725c720999edf148be22c30132dcf03, type: 3}

@@ -54,7 +54,6 @@ public class InventoryManager : MonoBehaviour
     private void Update()
     {
         CheckTriggers();
-        UpdateGold();
     }
 
     /// <summary>
