@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,17 +15,20 @@ public class ChestRewardScript : MonoBehaviour
     public Image m_ItemIconBox;
     public Sprite[] m_ItemBoxSprites;
     public TextMeshProUGUI m_ItemTypeText;
+    [SerializeField] private ItemBaseScript m_ItemReward;
 
     public void SpawnChestReward()
     {
+        CombatManager.instance.GiveRewards(true, true, false);
+        ActivateItemReward(CombatManager.instance.m_ItemReward);
         m_ChestRewardPanel.SetActive(true);
-        m_ItemRewardPanel.SetActive(false);
-        ActivateItemReward(ItemDatabaseManager.Instance.GetRandomItem());
     }
 
     public void ActivateItemReward(ItemBaseScript itemBaseScript)
     {
+        m_ItemReward = itemBaseScript;
         m_ItemRewardPanel.SetActive(true);
+        if(itemBaseScript == null) { return; }
         m_ItemIconBox.sprite = m_ItemBoxSprites[(int)itemBaseScript.m_QualityItem];
         m_ItemIcon.sprite = itemBaseScript.m_SpriteItem;
         m_ItemNameText.text = itemBaseScript.m_ItemName;
@@ -48,12 +52,9 @@ public class ChestRewardScript : MonoBehaviour
 
     public void CloseChestReward()
     {
-        m_ChestRewardPanel.SetActive(false);
-    }
-
-    public void CloseItemRewardBox()
-    {
         m_ItemRewardPanel.SetActive(false);
+        m_ChestRewardPanel.SetActive(false);
+        RoomTransitionManager.instance.RoomTransition(TransitionType.RUNNER);
     }
     public void TakeRewardedItem()
     {
@@ -73,6 +74,6 @@ public class ChestRewardScript : MonoBehaviour
                 InventoryManager.instance.AddNewHeavySword(itemReward);
                 break;
         }
-        m_ItemRewardPanel.SetActive(false);
+        CloseChestReward();
     }
 }

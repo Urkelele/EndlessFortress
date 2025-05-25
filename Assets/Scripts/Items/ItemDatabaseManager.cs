@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using NUnit.Framework.Constraints;
+using Unity.VisualScripting;
 //using static UnityEditor.Progress;
 
 public class ItemDatabaseManager : MonoBehaviour
@@ -151,29 +152,40 @@ public class ItemDatabaseManager : MonoBehaviour
         return m_PassiveItems[randomItemIndex];
     }
 
-    public ItemBaseScript GetRandomItemOfQuality(ItemBaseScript.ItemQuality quality)
+    public ItemBaseScript GetRandomItemOfQuality(ItemBaseScript.ItemQuality quality, bool OnlyUnlockedItems = true)
     {
         if (ItemDatabaseManager.Instance.m_UnlockedItems.Count == 0) return null;
-
-        int randomItemIndex = Random.Range(0, ItemDatabaseManager.Instance.m_UnlockedItems.Count);
-
-        switch (quality)
+        if(OnlyUnlockedItems)
         {
-            case ItemBaseScript.ItemQuality.COMMON:
-                return m_CommonItems[randomItemIndex];
+            switch (quality)
+            {
+                case ItemBaseScript.ItemQuality.COMMON:
+                    return m_CommonItems[Random.Range(0, m_CommonItems.Count)];
 
-            case ItemBaseScript.ItemQuality.RARE:
-                return m_RareItems[randomItemIndex];
+                case ItemBaseScript.ItemQuality.RARE:
+                    return m_RareItems[Random.Range(0, m_RareItems.Count)];
 
-            case ItemBaseScript.ItemQuality.EPIC:
-                return m_EpicItems[randomItemIndex];
+                case ItemBaseScript.ItemQuality.EPIC:
+                    return m_EpicItems[Random.Range(0, m_EpicItems.Count)];
 
-            case ItemBaseScript.ItemQuality.LEGENDARY:
-                return m_LegendaryItems[randomItemIndex];
+                case ItemBaseScript.ItemQuality.LEGENDARY:
+                    return m_LegendaryItems[Random.Range(0, m_LegendaryItems.Count)];
 
-            default:
-                return null;
+                default:
+                    return null;
+            }
         }
-
+        else
+        { 
+            while(true)
+            {
+                ItemBaseScript item = m_AllItems[Random.Range(0, m_AllItems.Count)];
+                if(item.m_QualityItem == quality)
+                {
+                    return item;
+                }
+            }
+            
+        }
     }
 }
