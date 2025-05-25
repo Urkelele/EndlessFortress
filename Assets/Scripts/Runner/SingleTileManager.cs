@@ -17,25 +17,30 @@ public class SingleTileManager : MonoBehaviour
 
     private void OnEnable()
     {
-        if(m_ObstaclesRoot == null)
+        Invoke("Populate", 0.1f);
+    }
+
+    private void Populate()
+    {
+        if (m_ObstaclesRoot == null)
         {
             GameObject newRoot = new GameObject("ObstaclesRoot");
             newRoot.transform.parent = transform;
             newRoot.transform.localPosition = Vector3.zero;
             m_ObstaclesRoot = newRoot.transform;
         }
-        if(m_CoinsRoot == null)
+        if (m_CoinsRoot == null)
         {
             GameObject newRoot = new GameObject("CoinsRoot");
             newRoot.transform.parent = transform;
             newRoot.transform.localPosition = Vector3.zero;
             m_CoinsRoot = newRoot.transform;
         }
-        if(m_ObstaclesRoot.childCount == 0)
+        if (m_ObstaclesRoot.childCount == 0)
         {
             SpawnObstacles();
         }
-        if(m_CoinsRoot.childCount == 0)
+        if (m_CoinsRoot.childCount == 0)
         {
             SpawnCoins();
         }
