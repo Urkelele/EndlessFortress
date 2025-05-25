@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ActivateGameObjectOnClick : ClickableObject
+public class RoomObjectOnClick : ClickableObject
 {
     public GameObject m_GameObjectToActivate = null;
 
