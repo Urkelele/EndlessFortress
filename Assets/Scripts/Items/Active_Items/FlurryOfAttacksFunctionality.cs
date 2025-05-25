@@ -6,18 +6,23 @@ public class FlurryOfAttacksFunctionality : BaseActiveScript
 {
     public int m_NumberOfAttack = 5;
 
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Z)) { UseActive(); }
+    }
     public override void UseActive()
     {
         base.UseActive();
-        DoDamage(InventoryManager.instance.m_CurrentLightWeapon.m_ItemDamage);
+        //StartCoroutine(DoDamage(InventoryManager.instance.m_CurrentLightWeapon.m_ItemDamage));        
     }
-    private void DoDamage(float damage)
+    private IEnumerator DoDamage(float damage)
     {
         PlayerCombatScript playerCombatScript = FindAnyObjectByType<PlayerCombatScript>();
         for (int i = 0; i < m_NumberOfAttack; i++)
         {
             playerCombatScript.DealDamageToTargetEnemy(damage);
             Debug.Log("Do " + damage + " damage");
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }
