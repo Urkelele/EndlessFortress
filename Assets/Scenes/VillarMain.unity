@@ -756,6 +756,18 @@ PrefabInstance:
       propertyPath: m_ItemRewardPanel
       value: 
       objectReference: {fileID: 2001115311}
+    - target: {fileID: 6212718284411783037, guid: 4725c720999edf148be22c30132dcf03, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1054046320}
+    - target: {fileID: 6212718284411783037, guid: 4725c720999edf148be22c30132dcf03, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartRun
+      objectReference: {fileID: 0}
+    - target: {fileID: 6212718284411783037, guid: 4725c720999edf148be22c30132dcf03, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: RunnerManager, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6357135424380550505, guid: 4725c720999edf148be22c30132dcf03, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 3
@@ -1527,6 +1539,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1054046320 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6729473046761269980, guid: 4692fa9d6d3308c4d912d45f29e0a3fb, type: 3}
+  m_PrefabInstance: {fileID: 8649049810652858169}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 606837a6ac2789c4bbf2f3abb89dad0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1091339885 stripped
