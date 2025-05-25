@@ -95,7 +95,6 @@ public class ObjectsPoolManager : MonoBehaviour
 
     public void ReturnCoin(GameObject thisCoin)
     {
-        InventoryManager.instance.AddGold(1);
         thisCoin.SetActive(false);
         thisCoin.transform.parent = null;
         m_CoinPool.Enqueue(thisCoin);

@@ -182,6 +182,7 @@ public class PlayerMovement : MonoBehaviour
         {
             // Coin collected, return it to pool and optionally play effect
             ObjectsPoolManager.m_Instance.ReturnCoin(other.gameObject);
+            InventoryManager.instance.AddGold(1);
             other.gameObject.SetActive(false);
 
             PlayClip(m_CoinAudioclip);
