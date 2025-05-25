@@ -61,6 +61,9 @@ public class PlayerCombatScript : MonoBehaviour
     {
         m_LightAttackCurrentCooldown -= Time.deltaTime;
         m_HeavyAttackCurrentCooldown -= Time.deltaTime;
+
+        //Make target enemy have outline
+        m_TargetEnemy.GetComponent<Outline>().enabled = true;
     }
 
     public void GetHit(float dmg)

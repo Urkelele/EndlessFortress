@@ -579,6 +579,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4524380348334466, guid: d78c5bad035dcad4aa9bdde64716d08d, type: 3}
   m_PrefabInstance: {fileID: 2044222750}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &420219221 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6951295953260434642, guid: 4725c720999edf148be22c30132dcf03, type: 3}
+  m_PrefabInstance: {fileID: 938086865734048483}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &420219225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 420219221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdc924efb4caf704f949974b23f9b8e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ItemName: {fileID: 0}
+  m_ItemQuality: {fileID: 0}
+  m_ItemDescription: {fileID: 0}
 --- !u!1 &513710882
 GameObject:
   m_ObjectHideFlags: 0
@@ -1324,10 +1344,6 @@ PrefabInstance:
       propertyPath: m_AudioSource
       value: 
       objectReference: {fileID: 934272991}
-    - target: {fileID: 9141473115745536127, guid: d78c5bad035dcad4aa9bdde64716d08d, type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1630,7 +1646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5644854210353311025, guid: 4725c720999edf148be22c30132dcf03, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DestroyEnemies
+      value: DestroyEnemiesAndResetParams
       objectReference: {fileID: 0}
     - target: {fileID: 5644854210353311025, guid: 4725c720999edf148be22c30132dcf03, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -1732,13 +1748,9 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7340866464855519322, guid: 4725c720999edf148be22c30132dcf03, type: 3}
-      propertyPath: m_text
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7340866464855519322, guid: 4725c720999edf148be22c30132dcf03, type: 3}
-      propertyPath: m_Enabled
-      value: 1
+    - target: {fileID: 7398513686820362467, guid: 4725c720999edf148be22c30132dcf03, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8208262364757873246, guid: 4725c720999edf148be22c30132dcf03, type: 3}
       propertyPath: m_IsActive
@@ -1879,7 +1891,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8038267599720507400, guid: 4725c720999edf148be22c30132dcf03, type: 3}
       insertIndex: 0
       addedObject: {fileID: 126794614}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6951295953260434642, guid: 4725c720999edf148be22c30132dcf03, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 420219225}
   m_SourcePrefab: {fileID: 100100000, guid: 4725c720999edf148be22c30132dcf03, type: 3}
 --- !u!114 &6922361616097773907 stripped
 MonoBehaviour:
@@ -1977,10 +1992,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 934272995}
     - target: {fileID: 5807910524731582650, guid: 4692fa9d6d3308c4d912d45f29e0a3fb, type: 3}
-      propertyPath: m_ItemDropChance
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 5807910524731582650, guid: 4692fa9d6d3308c4d912d45f29e0a3fb, type: 3}
       propertyPath: 'm_EnemyPositions.Array.data[0]'
       value: 
       objectReference: {fileID: 1674586268}
@@ -2028,6 +2039,10 @@ PrefabInstance:
       propertyPath: m_PlayerRoomPos
       value: 
       objectReference: {fileID: 1701471741}
+    - target: {fileID: 7297540636192129326, guid: 4692fa9d6d3308c4d912d45f29e0a3fb, type: 3}
+      propertyPath: m_NextRoomIsBoss
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7297540636192129326, guid: 4692fa9d6d3308c4d912d45f29e0a3fb, type: 3}
       propertyPath: m_PlayerMovement
       value: 
