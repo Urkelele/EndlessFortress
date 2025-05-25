@@ -38,7 +38,7 @@ public class DailyRewardController : MonoBehaviour
     public bool CanClaimReward()
     {
         if (!TryGetLastClaimTime(out DateTime lastClaim))
-            return true; // Allow claim if time is invalid (e.g., first time)
+            return true; 
 
         TimeSpan timeSinceLast = DateTime.UtcNow - lastClaim;
         return timeSinceLast.TotalHours >= rewardCooldownHours;
@@ -72,26 +72,23 @@ public class DailyRewardController : MonoBehaviour
     {
         if (!CanClaimReward())
         {
-            Debug.Log("Reward not ready yet!");
             return;
         }
 
-        // Give player reward here...
         ExternalDataManager.Instance.AddTomes(m_RewardCuantity);
 
         ExternalDataManager.Instance.m_StoredData.m_LastTimeDailyReward = DateTime.UtcNow.ToString("o");
-        Debug.Log("Reward claimed!");
     }
 
     void CheckRewardAvailability()
     {
         if (CanClaimReward())
         {
-            Debug.Log("Reward available!");
+            Debug.Log("Reward available");
         }
         else
         {
-            Debug.Log("Come back later.");
+            Debug.Log("Come back later");
         }
     }
 }

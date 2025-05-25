@@ -53,14 +53,13 @@ public class EndlessRunnerTileManager : MonoBehaviour
         m_IsInRunner = start;
         if (start)
         {
+
             for (int i = 0; i < m_ActiveTiles.Count; i++)
             {
                 Transform thisTile = m_ActiveTiles[i].transform;
                 thisTile.gameObject.SetActive(false);
                 m_ActiveTiles.RemoveAt(i);
                 i--;
-
-                Debug.LogWarning("REMOVED TILE");
 
                 if (thisTile != m_DoorsTile)
                 {
@@ -91,11 +90,14 @@ public class EndlessRunnerTileManager : MonoBehaviour
 
     private void PlaceInitialTiles()
     {
+        Debug.LogError("---------[PLACING INITIAL TILES]-------");
         CalculateTilesUntilDoors();
         for (int i = 0; i < m_IndexToSpawn; i++)
         {
             PlaceRandomTile(i);
         }
+        Debug.LogError("---------[FINISHED PLACING INITIAL TILES]-------");
+
     }
 
     private void PlaceRandomTile(int positionIndex = 0)
@@ -114,6 +116,8 @@ public class EndlessRunnerTileManager : MonoBehaviour
             // TODO: if positionIndex == m_IndexToSpawn, spawn items
             tile.SetActive(true);
             m_CurrentTilesUntilDoors--;
+
+            Debug.LogWarning("ACTIVATED TILE");
         }
         else if(!m_ActiveTiles.Contains(m_DoorsTile)) //Not activate a new door if a doorTile is already active
         {
@@ -122,8 +126,10 @@ public class EndlessRunnerTileManager : MonoBehaviour
             m_ActiveTiles.Add(m_DoorsTile);
             m_DoorsTile.SetActive(true);
             CalculateTilesUntilDoors();
+         
+            Debug.LogWarning("ACTIVATED DOOR");
         }
-    
+
     }
 
     // Update is called once per frame

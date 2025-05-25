@@ -1406,6 +1406,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1525743696}
+        m_TargetAssemblyTypeName: NotificationsManager, Assembly-CSharp
+        m_MethodName: ScheduleNotification
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 28800
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &280551850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2638,6 +2650,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1525743694}
   - component: {fileID: 1525743695}
+  - component: {fileID: 1525743696}
   m_Layer: 5
   m_Name: DailyReward
   m_TagString: Untagged
@@ -2683,6 +2696,18 @@ MonoBehaviour:
   m_TimeText: {fileID: 281147611}
   m_RewardCuantity: 5
   rewardCooldownHours: 8
+--- !u!114 &1525743696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525743693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82f5097551aa84a499a6f2f60a18ae53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1579711581
 GameObject:
   m_ObjectHideFlags: 0

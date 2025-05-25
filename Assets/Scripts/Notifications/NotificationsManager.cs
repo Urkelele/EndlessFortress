@@ -115,13 +115,12 @@ public class NotificationsManager : MonoBehaviour
         AndroidNotificationCenter.RegisterNotificationChannel(channel);
     }
 
-    void ScheduleNotification(float seconds)
+    public void ScheduleNotification(float seconds)
     {
-        CreateNotificationChannel(); // asegúrate de crearla antes
-        //creo que hay que asignar IDs, para que si se abre el juego muchas veces, no se manden muchas notificaciones
+        CreateNotificationChannel(); 
         var notification = new AndroidNotification();
-        notification.Title = "¡La ruleta diaria está lista!";
-        notification.Text = "Vuelve y gira para ganar tu recompensa.";
+        notification.Title = "¡Tus tomos estan listos!";
+        notification.Text = "Vuelve y recibe tu recompensa";
         notification.FireTime = DateTime.Now.AddSeconds(seconds);
 
         AndroidNotificationCenter.SendNotification(notification, "daily_spin_channel");
