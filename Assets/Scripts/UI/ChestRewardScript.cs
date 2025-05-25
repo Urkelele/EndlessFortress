@@ -19,7 +19,7 @@ public class ChestRewardScript : MonoBehaviour
 
     public void SpawnChestReward()
     {
-        CombatManager.instance.GiveRewards(true, true, false);
+        CombatManager.instance.GiveRewards(true, true, true);
         ActivateItemReward(CombatManager.instance.m_ItemReward);
         m_ChestRewardPanel.SetActive(true);
     }

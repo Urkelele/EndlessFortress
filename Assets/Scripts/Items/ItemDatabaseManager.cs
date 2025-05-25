@@ -157,19 +157,22 @@ public class ItemDatabaseManager : MonoBehaviour
         if (ItemDatabaseManager.Instance.m_UnlockedItems.Count == 0) return null;
         if(OnlyUnlockedItems)
         {
+            Debug.Log(quality.ToString());
             switch (quality)
             {
                 case ItemBaseScript.ItemQuality.COMMON:
-                    return m_CommonItems[Random.Range(0, m_CommonItems.Count)];
+                    return m_CommonItems[Random.Range(0, m_CommonItems.Count-1)];
 
                 case ItemBaseScript.ItemQuality.RARE:
-                    return m_RareItems[Random.Range(0, m_RareItems.Count)];
+                    return m_RareItems[Random.Range(0, m_RareItems.Count-1)];
 
                 case ItemBaseScript.ItemQuality.EPIC:
-                    return m_EpicItems[Random.Range(0, m_EpicItems.Count)];
+                    if (m_EpicItems.Count == 0) return null;
+                    return m_EpicItems[Random.Range(0, m_EpicItems.Count-1)];
 
                 case ItemBaseScript.ItemQuality.LEGENDARY:
-                    return m_LegendaryItems[Random.Range(0, m_LegendaryItems.Count)];
+                    if(m_LegendaryItems.Count == 0) return null;
+                    return m_LegendaryItems[Random.Range(0, m_LegendaryItems.Count-1)];
 
                 default:
                     return null;

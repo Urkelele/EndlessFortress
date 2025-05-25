@@ -13,18 +13,9 @@ public class ShopController : MonoBehaviour
 
     public GameObject m_ShopObject;
     public ShopRerollController m_ShopRerollController;
-    public GameObject m_MainMenu;
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Z))
-        {
-            ClearShop();
-        }
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            SpawnShop();
-        }
         if (Input.GetKeyDown(KeyCode.R))
         {
             RerollItemsInShop();
@@ -49,10 +40,12 @@ public class ShopController : MonoBehaviour
     public void SpawnItemsInShop()
     {
         ItemBaseScript auxItem;
-        ItemDatabaseManager m_ItemDatabaseManager = ItemDatabaseManager.Instance;
+        CombatManager combarManager = CombatManager.instance;
         for (int i = 0;i < m_NumberPassiveItems; i++)
         {
-            auxItem = m_ItemDatabaseManager.GetRandomItem();
+            combarManager.GiveRewards(true, true, true);
+            auxItem = combarManager.m_ItemReward;
+            Debug.Log(auxItem.m_ItemName + auxItem.m_TypeItem.ToString() + "1");
             if (auxItem.m_TypeItem == ItemBaseScript.ItemType.PASSIVE)
             {
                 foreach(ShopItemController shopItem in m_ShopItemController)
@@ -68,7 +61,9 @@ public class ShopController : MonoBehaviour
         }
         for (int i = 0; i < m_NumberActiveItems; i++)
         {
-            auxItem = m_ItemDatabaseManager.GetRandomItem();
+            combarManager.GiveRewards(true, true, true);
+            auxItem = combarManager.m_ItemReward;
+            Debug.Log(auxItem.m_ItemName + auxItem.m_TypeItem.ToString() + "2");
             if (auxItem.m_TypeItem == ItemBaseScript.ItemType.ACTIVE)
             {
                 foreach (ShopItemController shopItem in m_ShopItemController)
@@ -85,7 +80,9 @@ public class ShopController : MonoBehaviour
         }
         for (int i = 0; i < m_NumberWeapons; i++)
         {
-            auxItem = m_ItemDatabaseManager.GetRandomItem();
+            combarManager.GiveRewards(true, true, true);
+            auxItem = combarManager.m_ItemReward;
+            Debug.Log(auxItem.m_ItemName + auxItem.m_TypeItem.ToString() + "3");
             if (auxItem.m_TypeItem == ItemBaseScript.ItemType.LIGHT_WEAPON || auxItem.m_TypeItem == ItemBaseScript.ItemType.HEAVY_WEAPON)
             {
                 foreach (ShopItemController shopItem in m_ShopItemController)
