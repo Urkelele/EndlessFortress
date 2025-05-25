@@ -22,7 +22,7 @@ public class PauseMenuController: MonoBehaviour
     {
         if(!m_IsPaused)
         {
-            Time.timeScale = 0f;
+            TimeManager.instance.m_StopTime = true;
             m_IsPaused = true;
             m_PauseMenuPanel.SetActive(true);
             GetComponent<InventoryControllerUI>().UpdateItemsInInventory();
@@ -30,7 +30,7 @@ public class PauseMenuController: MonoBehaviour
         }
         else
         {
-            Time.timeScale = 1f;
+            TimeManager.instance.m_StopTime = false;
             m_IsPaused = false;
             m_PauseMenuPanel.SetActive(false);
 
