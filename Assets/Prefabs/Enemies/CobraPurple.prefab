@@ -1177,7 +1177,7 @@ MonoBehaviour:
   m_CurrentHealthPoints: 0
   m_IncomingDamageMultiplier: 1
   m_IsDead: 0
-  m_AudioSource: {fileID: 0}
+  m_AudioSource: {fileID: 1223616270164703091, guid: 7f9317828a49e0d45aedf2d91b31cf54, type: 3}
   m_GettingDamaged: {fileID: 0}
 --- !u!114 &4335237384623854629
 MonoBehaviour:
