@@ -12,12 +12,6 @@ public class PassiveItemPickUpScript : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = m_Item.m_SpriteItem;
     }
 
-    void OnEnable()
-    {
-        m_Item = ItemDatabaseManager.Instance.GetRandomPasiveItem();
-        GetComponent<SpriteRenderer>().sprite = m_Item.m_SpriteItem;
-    }
-
 
     private void OnTriggerEnter(Collider other)
     {
