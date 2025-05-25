@@ -21,7 +21,7 @@ public class RunnerManager : MonoBehaviour
         PlayerStats.instance.ResetValues();
         FindAnyObjectByType<PlayerHealthController>().RestartLife();
         EndlessRunnerTileManager.Instance.ControlRunner(true);
-        InventoryManager.instance.RestartInverntory();
+        InventoryManager.instance.RestartInventory();
         FindAnyObjectByType<DeadMenuController>().m_HasSpawnedUsingVideo = false;
     }
 }

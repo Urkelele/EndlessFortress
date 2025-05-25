@@ -159,12 +159,13 @@ public class InventoryManager : MonoBehaviour
         return false;
     }
 
-    public void RestartInverntory()
+    public void RestartInventory()
     {
         m_PassiveItemsList.Clear();
         m_CurrentActiveItem = null;
         m_CurrentLightWeapon = m_StartingLightWeapon;
         m_CurrentHeavyWeapon = m_StartingHeavyWeapon;
+        m_Gold = 0;
 
         ResetExtraAttributes();
     }
