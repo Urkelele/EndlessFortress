@@ -2,47 +2,41 @@ using UnityEngine;
 using static UnityEditor.Progress;
 
 public class InventoryControllerUI : MonoBehaviour
-{   
+{
     public GameObject m_ItemCellPrefab;
     public InventoryItemCellController[] m_InventorytemsCells;
     public Transform m_ParentInventoryCells;
     public int m_NumberCellsPerFile;
+
+    [Header("Showing item stats")]
+    public InventoryShowItemInfo m_InventoryShowItemInfo;
+    public GameObject m_SelectedItemImage;
+    private Transform m_PreviousItemSelected = null;
 
     [Header("Active / LightWeapon / HeavyWeapon Cells")]
     public InventoryItemCellController m_ActiveItemCell;
     public InventoryItemCellController m_LightWeaponCell;
     public InventoryItemCellController m_HeavyWeaponCell;
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Y))
-        {
-            ItemBaseScript item = ItemDatabaseManager.Instance.GetRandomItem();
-                if(item.m_TypeItem == ItemBaseScript.ItemType.PASSIVE )
-            {
-                InventoryManager.instance.AddNewPassiveItem(item);
-            }
-            Debug.Log("RemoveEndInput");
-        }
-    }
-
     public virtual void UpdateItemsInInventory()
     {
+        m_SelectedItemImage.SetActive(false);
+        m_InventoryShowItemInfo.FinishedBackwardsAnimation();
         RemoveItems();
-        
+
         m_InventorytemsCells = m_ParentInventoryCells.GetComponentsInChildren<InventoryItemCellController>();
         InventoryManager inventory = InventoryManager.instance;
 
-        m_LightWeaponCell.StoreItem(inventory.m_CurrentLightWeapon);
-        m_HeavyWeaponCell.StoreItem(inventory.m_CurrentHeavyWeapon);
+        m_LightWeaponCell.StoreItem(inventory.m_CurrentLightWeapon, this);
+        m_HeavyWeaponCell.StoreItem(inventory.m_CurrentHeavyWeapon, this);
 
-        if(inventory.m_CurrentActiveItem != null)
+        if (inventory.m_CurrentActiveItem != null)
         {
-            m_ActiveItemCell.StoreItem(inventory.m_CurrentActiveItem);
+            m_ActiveItemCell.StoreItem(inventory.m_CurrentActiveItem, this);
         }
 
         int numberFilledCells = 0;
-        foreach(ItemBaseScript item in inventory.m_PassiveItemsList)
+        foreach (ItemBaseScript item in inventory.m_PassiveItemsList)
         {
             if (numberFilledCells >= m_InventorytemsCells.Length)
             {
@@ -54,12 +48,12 @@ public class InventoryControllerUI : MonoBehaviour
             }
             foreach (InventoryItemCellController itemCell in m_InventorytemsCells)
             {
-                if(itemCell.StoreItem(item))
+                if (itemCell.StoreItem(item, this))
                 {
                     numberFilledCells++;
                     break;
                 }
-            }            
+            }
         }
     }
 
@@ -76,7 +70,7 @@ public class InventoryControllerUI : MonoBehaviour
 
     public void ItemClicked(ItemBaseScript item, Transform cellPosition)
     {
-        if(cellPosition.position != m_PreviousItemSelected.position)
+        if (cellPosition.position != m_PreviousItemSelected.position)
         {
             m_SelectedItemImage.SetActive(true);
             m_PreviousItemSelected = cellPosition;

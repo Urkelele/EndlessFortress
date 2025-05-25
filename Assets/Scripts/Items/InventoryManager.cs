@@ -46,17 +46,6 @@ public class InventoryManager : MonoBehaviour
 
     private void Update()
     {
-        //DEBUG
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            UpdateItems();
-        }
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            Debug.Log("INVENTORY ACTIVATED ACTIVE");
-            m_CurrentActiveItem.UseActive();
-        }
-
         CheckTriggers();
     }
 
