@@ -54,6 +54,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Stop the time if the TimeManager says so
+        if(TimeManager.instance.m_StopTime) { return; }
         PhoneInputs(Time.deltaTime);
 
         if(m_FakeHit)

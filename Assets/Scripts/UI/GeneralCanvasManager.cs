@@ -21,6 +21,9 @@ public class GeneralCanvasManager : MonoBehaviour
     [SerializeField] AudioSource m_AudioSource = null;
     [SerializeField] AudioClip m_ClickSound = null;
 
+    [Header("Components")]
+    public GameObject m_Player;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -36,18 +39,13 @@ public class GeneralCanvasManager : MonoBehaviour
 
     private void Start()
     {
-        m_MainMenu.SetActive(true);
-        m_MainGameUI.SetActive(false);
-        m_DeadMenu.SetActive(false);
-        m_CombatUI.SetActive(false);
-        m_ShopMenu.SetActive(false);
-        m_EndCombatMenu.SetActive(false);
-        m_TomesResource.SetActive(true);
-        m_GoldResoruce.SetActive(false);
+        GoToMainMenu();
     }
 
     public void StartRun()
     {
+        TimeManager.instance.m_StopTime = false;
+        m_Player.SetActive(true);
         m_MainMenu.SetActive(false);
         m_MainGameUI.SetActive(true);
         m_DeadMenu.SetActive(false);
@@ -56,9 +54,13 @@ public class GeneralCanvasManager : MonoBehaviour
         m_EndCombatMenu.SetActive(false);
         m_TomesResource.SetActive(false);
         m_GoldResoruce.SetActive(true);
+        RunnerManager.instance.RestartRun();
     }
     public void GoToMainMenu()
     {
+        TimeManager.instance.m_StopTime = true;
+        EndlessRunnerTileManager.Instance.ControlRunner(false);
+        m_Player.SetActive(false);
         m_MainMenu.SetActive(true);
         m_MainGameUI.SetActive(false);
         m_DeadMenu.SetActive(false);
@@ -71,6 +73,8 @@ public class GeneralCanvasManager : MonoBehaviour
 
     public void RunFinished()
     {
+        TimeManager.instance.m_StopTime = true;
+        EndlessRunnerTileManager.Instance.ControlRunner(false);
         m_MainMenu.SetActive(false);
         m_MainGameUI.SetActive(false);
         m_DeadMenu.SetActive(true);
@@ -94,6 +98,7 @@ public class GeneralCanvasManager : MonoBehaviour
     }
     public void Endcombat()
     {
+        TimeManager.instance.m_StopTime = true;
         m_MainMenu.SetActive(false);
         m_MainGameUI.SetActive(true);
         m_DeadMenu.SetActive(false);
@@ -106,6 +111,7 @@ public class GeneralCanvasManager : MonoBehaviour
 
     public void OpenShop()
     {
+        TimeManager.instance.m_StopTime = true;
         m_MainMenu.SetActive(false);
         m_MainGameUI.SetActive(true);
         m_DeadMenu.SetActive(false);

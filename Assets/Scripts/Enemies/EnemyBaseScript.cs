@@ -48,6 +48,9 @@ public class EnemyBaseScript : MonoBehaviour
 
     protected virtual void Update()
     {
+        // Stop the time if the TimeManager says so
+        if (TimeManager.instance.m_StopTime) { return; }
+
         m_CurrentActionCooldown -= Time.deltaTime;
 
         if (m_CurrentActionCooldown < 0.0f && !m_HealthController.m_IsDead)

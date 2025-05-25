@@ -65,6 +65,7 @@ public class RoomTransitionManager : MonoBehaviour
 
     private void Start()
     {
+        // Move
         PlayClip(m_EndlessRunnerMusic);
     }
 

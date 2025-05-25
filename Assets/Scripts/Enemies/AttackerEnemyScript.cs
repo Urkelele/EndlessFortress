@@ -12,7 +12,7 @@ public class AttackerEnemyScript : EnemyBaseScript
     // Update is called once per frame
     protected virtual void Update()
     {
-        base .Update();
+        base.Update();
     }
 
     public override void PerformAction()

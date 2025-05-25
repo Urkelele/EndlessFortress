@@ -32,4 +32,11 @@ public class PlayerStats : MonoBehaviour
     {
         return (m_EnemiesSlain * m_EachEnemySlain) + (m_RoomsCleared * m_EachRoomCleared) + (m_GoldTotal * m_EachGoldGathered);
     }
+
+    public void ResetValues()
+    {
+        m_EnemiesSlain = 0;
+        m_RoomsCleared = 0;
+        m_GoldTotal = 0;
+    }
 }

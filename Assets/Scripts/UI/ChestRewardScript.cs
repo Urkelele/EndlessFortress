@@ -15,14 +15,6 @@ public class ChestRewardScript : MonoBehaviour
     public Sprite[] m_ItemBoxSprites;
     public TextMeshProUGUI m_ItemTypeText;
 
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            SpawnChestReward();
-        }
-    }
     public void SpawnChestReward()
     {
         m_ChestRewardPanel.SetActive(true);

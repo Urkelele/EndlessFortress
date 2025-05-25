@@ -73,6 +73,7 @@ public class CombatManager : MonoBehaviour
 
     public void StartCombat()
     {
+        GeneralCanvasManager.instance.StartCombat();
         m_PlayerCombatScript.enabled = true;
         InventoryManager.instance.EnableItemTrigger(TriggerType.COMBAT_START);
         SpawnEnemies();

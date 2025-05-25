@@ -23,6 +23,10 @@ public class PlayerHealthController : HealthController
             m_Animator.SetTrigger("isDead");
 
             InventoryManager.instance.EnableItemTrigger(TriggerType.PLAYER_DEATH);
+            if(m_IsDead )
+            {
+                GeneralCanvasManager.instance.RunFinished();
+            }
         }
     }
 
@@ -32,5 +36,11 @@ public class PlayerHealthController : HealthController
 
         //Receive Damage Animation
         m_Animator.SetTrigger("isHitted");
+    }
+
+    public void RestartLife()
+    {
+        m_CurrentHealthPoints = m_MaxHealthPoints;
+        m_IsDead = false;
     }
 }
