@@ -36,7 +36,8 @@ public class RoomTransitionManager : MonoBehaviour
 
 
     [Header("AUDIO")]
-    [SerializeField] AudioSource m_AudioSource = null;
+    [SerializeField] AudioSource m_RunnerCameraAudioSource = null;
+    [SerializeField] AudioSource m_RoomCameraAudioSource = null;
 
     [SerializeField] AudioClip m_EndlessRunnerMusic = null;
     [SerializeField] AudioClip m_CombatMusic = null;
@@ -67,7 +68,7 @@ public class RoomTransitionManager : MonoBehaviour
     private void Start()
     {
         // Move
-        PlayClip(m_EndlessRunnerMusic);
+        PlayClip(m_EndlessRunnerMusic, m_RunnerCameraAudioSource);
     }
 
   
@@ -182,7 +183,7 @@ public class RoomTransitionManager : MonoBehaviour
         m_CurrentRoom = m_CombatRoom;
         m_CurrentRoom.SetActive(true);
         GeneralCanvasManager.instance.StartCombat();
-        PlayClip(m_CombatMusic);
+        PlayClip(m_CombatMusic, m_RoomCameraAudioSource);
 
         //enable combat
         m_PlayerCombatScript.enabled = true;
@@ -195,7 +196,7 @@ public class RoomTransitionManager : MonoBehaviour
         Debug.LogWarning("TRANSITIONING TO SHOP");
         m_CurrentRoom = m_ShopRoom;
         m_CurrentRoom.SetActive(true);
-        PlayClip(m_OtherRoomMusic);
+        PlayClip(m_OtherRoomMusic, m_RoomCameraAudioSource);
     }
     public void TransitionToHeal()
     {
@@ -203,7 +204,7 @@ public class RoomTransitionManager : MonoBehaviour
         m_CurrentRoom = m_HealingRoom;
         m_CurrentRoom.SetActive(true);
 
-        PlayClip(m_OtherRoomMusic);
+        PlayClip(m_OtherRoomMusic, m_RoomCameraAudioSource);
     }
     public void TransitionToChest()
     {
@@ -211,7 +212,7 @@ public class RoomTransitionManager : MonoBehaviour
         m_CurrentRoom = m_ChestRoom;
         m_CurrentRoom.SetActive(true);
 
-        PlayClip(m_OtherRoomMusic);
+        PlayClip(m_OtherRoomMusic, m_RoomCameraAudioSource);
     }
 
     private void TransitionToRunner()
@@ -223,7 +224,7 @@ public class RoomTransitionManager : MonoBehaviour
         m_EndlessRunnerTilesManager.CalculateTilesUntilDoors();
         CheckIfNextRoomsIsBoss();
 
-        PlayClip(m_EndlessRunnerMusic);
+        PlayClip(m_EndlessRunnerMusic, m_RunnerCameraAudioSource);
     }
 
     public void CheckIfNextRoomsIsBoss()
@@ -235,7 +236,7 @@ public class RoomTransitionManager : MonoBehaviour
         else m_NextRoomIsBoss = false;
     }
 
-    private void PlayClip(AudioClip audioClip)
+    private void PlayClip(AudioClip audioClip, AudioSource m_AudioSource)
     {
         m_AudioSource.clip = audioClip;
         m_AudioSource.Play();
