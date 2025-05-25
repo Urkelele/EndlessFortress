@@ -72,7 +72,6 @@ public class EndlessRunnerTileManager : MonoBehaviour
     {
         ControlRunner(true);
         m_PlayerHealthController.RestartLife();
-
     }
 
     //Disable all active tiles
