@@ -24,6 +24,12 @@ public class PlayerHealthController : HealthController
             GeneralCanvasManager.instance.RunFinished();
         }
 
+        //DEBUG
+        if (Input.GetKeyDown(KeyCode.Keypad7))
+        {
+            Revive(m_MaxHealthPoints);
+        }
+        
         m_Animator.SetBool("isDead", m_IsDead);
 
     }
@@ -50,5 +56,13 @@ public class PlayerHealthController : HealthController
         {
             EndlessRunnerTileManager.Instance.m_IsInRunner = true;
         }
+    }
+
+    public void Revive(float revivedHealth)
+    {
+        //Change player health
+        m_CurrentHealthPoints = revivedHealth;
+        //Start time
+        TimeManager.instance.m_StopTime = false;
     }
 }
