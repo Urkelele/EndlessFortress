@@ -174,7 +174,7 @@ public class RoomTransitionManager : MonoBehaviour
         Debug.LogWarning("TRANSITIONING TO COMBAT");
         m_CurrentRoom = m_CombatRoom;
         m_CurrentRoom.SetActive(true);
-
+        GeneralCanvasManager.instance.StartCombat();
         PlayClip(m_CombatMusic);
 
         //enable combat

@@ -1,8 +1,16 @@
 using UnityEngine;
+using static AbilityManager;
 
 public class ActivateGameObjectOnClick : ClickableObject
 {
-    public GameObject m_GameObjectToActivate = null;
+    public enum RoomType
+    {
+        None = -1,
+        Shop = 0,
+        Chest = 1
+    };
+
+    RoomType m_ChosenRoom = RoomType.None;
 
     protected override void Update()
     {
@@ -11,6 +19,20 @@ public class ActivateGameObjectOnClick : ClickableObject
 
     protected override void OnClick()
     {
-        m_GameObjectToActivate.SetActive(true);
+        switch (m_ChosenRoom)
+        {
+            case RoomType.Chest:
+                Debug.LogWarning("Chest Opened");
+                GeneralCanvasManager.instance.OpenChest();
+                break;
+            case RoomType.Shop:
+                Debug.LogWarning("Shop Entered");
+                GeneralCanvasManager.instance.OpenShop();
+                break;
+
+            default:
+                Debug.Log("Ability Not Selected");
+                break;
+        }
     }
 }
