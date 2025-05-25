@@ -31,7 +31,7 @@ public class EndlessRunnerTileManager : MonoBehaviour
     private void Start()
     {
         m_CurrentSpeed = m_MaxSpeed;
-        m_CurrentTilesUntilDoors = m_IndexToSpawn;
+        CalculateTilesUntilDoors();
     }
 
     void Awake()
@@ -69,15 +69,8 @@ public class EndlessRunnerTileManager : MonoBehaviour
                 
             }
 
-
             PlaceInitialTiles();
         }
-    }
-    // From the main menu
-    public void StartRunner()
-    {
-        ControlRunner(true);
-        m_PlayerHealthController.RestartLife();
     }
 
     //Disable all active tiles
@@ -87,6 +80,11 @@ public class EndlessRunnerTileManager : MonoBehaviour
         {
             activeTile.SetActive(false);
         }
+    }
+
+    private void OnEnable()
+    {
+        ControlRunner(true);
     }
 
     private void InitializePool()
@@ -106,6 +104,7 @@ public class EndlessRunnerTileManager : MonoBehaviour
 
     private void PlaceInitialTiles()
     {
+        CalculateTilesUntilDoors();
         for (int i = 0; i < m_IndexToSpawn; i++)
         {
             PlaceRandomTile(i);
