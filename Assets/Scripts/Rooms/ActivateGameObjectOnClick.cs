@@ -10,7 +10,7 @@ public class ActivateGameObjectOnClick : ClickableObject
         Chest = 1
     };
 
-    RoomType m_ChosenRoom = RoomType.None;
+    [SerializeField] RoomType m_ChosenRoom = RoomType.None;
 
     protected override void Update()
     {

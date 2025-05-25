@@ -56,6 +56,12 @@ public class GeneralCanvasManager : MonoBehaviour
         m_GoldResoruce.SetActive(true);
         RunnerManager.instance.RestartRun();
     }
+
+    public void ReturnToRunWithDelaySeconds(int delaySeconds)
+    {
+        Invoke("ReturnToRun",delaySeconds);
+    }
+
     public void ReturnToRun()
     {
         TimeManager.instance.m_StopTime = false;
