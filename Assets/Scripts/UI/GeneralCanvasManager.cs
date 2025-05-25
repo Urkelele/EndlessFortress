@@ -41,11 +41,8 @@ public class GeneralCanvasManager : MonoBehaviour
     {
         GoToMainMenu();
     }
-    public void StartRunInXSeconds(int startRunDelaySeconds)
-    {
-        Invoke("StartRun",startRunDelaySeconds );
-    }
-    public void ReturnToRunRun()
+
+    public void StartRun()
     {
         TimeManager.instance.m_StopTime = false;
         m_Player.SetActive(true);
@@ -57,25 +54,6 @@ public class GeneralCanvasManager : MonoBehaviour
         m_EndCombatMenu.SetActive(false);
         m_TomesResource.SetActive(false);
         m_GoldResoruce.SetActive(true);
-
-        //This function restarts the parameters, but we want this function to return to runner
-
-        //RunnerManager.instance.RestartRun();
-    }public void RestartRun()
-    {
-        TimeManager.instance.m_StopTime = false;
-        m_Player.SetActive(true);
-        m_MainMenu.SetActive(false);
-        m_MainGameUI.SetActive(true);
-        m_DeadMenu.SetActive(false);
-        m_CombatUI.SetActive(false);
-        m_ShopMenu.SetActive(false);
-        m_EndCombatMenu.SetActive(false);
-        m_TomesResource.SetActive(false);
-        m_GoldResoruce.SetActive(true);
-
-        //This function restarts the parameters, but we want this function to return to runner
-
         RunnerManager.instance.RestartRun();
     }
     public void GoToMainMenu()
