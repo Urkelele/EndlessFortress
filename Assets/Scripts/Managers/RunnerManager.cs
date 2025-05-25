@@ -3,6 +3,7 @@ using UnityEngine;
 public class RunnerManager : MonoBehaviour
 {
     public static RunnerManager instance;
+    public Transform m_RunnerPlayerPos = null;
 
     private void Awake()
     {
@@ -22,7 +23,10 @@ public class RunnerManager : MonoBehaviour
         FindAnyObjectByType<PlayerHealthController>().RestartLife();
         EndlessRunnerTileManager.Instance.ControlRunner(true);
         InventoryManager.instance.RestartInventory();
-        //InventoryManager.instance.UpdateButtons();
+
+        RoomTransitionManager.instance.CallThisWhenPlayerDiesInCombat();
+
         FindAnyObjectByType<DeadMenuController>().m_HasSpawnedUsingVideo = false;
+
     }
 }

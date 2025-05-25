@@ -33,7 +33,7 @@ public class RoomTransitionManager : MonoBehaviour
     [Header("CONTROL PARAMS")]
     public int m_NumOfRoomsBetweenBoss = 10;
 
-    [SerializeField] private GameObject m_CurrentRoom = null;
+    public GameObject m_CurrentRoom = null;
 
 
     [Header("AUDIO")]
@@ -243,6 +243,35 @@ public class RoomTransitionManager : MonoBehaviour
     {
         m_AudioSource.clip = audioClip;
         m_AudioSource.Play();
+    }
+
+    public void CallThisWhenPlayerDiesInCombat()
+    {
+        //Deactivate animation
+        m_PlayerAnimator.SetBool("isFighting", false);
+
+        //enable movement and disable combat
+        m_PlayerCombatScript.enabled = false;
+        m_PlayerMovement.enabled = true;
+
+        //Deactivate the room the player was in
+        m_CurrentRoom.SetActive(false);
+        m_CurrentRoom = null;
+
+        //Tp the player runner
+        m_PlayerTransform.position = m_PlayerRunnerPos.position;
+        m_PlayerTransform.rotation = m_PlayerRunnerPos.rotation;
+
+        //Change camera
+        m_RoomCamera.gameObject.SetActive(false);
+        m_RunnerCamera.gameObject.SetActive(true);
+        m_CurrentActiveCamera = m_RunnerCamera;
+
+        if (CombatManager.instance.m_CombatEnemies.Count > 0)
+        {
+            Destroy(CombatManager.instance.m_CombatEnemies[0].transform.parent.gameObject); //Destroy enemies if there are any
+        }
+
     }
 
 }

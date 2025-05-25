@@ -805,6 +805,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5479244288065972337, guid: 4725c720999edf148be22c30132dcf03, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5644854210353311025, guid: 4725c720999edf148be22c30132dcf03, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -1308,7 +1312,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1607205783}
   - {fileID: 783926636}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1975,7 +1978,7 @@ Transform:
   m_GameObject: {fileID: 783926635}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 6}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2820,37 +2823,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7085136778448890593, guid: a59a6648b141c194c87c90b2f2ec9058, type: 3}
   m_PrefabInstance: {fileID: 1600786432}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1607205782
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1607205783}
-  m_Layer: 0
-  m_Name: RunnerPos
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1607205783
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1607205782}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 275727036}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1611779871
 GameObject:
   m_ObjectHideFlags: 0
@@ -3491,6 +3463,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1590560030}
     - target: {fileID: 5667347016320007367, guid: 4692fa9d6d3308c4d912d45f29e0a3fb, type: 3}
+      propertyPath: m_MaxSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5667347016320007367, guid: 4692fa9d6d3308c4d912d45f29e0a3fb, type: 3}
+      propertyPath: m_SlowSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5667347016320007367, guid: 4692fa9d6d3308c4d912d45f29e0a3fb, type: 3}
+      propertyPath: m_CurrentTilesUntilDoors
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5667347016320007367, guid: 4692fa9d6d3308c4d912d45f29e0a3fb, type: 3}
       propertyPath: m_PlayerHealthController
       value: 
       objectReference: {fileID: 934272995}
@@ -3506,6 +3490,10 @@ PrefabInstance:
       propertyPath: 'm_EnemyPositions.Array.data[2]'
       value: 
       objectReference: {fileID: 316028196}
+    - target: {fileID: 6729473046761269980, guid: 4692fa9d6d3308c4d912d45f29e0a3fb, type: 3}
+      propertyPath: m_RunnerPlayerPos
+      value: 
+      objectReference: {fileID: 1645831595}
     - target: {fileID: 7080703508714610084, guid: 4692fa9d6d3308c4d912d45f29e0a3fb, type: 3}
       propertyPath: m_TomesText
       value: 
@@ -3645,7 +3633,7 @@ PrefabInstance:
     - target: {fileID: 7297540636192129326, guid: 4692fa9d6d3308c4d912d45f29e0a3fb, type: 3}
       propertyPath: m_PlayerRunnerPos
       value: 
-      objectReference: {fileID: 1607205783}
+      objectReference: {fileID: 1645831595}
     - target: {fileID: 7297540636192129326, guid: 4692fa9d6d3308c4d912d45f29e0a3fb, type: 3}
       propertyPath: m_PlayerTransform
       value: 
