@@ -4,6 +4,7 @@ using System.IO;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SubsystemsImplementation;
 
 public class CombatManager : MonoBehaviour
 {
@@ -176,6 +177,11 @@ public class CombatManager : MonoBehaviour
         PlayerStats.instance.m_GoldTotal += m_GoldBattleReward;
 
         GeneralCanvasManager.instance.Endcombat();
+    }
+
+    public void DestroyEnemies()
+    {
+        Destroy(m_CurrentComp);
     }
 
 }

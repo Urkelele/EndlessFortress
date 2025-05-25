@@ -85,6 +85,7 @@ public class RoomTransitionManager : MonoBehaviour
         //If the player is in the runner (null) they will go a room and viceversa
         if(m_CurrentRoom == null)
         {
+            Debug.LogError("CURRENT ROOM IS NULL");
             //Deactivate the runner manager
             //m_EndlessRunnerTilesManager.enabled = false;
 
