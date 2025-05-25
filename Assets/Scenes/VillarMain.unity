@@ -2221,6 +2221,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1410819461}
     - target: {fileID: 2689275140691892751, guid: 4692fa9d6d3308c4d912d45f29e0a3fb, type: 3}
+      propertyPath: m_CurrentActiveItem
+      value: 
+      objectReference: {fileID: 11400000, guid: d35dc32d6cf04764f9cec91a6bd91c10, type: 2}
+    - target: {fileID: 2689275140691892751, guid: 4692fa9d6d3308c4d912d45f29e0a3fb, type: 3}
       propertyPath: m_StartingHeavyWeapon
       value: 
       objectReference: {fileID: 11400000, guid: 1d69a4d5de8a8844eabee1a18253ea92, type: 2}
