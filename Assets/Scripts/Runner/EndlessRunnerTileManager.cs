@@ -30,6 +30,7 @@ public class EndlessRunnerTileManager : MonoBehaviour
 
     private void Start()
     {
+        InitializePool();
         m_CurrentSpeed = m_MaxSpeed;
         CalculateTilesUntilDoors();
     }
@@ -45,7 +46,6 @@ public class EndlessRunnerTileManager : MonoBehaviour
         {
             Instance = this;
         }
-        InitializePool();
     }
 
     public void ControlRunner(bool start)

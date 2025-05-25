@@ -36,7 +36,10 @@ public class ItemDatabaseManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         LoadAllItems();
+    }
 
+    private void Start()
+    {
         CreateAllLists();
     }
 
@@ -54,9 +57,14 @@ public class ItemDatabaseManager : MonoBehaviour
         }
     }
 
-    private void CreateAllLists()
+    public void RefreshUnlockedList()
     {
         m_UnlockedItems.Clear();
+        CreateAllLists();
+    }
+
+    private void CreateAllLists()
+    {
         foreach (ItemBaseScript item in ExternalDataManager.Instance.m_StoredData.unlockedScripts)
         {
             item.m_Unlocked = true;
@@ -124,10 +132,8 @@ public class ItemDatabaseManager : MonoBehaviour
         }
         item.m_Unlocked = true;
         ExternalDataManager.Instance.m_StoredData.unlockedScripts.Add(item);
-#if !UNITY_EDITOR
         ExternalDataManager.Instance.SaveToJson();
-#endif
-        CreateAllLists();
+        RefreshUnlockedList();
     }
 
     public ItemBaseScript GetRandomItem()
