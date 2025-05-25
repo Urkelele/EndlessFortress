@@ -10,7 +10,7 @@ public class EndlessRunnerTileManager : MonoBehaviour
     [Header("Tile Options")]
     public GameObject[] m_TilePrefabs;
     public float m_TileLength = 10f;
-    public int m_IndexToSpawn = 5;
+    public int m_IndexToSpawn = 15;
     public int m_MaxInstancesPerTilePrefab = 3;
     public int m_CurrentTilesUntilDoors = 15;
 
@@ -82,11 +82,6 @@ public class EndlessRunnerTileManager : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        ControlRunner(true);
-    }
-
     private void InitializePool()
     {
         foreach (var tile in m_TilePrefabs)
@@ -128,7 +123,7 @@ public class EndlessRunnerTileManager : MonoBehaviour
             tile.SetActive(true);
             m_CurrentTilesUntilDoors--;
         }
-        else
+        else if(!m_ActiveTiles.Contains(m_DoorsTile)) //Not activate a new door if a doorTile is already active
         {
             float zpos = positionIndex * m_TileLength;
             m_DoorsTile.transform.position = new Vector3(2.5f, 0, zpos);
@@ -185,8 +180,7 @@ public class EndlessRunnerTileManager : MonoBehaviour
 
     public void CalculateTilesUntilDoors()
     {
-
-        m_CurrentTilesUntilDoors = (m_IndexToSpawn) + PlayerStats.instance.m_RoomsCleared;
+        m_CurrentTilesUntilDoors = (m_IndexToSpawn) - 2;
     }
 
 

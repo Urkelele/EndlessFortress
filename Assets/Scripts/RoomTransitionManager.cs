@@ -89,6 +89,8 @@ public class RoomTransitionManager : MonoBehaviour
             //Deactivate the runner manager
             //m_EndlessRunnerTilesManager.enabled = false;
 
+            m_EndlessRunnerTilesManager.ControlRunner(false);
+
             //Disable movement
             m_PlayerMovement.enabled = false;
 
