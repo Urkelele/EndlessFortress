@@ -6,12 +6,13 @@ public class PassiveItemPickUpScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {
-        //int index = Random.Range(0, ItemDatabaseManager.Instance.m_UnlockedItems.Count - 1);
-        //m_Item = ItemDatabaseManager.Instance.m_UnlockedItems[index];
+        Invoke("Initialize",0.5f);
+    }
+    public void Initialize()
+    {
         m_Item = ItemDatabaseManager.Instance.GetRandomPasiveItem();
         GetComponent<SpriteRenderer>().sprite = m_Item.m_SpriteItem;
     }
-
 
     private void OnTriggerEnter(Collider other)
     {

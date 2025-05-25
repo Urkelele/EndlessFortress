@@ -38,7 +38,7 @@ public class ItemDatabaseManager : MonoBehaviour
         LoadAllItems();
     }
 
-    private void OnEnable()
+    private void Start()
     {
         CreateAllLists();
     }
