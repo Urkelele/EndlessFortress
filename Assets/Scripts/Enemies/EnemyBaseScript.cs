@@ -65,15 +65,13 @@ public class EnemyBaseScript : MonoBehaviour
         {
             OnClick();
         }
-        else if(m_PlayerCombatScript.m_TargetEnemy != this)
+        else
         {
             m_Outline.enabled = false;
             m_IsCurrentTarget = false;
         }
 
-
-
-        if (m_HealthController.m_IsDead && !m_OnDeathTriggered)
+        if(m_HealthController.m_IsDead && !m_OnDeathTriggered)
         {
             OnDeath();
         }
