@@ -69,17 +69,17 @@ public class UnlockableItemsController : MonoBehaviour
     {
         if(ExternalDataManager.Instance.m_StoredData.m_AmountTomes > m_CurrentSelectedItem.m_UnlockPrice)
         {
-            ExternalDataManager.Instance.m_StoredData.m_AmountTomes -= m_CurrentSelectedItem.m_UnlockPrice;
-        }
-        foreach (UnlockableItemCellController cell in m_LockedItems)
-        {
-            if(cell.m_ItemBaseScript == m_CurrentSelectedItem)
+            ExternalDataManager.Instance.AddTomes(-m_CurrentSelectedItem.m_UnlockPrice);
+            foreach (UnlockableItemCellController cell in m_LockedItems)
             {
-                cell.RemoveItem();
+                if (cell.m_ItemBaseScript == m_CurrentSelectedItem)
+                {
+                    cell.RemoveItem();
+                }
             }
+            ItemDatabaseManager.Instance.UnlockItem(m_CurrentSelectedItem);
+            m_InventoryShowItemInfo.gameObject.SetActive(false);
+            m_ConfirmationButton.SetActive(false);
         }
-        ItemDatabaseManager.Instance.UnlockItem(m_CurrentSelectedItem);
-        m_InventoryShowItemInfo.gameObject.SetActive(false);
-        m_ConfirmationButton.SetActive(false);
     }
 }

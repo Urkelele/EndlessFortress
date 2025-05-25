@@ -13,6 +13,7 @@ public class ShopController : MonoBehaviour
 
     public GameObject m_ShopObject;
     public ShopRerollController m_ShopRerollController;
+    public GameObject m_MainMenu;
 
     private void Update()
     {

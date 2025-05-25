@@ -20,12 +20,13 @@ MonoBehaviour:
   m_AttackDamageMultiplier: 1
   m_GoldRewardMultiplier: 1
   m_LifeSteal: 0
-  m_Price: 0
+  m_UnlockPrice: 0
+  m_Price: 200
   m_Description: Enemies receive +10% damage
   m_SpriteItem: {fileID: 21300000, guid: 059252e404bbea0448abca9a757e493d, type: 3}
   m_QualityItem: 0
   m_TypeItem: 0
-  m_Unlocked: 0
+  m_Unlocked: 1
   m_ItemDamage: 0
   m_ItemCooldown: 0
   TriggerType: 2
