@@ -20,12 +20,13 @@ MonoBehaviour:
   m_AttackDamageMultiplier: 1
   m_GoldRewardMultiplier: 1
   m_LifeSteal: 0
-  m_Price: 0
+  m_UnlockPrice: 0
+  m_Price: 400
   m_Description: Regular enemies start with -10% HP
   m_SpriteItem: {fileID: 21300000, guid: 6e78417bf9f420541ba01cc1c62579eb, type: 3}
   m_QualityItem: 1
   m_TypeItem: 0
-  m_Unlocked: 0
+  m_Unlocked: 1
   m_ItemDamage: 0
   m_ItemCooldown: 0
   TriggerType: 2
