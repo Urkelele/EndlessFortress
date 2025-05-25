@@ -85,6 +85,7 @@ public class RoomTransitionManager : MonoBehaviour
         //If the player is in the runner (null) they will go a room and viceversa
         if(m_CurrentRoom == null)
         {
+            Debug.LogError("CURRENT ROOM IS NULL");
             //Deactivate the runner manager
             //m_EndlessRunnerTilesManager.enabled = false;
 
@@ -105,6 +106,9 @@ public class RoomTransitionManager : MonoBehaviour
         }
         else
         {
+            //Change canvas to runner canvas
+            GeneralCanvasManager.instance.ReturnToRun();
+
             //Deactivate animation
             m_PlayerAnimator.SetBool("isFighting", false);
 

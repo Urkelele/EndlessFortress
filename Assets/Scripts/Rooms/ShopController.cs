@@ -110,8 +110,4 @@ public class ShopController : MonoBehaviour
         }
     }
 
-    public void CloseShop()
-    {
-        m_ShopObject.SetActive(false);
-    }
 }

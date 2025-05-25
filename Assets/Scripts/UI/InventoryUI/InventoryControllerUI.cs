@@ -1,5 +1,4 @@
 using UnityEngine;
-using static UnityEditor.Progress;
 
 public class InventoryControllerUI : MonoBehaviour
 {
@@ -11,7 +10,7 @@ public class InventoryControllerUI : MonoBehaviour
     [Header("Showing item stats")]
     public InventoryShowItemInfo m_InventoryShowItemInfo;
     public GameObject m_SelectedItemImage;
-    private Transform m_PreviousItemSelected = null;
+    [SerializeField] private Transform m_PreviousItemSelected = null;
 
     [Header("Active / LightWeapon / HeavyWeapon Cells")]
     public InventoryItemCellController m_ActiveItemCell;
@@ -70,7 +69,7 @@ public class InventoryControllerUI : MonoBehaviour
 
     public void ItemClicked(ItemBaseScript item, Transform cellPosition)
     {
-        if (cellPosition.position != m_PreviousItemSelected.position)
+        if (m_PreviousItemSelected == null || cellPosition.position != m_PreviousItemSelected.position)
         {
             m_SelectedItemImage.SetActive(true);
             m_PreviousItemSelected = cellPosition;

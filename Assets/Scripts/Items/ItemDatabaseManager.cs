@@ -147,9 +147,9 @@ public class ItemDatabaseManager : MonoBehaviour
 
     public ItemBaseScript GetRandomItemOfQuality(ItemBaseScript.ItemQuality quality)
     {
-        if (m_AllItems.Count == 0) return null;
+        if (ItemDatabaseManager.Instance.m_UnlockedItems.Count == 0) return null;
 
-        int randomItemIndex = Random.Range(0, m_AllItems.Count);
+        int randomItemIndex = Random.Range(0, ItemDatabaseManager.Instance.m_UnlockedItems.Count);
 
         switch (quality)
         {
