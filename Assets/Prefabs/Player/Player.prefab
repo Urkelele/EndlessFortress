@@ -1120,6 +1120,7 @@ Transform:
   - {fileID: 4391972713466390}
   - {fileID: 4395415569318536}
   - {fileID: 4028772841461146}
+  - {fileID: 6698194171964897102}
   m_Father: {fileID: 4190370280928230}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1295202147793550
@@ -1323,7 +1324,7 @@ GameObject:
   - component: {fileID: 33256482146353152}
   - component: {fileID: 23078038792521144}
   m_Layer: 0
-  m_Name: SM_Item_Sword
+  m_Name: RunnerSword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2047,12 +2048,15 @@ MonoBehaviour:
   m_TargetEnemy: {fileID: 0}
   m_PlayerHealthController: {fileID: 0}
   m_Animator: {fileID: 0}
+  m_CombatSword: {fileID: 6698194171964630602}
   m_LightAttackDamage: 0
   m_LightAttackTotalCooldown: 0
   m_LightAttackCurrentCooldown: 0
   m_HeavyAttackDamage: 0
   m_HeavyAttackTotalCooldown: 0
   m_HeavyAttackCurrentCooldown: 0
+  m_AudioSource: {fileID: 0}
+  m_AttackSound: {fileID: 0}
 --- !u!114 &-7650877348720430780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2069,7 +2073,8 @@ MonoBehaviour:
   m_CurrentHealthPoints: 0
   m_IncomingDamageMultiplier: 1
   m_IsDead: 0
-  m_GettingDamagedSound: {fileID: 0}
+  m_AudioSource: {fileID: 0}
+  m_GettingDamaged: {fileID: 0}
   m_BaseHp: 100
   m_Animator: {fileID: 0}
 --- !u!136 &1914541324733139837
@@ -2107,7 +2112,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 457956a6b863c4f48bd64df6c6176c61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_AudioSource: {fileID: 0}
+  m_CoinAudioclip: {fileID: 0}
+  m_TomeAudioclip: {fileID: 0}
+  m_ObstacleAudioclip: {fileID: 0}
+  m_RunnerSword: {fileID: 1369848445423176}
+  m_LaneTransforms: []
+  m_SidewaysSpeed: 0
+  m_JumpSpeed: 3
+  m_JumpHeight: 1.25
   m_FakeHit: 0
+  m_CurrentLane: 1
   m_DistanceBetweenLanes: 1.5
 --- !u!54 &9141473115745536127
 Rigidbody:
@@ -4996,3 +5011,90 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &6698194171964543122
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4522242208468910}
+    m_Modifications:
+    - target: {fileID: 194264, guid: e6fa756c603368045a35e5b45a1b84cb, type: 3}
+      propertyPath: m_Name
+      value: CombatSword
+      objectReference: {fileID: 0}
+    - target: {fileID: 194264, guid: e6fa756c603368045a35e5b45a1b84cb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 452572, guid: e6fa756c603368045a35e5b45a1b84cb, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.62000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 452572, guid: e6fa756c603368045a35e5b45a1b84cb, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.62000006
+      objectReference: {fileID: 0}
+    - target: {fileID: 452572, guid: e6fa756c603368045a35e5b45a1b84cb, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.62
+      objectReference: {fileID: 0}
+    - target: {fileID: 452572, guid: e6fa756c603368045a35e5b45a1b84cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.11689166
+      objectReference: {fileID: 0}
+    - target: {fileID: 452572, guid: e6fa756c603368045a35e5b45a1b84cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.023999855
+      objectReference: {fileID: 0}
+    - target: {fileID: 452572, guid: e6fa756c603368045a35e5b45a1b84cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.010273748
+      objectReference: {fileID: 0}
+    - target: {fileID: 452572, guid: e6fa756c603368045a35e5b45a1b84cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5945136
+      objectReference: {fileID: 0}
+    - target: {fileID: 452572, guid: e6fa756c603368045a35e5b45a1b84cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.44611418
+      objectReference: {fileID: 0}
+    - target: {fileID: 452572, guid: e6fa756c603368045a35e5b45a1b84cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.38844767
+      objectReference: {fileID: 0}
+    - target: {fileID: 452572, guid: e6fa756c603368045a35e5b45a1b84cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5446505
+      objectReference: {fileID: 0}
+    - target: {fileID: 452572, guid: e6fa756c603368045a35e5b45a1b84cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -6.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 452572, guid: e6fa756c603368045a35e5b45a1b84cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 68.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 452572, guid: e6fa756c603368045a35e5b45a1b84cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -89.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 452572, guid: e6fa756c603368045a35e5b45a1b84cb, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e6fa756c603368045a35e5b45a1b84cb, type: 3}
+--- !u!1 &6698194171964630602 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 194264, guid: e6fa756c603368045a35e5b45a1b84cb, type: 3}
+  m_PrefabInstance: {fileID: 6698194171964543122}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6698194171964897102 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 452572, guid: e6fa756c603368045a35e5b45a1b84cb, type: 3}
+  m_PrefabInstance: {fileID: 6698194171964543122}
+  m_PrefabAsset: {fileID: 0}

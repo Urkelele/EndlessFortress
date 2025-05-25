@@ -5453,7 +5453,8 @@ MonoBehaviour:
   m_CurrentHealthPoints: 0
   m_IncomingDamageMultiplier: 1
   m_IsDead: 0
-  m_GettingDamagedSound: {fileID: 0}
+  m_AudioSource: {fileID: 0}
+  m_GettingDamaged: {fileID: 0}
 --- !u!114 &-7149139210559338508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5526,7 +5527,7 @@ MonoBehaviour:
   m_TotalActionCooldown: 10
   m_CurrentActionCooldown: 0
   m_GoldReward: 10
-  m_AudioSource: {fileID: 0}
+  m_AudioSource: {fileID: 1223616270164703091}
   audioclip: {fileID: 8300000, guid: f892a9d713e7e4147a839e8f325ffe4c, type: 3}
   deathSound: {fileID: 8300000, guid: 9dd37ff41729e8640986281eae9f8e9e, type: 3}
   m_AttackDamage: 3
