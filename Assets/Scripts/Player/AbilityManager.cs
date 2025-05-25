@@ -47,6 +47,7 @@ public class AbilityManager : MonoBehaviour
                 break;
 
             default:
+                Debug.Log("Ability Not Selected");
                 break;
         }
     }
