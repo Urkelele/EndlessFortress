@@ -13,6 +13,7 @@ public class GeneralCanvasManager : MonoBehaviour
     public GameObject m_CombatUI;
     public GameObject m_ShopMenu;
     public GameObject m_EndCombatMenu;
+    public GameObject m_ChestRewardMenu;
 
     [Header("Resources")]
     public GameObject m_TomesResource;
@@ -55,6 +56,7 @@ public class GeneralCanvasManager : MonoBehaviour
         m_EndCombatMenu.SetActive(false);
         m_TomesResource.SetActive(false);
         m_GoldResoruce.SetActive(true);
+        m_ChestRewardMenu.SetActive(false);
         RunnerManager.instance.RestartRun();
     }
 
@@ -88,6 +90,7 @@ public class GeneralCanvasManager : MonoBehaviour
         m_EndCombatMenu.SetActive(false);
         m_TomesResource.SetActive(false);
         m_GoldResoruce.SetActive(true);
+        m_ChestRewardMenu.SetActive(false);
     }
 
 
@@ -104,6 +107,7 @@ public class GeneralCanvasManager : MonoBehaviour
         m_EndCombatMenu.SetActive(false);
         m_TomesResource.SetActive(true);
         m_GoldResoruce.SetActive(false);
+        m_ChestRewardMenu.SetActive(false);
     }
 
     public void RunFinished()
@@ -118,6 +122,7 @@ public class GeneralCanvasManager : MonoBehaviour
         m_EndCombatMenu.SetActive(false);
         m_TomesResource.SetActive(true);
         m_GoldResoruce.SetActive(false);
+        m_ChestRewardMenu.SetActive(false);
     }
 
     public void StartCombat()
@@ -130,6 +135,7 @@ public class GeneralCanvasManager : MonoBehaviour
         m_EndCombatMenu.SetActive(false);
         m_TomesResource.SetActive(false);
         m_GoldResoruce.SetActive(true);
+        m_ChestRewardMenu.SetActive(false);
     }
     public void Endcombat()
     {
@@ -142,6 +148,7 @@ public class GeneralCanvasManager : MonoBehaviour
         m_EndCombatMenu.SetActive(true);
         m_TomesResource.SetActive(false);
         m_GoldResoruce.SetActive(true);
+        m_ChestRewardMenu.SetActive(false);
     }
 
     public void OpenShop()
@@ -155,9 +162,10 @@ public class GeneralCanvasManager : MonoBehaviour
         m_EndCombatMenu.SetActive(false);
         m_TomesResource.SetActive(false);
         m_GoldResoruce.SetActive(true);
+        m_ChestRewardMenu.SetActive(false);
     }
 
-    
+
     public void OpenChest()
     {
         m_MainMenu.SetActive(false);
@@ -168,6 +176,8 @@ public class GeneralCanvasManager : MonoBehaviour
         m_EndCombatMenu.SetActive(false);
         m_TomesResource.SetActive(false);
         m_GoldResoruce.SetActive(true);
+        FindAnyObjectByType<ChestRewardScript>().SpawnChestReward();
+        m_ChestRewardMenu.SetActive(true);
     }
     public void PlaySound()
     {

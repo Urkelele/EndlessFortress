@@ -16,7 +16,6 @@ public class CombatResumeControllerUI : MonoBehaviour
     public Sprite[] m_ItemBoxSprites;
     public TextMeshProUGUI m_ItemTypeText;
 
-
     public void SpawnCombatResume()
     {
         m_CombatResumePanel.SetActive(true);
