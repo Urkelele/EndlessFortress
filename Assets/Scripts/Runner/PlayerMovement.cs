@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] AudioClip m_TomeAudioclip = null;
     [SerializeField] AudioClip m_ObstacleAudioclip = null;
 
+    public GameObject m_RunnerSword = null;
     public List<Transform> m_LaneTransforms = new List<Transform>();
     private float m_SnapTreshold = 0.1f;
     public float m_SidewaysSpeed = 0f;
@@ -39,9 +40,15 @@ public class PlayerMovement : MonoBehaviour
         m_Animator = GetComponent<Animator>();
     }
 
-    public void OnEnable()
+    private void OnEnable()
     {
-        m_Animator.SetBool("isFighting", false);
+        m_RunnerSword.SetActive(true);
+    }
+
+    private void OnDisable()
+    {
+        m_Animator.SetBool("isFighting", true);   
+        m_RunnerSword.SetActive(false);
     }
 
     // Update is called once per frame

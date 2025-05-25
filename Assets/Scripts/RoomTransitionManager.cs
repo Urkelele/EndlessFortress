@@ -103,6 +103,9 @@ public class RoomTransitionManager : MonoBehaviour
         }
         else
         {
+            //Deactivate animation
+            m_PlayerAnimator.SetBool("isFighting", false);
+
             //Activate the runner manager
             m_EndlessRunnerTilesManager.enabled = true;
 

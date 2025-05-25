@@ -36,7 +36,6 @@ public class GeneralCanvasManager : MonoBehaviour
 
     private void Start()
     {
-        Time.timeScale = 1.0f;
         m_MainMenu.SetActive(true);
         m_MainGameUI.SetActive(false);
         m_DeadMenu.SetActive(false);

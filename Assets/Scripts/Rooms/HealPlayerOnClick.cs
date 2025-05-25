@@ -11,4 +11,5 @@ public class HealPlayerOnClick : ClickableObject
     {
         m_PlayerHealthController.m_CurrentHealthPoints = m_PlayerHealthController.m_MaxHealthPoints;
     }
+
 }
