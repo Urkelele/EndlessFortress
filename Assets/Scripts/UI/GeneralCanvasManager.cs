@@ -158,6 +158,7 @@ public class GeneralCanvasManager : MonoBehaviour
         m_MainGameUI.SetActive(true);
         m_DeadMenu.SetActive(false);
         m_CombatUI.SetActive(false);
+        FindAnyObjectByType<ShopController>().SpawnShop();
         m_ShopMenu.SetActive(true);
         m_EndCombatMenu.SetActive(false);
         m_TomesResource.SetActive(false);
