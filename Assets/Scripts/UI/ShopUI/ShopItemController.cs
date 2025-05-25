@@ -71,6 +71,10 @@ public class ShopItemController : MonoBehaviour
 
     public void ItemBuy()
     {
+        if(InventoryManager.instance.m_Gold < m_Price)
+        {
+            return;
+        }
         InventoryManager m_InventoryManager = InventoryManager.instance;
         m_InventoryManager.m_Gold -= m_Price;
         switch(m_ItemBaseScript.m_TypeItem)
