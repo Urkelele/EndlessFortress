@@ -124,7 +124,7 @@ public class ItemDatabaseManager : MonoBehaviour
         }
         item.m_Unlocked = true;
         ExternalDataManager.Instance.m_StoredData.unlockedScripts.Add(item);
-#if UNITY_EDITOR
+#if !UNITY_EDITOR
         ExternalDataManager.Instance.SaveToJson();
 #endif
         CreateAllLists();
