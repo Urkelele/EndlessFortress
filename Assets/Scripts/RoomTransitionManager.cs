@@ -196,6 +196,8 @@ public class RoomTransitionManager : MonoBehaviour
         Debug.LogWarning("TRANSITIONING TO SHOP");
         m_CurrentRoom = m_ShopRoom;
         m_CurrentRoom.SetActive(true);
+
+        FindAnyObjectByType<ShopController>().SpawnShop();
         PlayClip(m_OtherRoomMusic, m_RoomCameraAudioSource);
     }
     public void TransitionToHeal()
