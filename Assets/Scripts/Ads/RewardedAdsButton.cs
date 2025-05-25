@@ -84,12 +84,9 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
                 else
                 {
                     _deadMenuController.RespawnWithVideo();
+                    GameObject.FindAnyObjectByType<PlayerHealthController>().RestartLife(); //Revive
                     Debug.Log("Bro respawned");
-                }
-
-                
-
-                
+                }                
             }
             else
             {
