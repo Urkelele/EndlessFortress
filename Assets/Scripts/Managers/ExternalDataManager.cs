@@ -17,9 +17,7 @@ public class ExternalDataManager : MonoBehaviour
         }
 
         Instance = this;
-#if !UNITY_EDITOR
         LoadFromJson();
-#endif
     }
     private void Start()
     {
@@ -53,12 +51,10 @@ public class ExternalDataManager : MonoBehaviour
 
         m_StoredData = JsonUtility.FromJson<StoredData>(storedData);
     }
-#if !UNITY_EDITOR
     private void OnApplicationQuit()
     {
         SaveToJson();
     }
-#endif
 }
 
 [System.Serializable]
