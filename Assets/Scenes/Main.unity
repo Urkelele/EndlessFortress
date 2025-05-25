@@ -610,6 +610,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 783926636}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &594320791 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6698194171964630602, guid: d78c5bad035dcad4aa9bdde64716d08d, type: 3}
+  m_PrefabInstance: {fileID: 2044222750}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &664501256 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3280212536558767742, guid: 4725c720999edf148be22c30132dcf03, type: 3}
@@ -1200,6 +1205,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 934272991}
     - target: {fileID: -5811389242013882288, guid: d78c5bad035dcad4aa9bdde64716d08d, type: 3}
+      propertyPath: m_CombatSword
+      value: 
+      objectReference: {fileID: 594320791}
+    - target: {fileID: -5811389242013882288, guid: d78c5bad035dcad4aa9bdde64716d08d, type: 3}
       propertyPath: m_CoinAudioclip
       value: 
       objectReference: {fileID: 8300000, guid: 01d66b18715485e419b88839589fd92c, type: 3}
@@ -1783,6 +1792,10 @@ PrefabInstance:
       propertyPath: _shopRerollController
       value: 
       objectReference: {fileID: 1972558809}
+    - target: {fileID: 5667347016320007367, guid: 4692fa9d6d3308c4d912d45f29e0a3fb, type: 3}
+      propertyPath: m_IndexToSpawn
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5667347016320007367, guid: 4692fa9d6d3308c4d912d45f29e0a3fb, type: 3}
       propertyPath: m_PlayerHealthController
       value: 

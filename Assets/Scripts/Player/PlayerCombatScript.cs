@@ -7,7 +7,6 @@ public class PlayerCombatScript : MonoBehaviour
     [Header("References")]
     public HealthController m_PlayerHealthController = null;
     public Animator m_Animator = null;
-    public GameObject m_CombatSword = null;
 
     [Header("Light Attack Variables")]
     [SerializeField] private float m_LightAttackDamage = 0;
@@ -41,13 +40,11 @@ public class PlayerCombatScript : MonoBehaviour
         m_HeavyAttackCurrentCooldown = m_HeavyAttackTotalCooldown;
 
         m_Animator.SetBool("isFighting", true);
-        m_CombatSword.SetActive(true);
     }
 
     private void OnDisable()
     {
         m_Animator.SetBool("isFighting", false);
-        m_CombatSword.SetActive(false);
     }
 
     private void Start()
