@@ -62,4 +62,5 @@ public class StoredData
 {
     public int m_AmountTomes = 0;
     public List<ItemBaseScript> unlockedScripts = new List<ItemBaseScript>();
+    public string m_LastTimeDailyReward = null;
 }

@@ -1,0 +1,2 @@
+C:\Users\eduar\OneDrive\Desktop\USJ\3_Curso\moviles_2024-25\EndlessFortress\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\CMakeLists.txt
+C:\Users\eduar\OneDrive\Desktop\USJ\3_Curso\moviles_2024-25\EndlessFortress\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\src\main\cpp\GameActivity\CMakeLists.txt

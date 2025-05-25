@@ -61,6 +61,9 @@ public class PlayerCombatScript : MonoBehaviour
     {
         m_LightAttackCurrentCooldown -= Time.deltaTime;
         m_HeavyAttackCurrentCooldown -= Time.deltaTime;
+
+        //Make target enemy have outline
+        m_TargetEnemy.GetComponent<Outline>().enabled = true;
     }
 
     public void GetHit(float dmg)
@@ -79,10 +82,9 @@ public class PlayerCombatScript : MonoBehaviour
 
     public void LightAttack()
     {
-        if (m_LightAttackCurrentCooldown < 0.0f && m_TargetEnemy != null)
+        if (m_TargetEnemy != null)
         {
             //Reset timer, take into account attack speed reduction
-            m_LightAttackCurrentCooldown = m_LightAttackTotalCooldown * (1/InventoryManager.instance.m_TotalAttackSpeedMultiplier);
             DealDamageToTargetEnemy(m_LightAttackDamage);
             
             //Attack Animation
@@ -95,7 +97,7 @@ public class PlayerCombatScript : MonoBehaviour
 
     public void HeavyAttack()
     {
-        if (m_HeavyAttackCurrentCooldown < 0.0f)
+        if (m_TargetEnemy != null)
         {
             //Reset timer, take into account attack speed reduction
             m_HeavyAttackCurrentCooldown = m_HeavyAttackTotalCooldown * (1/InventoryManager.instance.m_TotalAttackSpeedMultiplier);
@@ -137,15 +139,17 @@ public class PlayerCombatScript : MonoBehaviour
     }
     public void UseActiveItem()
     {
-        //Call ItemManagers.ActiveItem.Action()
+        if(m_TargetEnemy != null)
+        {
+            //Call ItemManagers.ActiveItem.Action()
 
-        InventoryManager.instance.m_CurrentActiveItem.UseActive();
+            InventoryManager.instance.m_CurrentActiveItem.UseActive();
 
-        //Attack Animation
-        m_Animator.SetTrigger("isAttacking");
+            //Attack Animation
+            m_Animator.SetTrigger("isAttacking");
 
-        m_AudioSource.clip = m_AttackSound;
-        m_AudioSource.Play();
-
+            m_AudioSource.clip = m_AttackSound;
+            m_AudioSource.Play();
+        }
     }
 }

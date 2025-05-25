@@ -28,29 +28,36 @@ public class AttackButtonsController : MonoBehaviour
 
     public void UpdateItem()
     {
+        InventoryManager inventoryManager = InventoryManager.instance;
+        float cooldownMult = (1 / InventoryManager.instance.m_TotalAttackSpeedMultiplier);
+
         float cooldown = 0;
         switch (m_ButtonType)
         {
             case ButtonType.ABILITY:
                 m_ItemIcon.sprite = AbilityManager.instance.m_CurrentAbilitySprite;
-                cooldown = AbilityManager.instance.m_AbilityTotalCooldown;
+                cooldown = AbilityManager.instance.m_AbilityTotalCooldown * (1 / inventoryManager.m_TotalAbilityCooldownReduction);
+                gameObject.SetActive(true);
                 break;
             case ButtonType.ACTIVE:
                 if (InventoryManager.instance.m_CurrentActiveItem != null)
                 {
                     m_ItemIcon.sprite = InventoryManager.instance.m_CurrentActiveItem.m_SpriteItem;
-                    cooldown = InventoryManager.instance.m_CurrentActiveItem.m_ItemCooldown;
+                    cooldown = inventoryManager.m_CurrentActiveItem.m_ItemCooldown * cooldownMult;
+                    gameObject.SetActive(true);
                     break;
                 }
                 gameObject.SetActive(false);
                 break;
             case ButtonType.LIGHT_ATTACK:
                 m_ItemIcon.sprite = InventoryManager.instance.m_CurrentLightWeapon.m_SpriteItem;
-                cooldown = InventoryManager.instance.m_CurrentLightWeapon.m_ItemCooldown;
+                cooldown = inventoryManager.m_CurrentLightWeapon.m_ItemCooldown * cooldownMult;
+                gameObject.SetActive(true);
                 break;
             case ButtonType.HEAVY_ATTACK:
                 m_ItemIcon.sprite = InventoryManager.instance.m_CurrentHeavyWeapon.m_SpriteItem;
-                cooldown = InventoryManager.instance.m_CurrentHeavyWeapon.m_ItemCooldown;
+                cooldown = inventoryManager.m_CurrentHeavyWeapon.m_ItemCooldown * cooldownMult;
+                gameObject.SetActive(true);
                 break;
         }
         m_AttackCooldown = cooldown;

@@ -53,16 +53,6 @@ public class PlayerHealthController : HealthController
 
         GeneralCanvasManager.instance.Revive();
 
-        //if (this.gameObject.GetComponent<PlayerCombatScript>() != null && PlayerStats.instance.m_GoldTotal != 0)
-        //{
-        //    GeneralCanvasManager.instance.StartCombat();
-        //}
-        //else
-        //{
-        //    GeneralCanvasManager.instance.ReturnToRun();
-        //}
-
-
     }
 
     public void Revive(float revivedHealth)

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ItemName: Wealthy Enemies
   m_ExtraHealth: 0
-  m_AttackSpeedMultiplier: 0
+  m_AttackSpeedMultiplier: 1
   m_DamageDivider: 1
   m_AbilityCooldownReduction: 1
   m_AttackDamageMultiplier: 1

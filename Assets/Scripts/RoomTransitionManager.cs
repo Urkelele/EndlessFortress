@@ -16,6 +16,7 @@ public class RoomTransitionManager : MonoBehaviour
     [SerializeField] private PlayerCombatScript m_PlayerCombatScript = null;
     [SerializeField] private PlayerMovement m_PlayerMovement = null;
     [SerializeField] private Animator m_PlayerAnimator = null;
+    public GameObject m_ShopClickActivator = null;
 
 
     [Header("ROOM GAMEOBJECTS")]
@@ -198,8 +199,7 @@ public class RoomTransitionManager : MonoBehaviour
         Debug.LogWarning("TRANSITIONING TO SHOP");
         m_CurrentRoom = m_ShopRoom;
         m_CurrentRoom.SetActive(true);
-
-        FindAnyObjectByType<ShopController>().SpawnShop();
+        m_ShopClickActivator.SetActive(true); //activate the object that allows to click to open the shop
         PlayClip(m_OtherRoomMusic, m_RoomCameraAudioSource);
     }
     public void TransitionToHeal()

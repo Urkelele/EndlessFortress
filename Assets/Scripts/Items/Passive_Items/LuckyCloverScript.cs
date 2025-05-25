@@ -9,8 +9,8 @@ public class LuckyCloverScript : TriggeredItemsScript
     public override void OnTriggerActivated()
     {
         base.OnTriggerActivated();
-        //Revive player
 
+        //Revive player
         GameObject.FindAnyObjectByType<PlayerHealthController>().RestartLife();
 
         //Remove a clover from the passive item list in the inventory

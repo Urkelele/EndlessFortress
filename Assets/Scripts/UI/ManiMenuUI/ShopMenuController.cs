@@ -6,6 +6,7 @@ public class ShopMenuController : MonoBehaviour
     public bool m_IsInShopMenu;
     public GameObject m_MainMenu;
     public GameObject m_ShopMenu;
+    public GameObject m_DailyReward;
 
     [SerializeField] private ExternalDataManager m_ExternalDataManager;
     private void Start()
@@ -23,12 +24,14 @@ public class ShopMenuController : MonoBehaviour
             m_IsInShopMenu = true;
             m_ShopMenu.SetActive(true);
             m_MainMenu.SetActive(false);
+            m_DailyReward.SetActive(false);
         }
         else
         {
             m_IsInShopMenu = false;
             m_ShopMenu.SetActive(false);
             m_MainMenu.SetActive(true);
+            m_DailyReward.SetActive(true);
         }
     }
 
