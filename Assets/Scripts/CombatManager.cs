@@ -179,9 +179,11 @@ public class CombatManager : MonoBehaviour
         GeneralCanvasManager.instance.Endcombat();
     }
 
-    public void DestroyEnemies()
+    public void DestroyEnemiesAndResetParams()
     {
         Destroy(m_CurrentComp);
+        m_ItemReward = null;
+        m_GoldBattleReward = 0;
     }
 
 }
