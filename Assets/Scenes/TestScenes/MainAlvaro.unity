@@ -418,7 +418,7 @@ Transform:
   m_GameObject: {fileID: 275727035}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -944,10 +944,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6160955009110654447, guid: b271353ded60e6d4db8c907dab3b86c5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9094192172192260021, guid: b271353ded60e6d4db8c907dab3b86c5, type: 3}
-      propertyPath: m_ChosenRoom
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9094192172192260021, guid: b271353ded60e6d4db8c907dab3b86c5, type: 3}
@@ -1644,7 +1640,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8587245333405666055, guid: 4725c720999edf148be22c30132dcf03, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8711421285117721853, guid: 4725c720999edf148be22c30132dcf03, type: 3}
       propertyPath: m_Pivot.x

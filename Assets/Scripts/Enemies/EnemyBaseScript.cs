@@ -116,6 +116,8 @@ public class EnemyBaseScript : MonoBehaviour
 
         m_AudioSource.clip = deathSound;
         m_AudioSource.Play();
+
+        CombatManager.instance.CheckAllEnemiesDead();
     }
 
 }

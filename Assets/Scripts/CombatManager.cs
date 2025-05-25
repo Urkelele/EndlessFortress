@@ -160,12 +160,22 @@ public class CombatManager : MonoBehaviour
         }
     }
 
+    public void CheckAllEnemiesDead()
+    {
+        if(m_CombatEnemies.Count == 0)
+        {
+            EndBattle();
+        }
+    }
+
     private void EndBattle()
     {
         GiveRewards();
 
         //Change score stats
         PlayerStats.instance.m_GoldTotal += m_GoldBattleReward;
+
+        GeneralCanvasManager.instance.Endcombat();
     }
 
 }
