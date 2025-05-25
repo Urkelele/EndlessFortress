@@ -77,6 +77,9 @@ public class PlayerMovement : MonoBehaviour
             Jump(Time.deltaTime);
         }
 
+        //Check for currentLane out of bounds
+        if (m_CurrentLane < 0) m_CurrentLane = 0;
+        if (m_CurrentLane > 2) m_CurrentLane = 2;
         MoveSideways(m_LaneTransforms[m_CurrentLane].position.x, Time.deltaTime);
     }
 

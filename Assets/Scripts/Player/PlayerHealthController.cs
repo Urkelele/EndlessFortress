@@ -28,6 +28,13 @@ public class PlayerHealthController : HealthController
                 GeneralCanvasManager.instance.RunFinished();
             }
         }
+
+        //DEBUG
+        if (Input.GetKeyDown(KeyCode.Keypad7))
+        {
+            Revive(m_MaxHealthPoints);
+        }
+        
     }
 
     public override void ReceiveDamage(float damageReceived)
@@ -42,5 +49,13 @@ public class PlayerHealthController : HealthController
     {
         m_CurrentHealthPoints = m_MaxHealthPoints;
         m_IsDead = false;
+    }
+
+    public void Revive(float revivedHealth)
+    {
+        //Change player health
+        m_CurrentHealthPoints = revivedHealth;
+        //Start time
+        TimeManager.instance.m_StopTime = false;
     }
 }
