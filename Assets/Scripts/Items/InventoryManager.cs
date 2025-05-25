@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -22,6 +23,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private TriggerType m_ActiveTrigger = TriggerType.NONE;
 
     public int m_Gold;
+    public TextMeshProUGUI m_GoldText;
 
     [Header("Current Items")]
     public BaseActiveScript m_CurrentActiveItem;
@@ -166,6 +168,11 @@ public class InventoryManager : MonoBehaviour
 
         ResetExtraAttributes();
     }
+    
+    public void UpdateGold()
+    {
+        m_GoldText.text = m_Gold.ToString();
+    }
 
     public void AddNewLightWeapon(ItemBaseScript newLightWeapon)
     {
@@ -185,5 +192,6 @@ public class InventoryManager : MonoBehaviour
     public void AddGold (int goldAmount)
     {
         m_Gold +=(int)(goldAmount * m_TotalGoldRewardMultipler);
+        UpdateGold();
     }
 }
