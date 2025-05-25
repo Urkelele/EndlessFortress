@@ -33,6 +33,7 @@ public class EndlessRunnerTileManager : MonoBehaviour
         m_CurrentSpeed = m_MaxSpeed;
         m_CurrentTilesUntilDoors = m_IndexToSpawn;
     }
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -55,15 +56,20 @@ public class EndlessRunnerTileManager : MonoBehaviour
             for (int i = 0; i < m_ActiveTiles.Count; i++)
             {
                 Transform thisTile = m_ActiveTiles[i].transform;
-                    thisTile.gameObject.SetActive(false);
-                    m_ActiveTiles.RemoveAt(i);
-                    i--;
-                    if (thisTile != m_DoorsTile)
-                    {
-                        m_TilePool.Add(thisTile.gameObject);
-                    }
+                thisTile.gameObject.SetActive(false);
+                m_ActiveTiles.RemoveAt(i);
+                i--;
+
+                Debug.LogWarning("REMOVED TILE");
+
+                if (thisTile != m_DoorsTile)
+                {
+                    m_TilePool.Add(thisTile.gameObject);
+                }
                 
             }
+
+
             PlaceInitialTiles();
         }
     }
@@ -129,7 +135,7 @@ public class EndlessRunnerTileManager : MonoBehaviour
             m_DoorsTile.transform.position = new Vector3(2.5f, 0, zpos);
             m_ActiveTiles.Add(m_DoorsTile);
             m_DoorsTile.SetActive(true);
-            m_CurrentTilesUntilDoors = m_IndexToSpawn+5;
+            CalculateTilesUntilDoors();
         }
     
     }
@@ -185,8 +191,8 @@ public class EndlessRunnerTileManager : MonoBehaviour
     }
 
 
-    public void DeactivateDoorsTile()
-    {
-        m_DoorsTile.SetActive(false);
-    }
+    //public void DeactivateDoorsTile()
+    //{
+    //    m_DoorsTile.SetActive(false);
+    //}
 }
