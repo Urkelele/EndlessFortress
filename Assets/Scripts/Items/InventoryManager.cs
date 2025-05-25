@@ -192,6 +192,7 @@ public class InventoryManager : MonoBehaviour
     public void AddGold (int goldAmount)
     {
         m_Gold +=(int)(goldAmount * m_TotalGoldRewardMultipler);
+        PlayerStats.instance.m_GoldTotal += goldAmount;
         UpdateGold();
     }
 }
