@@ -173,8 +173,6 @@ public class PlayerMovement : MonoBehaviour
         {
             other.enabled = false;
             m_RunnerTileManager.ObstacleHit();
-            // Hit Animation
-            m_Animator.SetTrigger("isHitted");
             // Hit Audio
             PlayClip(m_ObstacleAudioclip);
         }

@@ -68,9 +68,6 @@ public class PlayerCombatScript : MonoBehaviour
 
     public void GetHit(float dmg)
     {
-        // Get Hit Animation
-        m_Animator.SetTrigger("isHitted");
-
         m_PlayerHealthController.ReceiveDamage(dmg);
         
     }

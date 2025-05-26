@@ -8,6 +8,7 @@ public class ExternalDataManager : MonoBehaviour
     public StoredData m_StoredData = new StoredData();
     public static ExternalDataManager Instance;
     public TextMeshProUGUI m_TomesText;
+    public TextMeshProUGUI m_HighScoreText;
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -22,6 +23,7 @@ public class ExternalDataManager : MonoBehaviour
     private void Start()
     {
         UpdateTomesText();
+        UpdateHighScoreText();
     }
 
     private void UpdateTomesText()
@@ -34,6 +36,18 @@ public class ExternalDataManager : MonoBehaviour
         m_StoredData.m_AmountTomes += numberTomes;
         m_TomesText.text = m_StoredData.m_AmountTomes.ToString();
         UpdateTomesText();
+    }
+
+    private void UpdateHighScoreText()
+    {
+        m_HighScoreText.text = m_StoredData.m_HighScore.ToString();
+    }
+
+    public void AddNewHighScore(int highScore)
+    {
+        m_StoredData.m_HighScore += highScore;
+        m_HighScoreText.text = m_StoredData.m_HighScore.ToString();
+        UpdateHighScoreText();
     }
 
     public void SaveToJson()
@@ -61,6 +75,7 @@ public class ExternalDataManager : MonoBehaviour
 public class StoredData
 {
     public int m_AmountTomes = 0;
+    public int m_HighScore = 0;
     public List<ItemBaseScript> unlockedScripts = new List<ItemBaseScript>();
     public string m_LastTimeDailyReward = null;
 }

@@ -39,7 +39,7 @@ public class PlayerHealthController : HealthController
         base.ReceiveDamage(damageReceived);
 
         //Receive Damage Animation
-        m_Animator.SetTrigger("isHitted");
+        m_Animator.SetTrigger("isHit");
     }
 
     public void RestartLife()

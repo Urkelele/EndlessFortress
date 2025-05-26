@@ -22,7 +22,7 @@ public class EnemyHealthController : HealthController
         base.ReceiveDamage(damageReceived);
 
         //Receive Damage Animation
-        m_Animator.SetTrigger("isHitted");
+        m_Animator.SetTrigger("isHit");
     }
 
 }
