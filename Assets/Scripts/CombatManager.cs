@@ -109,7 +109,7 @@ public class CombatManager : MonoBehaviour
     /// <returns></returns>
     private GameObject GetRandomComp()
     {
-        if(RoomTransitionManager.instance.m_NextRoomIsBoss && PlayerStats.instance.m_RoomsCleared != 0)
+        if(RoomTransitionManager.instance.m_NextRoomIsBoss)
         {
             int randIndex = Random.Range(0, m_BossCompsList.Count);
             return m_BossCompsList[randIndex];
