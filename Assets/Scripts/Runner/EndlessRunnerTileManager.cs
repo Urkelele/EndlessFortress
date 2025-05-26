@@ -26,7 +26,9 @@ public class EndlessRunnerTileManager : MonoBehaviour
     public GameObject m_DoorsTilePrefab = null;
     private GameObject m_DoorsTile = null;
 
+    [Header("CONTROL VARS")]
     public bool m_IsInRunner = false;
+    public bool m_DoorTileHasSpawned = false;
 
     private void Start()
     {
@@ -52,6 +54,7 @@ public class EndlessRunnerTileManager : MonoBehaviour
     public void ControlRunner(bool start)
     {
         m_IsInRunner = start;
+        m_DoorTileHasSpawned = false;
         if (start)
         {
 
@@ -135,6 +138,8 @@ public class EndlessRunnerTileManager : MonoBehaviour
             m_DoorsTile.SetActive(true);
             CalculateTilesUntilDoors();
 
+            m_DoorTileHasSpawned = true;
+
             Debug.LogWarning("ACTIVATED DOOR");
         }
 
@@ -174,7 +179,13 @@ public class EndlessRunnerTileManager : MonoBehaviour
                 {
                     m_TilePool.Add(thisTile.gameObject);
                 }
-                PlaceRandomTile(m_IndexToSpawn - 2); // Spawn a new tile
+
+                //Dont spawn new tiles after the doorTile
+                if (!m_DoorTileHasSpawned)
+                {
+                    PlaceRandomTile(m_IndexToSpawn - 2); // Spawn a new tile
+                }
+
             }
         }
     }

@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -46,6 +47,7 @@ public class PlayerHealthController : HealthController
     {
         m_CurrentHealthPoints = m_MaxHealthPoints;
         m_IsDead = false;
+        TimeManager.instance.m_StopTime = false;
 
         Debug.LogError("IS TIME STOPPED?: " + TimeManager.instance.m_StopTime);
         Debug.LogError("IS DEAD?: " + m_IsDead);
