@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/TestScenes/AdsScene.unity
     guid: a867e0e4664795245b3450425bcfe80e
   - enabled: 1
-    path: Assets/Scenes/VillarMain.unity
+    path: Assets/Scenes/Main.unity
     guid: c611f5f9dd8291e4e846ef8ff4192e52
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
