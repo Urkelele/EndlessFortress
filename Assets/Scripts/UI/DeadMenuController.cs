@@ -7,6 +7,7 @@ public class DeadMenuController : MonoBehaviour
     [SerializeField] private ExternalDataManager m_ExternalDataManager;
     public GameObject m_RespawPanel;
     public TextMeshProUGUI m_TextAmountTomes;
+    public TextMeshProUGUI m_NewHighScoreText;
     public Button m_PayButtonWithTomes;
     public Button m_SeeVideoButton;
     [SerializeField] private int m_AmountOfTomes;
@@ -27,7 +28,7 @@ public class DeadMenuController : MonoBehaviour
         // Take the text and take only the numbers without the Pay: 
         string aux = m_TextAmountTomes.text.Substring(5);
         m_AmountOfTomes = int.Parse(aux);
-        if (m_ExternalDataManager.m_StoredData.m_AmountTomes > m_AmountOfTomes)
+        if (m_ExternalDataManager.m_StoredData.m_AmountTomes >= m_AmountOfTomes)
         {
             m_PayButtonWithTomes.interactable = true;
         }
@@ -43,6 +44,15 @@ public class DeadMenuController : MonoBehaviour
         {
             m_SeeVideoButton.gameObject.SetActive(true);
         }
+        if (PlayerStats.instance.CalculateScore() > m_ExternalDataManager.m_StoredData.m_HighScore) //New high score
+        { 
+            m_NewHighScoreText.gameObject.SetActive(true);
+            HighScoreManager.instance.UpdateNewHighScore();
+        }
+        else
+        {
+            m_NewHighScoreText.gameObject.SetActive(false);
+        }
 
         PlayClip(m_Dying);
     }
@@ -51,8 +61,9 @@ public class DeadMenuController : MonoBehaviour
         if(m_ExternalDataManager.m_StoredData.m_AmountTomes > m_AmountOfTomes)
         {
             m_ExternalDataManager.AddTomes(-m_AmountOfTomes);
+            GameObject.FindAnyObjectByType<PlayerHealthController>().RestartLife();
             Debug.Log("Player respawned");
-            gameObject.SetActive(true);
+            //gameObject.SetActive(true);
         }
     }
 

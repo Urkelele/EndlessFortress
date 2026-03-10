@@ -10,7 +10,7 @@ public class EndlessRunnerTileManager : MonoBehaviour
     [Header("Tile Options")]
     public GameObject[] m_TilePrefabs;
     public float m_TileLength = 10f;
-    public int m_IndexToSpawn = 5;
+    public int m_IndexToSpawn = 15;
     public int m_MaxInstancesPerTilePrefab = 3;
     public int m_CurrentTilesUntilDoors = 15;
 
@@ -26,13 +26,14 @@ public class EndlessRunnerTileManager : MonoBehaviour
     public GameObject m_DoorsTilePrefab = null;
     private GameObject m_DoorsTile = null;
 
+    [Header("CONTROL VARS")]
     public bool m_IsInRunner = false;
+    public bool m_DoorTileHasSpawned = false;
 
     private void Start()
     {
         InitializePool();
         m_CurrentSpeed = m_MaxSpeed;
-        CalculateTilesUntilDoors();
     }
 
     void Awake()
@@ -48,11 +49,15 @@ public class EndlessRunnerTileManager : MonoBehaviour
         }
     }
 
+    //BEFORE
+
     public void ControlRunner(bool start)
     {
         m_IsInRunner = start;
+        m_DoorTileHasSpawned = false;
         if (start)
         {
+
             for (int i = 0; i < m_ActiveTiles.Count; i++)
             {
                 Transform thisTile = m_ActiveTiles[i].transform;
@@ -60,32 +65,22 @@ public class EndlessRunnerTileManager : MonoBehaviour
                 m_ActiveTiles.RemoveAt(i);
                 i--;
 
-                Debug.LogWarning("REMOVED TILE");
-
-                if (thisTile != m_DoorsTile)
+                if (thisTile != m_DoorsTile.transform)
                 {
                     m_TilePool.Add(thisTile.gameObject);
                 }
-                
+                else
+                {
+                    thisTile.gameObject.SetActive(false);
+                }
+
             }
 
+            CalculateTilesUntilDoors();
             PlaceInitialTiles();
         }
     }
 
-    //Disable all active tiles
-    private void OnDisable()
-    {
-        foreach(GameObject activeTile in m_ActiveTiles)
-        {
-            activeTile.SetActive(false);
-        }
-    }
-
-    private void OnEnable()
-    {
-        ControlRunner(true);
-    }
 
     private void InitializePool()
     {
@@ -102,18 +97,24 @@ public class EndlessRunnerTileManager : MonoBehaviour
         m_DoorsTile.SetActive(false );
     }
 
+
     private void PlaceInitialTiles()
     {
-        CalculateTilesUntilDoors();
+        Debug.LogError("---------[PLACING INITIAL TILES]-------");
         for (int i = 0; i < m_IndexToSpawn; i++)
         {
             PlaceRandomTile(i);
         }
+
+
+        Debug.LogError("---------[FINISHED PLACING INITIAL TILES]-------");
+
     }
 
+    //BACKUP
     private void PlaceRandomTile(int positionIndex = 0)
     {
-        if(m_CurrentTilesUntilDoors > 0)
+        if (m_CurrentTilesUntilDoors > 0)
         {
             if (m_TilePool.Count == 0) return;
             int index = Random.Range(0, m_TilePool.Count);
@@ -124,9 +125,10 @@ public class EndlessRunnerTileManager : MonoBehaviour
             tile.transform.position = new Vector3(2.5f, 0, zpos);
 
             m_ActiveTiles.Add(tile);
-            // TODO: if positionIndex == m_IndexToSpawn, spawn items
             tile.SetActive(true);
             m_CurrentTilesUntilDoors--;
+
+            Debug.LogWarning("ACTIVATED TILE");
         }
         else
         {
@@ -135,8 +137,12 @@ public class EndlessRunnerTileManager : MonoBehaviour
             m_ActiveTiles.Add(m_DoorsTile);
             m_DoorsTile.SetActive(true);
             CalculateTilesUntilDoors();
+
+            m_DoorTileHasSpawned = true;
+
+            Debug.LogWarning("ACTIVATED DOOR");
         }
-    
+
     }
 
     // Update is called once per frame
@@ -148,6 +154,13 @@ public class EndlessRunnerTileManager : MonoBehaviour
         if (m_IsInRunner == true)
         {
             MoveActiveTiles();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Keypad8))
+        {
+            m_MaxSpeed = 10;
+            m_SlowSpeed = 10;
+            FindAnyObjectByType<PlayerHealthController>().m_CurrentHealthPoints = 1000000000;
         }
     }
 
@@ -162,11 +175,17 @@ public class EndlessRunnerTileManager : MonoBehaviour
                 thisTile.gameObject.SetActive(false);
                 m_ActiveTiles.RemoveAt(i);
                 i--;
-                if(thisTile != m_DoorsTile)
+                if(thisTile != m_DoorsTile.transform)
                 {
                     m_TilePool.Add(thisTile.gameObject);
                 }
-                PlaceRandomTile(m_IndexToSpawn-2); // Spawn a new tile
+
+                //Dont spawn new tiles after the doorTile
+                if (!m_DoorTileHasSpawned)
+                {
+                    PlaceRandomTile(m_IndexToSpawn - 2); // Spawn a new tile
+                }
+
             }
         }
     }
@@ -185,13 +204,8 @@ public class EndlessRunnerTileManager : MonoBehaviour
 
     public void CalculateTilesUntilDoors()
     {
-
-        m_CurrentTilesUntilDoors = (m_IndexToSpawn) + PlayerStats.instance.m_RoomsCleared;
+        //m_CurrentTilesUntilDoors = (m_IndexToSpawn) - 2;
+        m_CurrentTilesUntilDoors = (m_IndexToSpawn);
     }
 
-
-    //public void DeactivateDoorsTile()
-    //{
-    //    m_DoorsTile.SetActive(false);
-    //}
 }

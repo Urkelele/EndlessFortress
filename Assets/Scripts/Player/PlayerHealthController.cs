@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -39,29 +40,20 @@ public class PlayerHealthController : HealthController
         base.ReceiveDamage(damageReceived);
 
         //Receive Damage Animation
-        m_Animator.SetTrigger("isHitted");
+        m_Animator.SetTrigger("isHit");
     }
 
     public void RestartLife()
     {
         m_CurrentHealthPoints = m_MaxHealthPoints;
         m_IsDead = false;
+        TimeManager.instance.m_StopTime = false;
 
         Debug.LogError("IS TIME STOPPED?: " + TimeManager.instance.m_StopTime);
         Debug.LogError("IS DEAD?: " + m_IsDead);
         Debug.LogWarning("[REVIVE]");
 
         GeneralCanvasManager.instance.Revive();
-
-        //if (this.gameObject.GetComponent<PlayerCombatScript>() != null && PlayerStats.instance.m_GoldTotal != 0)
-        //{
-        //    GeneralCanvasManager.instance.StartCombat();
-        //}
-        //else
-        //{
-        //    GeneralCanvasManager.instance.ReturnToRun();
-        //}
-
 
     }
 

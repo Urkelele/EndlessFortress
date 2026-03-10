@@ -67,7 +67,7 @@ public class UnlockableItemsController : MonoBehaviour
     }
     public void UnlockItem()
     {
-        if(ExternalDataManager.Instance.m_StoredData.m_AmountTomes > m_CurrentSelectedItem.m_UnlockPrice)
+        if(ExternalDataManager.Instance.m_StoredData.m_AmountTomes >= m_CurrentSelectedItem.m_UnlockPrice)
         {
             ExternalDataManager.Instance.AddTomes(-m_CurrentSelectedItem.m_UnlockPrice);
             foreach (UnlockableItemCellController cell in m_LockedItems)

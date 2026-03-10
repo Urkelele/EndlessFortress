@@ -109,7 +109,7 @@ public class CombatManager : MonoBehaviour
     /// <returns></returns>
     private GameObject GetRandomComp()
     {
-        if(RoomTransitionManager.instance.m_NextRoomIsBoss && PlayerStats.instance.m_RoomsCleared != 0)
+        if(RoomTransitionManager.instance.m_NextRoomIsBoss)
         {
             int randIndex = Random.Range(0, m_BossCompsList.Count);
             return m_BossCompsList[randIndex];
@@ -194,6 +194,7 @@ public class CombatManager : MonoBehaviour
     private void EndBattle()
     {
         GiveRewards();
+        FindAnyObjectByType<CombatResumeControllerUI>().SpawnCombatResume();
 
         //Change score stats
         PlayerStats.instance.m_GoldTotal += m_GoldBattleReward;
@@ -201,9 +202,11 @@ public class CombatManager : MonoBehaviour
         GeneralCanvasManager.instance.Endcombat();
     }
 
-    public void DestroyEnemies()
+    public void DestroyEnemiesAndResetParams()
     {
         Destroy(m_CurrentComp);
+        m_ItemReward = null;
+        m_GoldBattleReward = 0;
     }
 
 }

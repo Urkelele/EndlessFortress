@@ -6,6 +6,7 @@ public class CollectionsMenuController : MonoBehaviour
     public bool m_IsInCollectionsMenu;
     public GameObject m_MainMenu;
     public GameObject m_CollectionsMenu;
+    public GameObject m_DailyReward;
 
 
     private void Start()
@@ -20,6 +21,7 @@ public class CollectionsMenuController : MonoBehaviour
             m_IsInCollectionsMenu = true;
             m_CollectionsMenu.SetActive(true);
             m_MainMenu.SetActive(false);
+            m_DailyReward.SetActive(false);
             GetComponent<UnlockableItemsController>().UpdateLockedItems();
         }
         else
@@ -28,6 +30,7 @@ public class CollectionsMenuController : MonoBehaviour
             m_IsInCollectionsMenu = false;
             m_CollectionsMenu.SetActive(false);
             m_MainMenu.SetActive(true);
+            m_DailyReward.SetActive(true);
         }
     }
 }

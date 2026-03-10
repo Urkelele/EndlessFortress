@@ -34,6 +34,8 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private ItemBaseScript m_StartingLightWeapon;
     [SerializeField] private ItemBaseScript m_StartingHeavyWeapon;
 
+    public List<AttackButtonsController> m_AttackButtonsControllerList = null;
+
     public List<ItemBaseScript> m_PassiveItemsList = new List<ItemBaseScript>();
 
     private void Awake()
@@ -54,6 +56,7 @@ public class InventoryManager : MonoBehaviour
     private void Update()
     {
         CheckTriggers();
+        m_GoldText.text = m_Gold.ToString();
     }
 
     /// <summary>
@@ -85,10 +88,18 @@ public class InventoryManager : MonoBehaviour
         m_ActiveTrigger = TriggerType.NONE;
     }
 
+    public void UpdateButtons()
+    {
+        foreach(AttackButtonsController buttonsController in m_AttackButtonsControllerList)
+        {
+            buttonsController.UpdateItem();
+        }
+    }
+
     /// <summary>
     /// Go through all passive items and addup their stats. Items buffs of Health gets added and multiplier multiplied 
     /// </summary>
-    public void UpdateItems()
+    public void UpdatePassiveItems()
     {
         //In order to correctly update health up item, which give maxHp but also give that amount of currentHp to the player when picked
         //check the player Hp before updating the items and after, and add the difference
@@ -137,7 +148,8 @@ public class InventoryManager : MonoBehaviour
     public void AddNewPassiveItem(ItemBaseScript newPassiveItem)
     {
         m_PassiveItemsList.Insert(0, newPassiveItem);
-        UpdateItems();
+        UpdatePassiveItems();
+        UpdateButtons();
     }
 
     /// <summary>
@@ -159,12 +171,14 @@ public class InventoryManager : MonoBehaviour
         return false;
     }
 
-    public void RestartInverntory()
+    public void RestartInventory()
     {
         m_PassiveItemsList.Clear();
         m_CurrentActiveItem = null;
         m_CurrentLightWeapon = m_StartingLightWeapon;
         m_CurrentHeavyWeapon = m_StartingHeavyWeapon;
+        InventoryManager.instance.UpdateButtons();
+        m_Gold = 0;
 
         ResetExtraAttributes();
     }
@@ -177,16 +191,19 @@ public class InventoryManager : MonoBehaviour
     public void AddNewLightWeapon(ItemBaseScript newLightWeapon)
     {
         m_CurrentLightWeapon = newLightWeapon;
+        UpdateButtons();
     }
 
     public void AddNewHeavySword(ItemBaseScript newHeavyWeapon)
     {
         m_CurrentHeavyWeapon = newHeavyWeapon;
+        UpdateButtons();
     }
 
     public void AddNewActive(BaseActiveScript newActiveItem)
     {
         m_CurrentActiveItem = newActiveItem;
+        UpdateButtons();
     }
 
     public void AddGold (int goldAmount)

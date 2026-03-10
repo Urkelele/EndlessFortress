@@ -9,6 +9,7 @@ public class DoorTileScript : MonoBehaviour
     private List<GameObject> m_SpawnedDoors = new List<GameObject>();
     public List<Transform> m_DoorPositions = new List<Transform>();
 
+
     private void OnEnable()
     {
         //If the next room is a boss spawn just a boss door

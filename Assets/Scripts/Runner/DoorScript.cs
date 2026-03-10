@@ -56,5 +56,6 @@ public class DoorScript : MonoBehaviour
             default:
                 break;
         }
+
     }
 }

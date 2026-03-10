@@ -16,6 +16,7 @@ public class RoomTransitionManager : MonoBehaviour
     [SerializeField] private PlayerCombatScript m_PlayerCombatScript = null;
     [SerializeField] private PlayerMovement m_PlayerMovement = null;
     [SerializeField] private Animator m_PlayerAnimator = null;
+    public GameObject m_ShopClickActivator = null;
 
 
     [Header("ROOM GAMEOBJECTS")]
@@ -32,7 +33,7 @@ public class RoomTransitionManager : MonoBehaviour
     [Header("CONTROL PARAMS")]
     public int m_NumOfRoomsBetweenBoss = 10;
 
-    [SerializeField] private GameObject m_CurrentRoom = null;
+    public GameObject m_CurrentRoom = null;
 
 
     [Header("AUDIO")]
@@ -89,6 +90,8 @@ public class RoomTransitionManager : MonoBehaviour
             Debug.LogError("CURRENT ROOM IS NULL");
             //Deactivate the runner manager
             //m_EndlessRunnerTilesManager.enabled = false;
+
+            m_EndlessRunnerTilesManager.ControlRunner(false);
 
             //Disable movement
             m_PlayerMovement.enabled = false;
@@ -196,8 +199,7 @@ public class RoomTransitionManager : MonoBehaviour
         Debug.LogWarning("TRANSITIONING TO SHOP");
         m_CurrentRoom = m_ShopRoom;
         m_CurrentRoom.SetActive(true);
-
-        FindAnyObjectByType<ShopController>().SpawnShop();
+        m_ShopClickActivator.SetActive(true); //activate the object that allows to click to open the shop
         PlayClip(m_OtherRoomMusic, m_RoomCameraAudioSource);
     }
     public void TransitionToHeal()
@@ -223,7 +225,6 @@ public class RoomTransitionManager : MonoBehaviour
 
         PlayerStats.instance.m_RoomsCleared++;
 
-        m_EndlessRunnerTilesManager.CalculateTilesUntilDoors();
         CheckIfNextRoomsIsBoss();
 
         PlayClip(m_EndlessRunnerMusic, m_RunnerCameraAudioSource);
@@ -242,6 +243,35 @@ public class RoomTransitionManager : MonoBehaviour
     {
         m_AudioSource.clip = audioClip;
         m_AudioSource.Play();
+    }
+
+    public void CallThisWhenPlayerDiesInCombat()
+    {
+        //Deactivate animation
+        m_PlayerAnimator.SetBool("isFighting", false);
+
+        //enable movement and disable combat
+        m_PlayerCombatScript.enabled = false;
+        m_PlayerMovement.enabled = true;
+
+        //Deactivate the room the player was in
+        m_CurrentRoom.SetActive(false);
+        m_CurrentRoom = null;
+
+        //Tp the player runner
+        m_PlayerTransform.position = m_PlayerRunnerPos.position;
+        m_PlayerTransform.rotation = m_PlayerRunnerPos.rotation;
+
+        //Change camera
+        m_RoomCamera.gameObject.SetActive(false);
+        m_RunnerCamera.gameObject.SetActive(true);
+        m_CurrentActiveCamera = m_RunnerCamera;
+
+        if (CombatManager.instance.m_CombatEnemies.Count > 0)
+        {
+            Destroy(CombatManager.instance.m_CombatEnemies[0].transform.parent.gameObject); //Destroy enemies if there are any
+        }
+
     }
 
 }

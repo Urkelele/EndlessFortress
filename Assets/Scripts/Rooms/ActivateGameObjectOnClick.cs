@@ -34,5 +34,7 @@ public class ActivateGameObjectOnClick : ClickableObject
                 Debug.Log("Ability Not Selected");
                 break;
         }
+
+        this.gameObject.SetActive(false);
     }
 }

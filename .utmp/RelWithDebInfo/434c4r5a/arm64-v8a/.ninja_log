@@ -1,0 +1,19 @@
+# ninja log v5
+58	2216	7698997916797189	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	f369ada443dcf9af
+17	2008	7698997914494808	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	e5b02a2b47ac72f0
+39	2014	7698997914287522	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	ca51f8a0038895a5
+23	2064	7698997915064636	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	1772e8a65292f0a4
+2730	2934	7698997924102181	C:/Users/eduar/OneDrive/Desktop/USJ/3_Curso/moviles_2024-25/EndlessFortress/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/434c4r5a/obj/arm64-v8a/libgame.so	21fef99747258eca
+1	2400	7698997918858814	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	d5036ef9ad978817
+49	2096	7698997915502702	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	bbb988dbe3fb337d
+30	2644	7698997921364631	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	8395637dbde6dab3
+9	2730	7698997922256858	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	e460d8467767f5a9
+40	1414	7699583486525185	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	ca51f8a0038895a5
+31	1425	7699583486652494	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	bbb988dbe3fb337d
+24	1426	7699583486687620	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	e5b02a2b47ac72f0
+12	1476	7699583487160859	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	1772e8a65292f0a4
+57	1486	7699583487252796	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	f369ada443dcf9af
+18	1550	7699583487940631	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	d5036ef9ad978817
+50	1650	7699583488979223	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	8395637dbde6dab3
+6	1771	7699583490131244	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	e460d8467767f5a9
+1771	2091	7699583493388464	C:/Users/eduar/OneDrive/Desktop/USJ/3_Curso/moviles_2024-25/EndlessFortress/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/434c4r5a/obj/arm64-v8a/libgame.so	21fef99747258eca
