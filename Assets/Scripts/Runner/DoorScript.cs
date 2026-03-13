@@ -28,9 +28,20 @@ public class DoorScript : MonoBehaviour
         //If the door is random we pick a random door, we subtract one from the length since NONE doesnt count
         if(m_DoorType == DoorType.RANDOM)
         {
-            int numOfDoors = System.Enum.GetValues(typeof(DoorType)).Length - 1;
-            DoorType randomDoor = (DoorType)Random.Range(0, numOfDoors);
-            m_DoorType = randomDoor;
+            // int numOfDoors = System.Enum.GetValues(typeof(DoorType)).Length - 1;
+            // DoorType randomDoor = (DoorType)Random.Range(0, numOfDoors);
+            // m_DoorType = randomDoor;
+            
+            // Excluir NONE (-1) y RANDOM (2) del sorteo
+            DoorType[] validDoors = new DoorType[]
+            {
+                DoorType.COMBAT,
+                DoorType.SHOP,
+                DoorType.HEAL,
+                DoorType.BOSS,
+                DoorType.CHEST
+            };
+            m_DoorType = validDoors[Random.Range(0, validDoors.Length)];
         }
 
         switch (m_DoorType)
