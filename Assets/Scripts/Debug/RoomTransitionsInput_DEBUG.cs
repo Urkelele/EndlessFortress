@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class RoomTransitionsInput_DEBUG : MonoBehaviour
 {
+#if UNITY_EDITOR
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Keypad0))
@@ -30,4 +31,5 @@ public class RoomTransitionsInput_DEBUG : MonoBehaviour
             RoomTransitionManager.instance.RoomTransition(TransitionType.CHEST);
         }
     }
+#endif
 }

@@ -24,15 +24,15 @@ public class PlayerHealthController : HealthController
             InventoryManager.instance.EnableItemTrigger(TriggerType.PLAYER_DEATH);
             GeneralCanvasManager.instance.RunFinished();
         }
-
+#if UNITY_EDITOR
         //DEBUG
         if (Input.GetKeyDown(KeyCode.Keypad7))
         {
             Revive(m_MaxHealthPoints);
         }
+#endif
         
         m_Animator.SetBool("isDead", m_IsDead);
-
     }
 
     public override void ReceiveDamage(float damageReceived)

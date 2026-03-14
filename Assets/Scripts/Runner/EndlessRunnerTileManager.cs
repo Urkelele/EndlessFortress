@@ -156,12 +156,14 @@ public class EndlessRunnerTileManager : MonoBehaviour
             MoveActiveTiles();
         }
 
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Keypad8))
         {
             m_MaxSpeed = 10;
             m_SlowSpeed = 10;
             FindAnyObjectByType<PlayerHealthController>().m_CurrentHealthPoints = 1000000000;
         }
+#endif
     }
 
     void MoveActiveTiles()
