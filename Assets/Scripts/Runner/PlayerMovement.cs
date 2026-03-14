@@ -71,6 +71,16 @@ public class PlayerMovement : MonoBehaviour
         {
             m_CurrentLane--;
         }
+        if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
+        {
+            Debug.LogError("Jump");
+            m_JumpDirection = 1;
+            m_IsJumping = true;
+            m_IsGoingUp = true;
+
+            m_Animator.SetTrigger("isJumping");
+        }
+
 
         if(m_IsJumping)
         {
