@@ -54,7 +54,7 @@ public class ExternalDataManager : MonoBehaviour
     {
         string DataToStore = JsonUtility.ToJson(m_StoredData);
         string filePath = Application.persistentDataPath + "/StoredData.json";
-        Debug.Log(filePath);
+        Debug.Log("SAVED JSON ON: " + filePath);
         System.IO.File.WriteAllText(filePath, DataToStore);
     }
     

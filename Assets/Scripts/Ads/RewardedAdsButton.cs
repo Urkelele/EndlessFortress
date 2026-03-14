@@ -20,6 +20,8 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
         _adUnitId = _iOSAdUnitId;
 #elif UNITY_ANDROID
         _adUnitId = _androidAdUnitId;
+#else
+        _adUnitId = _androidAdUnitId; // fallback for Editor/Windows
 #endif
 
         _loadAdButton.GetComponentInChildren<TextMeshProUGUI>().text = "Video";
@@ -63,8 +65,17 @@ public class RewardedAdsButton : MonoBehaviour, IUnityAdsLoadListener, IUnityAds
     {
         // Disable the button:
         _showAdButton.interactable = false;
+
+#if UNITY_STANDALONE
+
+        Debug.Log("Simulating ad commplete windows platform");  
+        OnUnityAdsShowComplete(_adUnitId, UnityAdsShowCompletionState.COMPLETED);
+#else
+
         // Then show the ad:
         Advertisement.Show(_adUnitId, this);
+
+#endif
     }
 
     // Implement the Show Listener's OnUnityAdsShowComplete callback method to determine if the user gets a reward:

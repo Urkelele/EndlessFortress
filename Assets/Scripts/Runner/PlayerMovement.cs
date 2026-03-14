@@ -73,7 +73,6 @@ public class PlayerMovement : MonoBehaviour
         }
         if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W))
         {
-            Debug.LogError("Jump");
             m_JumpDirection = 1;
             m_IsJumping = true;
             m_IsGoingUp = true;
